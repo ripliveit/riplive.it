@@ -1,0 +1,67 @@
+<div id="authors-list" class="content">
+    <h1 class="single-title text-center">
+        Authors
+    </h1>
+
+    <div class="media-wrapper visible-xs">
+        <div class="media" ng-repeat="a in authors['authors']">
+            <h6 class="media-label btn-authors">
+                Authors
+            </h6>
+
+            <a ng-href="/authors/{{a.slug}}">
+                <img class="media-object pull-left" ng-src="{{a.author_images['thumbnail']}}" alt="{{a.nickname}}" />
+            </a>
+
+            <div class="media-body">
+                <h5 class="media-heading">
+                    <a ng-href="/authors/{{a.slug}}">
+                        {{a.nickname}}
+                    </a>
+                </h5>
+
+                <h6>
+                    <a ng-href="/authors/{{a.slug}}">
+                        {{a.email}}
+                    </a>
+                </h6>
+            </div>
+        </div>
+
+        <loading-spinner data-visible="loading"></loading-spinner>
+    </div>
+
+    <div class="media-block-wrapper hidden-xs">
+        <h4 class="media-block-subtitle bolder">
+            <span class="fa fa-pencil"></span> All ripers
+        </h4>
+
+        <div class="media-block col-sm-4 col-md-4 col-lg-3" ng-repeat="a in authors['authors']">
+            <div class="thumbnail thumbnail-fixed">
+                <a class="media-block-link " ng-href="/authors/{{a.slug}}">
+                    <img class="media-block-img" ng-src="{{a.author_images['thumbnail']}}" alt="{{a.nickname}}" />
+                </a>
+
+                <div class="caption">
+                    <h3 class="bold">
+                        <a ng-href="/authors/{{a.slug}}">
+                            {{a.nickname}}
+                        </a>
+                    </h3>
+
+                    <p>
+                        <a ng-href="/authors/{{a.slug}}">
+                            {{a.email}}
+                        </a>
+                    </p>
+                </div>
+
+                <a ng-href="/authors/{{a.slug}}" class="media-block-more btn btn-authors" role="button">
+                    Meet the author
+                </a> 
+            </div>
+        </div>
+
+        <loading-spinner data-visible="loading"></loading-spinner>
+    </div>
+</div>

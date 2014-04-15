@@ -1,0 +1,11 @@
+node_modules
+public
+.tmp
+*.log
+*.sass-cache
+*.sln
+*.njsproj
+app/bower_components
+heroku
+/views
+nbproject
