@@ -1,4 +1,4 @@
-<div id="podcast" class="single content container-fluid">
+<div id="podcast" class="single content container-fluid" itemscope itemtype="http://schema.org/RadioSeries">
     <div class="cover-wrapper">
         <div class="cover" ng-style="{'background-image': 'url(' + program['program_images']['image_large'] + ')'}">
             <div class="cover-picker">
@@ -7,10 +7,10 @@
                         <span class="fa fa-microphone"></span> Programs
                     </a>
 
-                    <h1 class="cover-title">
+                    <h1 class="cover-title" itemprop="name">
                         {{program.program_title}}
                     </h1>
-
+                    
                     <figure class="cover-author-pictures">
                         <a ng-repeat="a in program.program_information['programs-authors']" ng-href="/authors/{{a.slug}}">
                             <img ng-src="{{a.author_images['thumbnail']}}" title="{{a.nickname}}" />
@@ -28,10 +28,10 @@
     </div>
 
     <article class="single-article col-lg-6 col-lg-offset-3">
-        <p ng-bind-html="program.program_content"></p>
+        <p ng-bind-html="program.program_content" itemprop="text"></p>
 
         <div class="song-controls">
-            <a ng-href="/podcasts/{{program.slug}}" ng-show="program.total_podcasts" class="btn btn-vote btn-lg btn-programs color-white">
+            <a ng-href="/podcasts/{{program.slug}}" ng-show="program.total_podcasts" class="btn btn-vote btn-lg btn-programs color-white" itemprop="numberOfEpisodes">
                 Total Podcasts {{program.total_podcasts}}
             </a>
         </div>

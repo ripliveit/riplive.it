@@ -1,4 +1,4 @@
-<div id="podcast" class="single content container-fluid">
+<div id="podcast" class="single content container-fluid" itemscope itemtype="http://schema.org/RadioEpisode">
     <div class="cover-wrapper">
         <div class="cover" ng-style="{'background-image': 'url(' + podcast.podcast_images['image_large'] + ')'}">
             <div class="cover-picker">
@@ -7,7 +7,7 @@
                         <span class="fa fa-cloud"></span> Podcasts
                     </a>
 
-                    <h1 class="cover-title">
+                    <h1 class="cover-title" itemprop="name">
                         {{podcast.title}}
                     </h1>
 
@@ -18,7 +18,7 @@
                     </figure>
 
                     <h2 class="cover-author">
-                        <span>
+                        <span itemprop="datePublished">
                             {{podcast.date | dateFormat}}
                         </span>
                     </h2>
@@ -30,7 +30,7 @@
     <article class="single-article col-lg-6 col-lg-offset-3">
         <streaming-player data-audio="podcast.url" data-autoplay="true" data-show-controls="true" data-is-streaming="false"></streaming-player>
 
-        <p>
+        <p itemprop="text">
             {{podcast.summary}}
         </p>
     </article>
@@ -39,7 +39,7 @@
         <div class="row">
             <div class="single-article-author col-lg-6">
                 <h4 class="bold">
-                    <a ng-href="/programs/{{podcast.program_slug}}" title="{{podcast.program_title}}">
+                    <a ng-href="/programs/{{podcast.program_slug}}" title="{{podcast.program_title}}" itemprop="partOfSeries">
                         {{podcast.program_title}}
                     </a>
                 </h4>
@@ -54,17 +54,17 @@
                 </h4>
 
                 <p class="author-info">
-                    <a class="pull-left author-picture" ng-repeat="a in podcast.authors" ng-href="/authors/{{a.slug}}">
+                    <a class="pull-left text-center author-picture" ng-repeat="a in podcast.authors" ng-href="/authors/{{a.slug}}">
                         <img ng-src="{{a.author_images['thumbnail']}}" title="{{a.nickname}}" />
                     </a>
 
-                    <span ng-bind-html="(a.description | limitTo : 280) + '...'"></span>
+                    <span>...</span>
                 </p>
             </div>
 
             <div class="single-article-taxonomy col-lg-6">
                 <h4 class="bold">
-                    Share this
+                    Share this <span class="fa fa-heart"></span>
                 </h4>
 
                 <social-buttons data-href="'/podcasts/' + podcast.program_slug + podcast.id" data-image="podcast.podcast_images['thumbnail']" data-title="podcast.title" data-text="podcast.summary | stripHtml"></social-buttons>

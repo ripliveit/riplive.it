@@ -9,28 +9,31 @@
 
     <div class="list-wrapper">
         <div class="list-group collapsed">
-            <div class="list-group-item" ng-repeat="s in chart.songs">
-
+            <div class="list-group-item" ng-repeat="s in chart.songs" itemscope itemtype="http://schema.org/MusicRecording">
                 <a class="list-object pull-left" ng-href="/songs/{{s.song_slug}}">
-                    <img class="list-image" ng-src="{{s.song_images['thumbnail']}}" alt="{{s.song_title}}" />
+                    <img class="list-image" ng-src="{{s.song_images['thumbnail']}}" alt="{{s.song_title}}" itemprop="image"/>
                 </a>
 
                 <div class="list-body pull-left">
                     <h3 class="bold">
-                        <a ng-href="/songs/{{s.song_slug}}">
+                        <a ng-href="/songs/{{s.song_slug}}" itemprop="name">
                             {{s.song_title}}
                         </a>
                     </h3>
 
                     <h4>
-                        <a ng-href="/songs/{{s.song_slug}}" title="{{s.song_title}}">
-                            Artist: {{s.song_artist}}
+                        Artist:
+
+                        <a ng-href="/songs/{{s.song_slug}}" title="{{s.song_title}}" itemprop="creator">
+                             {{s.song_artist}}
                         </a>
                     </h4>
 
                     <h4>
-                        <a ng-href="/songs/{{s.song_slug}}" title="{{s.song_title}}">
-                            Album : {{s.song_album}}
+                        Album :
+                        
+                        <a ng-href="/songs/{{s.song_slug}}" title="{{s.song_title}}" itemprop="inAlbum">
+                             {{s.song_album}}
                         </a>    
                     </h4>
 
@@ -42,7 +45,7 @@
                         </li>
 
                         <li class="list-category" ng-repeat="g in s.song_genre">
-                            <a ng-href="/songs/{{s.song_slug}}" title="{{s.song_title}}">
+                            <a ng-href="/songs/{{s.song_slug}}" title="{{s.song_title}}" itemprop="genre">
                                {{g.name}}{{$last ? '' : ', '}}
                            </a>
                         </li>
@@ -56,7 +59,7 @@
                         </li>
 
                         <li class="list-category" ng-repeat="t in s.song_tags">
-                            <a ng-href="/songs/{{s.song_slug}}" title="{{s.song_title}}">
+                            <a ng-href="/songs/{{s.song_slug}}" title="{{s.song_title}}" itemprop="keywords">
                                {{t.name}}{{$last ? '' : ', '}}
                            </a>
                         </li>

@@ -1,4 +1,4 @@
-<div id="artist" class="single content container-fluid">
+<div id="artist" class="single content container-fluid" itemscope itemtype="http://schema.org/MusicGroup">
     <div class="cover-wrapper">
         <div class="cover" ng-style="{'background-image': 'url(' + artist.artist_images['image_large'] + ')'}">
             <div class="cover-picker">
@@ -7,7 +7,7 @@
                        <span class="fa fa-user"></span> Artists
                     </a>
 
-                    <h1 class="cover-title">
+                    <h1 class="cover-title" itemprop="name">
                         {{artist.artist_title}}
                     </h1>
                 </header>
@@ -16,7 +16,7 @@
     </div>
 
     <article class="single-article col-lg-6 col-lg-offset-3">
-        <p class="text-center" ng-bind-html="artist.artist_content"></p>
+        <p class="text-center" ng-bind-html="artist.artist_content" itemprop="description"></p>
 
         <div>
             <h4 class="bold">
@@ -45,44 +45,44 @@
                 </h2>
 
                 <ul id="information">
-                    <li class="information-item" ng-show="artist.artist_lineup">
+                    <li class="information-item" ng-if="artist.artist_lineup">
                         <h4>
                             <small>Line up:</small> {{artist.artist_lineup}}
                         </h4>
                     </li>
-                    <li class="information-item" ng-show="artist.artist_label">
+                    <li class="information-item" ng-if="artist.artist_label">
                         <h4>
                             <small>Label:</small>  {{artist.artist_label}}
                         </h4>
                     </li>
-                    <li class="information-item" ng-show="artist.artist_booking">
+                    <li class="information-item" ng-if="artist.artist_booking">
                         <h4>
                             <small>Booking:</small> {{artist.artist_booking}}
                         </h4>
                     </li>
-                    <li class="information-item" ng-show="artist.artist_press">
+                    <li class="information-item" ng-if="artist.artist_press">
                         <h4>
                             <small>Press:</small> {{artist.artist_press}}
                         </h4>
                     </li>
-                    <li class="information-item" ng-show="artist.artist_email">
-                        <h4>
+                    <li class="information-item" ng-if="artist.artist_email">
+                        <h4 itemprop="email">
                             <small>Email:</small>{{artist.artist_email}}
                         </h4>
                     </li>
-                    <li class="information-item" ng-show="artist.artist_telephone">
-                        <h4>
+                    <li class="information-item" ng-if="artist.artist_telephone">
+                        <h4 itemprop="telephone">
                             <small>Telephone:</small> {{artist.artist_telephone}}
                         </h4>
                     </li>
-                    <li class="information-item" ng-show="artist.artist_website">
+                    <li class="information-item" ng-if="artist.artist_website">
                         <h4>
-                            <a ng-href="{{artist.artist_website}}" title="website">
+                            <a ng-href="{{artist.artist_website}}" title="website" itemprop="sameAs">
                                 <small>Website:</small> {{artist.artist_website}}
                             </a>
                         </h4>
                     </li>
-                    <li class="information-item" ng-show="artist.artist_provincia">
+                    <li class="information-item" ng-if="artist.artist_provincia">
                         <h4>
                             <small>Province:</small> {{artist.artist_provincia}}
                         </h4>

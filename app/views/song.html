@@ -1,4 +1,4 @@
-<div id="song" class="single content container-fluid">
+<div id="song" class="single content container-fluid" itemscope itemtype="http://schema.org/MusicRecording">
     <div class="cover-wrapper">
         <div class="cover" ng-style="{'background-image': 'url(' + song.song_images['image_large'] + ')'}">
             <div class="cover-picker">
@@ -24,14 +24,14 @@
     </div>
 
     <article class="single-article col-lg-6 col-lg-offset-3">
-        <p class="text-center" ng-bind-html="song.song_content"></p>
+        <p class="text-center" ng-bind-html="song.song_content" itemprop=""></p>
 
         <div class="song-controls">
-            <a ng-href="{{song.url_spotify}}" ng-show="song.url_spotify" class="btn btn-vote btn-lg btn-songs color-white">
+            <a ng-href="{{song.url_spotify}}" ng-if="song.url_spotify" class="btn btn-vote btn-lg btn-songs color-white" itemprop="url">
                 Spotify
             </a>
 
-            <a ng-href="{{song.url_youtube}}" ng-show="song.url_youtube" class="btn btn-lg btn-like btn-artists">
+            <a ng-href="{{song.url_youtube}}" ng-if="song.url_youtube" class="btn btn-lg btn-like btn-artists">
                 YouTube
             </a>
         </div>
@@ -40,29 +40,29 @@
     <div class="single-article-info col-lg-6 col-lg-offset-3">
         <div class="row">
             <div class="single-article-author col-lg-6">
-                <h4 class="bold">
+                <h4 class="bold" itemprop="name">
                     {{song.song_title}}
                 </h4>
 
                 <ul id="information">
-                    <li class="information-item">
+                    <li class="information-item" itemprop="creator">
                         Artist: {{song.song_artist}}
                     </li>
-                    <li class="information-item">
+                    <li class="information-item" itemprop="inAlbum">
                         Album: {{song.song_album}}
                     </li>
-                    <li class="information-item">
+                    <li class="information-item" itemprop="dateCreated">
                         Year: {{song.song_year}}
                     </li>
                     <li class="information-item">
                         Genre:
-                        <a ng-repeat="g in song.song_genre" ng-href="/songs/genre/{{g.slug}}" title="{{g.name}}">
+                        <a ng-repeat="g in song.song_genre" ng-href="/songs/genre/{{g.slug}}" title="{{g.name}}" itemprop="genre">
                             {{g.name}}{{$last ? '' : ', '}}
                         </a>
                     </li>
                     <li class="information-item">
                         Tags:
-                        <a ng-repeat="t in song.song_tags" ng-href="/songs/tag/{{t.slug}}" title="{{t.name}}">
+                        <a ng-repeat="t in song.song_tags" ng-href="/songs/tag/{{t.slug}}" title="{{t.name}}" itemprop="keywords">
                             {{t.name}}{{$last ? '' : ', '}}
                         </a>
                     </li>
@@ -71,7 +71,7 @@
 
             <div class="single-article-taxonomy col-lg-6">
                 <h4 class="bold">
-                    Share this
+                    Share this <span class="fa fa-heart"></span>
                 </h4>
 
                 <social-buttons data-href="'/songs/' + song.song_slug" data-image="song.song_images['thumbnail']" data-title="song.song_title" data-text="song.song_excerpt | stripHtml"></social-buttons>

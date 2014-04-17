@@ -1,4 +1,4 @@
-<div id="author" class="single content">
+<div id="author" class="single content" itemscope itemtype="http://schema.org/Person">
     <div class="cover-wrapper">
         <div class="cover" ng-style="{'background-image': 'url(' + author.author_images['image_large'] + ')'}">
             <div class="cover-picker">
@@ -7,12 +7,12 @@
                         <span class="fa fa-pencil"></span> Authors
                     </a>
 
-                    <h1 class="cover-title">
+                    <h1 class="cover-title" itemprop="name">
                         {{author.nickname}}
                     </h1>
 
                     <h2 class="cover-info">
-                        <a class="color-news" ng-href="/authors/{{news.author.slug}}">
+                        <a class="color-news" ng-href="/authors/{{news.author.slug}}" itemprop="email">
                             {{author.email}}
                         </a>
 
@@ -20,7 +20,7 @@
 
                         <br/>
 
-                        <span>
+                        <span itemprop="alternateName">
                             {{author.first_name}} {{author.last_name}}
                         </span>
                     </h2>
@@ -30,7 +30,7 @@
     </div>
 
     <article class="single-article col-lg-6 col-lg-offset-3">
-        <p ng-bind-html="author.description">
+        <p ng-bind-html="author.description" itemprop="text">
 
         </p>
     </article>
