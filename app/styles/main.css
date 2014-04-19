@@ -719,13 +719,13 @@ a.btn-neutral:hover {
     padding-top: 50px;       
 }
 
-#main .content > h1.single-title {
+#main .content h1.single-title {
     margin: 0 0 10px;
     padding: 10px 10px 0;
     text-transform: uppercase;
 }
 
-#main .content > h2.single-subtitle {
+#main .content h2.single-subtitle {
     margin: 10px auto 0;
     padding: 0 10px 0;
     font-size: 28px;
@@ -1403,19 +1403,19 @@ a.btn-neutral:hover {
     }
 
     /* Main content general rules */
-    #main .content > h1.single-title {
+    #main .content h1.single-title {
        margin: 0 0 25px;
        padding: 25px 15px 0;
        font-size: 72px;
        text-transform: uppercase;
     }
 
-    #main .content > h2.single-subtitle {
+    #main .content h2.single-subtitle {
        margin: 0 0 25px;
        font-size: 36px;
     }
 
-    #main .content > h4.single-heading {
+    #main .content h4.single-heading {
        margin: 20px 0;
        padding: 0 50px;
     }
@@ -1568,7 +1568,7 @@ a.btn-neutral:hover {
     }
 
     #main .cover .cover-picker .cover-header {
-        width: 650px;
+        width: 675px;
         margin: 0 auto;
     }
 
@@ -1612,6 +1612,16 @@ a.btn-neutral:hover {
 
     #main .single .single-article-next {
         float: right;
+    }
+
+    #main #comments {
+        overflow: hidden;
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+
+    #main #comments #disqus_thread {
+        margin-top: 35px;
     }
 
     /* PAGE SPECIFIC STYLES */
@@ -1687,6 +1697,12 @@ a.btn-neutral:hover {
         position: absolute;
         right: 15px;
         bottom: 15px;
+    }
+
+    #main .media-block.media-block-first .single-share .btn {
+        width: 40px;
+        padding: 6px 12px;
+        font-size: 14px;
     }
 
     #main .single .single-article-prev,

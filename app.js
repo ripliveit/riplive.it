@@ -18,7 +18,7 @@ app.configure('development', function() {
     app.set('wp_uri', 'http://riplive.local/api');
     app.set('admin_uri', 'http://riplive.local/wp-admin/admin-ajax.php');
     app.set('memcache_uri', '127.0.0.1:11211');
-    app.set('staticFolder', path.join(__dirname, 'app'));
+    app.set('staticFolder', path.join(__dirname, 'dist'));
 
     app.use(express.errorHandler());
     app.use(express.logger('dev'));

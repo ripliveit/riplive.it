@@ -12,7 +12,8 @@ angular.module('riplive', [
     'ngSanitize',
     'angular-carousel',
     'ui.bootstrap',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'ngDisqus'
 ])
 
 /**
@@ -23,8 +24,9 @@ angular.module('riplive', [
  * @param  {Object} $locationProvider
  * @return {undefined}
  */
-.config(function($routeProvider, $locationProvider) {
+.config(function($routeProvider, $locationProvider, $disqusProvider) {
     $locationProvider.html5Mode(true).hashPrefix('!');
+    $disqusProvider.setShortname('riplive');
 
     $routeProvider
         .when('/', {

@@ -25,5 +25,8 @@ angular.module('riplive')
         authorsService.getAuthor(data.post.author.slug, function(data) {
             $scope.author = data;
         });
+
+        // Disqus one?
+        $scope.id = data.post.slug;
     });
 });

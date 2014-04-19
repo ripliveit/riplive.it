@@ -4,7 +4,7 @@
             <div class="cover-picker">
                 <header class="cover-header">
                     <a ng-href="/categories/{{news.categories[0]['slug']}}" class="cover-label btn btn-news">
-                        <span class="fa fa-bullhorn"></span> {{news.categories[0]['title']}}
+                        <span class="fa fa-bullhorn"></span>{{news.categories[0]['title']}}
                     </a>
 
                     <h1 class="cover-title" itemprop="name">
@@ -40,7 +40,7 @@
         <div class="row">
             <div class="single-article-author col-lg-6" itemscope itemtype="http://schema.org/Person">
                 <h4 itemprop="name">
-                    <small>Written By</small> 
+                    <small>Written By</small>
                 </h4>
 
                 <article class="author-info">
@@ -55,7 +55,7 @@
                         <h5 itemprop="email">
                             {{author.email}}
                         </h5>
-                        
+
                         <p ng-bind-html="(author.description | limitTo : 280) + '...'" itemprop="description"></p>
                     </p>
                 </article>
@@ -87,7 +87,8 @@
                 </h4>
 
                 <h4 class="bold">
-                    Share this article <span class="fa fa-heart"></span>
+                    Share this article
+                    <span class="fa fa-heart"></span>
                 </h4>
 
                 <social-buttons data-href="'/news/' + news.slug" data-image="news.thumbnail_images.thumbnail.url" data-title="news.title" data-text="news.excerpt | stripHtml"></social-buttons>
@@ -97,11 +98,21 @@
 
     <div class="single-navigation">
         <a ng-href="/news/{{news.previous_slug}}" class="single-article-prev bold" ng-show="news.previous_slug">
-            <span class="fa fa-chevron-left"></span> Previous in series
+            <span class="fa fa-chevron-left"></span>Previous in series
         </a>
 
         <a ng-href="/news/{{news.next_slug}}" class="single-article-next bold" ng-show="news.next_slug">
             Next in series <span class="fa fa-chevron-right"></span>
         </a>
+    </div>
+</div>
+
+<div id="comments" class="single content container-fluid">
+    <div id="comment-wrapper" class="col-lg-8 col-lg-offset-2 hidden-xs">
+        <h2 class="single-subtitle text-center">
+            Comments
+        </h2>
+        
+        <div disqus="id"></div>
     </div>
 </div>

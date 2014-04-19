@@ -16,7 +16,7 @@
             </h5>
 
             <a ng-href="/news/{{first.slug}}">
-                <img class="media-object" ng-src="{{first.thumbnail_images.thumbnail.url}}" alt="{{first.title}}" />
+                <img class="media-object" ng-src="{{first.thumbnail_images.medium.url}}" alt="{{first.title}}" />
             </a>
 
             <div class="media-body">
@@ -82,7 +82,7 @@
     <div class="media-block-wrapper hidden-xs">
         <div class="media-block media-block-first col-lg-12" ng-show="firsts">
             <div class="thumbnail" ng-repeat="first in firsts">
-                <a class="media-block-link" ng-href="/news/{{first.slug}}">
+                <a class="media-block-link dark-gradient" ng-href="/news/{{first.slug}}">
                     <img class="media-block-img" ng-src="{{first.thumbnail_images.medium.url}}" alt="{{first.title}}" />
                 </a>
 
