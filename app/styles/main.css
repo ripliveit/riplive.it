@@ -389,7 +389,7 @@ a.btn-neutral:hover {
 #hg .hg-grid .hg-figure {
     width: 100%;
     height: 250px;
-    background-size: 100% 100%;
+    background-size: cover;
     position: relative;
     padding: 0;
 }
@@ -1087,6 +1087,7 @@ a.btn-neutral:hover {
 #main .single .single-article-info .single-article-author {
     border-top: 1px solid #f2f2f2;
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #main .single .single-article-info .single-article-author .author-info {
@@ -1100,11 +1101,6 @@ a.btn-neutral:hover {
 #main .single .single-article-info .single-article-author .author-picture img {
     width: 65px;
     height: 65px;
-}
-
-#main .single .single-article-info p {
-    font-size: 15.5px;
-    line-height: 1.5em;
 }
 
 #main .single .single-article-info .single-article-taxonomy {
@@ -1312,7 +1308,6 @@ a.btn-neutral:hover {
     #hg .hg-grid .hg-figure {
         width: 50%;
         height: 250px;
-        background-size: 100% 100%;
         position: relative;
         padding: 0;
     }
@@ -1725,7 +1720,6 @@ a.btn-neutral:hover {
     #hg .hg-grid .hg-figure {
         width: 33%;
         height: 250px;
-        background-size: 100% 100%;
         position: relative;
         padding: 0;
     }
@@ -1760,7 +1754,7 @@ a.btn-neutral:hover {
 
     #main .single .single-article-prev,
     #main .single .single-article-next {
-        width: 18%;
+        width: 15%;
         font-size: 18px;
     }
 

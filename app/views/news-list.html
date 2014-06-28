@@ -83,7 +83,7 @@
         <div class="media-block media-block-first col-lg-12" ng-show="firsts">
             <div class="thumbnail" ng-repeat="first in firsts">
                 <a class="media-block-link dark-gradient" ng-href="/news/{{first.slug}}">
-                    <img class="media-block-img" ng-src="{{first.thumbnail_images.medium.url}}" alt="{{first.title}}" />
+                    <img class="media-block-img" ng-src="{{first.thumbnail_images['landscape-medium'].url}}" alt="{{first.title}}" />
                 </a>
 
                 <a ng-href="/categories/{{first.categories[0]['slug']}}" class="media-block-category btn btn-xs btn-news">

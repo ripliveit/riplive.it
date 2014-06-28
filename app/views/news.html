@@ -48,16 +48,18 @@
                         <img ng-src="{{author.author_images['thumbnail']}}" title="{{news.author.nickname}}" itemprop="image" />
                     </a>
 
-                    <p class="pull-left">
+                    <div class="pull-left">
                         <h4 itemprop="name">
-                            {{author.nickname}}
+                            <a ng-href="/authors/{{author.slug}}">
+                                {{author.nickname}}
+                            </a>
                         </h4>
                         <h5 itemprop="email">
-                            {{author.email}}
+                            <a ng-href="/authors/{{author.slug}}">
+                                {{author.email}}
+                            </a>
                         </h5>
-
-                        <p ng-bind-html="(author.description | limitTo : 280) + '...'" itemprop="description"></p>
-                    </p>
+                    </div>
                 </article>
             </div>
 
@@ -98,7 +100,7 @@
 
     <div class="single-navigation">
         <a ng-href="/news/{{news.previous_slug}}" class="single-article-prev bold" ng-show="news.previous_slug">
-            <span class="fa fa-chevron-left"></span>Previous in series
+            <span class="fa fa-chevron-left"></span> Previous in series
         </a>
 
         <a ng-href="/news/{{news.next_slug}}" class="single-article-next bold" ng-show="news.next_slug">
