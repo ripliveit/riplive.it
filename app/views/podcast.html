@@ -4,7 +4,7 @@
             <div class="cover-picker">
                 <header class="cover-header">
                     <a ng-href="/podcasts" class="cover-label btn btn-podcasts" role="button">
-                        <span class="fa fa-cloud"></span> Podcasts
+                        <span class="fa fa-cloud"></span>Podcasts
                     </a>
 
                     <h1 class="cover-title" itemprop="name">
@@ -36,40 +36,46 @@
     </article>
 
     <div class="single-article-info col-lg-6 col-lg-offset-3">
-        <div class="row">
-            <div class="single-article-author col-lg-6">
-                <h4 class="bold">
-                    <a ng-href="/programs/{{podcast.program_slug}}" title="{{podcast.program_title}}" itemprop="partOfSeries">
+        <div class="single-article-author">
+            <h3 class="bold">
+                <a ng-href="/programs/{{podcast.program_slug}}" title="{{podcast.program_title}}" itemprop="partOfSeries">
                         {{podcast.program_title}}
                     </a>
-                </h4>
+            </h3>
 
-                <p ng-bind-html="podcast.program_content">
-                </p>
-            </div>
+            <h4>
+                <small>
+                    With :
+                </small>
+            </h4>
 
-            <div class="single-article-author col-lg-6">
-                <h4 class="bold">
-                    With
-                </h4>
+            <a ng-href="/authors/{{a.slug}}" class="author-info" ng-repeat="a in podcast.authors">
+                <figure class="pull-left text-center author-picture" ng-href="/authors/{{a.slug}}">
+                    <img ng-src="{{a.author_images['thumbnail']}}" title="{{a.nickname}}" />
+                </figure>
 
-                <p class="author-info">
-                    <a class="pull-left text-center author-picture" ng-repeat="a in podcast.authors" ng-href="/authors/{{a.slug}}">
-                        <img ng-src="{{a.author_images['thumbnail']}}" title="{{a.nickname}}" />
-                    </a>
+                <div class="pull-left">
+                    <h4 itemprop="name">
+                        {{a.nickname}}
+                    </h4>
 
-                    <span>...</span>
-                </p>
-            </div>
+                    <h5 itemprop="email">
+                        {{a.email}}
+                    </h5>
+                </div>
 
-            <div class="single-article-taxonomy col-lg-6">
-                <h4 class="bold">
-                    Share this <span class="fa fa-heart"></span>
-                </h4>
+                <div class="pull-right">
+                </div>
+            </a>
+        </div>
 
-                <social-buttons data-href="'/podcasts/' + podcast.program_slug + '/' + podcast.id" data-image="podcast.podcast_images['thumbnail']" data-title="podcast.title" data-text="podcast.summary | stripHtml"></social-buttons>
-            </div>
+        <div class="single-article-taxonomy">
+            <h4 class="bold">
+                Share this
+                <span class="fa fa-heart"></span>
+            </h4>
+
+            <social-buttons data-href="'/podcasts/' + podcast.program_slug + '/' + podcast.id" data-image="podcast.podcast_images['thumbnail']" data-title="podcast.title" data-text="podcast.summary | stripHtml"></social-buttons>
         </div>
     </div>
-
 </div>

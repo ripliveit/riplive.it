@@ -42,6 +42,10 @@ angular.module('riplive')
              */
             player.jPlayer({
                 ready: function() {
+                    if (typeof stream === 'undefined') {
+                        stream = scope.audio;
+                    }
+
                     $(this).jPlayer('setMedia', {
                         mp3: stream
                     });
@@ -69,6 +73,13 @@ angular.module('riplive')
                 supplied: 'mp3',
                 preload: 'none',
                 wmode: 'window',
+                cssSelectorAncestor : '.player-container',
+                cssSelector : {
+                    seekBar: '.jp-seek-bar',
+                    currentTime: '.jp-current-time',
+                    duration: '.jp-duration'
+                },
+                toggleDuration : true
             }).bind($.jPlayer.event.play, function() {
                 $(this).jPlayer('pauseOthers', 0);
             });

@@ -8,4 +8,17 @@
     <button class="player-control btn btn-lg btn-neutral fa fa-stop" ng-hide="isStreaming" ng-click="stop()"></button>
 
     <button class="player-volume-up btn btn-lg btn-neutral fa fa-volume-up" ng-click="volumeUp()" ng-show="showControls"></button>
+
+    <div class="clearfix">
+        <div class="jp-progress hidden">
+            <div class="jp-seek-bar">
+                <div class="jp-play-bar"></div>
+            </div>
+        </div>
+
+        <div class="jp-time-holder hidden">
+            <div class="jp-current-time"></div>
+            <div class="jp-duration"></div>
+        </div>
+    </div>
 </div>

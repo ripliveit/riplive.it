@@ -43,31 +43,32 @@
                     <small>Written By</small>
                 </h4>
 
-                <article class="author-info">
-                    <a class="pull-left author-picture" ng-href="/authors/{{author.slug}}">
+                <a ng-href="/authors/{{author.slug}}" class="author-info">
+                    <figure class="pull-left author-picture">
                         <img ng-src="{{author.author_images['thumbnail']}}" title="{{news.author.nickname}}" itemprop="image" />
-                    </a>
+                    </figure>
 
                     <div class="pull-left">
                         <h4 itemprop="name">
-                            <a ng-href="/authors/{{author.slug}}">
-                                {{author.nickname}}
-                            </a>
+                            {{author.nickname}}
                         </h4>
+
                         <h5 itemprop="email">
-                            <a ng-href="/authors/{{author.slug}}">
-                                {{author.email}}
-                            </a>
+                            {{author.email}}
                         </h5>
                     </div>
-                </article>
+                </a>
             </div>
 
             <div class="single-article-taxonomy col-lg-6">
+                <h4 itemprop="name">
+                    <small>Article under: </small>
+                </h4>
+
                 <h4>
-                    <strong>
+                    <small>
                         Category:
-                    </strong>
+                    </small>
 
                     <span ng-repeat="c in news.categories">
                         <a ng-href="/categories/{{news.categories[0]['slug']}}" itemprop="genre">
@@ -77,9 +78,9 @@
                 </h4>
 
                 <h4>
-                    <strong>
+                    <small>
                         Tags :
-                    </strong>
+                    </small>
 
                     <span ng-repeat="t in news.tags">
                         <a ng-href="/tags/{{t.slug}}" itemprop="keywords">
@@ -87,7 +88,9 @@
                         </a>
                     </span>
                 </h4>
+            </div>
 
+            <div class="single-article-taxonomy col-lg-12">
                 <h4 class="bold">
                     Share this article
                     <span class="fa fa-heart"></span>
@@ -95,12 +98,13 @@
 
                 <social-buttons data-href="'/news/' + news.slug" data-image="news.thumbnail_images.thumbnail.url" data-title="news.title" data-text="news.excerpt | stripHtml"></social-buttons>
             </div>
+
         </div>
     </div>
 
     <div class="single-navigation">
         <a ng-href="/news/{{news.previous_slug}}" class="single-article-prev bold" ng-show="news.previous_slug">
-            <span class="fa fa-chevron-left"></span> Previous in series
+            <span class="fa fa-chevron-left"></span>Previous in series
         </a>
 
         <a ng-href="/news/{{news.next_slug}}" class="single-article-next bold" ng-show="news.next_slug">
@@ -114,7 +118,7 @@
         <h2 class="single-subtitle text-center">
             Comments
         </h2>
-        
+
         <div disqus="id"></div>
     </div>
 </div>
