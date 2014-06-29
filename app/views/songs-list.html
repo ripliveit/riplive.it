@@ -87,16 +87,16 @@
                            </a>
                         </li>
                     </ul>
-                    
-                    <div class="song-controls">
-                        <a ng-href="{{s.url_spotify}}" ng-show="s.url_spotify" class="btn btn-vote btn-songs color-white">
-                            Spotify
-                        </a>
+                </div>
 
-                        <a ng-href="{{s.url_youtube}}" ng-show="s.url_youtube" class="btn btn-like btn-artists">
-                            YouTube
-                        </a>
-                    </div>
+                <div class="list-controls">
+                    <a ng-href="{{s.url_spotify}}" ng-show="s.url_spotify" class="btn btn-spotify btn-songs color-white">
+                        <span class="fa fa-2x fa-spotify"></span>
+                    </a>
+
+                    <a ng-href="{{s.url_youtube}}" ng-show="s.url_youtube" class="btn btn-like btn-artists">
+                        <span class="fa fa-2x fa-youtube"></span>
+                    </a>
                 </div>
             </div>
         </div>

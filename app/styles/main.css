@@ -179,41 +179,21 @@ a.btn-neutral:hover {
     background-color: #2eacdf;
 }
 
+.btn-spotify {
+    background-color: #84bd00;
+}
+
+.btn-spotify:hover {
+    background-color: #80b819;
+}
+
 .color-white {
     color: #FFFFFF;
-}
-
-.color-artists {
-    color:#e74c3c;
-}
-
-.color-authors {
-    color:#f8941e;
-}
-
-.color-charts {
-    color:#1bbc9b;
-}
-
-.color-labels {
-    color:#9b59b6;
 }
 
 .color-news,
 .color-news:hover {
     color:#ff6600;
-}
-
-.color-podcasts {
-    color:#107fc9;
-}
-
-.color-programs {
-    color:#19b5fe;
-}
-
-.color-songs {
-    color:#2ecc71;
 }
 
 .color-warning {
@@ -893,7 +873,6 @@ a.btn-neutral:hover {
 #main .list-group-item .list-image {
     width: 65px;
     height: 65px;
-    
 }
 
 #main .list-group-item .list-body {
@@ -914,6 +893,12 @@ a.btn-neutral:hover {
 #main .list-group-item .list-category {
     display: inline;
     list-style-type: none;
+}
+
+#main .list-group-item .badge {
+    border-radius: 0;
+    margin-top: 10px;
+    padding: 7px 14px;
 }
 
 /* LIST ITEM COLLAPSED */
@@ -980,6 +965,8 @@ a.btn-neutral:hover {
     border: none;
 }
 
+
+/* SINGLE */
 #main .single {
     position: relative;
     overflow: hidden;
@@ -1178,37 +1165,22 @@ a.btn-neutral:hover {
     box-shadow: none;
 }
 
-#main #charts .chart-controls {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    height: 35px;
-    margin-top: -17.5px;
-    text-align: center;
+/* CHARTS */
+#main .list-group-item .list-controls {
+        margin: 10px auto;
 }
 
-#main #charts .chart-controls .btn-charts {
-    width: 45px;
-}
-
-#main #chart .song-controls,
-#main #songs .song-controls {
-    margin: 10px 0;
-}
-
-#main #chart .song-controls .btn,
-#main #songs .song-controls .btn {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
+#main .list-group-item .list-controls .btn {
+    display: inline-block;
+    width: 55px;
     font-size: 18px;
 }
 
-#main #chart .song-controls .btn-vote {
+#main .list-group-item .list-controls .btn-vote {
     color: #FFF;
 }
 
-#main #chart .song-controls .btn-vote:hover {
+#main .list-group-item .list-controls .btn-vote:hover {
     cursor: default;
 }
 
@@ -1225,6 +1197,8 @@ a.btn-neutral:hover {
     text-align: center;
 }
 
+
+/* PODCAST */
 #podcast .player-container {
     text-align: center;
     margin: 20px 0;
@@ -1302,8 +1276,6 @@ a.btn-neutral:hover {
     padding-right: 5px;
 }
 
-
-
 #main #schedule-legend {
     border: 1px solid #f2f2f2;
     padding: 5px;
@@ -1320,6 +1292,7 @@ a.btn-neutral:hover {
 
 #main #schedule-legend .unordered .legend-item {
     margin: 10px;
+    display: inline-block;
 }
 
 #main #schedule-legend .btn {
@@ -1336,8 +1309,6 @@ a.btn-neutral:hover {
     clear: left;
     margin-top: 100px;
     padding: 10px;
-    border-top: 1px solid #f2f2f2;
-    height: 100px;
 }
 
 #credits {
@@ -1519,7 +1490,7 @@ a.btn-neutral:hover {
 
     #main .media-block > .thumbnail .media-block-img {
         width: 300px;
-        height: 199px;
+        height: 200px;
         display: inline-block;
     }
 
@@ -1548,7 +1519,6 @@ a.btn-neutral:hover {
     #main .media-block.media-block-first > .thumbnail {
         overflow: hidden;
         width: 50%;
-        height: 300px;
         float: left;
     }
 
@@ -1558,13 +1528,10 @@ a.btn-neutral:hover {
         right: 0;
     }
 
-    #main .media-block.media-block-first > .thumbnail > .media-block-link {
-        
-    }
-
     #main .media-block.media-block-first > .thumbnail .media-block-img {
         width: 100%;
         height: 100%;
+        min-height: 250px;
     }
 
     #main .media-block.media-block-first .caption {
@@ -1584,12 +1551,6 @@ a.btn-neutral:hover {
 
     #main .media-block.media-block-first .caption .media-block-author {
         margin: 15px 0;
-    }
-
-    #main .media-block.media-block-first .media-block-more {
-        position: absolute;
-        left: : 10px;
-        bottom: 10px;
     }
 
     #main .media-block.media-block-first .single-share {
@@ -1617,6 +1578,7 @@ a.btn-neutral:hover {
         float: left !important;
     }
 
+    /* SINGLE */
     #main .cover-wrapper {
         height: 600px;
     }
@@ -1684,28 +1646,15 @@ a.btn-neutral:hover {
 
     /* PAGE SPECIFIC STYLES */
     /* hide last podcast in homepage on 3 column */
-    #main #podcasts-block .media-block:last-of-type {
-        display: none;
-    }
-
-    #main #charts .chart-controls,
-    #main #chart  .song-controls {
+    #main .list-group-item .list-controls {
         position: absolute;
         top: 50%;
-        right: 0;
-        height: 47px;
-        margin-top: -23.5px;
-        text-align: center;
+        right: 25px;
+        margin-top: -17.5px;
     }
 
-    #main #charts .chart-controls .btn-charts {
-        width: 45px;
-    }
-
-    #main #chart .song-controls .btn {
-        display: inline-block;
-        padding: 10px 16px;
-        width: 55px;
+    #main #podcasts-block .media-block:last-of-type {
+        display: none;
     }
 
     #podcast .player-container .btn {
@@ -1718,28 +1667,11 @@ a.btn-neutral:hover {
         display: block;
     }
 
-    #main #songs  .song-controls {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        height: 110px;
-        margin-top: -55.5px;
-        text-align: center;
-    }
-
-    #main #songs .song-controls .btn {
-        width: auto;
-    }
 }
 
 @media(min-width:992px) {
     h3 {
         font-size: 22px;
-    }
-
-    /* Media Block First Article */
-    #main .media-block.media-block-first > .thumbnail {
-        height: 350px;
     }
 
     #main .media-block > .thumbnail.thumbnail-fixed {
@@ -1772,13 +1704,13 @@ a.btn-neutral:hover {
     }
 
     #hg .hg-grid .hg-figure {
-        width: 33%;
+        width: 33.33%;
         height: 250px;
         position: relative;
         padding: 0;
     }
 
-    /* Media blocke elements */
+    /* Media block elements */
     #main .media-block .caption .caption-title {
         overflow: hidden;
         min-height: 48px;
@@ -1790,14 +1722,6 @@ a.btn-neutral:hover {
 
     #main .media-block .caption .caption-title::after {
         height: 20px;
-    }
-
-    #main .media-block.media-block-first > .thumbnail {
-        height: 350px;
-    }
-
-    #main .media-block.media-block-first > .thumbnail .media-block-img {
-        height: 350px;
     }
 
     /* Single article */

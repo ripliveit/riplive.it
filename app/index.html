@@ -31,7 +31,7 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
@@ -107,9 +107,18 @@
 
             </div>
 
-            <footer id="footer" class="hidden-xs">
+            <footer id="footer">
                 <div id="credits" class="col-lg-6 col-lg-offset-3">
                     <div class="footer-social">
+                        <back-on-top></back-on-top>
+                    </div>
+
+                    <br/>
+
+                    <div class="footer-social">
+                        <a href="http://www.static.riplive.it/feed/" class="btn btn-sm btn-neutral" title="Abbonati al nostro Feed RSS">
+                            <span class="fa fa-rss"></span>
+                        </a>
                         <a href="https://www.facebook.com/riplive" class="btn btn-sm btn-neutral" title="Seguici su Facebook">
                             <span class="fa fa-facebook"></span>
                         </a>
@@ -234,6 +243,7 @@
     <script src="scripts/controllers/tags.js"></script>
 
     <script src="scripts/directives/analytics.js"></script>
+    <script src="scripts/directives/back-on-top.js"></script>
     <script src="scripts/directives/loading-spinner.js"></script>
     <script src="scripts/directives/nav-controls.js"></script>
     <script src="scripts/directives/search.js"></script>

@@ -27,12 +27,12 @@
         <p class="text-center" ng-bind-html="song.song_content" itemprop=""></p>
 
         <div class="song-controls">
-            <a ng-href="{{song.url_spotify}}" ng-if="song.url_spotify" class="btn btn-vote btn-lg btn-songs color-white" itemprop="url">
-                Spotify
+            <a ng-href="{{song.url_spotify}}" ng-if="song.url_spotify" class="btn btn-vote btn-lg btn-spotify color-white" itemprop="url">
+                <span class="fa fa-spotify"></span> Spotify
             </a>
 
             <a ng-href="{{song.url_youtube}}" ng-if="song.url_youtube" class="btn btn-lg btn-like btn-artists">
-                YouTube
+                <span class="fa fa-youtube"></span> YouTube
             </a>
         </div>
     </article>

@@ -39,7 +39,7 @@
         <div class="media-block col-sm-4 col-md-4 col-lg-3" ng-repeat="a in authors['authors']">
             <div class="thumbnail thumbnail-fixed">
                 <a class="media-block-link " ng-href="/authors/{{a.slug}}">
-                    <img class="media-block-img" ng-src="{{a.author_images['thumbnail']}}" alt="{{a.nickname}}" />
+                    <img class="media-block-img" ng-src="{{a.author_images['image_medium']}}" alt="{{a.nickname}}" />
                 </a>
 
                 <div class="caption">
@@ -57,7 +57,7 @@
                 </div>
 
                 <a ng-href="/authors/{{a.slug}}" class="media-block-more btn btn-authors" role="button">
-                    Meet the author
+                    Meet the author <span class="fa fa-angle-right"></span>
                 </a> 
             </div>
         </div>

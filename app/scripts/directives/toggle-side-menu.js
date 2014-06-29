@@ -19,7 +19,8 @@ angular.module('riplive')
             var sideMenu = element;
             var wrapper = angular.element('#inner-wrapper');
             var links = element.find('.side-menu-link');
-
+            var btn   = angular.element('.navbar-toggle');
+           
             /**
              * Close the side menu applyng the correct
              * css classes.
@@ -32,8 +33,12 @@ angular.module('riplive')
                 open = true;
 
                 wrapper.addClass('menu-open');
+
                 sideMenu.removeClass('menu-closed')
                     .addClass('menu-open');
+
+                btn.removeClass('fa-bars')
+                    .addClass('fa-times');
 
                 angular.element('#main').on('click', closeSideMenu);    
             };
@@ -49,8 +54,12 @@ angular.module('riplive')
                 open = false;
 
                 wrapper.removeClass('menu-open');
+
                 sideMenu.removeClass('menu-open')
                     .addClass('menu-closed');
+
+                btn.removeClass('fa-times')
+                    .addClass('fa-bars');
 
                 angular.element('#main').off('click', closeSideMenu);     
             };
