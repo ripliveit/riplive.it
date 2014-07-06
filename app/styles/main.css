@@ -1112,7 +1112,7 @@ a.btn-neutral:hover {
     display: inline-block;
     width: 45px;
     height: 45px;
-    margin: 0 auto;
+    margin: 0 10px 0 0;
 }
 
 #main .cover-info .cover-author-picture img {
