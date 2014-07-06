@@ -11,8 +11,8 @@ angular.module('riplive')
  * @param {Object} $scope
  * @param {Object} EngineIo
  */
-.controller('OnAirCtrl', function OnAirCtrl($scope, EngineIo) {
-    var socket = EngineIo.socket;
+.controller('OnAirCtrl', function OnAirCtrl($scope, socketIo) {
+    var socket = socketIo.socket;
 
     /**
      * Images used in case of not found song
@@ -80,8 +80,8 @@ angular.module('riplive')
      * @param  {Object} message
      * @return {undefined}
      */
-    socket.on('message', function(message) {
-        var data = JSON.parse(message);
+    socket.on('song', function(song) {
+        var data = JSON.parse(song);
         
         console.log(data);
 
@@ -91,6 +91,7 @@ angular.module('riplive')
         }
 
         if (data.type === 'adv') {
+            changeSong(notFound);
             return false;
         }
 

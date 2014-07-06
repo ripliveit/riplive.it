@@ -4,7 +4,8 @@
   "dependencies": {
     "angular": "1.2.6",
     "jquery": "~2.1.0",
-    "bootstrap": "~3.0.3",
+    "bootstrap": "~3.2.0",
+    //"bootstrap": "~3.0.3",
     "angular-resource": "1.2.6",
     "angular-route": "1.2.6",
     "jplayer": "~2.5.4",

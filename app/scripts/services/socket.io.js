@@ -6,7 +6,7 @@ angular.module('riplive')
  * The websocket
  * connection handler.
  */
-.service('EngineIo', function EngineIo() {
+.service('socketIo', function socketIo() {
     var retry = 0;
 
     /**
@@ -14,10 +14,7 @@ angular.module('riplive')
      *
      * @type {Object}
      */
-    var socket = eio('ws://onair.riplive.it:8082/', {
-        flashPath: 'bower_components/web-socket-js/',
-        transports: ['websocket', 'polling', 'flashsocket']
-    });
+    var socket = io('http://onair.riplive.it:8082');
 
     /**
      * Log whn connection is open.
@@ -34,17 +31,6 @@ angular.module('riplive')
      */
     socket.on('close', function() {
         console.log('Closed socket connection. Attempting reconnection');
-
-        if (retry <= 10) {
-            retry += 1;
-
-            var reconnect = setInterval(function() {
-                socket.open();
-                clearInterval(reconnect);
-            }, 2000);
-        } else {
-            return false;
-        }
     });
 
     /**

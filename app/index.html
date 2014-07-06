@@ -85,10 +85,7 @@
 
             <section id="on-air" class="transition on-air-closed" ng-controller="OnAirCtrl">
                 <div id="song-info" toggle-on-air>
-
-                    <streaming-player data-audio="'http://192.240.97.68:8002/stream'" data-autoplay="true" data-show-controls="true" data-is-streaming="true">
-
-                    </streaming-player>
+                    <streaming-player data-audio="'http://192.240.97.68:8002/stream'" data-autoplay="true" data-show-controls="true" data-is-streaming="true"></streaming-player>
 
                     <song-picture data-song="song"></song-picture>
 
@@ -170,7 +167,8 @@
     <script src="bower_components/angular-disqus/angular-disqus.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
+    
+    <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
     <script src="bower_no_components/engine.io/engine.io.js"></script>
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -210,6 +208,7 @@
     <script src="scripts/services/programs-service.js"></script>
     <script src="scripts/services/search-service.js"></script>
     <script src="scripts/services/side-menu-channel.js"></script>
+    <script src="scripts/services/socket.io.js"></script>
     <script src="scripts/services/songs-service.js"></script>
     <script src="scripts/services/user-service.js"></script>
     <script src="scripts/services/vote-service.js"></script>

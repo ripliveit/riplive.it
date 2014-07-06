@@ -11,13 +11,15 @@
                         {{song.song_title}}
                     </h1>
 
-                    <h2 class="cover-author">
+                    <h2>
                         {{song.song_artist}}
                     </h2>
 
-                    <h3 class="cover-author">
+                    <h3>
                         {{song.song_album}} - {{song.song_year}}
                     </h3>
+
+                    <span class="fa fa-chevron-down"></span>
                 </header>
             </div>
         </div>
@@ -38,44 +40,42 @@
     </article>
 
     <div class="single-article-info col-lg-6 col-lg-offset-3">
-        <div class="row">
-            <div class="single-article-author col-lg-6">
-                <h4 class="bold" itemprop="name">
-                    {{song.song_title}}
-                </h4>
+        <div class="single-article-author">
+            <h4 class="bold" itemprop="name">
+                {{song.song_title}}
+            </h4>
 
-                <ul id="information">
-                    <li class="information-item" itemprop="creator">
-                        Artist: {{song.song_artist}}
-                    </li>
-                    <li class="information-item" itemprop="inAlbum">
-                        Album: {{song.song_album}}
-                    </li>
-                    <li class="information-item" itemprop="dateCreated">
-                        Year: {{song.song_year}}
-                    </li>
-                    <li class="information-item">
-                        Genre:
-                        <a ng-repeat="g in song.song_genre" ng-href="/songs/genre/{{g.slug}}" title="{{g.name}}" itemprop="genre">
-                            {{g.name}}{{$last ? '' : ', '}}
-                        </a>
-                    </li>
-                    <li class="information-item">
-                        Tags:
-                        <a ng-repeat="t in song.song_tags" ng-href="/songs/tag/{{t.slug}}" title="{{t.name}}" itemprop="keywords">
-                            {{t.name}}{{$last ? '' : ', '}}
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <ul id="information">
+                <li class="information-item" itemprop="creator">
+                    Artist: {{song.song_artist}}
+                </li>
+                <li class="information-item" itemprop="inAlbum">
+                    Album: {{song.song_album}}
+                </li>
+                <li class="information-item" itemprop="dateCreated">
+                    Year: {{song.song_year}}
+                </li>
+                <li class="information-item">
+                    Genre:
+                    <a ng-repeat="g in song.song_genre" ng-href="/songs/genre/{{g.slug}}" title="{{g.name}}" itemprop="genre">
+                        {{g.name}}{{$last ? '' : ', '}}
+                    </a>
+                </li>
+                <li class="information-item">
+                    Tags:
+                    <a ng-repeat="t in song.song_tags" ng-href="/songs/tag/{{t.slug}}" title="{{t.name}}" itemprop="keywords">
+                        {{t.name}}{{$last ? '' : ', '}}
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-            <div class="single-article-taxonomy col-lg-6">
-                <h4 class="bold">
-                    Share this <span class="fa fa-heart"></span>
-                </h4>
+        <div class="single-article-taxonomy">
+            <h4 class="bold">
+                Share this <span class="fa fa-heart"></span>
+            </h4>
 
-                <social-buttons data-href="'/songs/' + song.song_slug" data-image="song.song_images['thumbnail']" data-title="song.song_title" data-text="song.song_excerpt | stripHtml"></social-buttons>
-            </div>
+            <social-buttons data-href="'/songs/' + song.song_slug" data-image="song.song_images['thumbnail']" data-title="song.song_title" data-text="song.song_excerpt | stripHtml"></social-buttons>
         </div>
     </div>
 </div>

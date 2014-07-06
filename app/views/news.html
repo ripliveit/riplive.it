@@ -1,34 +1,36 @@
 <div id="news" class="single content container-fluid" itemscope itemtype="http://schema.org/Article">
     <div class="cover-wrapper">
         <div class="cover" ng-style="{'background-image': 'url(' + news.thumbnail_images['full']['url'] + ')'}">
+            <div class="cover-info">
+                <figure class="cover-author-picture">
+                    <a ng-href="/authors/{{author.slug}}">
+                        <img ng-src="{{author.author_images['thumbnail']}}" title="{{news.author.nickname}}" />
+                    </a>
+                </figure>
+
+                By
+
+                <a class="color-news" ng-href="/authors/{{news.author.slug}}" itemprop="author">
+                    {{news.author.nickname}}
+                </a>
+                -
+
+                <span itemprop="datePublished">
+                    {{news.date | dateFormat}}
+                </span>
+            </div>
+
             <div class="cover-picker">
                 <header class="cover-header">
                     <a ng-href="/categories/{{news.categories[0]['slug']}}" class="cover-label btn btn-news">
-                        <span class="fa fa-bullhorn"></span>{{news.categories[0]['title']}}
+                        <span class="fa fa-bullhorn"></span> {{news.categories[0]['title']}}
                     </a>
 
                     <h1 class="cover-title" itemprop="name">
                         {{news.title}}
                     </h1>
-
-                    <figure class="cover-author-picture">
-                        <a ng-href="/authors/{{author.slug}}">
-                            <img ng-src="{{author.author_images['thumbnail']}}" title="{{news.author.nickname}}" />
-                        </a>
-                    </figure>
-
-                    <h2 class="cover-info">
-                        By
-
-                        <a class="color-news" ng-href="/authors/{{news.author.slug}}" itemprop="author">
-                            {{news.author.nickname}}
-                        </a>
-                        -
-
-                        <span itemprop="datePublished">
-                            {{news.date | dateFormat}}
-                        </span>
-                    </h2>
+                    
+                    <span class="fa fa-chevron-down"></span>
                 </header>
             </div>
         </div>
@@ -56,7 +58,13 @@
                         <h5 itemprop="email">
                             {{author.email}}
                         </h5>
+
+                        <h6>
+                            Article written: {{author.number_of_posts}}
+                        </h6>
                     </div>
+
+                    <span class="fa fa-chevron-right"></span>
                 </a>
             </div>
 
@@ -98,17 +106,16 @@
 
                 <social-buttons data-href="'/news/' + news.slug" data-image="news.thumbnail_images.thumbnail.url" data-title="news.title" data-text="news.excerpt | stripHtml"></social-buttons>
             </div>
-
         </div>
     </div>
 
     <div class="single-navigation">
         <a ng-href="/news/{{news.previous_slug}}" class="single-article-prev bold" ng-show="news.previous_slug">
-            <span class="fa fa-chevron-left"></span>Previous in series
+            <span class="fa fa-chevron-left"></span> <span class="visible-lg-inline">Previous in series</span>
         </a>
 
         <a ng-href="/news/{{news.next_slug}}" class="single-article-next bold" ng-show="news.next_slug">
-            Next in series <span class="fa fa-chevron-right"></span>
+            <span class="visible-lg-inline">Next in series</span> <span class="fa fa-chevron-right"></span>
         </a>
     </div>
 </div>

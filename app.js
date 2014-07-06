@@ -49,7 +49,6 @@ app.use(express.session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(require('prerender-node').set('prerenderToken', '136CvvNIcJuW3OZlUVaV'));
 app.use(app.router);
 
 // Error Handler

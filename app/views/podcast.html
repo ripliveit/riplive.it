@@ -11,17 +11,13 @@
                         {{podcast.title}}
                     </h1>
 
-                    <figure class="cover-author-pictures">
-                        <a ng-repeat="a in podcast.authors" ng-href="/authors/{{a.slug}}">
-                            <img ng-src="{{a.author_images['thumbnail']}}" title="{{a.nickname}}" />
-                        </a>
-                    </figure>
-
-                    <h2 class="cover-author">
+                    <h2>
                         <span itemprop="datePublished">
                             {{podcast.date | dateFormat}}
                         </span>
                     </h2>
+
+                    <span class="fa fa-chevron-down"></span>
                 </header>
             </div>
         </div>
@@ -30,9 +26,7 @@
     <article class="single-article col-lg-6 col-lg-offset-3">
         <streaming-player data-audio="podcast.url" data-autoplay="true" data-show-controls="true" data-is-streaming="false"></streaming-player>
 
-        <p itemprop="text">
-            {{podcast.summary}}
-        </p>
+        <p itemprop="text" ng-bind-html="podcast.summary | unsafeHtml"></p>
     </article>
 
     <div class="single-article-info col-lg-6 col-lg-offset-3">
@@ -44,9 +38,7 @@
             </h3>
 
             <h4>
-                <small>
-                    With :
-                </small>
+                With :
             </h4>
 
             <a ng-href="/authors/{{a.slug}}" class="author-info" ng-repeat="a in podcast.authors">
@@ -64,8 +56,7 @@
                     </h5>
                 </div>
 
-                <div class="pull-right">
-                </div>
+                <span class="fa fa-chevron-right"></span>
             </a>
         </div>
 
