@@ -91,6 +91,7 @@ angular.module('riplive')
         }
 
         if (data.type === 'adv') {
+            console.log(notFound);
             changeSong(notFound);
             return false;
         }

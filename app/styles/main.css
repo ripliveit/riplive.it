@@ -100,11 +100,17 @@ a.btn-neutral:hover {
     font-family:'FontAwesome' !important;
 }
 
-.btn:active, .btn:focus, .navbar-toggle:focus, .navbar-toggle:active {
-    outline: none;
+.btn:active, 
+.btn:focus,
+.btn:active:focus {
+    outline: none!important;
 }
 
-.navbar-toggle:focus, .navbar-toggle:active {
+.navbar-toggle:focus, 
+.navbar-toggle:active,
+#on-air-btn:active,
+#on-air-btn:focus {
+    outline: none!important;
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
@@ -169,7 +175,8 @@ a.btn-neutral:hover {
 }
 
 .btn-neutral {
-    background-color: #f2f2f2;
+    background-color: #FFFFFF;
+    border: 1px solid #d6d6d6;
 }
 
 .btn-neutral:hover {
@@ -371,6 +378,8 @@ a.btn-neutral:hover {
 
 #hg .hg-grid .hg-figure h4 {
     font-size: 14px;
+    padding: 4px;
+    border: 1px solid #FFF;
     top: 10px;
     left: 20px;
 }
@@ -712,13 +721,15 @@ a.btn-neutral:hover {
 
 #main .media-block {
     position: relative;
+    max-width: 470px;
+    margin: 0 auto;
 }
 
 #main .media-block > .thumbnail {
     border-radius: 0;
+    margin-bottom: 20px;
     padding: 0;
     position: relative;
-    margin-bottom: 20px;
 }
 
 #main .media-block > .thumbnail.thumbnail-fixed {
@@ -728,7 +739,7 @@ a.btn-neutral:hover {
 #main .media-block .media-block-category {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
 }
 
 #main .media-block > .thumbnail > .media-block-link {
@@ -755,21 +766,19 @@ a.btn-neutral:hover {
 }
 
 /* Media Block First Article */
+#main .media-block.media-block-first {
+    max-width: 100%;   
+}
+
 #main .media-block.media-block-first > .thumbnail {
     overflow: hidden;
     width: 100%;
 }
 
-#main .media-block.media-block-first .media-block-category {
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
 #main .media-block.media-block-first > .thumbnail .media-block-img {
     width: 100%;
     height: 100%;
-    min-height: 250px;
+    min-height: 300px;
 }
 
 #main .media-block.media-block-first .caption {
@@ -1020,6 +1029,10 @@ a.btn-neutral:hover {
 }
 
 /* COLLAPSIBLE PANEL STYLES */
+#main .panel-group {
+    margin: 0;
+}
+
 #main .panel-group .panel {
     border-radius: 0;
 }
