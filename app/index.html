@@ -84,10 +84,10 @@
             </header>
 
             <section id="on-air" class="transition on-air-closed" ng-controller="OnAirCtrl">
-                <div id="song-info" toggle-on-air>
-                    <streaming-player data-audio="'http://192.240.97.68:8002/stream'" data-autoplay="true" data-show-controls="true" data-is-streaming="true"></streaming-player>
-
+                <div id="on-air-inner" toggle-on-air>
                     <song-picture data-song="song"></song-picture>
+
+                    <streaming-player data-audio="'http://192.240.97.68:8002/stream'" data-autoplay="true" data-show-controls="true" data-is-streaming="true"></streaming-player>
 
                     <button id="like" class="btn btn-artists">
                         <span class="fa fa-heart">

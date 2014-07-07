@@ -37,7 +37,7 @@ angular.module('riplive')
      */
     var getImage = function() {
         var index = Math.floor(Math.random() * images['notFound'].length);
-        return images[index];
+        return images['notFound'][index];
     };
 
     /**
@@ -50,16 +50,6 @@ angular.module('riplive')
         $scope.$apply(function() {
             $scope.song = song;
         });
-    };
-
-    /**
-     * Not found object.
-     *
-     * @type {Object}
-     */
-    var notFound = {
-        title: 'No song in archive',
-        image: getImage()
     };
 
     /**
@@ -82,17 +72,22 @@ angular.module('riplive')
      */
     socket.on('song', function(song) {
         var data = JSON.parse(song);
-        
-        console.log(data);
 
         if (data.status === 'error') {
-            changeSong(notFound);
+            changeSong({
+                artist: 'No song',
+                title: 'in archive',
+                image: getImage()
+            });
             return false;
         }
 
         if (data.type === 'adv') {
-            console.log(notFound);
-            changeSong(notFound);
+            changeSong({
+                artist: 'No song',
+                title: 'in archive',
+                image: getImage()
+            });
             return false;
         }
 
@@ -107,7 +102,7 @@ angular.module('riplive')
         changeSong({
             artist: data.artist,
             title: data.title,
-            image: data.posts[0]['thumbnail_images']['medium']['url'],
+            image: data.posts[0]['thumbnail_images']['landscape-medium']['url'],
             images: data.posts[0].thumbnail_images,
             info: data.posts[0]
         });

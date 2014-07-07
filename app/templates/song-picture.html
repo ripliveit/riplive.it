@@ -4,11 +4,13 @@
             Now On Air
         </h2>
 
-        <h3>
-            {{song.artist}}
+        <div id="song-info">
+            <h3>
+                {{song.artist}}
 
-            <br/>{{song.title}}
-        </h3>
+                <br/>{{song.title}}
+            </h3>
+        </div>
     </figure>
 
     <article id="song-content">
@@ -17,19 +19,19 @@
                 You are listenin'
             </h2>
             <h4>
-                Artist : {{song.artist}}
+                <strong>Artist</strong> : {{song.artist}}
             </h4>
             <h4>
-                Track : {{song.title}}
+                <strong>Track</strong> : {{song.title}}
             </h4>
             <h4>
-                Album : {{song.info.custom_fields['songs-album'][0]}}
+                <strong>Album</strong> : {{song.info.custom_fields['songs-album'][0]}}
             </h4>
             <h4>
-                Year : {{song.info.custom_fields['songs-year'][0]}}
+               <strong>Year</strong> : {{song.info.custom_fields['songs-year'][0]}}
             </h4>
             <h4>
-                Genre : {{song.info['taxonomy_song-genre'][0]['title']}}
+               <strong>Genre</strong> : {{song.info['taxonomy_song-genre'][0]['title']}}
             </h4>
             <h4>
                 Tags : 

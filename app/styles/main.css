@@ -570,34 +570,28 @@ a.btn-neutral:hover {
                     backface-visibility: hidden;
 }
 
-#on-air #song-info {
+#on-air #on-air-inner {
     height: 100%;
 }
 
-#on-air #song-info h2, #on-air #song-info h3 {
+#on-air #on-air-inner h2, 
+#on-air #on-air-inner h3 {
     margin: 0;
     color: #FFFFFF;
     text-transform: uppercase;
 }
 
-#on-air #song-info h2 {
+#on-air #on-air-inner h2 {
     padding: 5px;
     background-color: #ff6600;
     text-align: center;
     font-size: 1em;
 }
 
-#on-air #song-info h3 {
-    font-weight: bold;
-    text-shadow : 1px 1px 1px #000;
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-}
-
 #on-air #cover-wrapper {
     width: 100%;
-    height: 40%;
+    height: 45%;
+    position: relative;
 }
 
 #on-air #cover {
@@ -608,13 +602,29 @@ a.btn-neutral:hover {
     background-size: cover;
 }
 
+#on-air #song-info {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+#on-air #song-info h3 {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 1px solid #FFF;
+    width: 55%;
+    text-shadow : 1px 1px 1px #000;
+}
+
 #on-air #song-content {
     display: none;
     visibility: hidden;
 }
 
 #on-air .player-container {
-    height: 25%;
+    height: 30%;
 }
 
 #on-air .player-control,
@@ -1515,9 +1525,6 @@ a.btn-neutral:hover {
         position: absolute;
         left: 0;
         width: 50%;
-        height: 50%;
-        background-position: 50%;
-        background-size: cover;
     }
 
     #on-air #song-content {
@@ -1527,19 +1534,24 @@ a.btn-neutral:hover {
         position: absolute;
         right: 0;
         width: 50%;
-        height: 50%;
-        background-color: #f2f2f2;
-        border-left: 1px solid #A0A0A0;
+        height: 100%;
+        background-color: #FFF;
+        border-bottom: 1px solid #F2F2F2;
+    }
+
+    #on-air #song-content h4:first-of-type {
+        padding-top: 20px;
     }
 
     #on-air #song-content h4 {
         text-align: left;
-        padding: 0 0 0 10px;
+        padding: 0 0 0 20px;
     }
 
     #on-air #lyrics {
         text-align: left;
-        padding: 0 0 0 10px;
+        font-size: 16px;
+        padding: 0 0 0 20px;
     }
 
     #on-air .player-control {
