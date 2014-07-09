@@ -77,6 +77,10 @@ angular.module('riplive', [
             templateUrl: 'views/news.html',
             controller: 'NewsCtrl'
         })
+        .when('/photos', {
+          templateUrl: 'views/photos.html',
+          controller: 'PhotosCtrl'
+        })
         .when('/programs', {
             templateUrl: 'views/programs.html',
             controller: 'ProgramsCtrl'

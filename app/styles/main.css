@@ -146,6 +146,10 @@ a.btn-neutral:hover {
     background-color: #ff8737
 }
 
+.btn-photos {
+    background-color: #8e664d;
+}
+
 .btn-podcasts {
     background-color:#107fc9;
 }
@@ -812,6 +816,43 @@ a.btn-neutral:hover {
 
 #main .media-block.media-block-first .single-share {
    display: none;
+}
+
+/* Thumbnail instagram */
+#main .media-block-instagram {
+    overflow: hidden;
+    height: auto;
+
+}
+
+#main .media-block-instagram.media-block-instagram-large {
+    max-width: 100%;
+    width: 70%;
+    margin: 0 auto;
+    height: auto;
+    float: none;
+}
+
+#main .media-block-instagram .caption {
+    color: #FFF;
+    visibility: hidden;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    bottom: 0;
+}
+
+#main .media-block-instagram:hover .caption {
+    visibility: visible;
+    font-size: 1.6em;
+}
+
+#main .media-block-instagram:hover .caption a {
+    color: #FFF;
+}
+
+#main .media-block-instagram img {
+    width: 100%;
 }
 
 
@@ -1606,7 +1647,7 @@ a.btn-neutral:hover {
         width: 50%;
         float: left;
     }
-   
+
     /* List elements */
     #main .list-group.collapsed .list-divider {
         text-align: left;

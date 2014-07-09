@@ -12,7 +12,7 @@ angular.module('riplive')
  * @param {Object} EngineIo
  */
 .controller('OnAirCtrl', function OnAirCtrl($scope, socketIo) {
-    var socket = socketIo.socket;
+    var socket = socketIo.connect('http://onair.riplive.it:8082');
 
     /**
      * Images used in case of not found song
