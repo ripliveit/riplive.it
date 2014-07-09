@@ -1,5 +1,6 @@
 'use strict';
 
+
 angular.module('riplive')
 
 /**
@@ -7,6 +8,12 @@ angular.module('riplive')
  * connection handler.
  */
 .service('socketIo', function socketIo() {
+    /**
+     * Connect to a websocket server.
+     * 
+     * @param  {String} url
+     * @return {Object}
+     */
     var connect = function(url) {
         var socket = io(url);
 
@@ -14,7 +21,7 @@ angular.module('riplive')
     };
 
     /**
-     * Return the io object and a connect meth
+     * Return the io object and a connection method
      */
     return {
         io: io,
