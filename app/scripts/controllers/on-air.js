@@ -60,7 +60,11 @@ angular.module('riplive')
      * @return {undefined}
      */
     socket.on('error', function(err) {
-        changeSong(notFound);
+        changeSong({
+                artist: 'No song',
+                title: 'in archive',
+                image: getImage()
+        });
     });
 
     /**
