@@ -29,7 +29,6 @@ angular.module('riplive')
         $scope.$apply(function() {
             pagination = photos.pagination;
             $scope.loading = false;
-            console.log(photos);
             photos.data.forEach(function(photo) {
                 $scope.photos.push(photo);
             });
