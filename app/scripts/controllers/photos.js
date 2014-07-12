@@ -12,8 +12,11 @@ angular.module('riplive')
 .controller('PhotosCtrl', function PhotosCtrl($scope, socketIo) {
     //Connect to remote websocket server.
     var socket = socketIo.connect('http://onair.riplive.it:80');
+    //var socket = socketIo.connect('http://localhost:3001');
+    var pagination;
 
     $scope.loading = true;
+    $scope.photos  = [];
 
     /**
      * Draw photos grid
@@ -22,10 +25,14 @@ angular.module('riplive')
      * @param  {Array} data
      * @return {undefined}
      */
-    socket.on('photos', function(data) {
+    socket.on('photos', function(photos) {
         $scope.$apply(function() {
+            pagination = photos.pagination;
             $scope.loading = false;
-            $scope.photos = data;
+            console.log(photos);
+            photos.data.forEach(function(photo) {
+                $scope.photos.push(photo);
+            });
         });
     });
 
@@ -36,24 +43,36 @@ angular.module('riplive')
      * as a collateral effect, the same photo can be pushed twice.
      * So, before pushing, the script check if a photo with the same id
      * is already in place.
-     * 
-     * @param  {Object} data
+     *
+     * @param  {Object} photo
      * @return {undefined}
      */
-    socket.on('photo', function(data) {
+    socket.on('photo', function(photo) {
         var found = false;
 
         for (var i = 0, len = $scope.photos.length; i < len; i++) {
-            if ($scope.photos[i].id === data.id) {
+            if ($scope.photos[i].id === photo.id) {
                 found = true;
             }
         }
 
         if (!found) {
             $scope.$apply(function() {
-                $scope.photos.unshift(data);
+                $scope.photos.unshift(photo);
             });
         }
     });
-});
 
+    /**
+     * Load instgram media
+     * from the remote websocket server.
+     *
+     * @return {undefined}
+     */
+    $scope.loadData = function() {
+        $scope.loading = true;
+        socket.emit('getMedia', {
+            url: pagination.next_url
+        });
+    };
+});

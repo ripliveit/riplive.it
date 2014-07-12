@@ -34,7 +34,7 @@ angular.module('riplive')
     $scope.loading = true;
 
     /**
-     * Load only when user scroll 
+     * Load data only when user scroll 
      * to the bottom of the page.
      * 
      * @return {undefined}

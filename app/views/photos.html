@@ -32,4 +32,11 @@
 
         <loading-spinner data-visible="loading"></loading-spinner>
     </div>
+
+    <div class="row" ng-hide="loading">
+        <div class="btn btn-full-size btn-neutral transition" ng-click="loadData()">
+            <span class="bold">Load more</span><br/>
+            <span class="fa fa-chevron-down"></span>
+        </div>
+    </div>
 </div>

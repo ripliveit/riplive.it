@@ -114,6 +114,14 @@ a.btn-neutral:hover {
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
 }
 
+.btn-full-size {
+    width: 100%;
+    font-size: 18px;
+    margin: 10px 0;
+    padding: 16px;
+    text-transform: uppercase;
+}
+
 .btn-artists {
     background-color:#e74c3c;
 }
@@ -184,7 +192,7 @@ a.btn-neutral:hover {
 }
 
 .btn-neutral:hover {
-    background-color: #d6d6d6;
+    background-color: #F2F2F2;
 }
 
 .btn-fb {
@@ -656,6 +664,11 @@ a.btn-neutral:hover {
     color: #FFF;
 }
 
+#on-air .player-volume-up:hover:active, 
+#on-air .player-volume-off:hover:active {
+   font-size: 4.5em;
+}
+
 #on-air .player-control:active,
 #on-air .player-volume-up:active, 
 #on-air .player-volume-off:active,
@@ -888,8 +901,8 @@ a.btn-neutral:hover {
 
 #main .media-block-instagram .single-share {
     position: absolute;
-    top: 10px;
     right: 10px;
+    bottom: 10px;
 }
 
 #main .media-wrapper-large .media-block-instagram .caption,
@@ -897,79 +910,6 @@ a.btn-neutral:hover {
     visibility: visible;
     font-size: 1.5em;
 }
-
-
-
-
-/* Media elements */
-/*
-#main .media {
-    margin: 0;
-    padding: 15px 10px;
-    position: relative;
-    overflow: hidden;
-    border-bottom: 1px solid #f2f2f2;
-}
-
-#main .media a {
-   text-decoration: none;
-}
-
-#main .media .media-label {
-    text-align: center;
-    text-transform: uppercase;
-    width: 75px;
-    padding: 2px 0;
-    color: #FFF;
-}
-
-#main .media .media-body {
-    padding: 0 0 0 10px;
-    position: absolute;
-    left: 85px;
-}
-
-#main .media .media-heading {
-    text-transform: uppercase;
-    margin: auto;
-    font-weight: bold;
-}
-
-#main .media .media-controls {
-    float: right;
-    overflow: hidden;
-}
-
-#main .media .media-object {
-    width: 75px;
-    height: 75px;
-}
-
-#main .media > .badge {
-    float: right;
-}
-
-/* Media first news */
-/*
-#main .media.media-first {
-    padding: 20px 10px;
-}
-
-#main .media.media-first .media-heading {
-    margin-bottom: 20px;
-}
-
-#main .media.media-first .media-body {
-    position: relative;
-    left: 0;
-    padding: 5px 0;
-}
-
-#main .media.media-first .media-object {
-    width: 100%;
-    height: 185px;
-}
-*/
 
 #main .loader {
     width: 100%;
@@ -1362,7 +1302,7 @@ a.btn-neutral:hover {
     font-size: 18px;
     text-align: center;
     background-color: #FFF;
-    border: 1px solid #CCC;
+    border: 1px solid #d6d6d6;
     opacity: 0.8;
 }
 
