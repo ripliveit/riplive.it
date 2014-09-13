@@ -1,6 +1,6 @@
 {
   "name": "riplive",
-  "version": "0.7.0",
+  "version": "1.0.1",
   "author": "Gabriele D'Arrigo - @acirdesign",
   "private": true,
   "keywords": [
@@ -46,6 +46,7 @@
     "grunt-rev": "~0.1.0",
     "grunt-svgmin": "~0.2.0",
     "grunt-usemin": "~2.0.0",
+    "grunt-ssh": "~0.11.2",
     "jshint-stylish": "~0.1.3",
     "load-grunt-tasks": "~0.2.0",
     "time-grunt": "~0.2.1",

@@ -7,7 +7,7 @@
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
@@ -147,9 +147,34 @@ module.exports = function (grunt) {
       }
     },
 
+    // Deploy config
+    {
+      sshconfig: {
+        'riplive.it': {
+          host: 'riplive.it',
+          username: 'rip',
+          password: 'rip_admin2013',
+          port: 5430
+        }
+      },
 
-
-
+      sshexec: {
+        deploy: {
+          command: [
+            'cd /var/www/riplive.it',
+            'git pull origin master',
+            'npm install',
+            'bower install',
+            'grunt build',
+            'forever restartall',
+            'forever list'
+          ].join(' && '),
+          options: {
+            config: 'riplive.it'
+          }
+        }
+      }
+    },
 
     // Renames files for browser caching purposes
     rev: {
@@ -326,7 +351,7 @@ module.exports = function (grunt) {
   });
 
 
-  grunt.registerTask('serve', function (target) {
+  grunt.registerTask('serve', function(target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
     }
@@ -341,7 +366,7 @@ module.exports = function (grunt) {
     ]);
   });
 
-  grunt.registerTask('server', function () {
+  grunt.registerTask('server', function() {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve']);
   });
@@ -369,6 +394,10 @@ module.exports = function (grunt) {
     'rev',
     'usemin',
     'htmlmin'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'sshexec:deploy'
   ]);
 
   grunt.registerTask('default', [
