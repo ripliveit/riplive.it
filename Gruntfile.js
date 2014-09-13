@@ -393,6 +393,10 @@ module.exports = function(grunt) {
     'htmlmin'
   ]);
 
+  grunt.registerTask('deploy', [
+    'sshexec:deploy'
+  ]);
+
   grunt.registerTask('default', [
     'newer:jshint',
     //'test',
