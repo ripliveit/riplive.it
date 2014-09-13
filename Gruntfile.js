@@ -147,31 +147,28 @@ module.exports = function(grunt) {
       }
     },
 
-    // Deploy config
-    {
-      sshconfig: {
-        'riplive.it': {
-          host: 'riplive.it',
-          username: 'rip',
-          password: 'rip_admin2013',
-          port: 5430
-        }
-      },
-
-      sshexec: {
-        deploy: {
-          command: [
-            'cd /var/www/riplive.it',
-            'git pull origin master',
-            'npm install',
-            'bower install',
-            'grunt build',
-            'forever restartall',
-            'forever list'
-          ].join(' && '),
-          options: {
-            config: 'riplive.it'
-          }
+    // Deploy configuration
+    sshconfig: {
+      'riplive.it': {
+        host: 'riplive.it',
+        username: 'rip',
+        password: 'rip_admin2013',
+        port: 5430
+      }
+    },
+    sshexec: {
+      deploy: {
+        command: [
+          'cd /var/www/riplive.it',
+          'git pull origin master',
+          'npm install',
+          'bower install',
+          'grunt build',
+          'forever restartall',
+          'forever list'
+        ].join(' && '),
+        options: {
+          config: 'riplive.it'
         }
       }
     },
@@ -394,10 +391,6 @@ module.exports = function(grunt) {
     'rev',
     'usemin',
     'htmlmin'
-  ]);
-
-  grunt.registerTask('deploy', [
-    'sshexec:deploy'
   ]);
 
   grunt.registerTask('default', [
