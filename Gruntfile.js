@@ -152,7 +152,7 @@ module.exports = function(grunt) {
       'riplive.it': {
         host: 'riplive.it',
         username: process.env.SSH_USER,
-        password: process.env.SSH_PASSWORD
+        password: process.env.SSH_PASSWORD,
         port: 5430
       }
     },
