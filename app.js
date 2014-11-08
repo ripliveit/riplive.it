@@ -15,8 +15,10 @@ app.set('port', process.env.PORT || 3000);
 // Development
 // configuration.
 app.configure('development', function() {
-    app.set('wp_uri', 'http://riplive.local/api');
-    app.set('admin_uri', 'http://riplive.local/wp-admin/admin-ajax.php');
+    app.set('wp_uri', 'http://www.static.riplive.it/api');
+    app.set('admin_uri', 'http://www.static.riplive.it/wp-admin/admin-ajax.php');
+    //app.set('wp_uri', 'http://riplive.local/api');
+    //app.set('admin_uri', 'http://riplive.local/wp-admin/admin-ajax.php');
     app.set('memcache_uri', '127.0.0.1:11211');
     app.set('staticFolder', path.join(__dirname, 'app'));
 
