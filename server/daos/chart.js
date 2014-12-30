@@ -49,8 +49,8 @@ function ChartDao() {
      */
     this.getAllCompleteChartsByChartSlug = function(slug, cb) {
         var uri = this.getAdminUri(); 
-            uri += '?action=rip_charts_get_all_complete_charts_by_chart_slug';
-            uri += '&slug=' + slug;
+            uri += '?action=rip_charts_get_all_complete_charts_by_chart_genre';
+            uri += '&genre=' + slug;
 
         var hash = this.hasher.getHash(uri);
         

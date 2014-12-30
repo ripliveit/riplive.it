@@ -1,5 +1,5 @@
-﻿var Memcached = require('memcached');
-var config = require(__dirname + '/../configs/config.js');
+﻿var config = require('config');
+var Memcached = require('memcached');
 var logger = require(__dirname + '/logger.js');
 
 // Memcache configuration.

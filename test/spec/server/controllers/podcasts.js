@@ -1,13 +1,13 @@
 var expect = require('expect.js');
 var request = require('supertest');
-var app = require(__dirname + '/../../../app.js')
+var app = require(process.cwd() + '/app.js');
 
-describe('GET /api/programs', function() {
+describe('GET /api/podcasts', function() {
     this.timeout(5000);
 
-    it('should return a JSON array of programs', function(done) {
+    it('should return a JSON array of podcasts', function(done) {
         request(app)
-            .get('/api/programs')
+            .get('/api/podcasts')
             .set('Accept', 'application/json')
             .expect(200)
             .end(function(err, res) {
@@ -15,21 +15,21 @@ describe('GET /api/programs', function() {
 
                 expect(res).to.be.an('object');
                 expect(res.body.status).to.be.equal('ok');
-                expect(res.body.programs).to.be.an('array');
-                expect(res.body.count).to.be.equal(res.body.programs.length);
+                expect(res.body.podcasts).to.be.an('array');
+                expect(res.body.count).to.be.equal(res.body.podcasts.length);
                 done();
             });
     });
 });
 
-describe('GET /api/programs/:slug', function() {
+describe('GET /api/podcasts/:program_slug', function() {
     this.timeout(5000);
 
-    it('should return a JSON programs object', function(done) {
+    it('should return a JSON array of podcasts of a specific program', function(done) {
         var slug = 'back-to-the-movies';
 
         request(app)
-            .get('/api/programs/' + slug)
+            .get('/api/podcasts/' + slug)
             .set('Accept', 'application/json')
             .expect(200)
             .end(function(err, res) {
@@ -37,18 +37,22 @@ describe('GET /api/programs/:slug', function() {
 
                 expect(res).to.be.an('object');
                 expect(res.body.status).to.be.equal('ok');
-                expect(res.body.program).to.be.an('object');
+                expect(res.body.podcasts).to.be.an('array');
+                expect(res.body.count).to.be.equal(res.body.podcasts.length);
                 done();
             });
     });
 });
 
-describe('GET /api/schedule', function() {
+describe('GET /api/podcasts/:program_slug/:id', function() {
     this.timeout(5000);
 
-    it('should return a JSON array object rapresenting the weekly programs schedule', function(done) {
-         request(app)
-            .get('/api/schedule/')
+    it('should return a JSON podcast object', function(done) {
+        var slug = 'back-to-the-movies';
+        var id   = 814;
+
+        request(app)
+            .get('/api/podcasts/' + slug + '/' + id)
             .set('Accept', 'application/json')
             .expect(200)
             .end(function(err, res) {
@@ -56,8 +60,7 @@ describe('GET /api/schedule', function() {
 
                 expect(res).to.be.an('object');
                 expect(res.body.status).to.be.equal('ok');
-                expect(res.body.schedule).to.be.an('array');
-                expect(res.body.schedule.length).to.be.equal(7);
+                expect(res.body.podcast).to.be.an('object');
                 done();
             });
     });

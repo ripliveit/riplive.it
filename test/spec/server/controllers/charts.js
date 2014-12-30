@@ -1,6 +1,6 @@
 var expect = require('expect.js');
 var request = require('supertest');
-var app = require(__dirname + '/../../../app.js')
+var app = require(process.cwd() + '/app.js');
 
 describe('GET /api/charts', function() {
     this.timeout(5000);

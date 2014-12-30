@@ -1,4 +1,4 @@
-var config = require(__dirname + '/../configs/config.js');
+var config = require('config');
 var hasher = require(__dirname + '/../services/hasher.js');
 var broker = require(__dirname + '/../services/memcached-broker.js');
 
