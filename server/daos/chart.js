@@ -8,7 +8,7 @@ var HttpService = require('../services/http-service.js');
  * Use the Broker to retrieve and save data to / from memcached.
  */
 function ChartDao() {
-    
+
     BaseDao.call(this);
 
     /**
@@ -19,7 +19,7 @@ function ChartDao() {
      *     count  : count,
      *     page   : page
      * }
-     * 
+     *
      * @param  {Object} criteria Number of items to retrieve.
      * @param  {Function} cb     Fired with data from remote server,
      *                           with error otherwise.
@@ -27,7 +27,7 @@ function ChartDao() {
      */
     this.getAllCompleteCharts = function(criteria, cb) {
         var uri = this.getAdminUri();
-            uri += '?action=rip_charts_get_all_complete_charts';
+        uri += '?action=rip_charts_get_all_complete_charts';
 
         var hash = this.hasher.getHash(uri);
 
@@ -47,13 +47,34 @@ function ChartDao() {
      *                         with error otherwise.
      * @return {undefined}
      */
-    this.getAllCompleteChartsByChartSlug = function(slug, cb) {
-        var uri = this.getAdminUri(); 
-            uri += '?action=rip_charts_get_all_complete_charts_by_chart_genre';
-            uri += '&genre=' + slug;
+    this.getAllCompleteChartsByChartType = function(slug, cb) {
+        var uri = this.getAdminUri();
+        uri += '?action=rip_charts_get_all_complete_charts_by_chart_type';
+        uri += '&slug=' + slug;
 
         var hash = this.hasher.getHash(uri);
-        
+
+        this.broker.setTime(10).get(hash, uri, function(err, data) {
+            if (err) return cb(err, null);
+
+            cb(null, data);
+        });
+    };
+
+    /**
+     * Return last complete charts, 
+     * one per type.
+     *
+     * @param  {Function} cb   Filled with data from remote server,
+     *                         with error otherwise.
+     * @return {undefined}
+     */
+    this.getLatestCompleteCharts = function(cb) {
+        var uri = this.getAdminUri();
+        uri += '?action=rip_charts_get_latest_complete_charts';
+
+        var hash = this.hasher.getHash(uri);
+
         this.broker.setTime(10).get(hash, uri, function(err, data) {
             if (err) return cb(err, null);
 
@@ -71,8 +92,8 @@ function ChartDao() {
      */
     this.getCompleteChartBySlug = function(slug, cb) {
         var uri = this.getAdminUri();
-            uri += '?action=rip_charts_get_complete_chart_by_chart_archive_slug' 
-            uri += '&slug=' + slug;
+        uri += '?action=rip_charts_get_complete_chart_by_chart_archive_slug'
+        uri += '&slug=' + slug;
 
         var hash = this.hasher.getHash(uri);
 
@@ -94,13 +115,13 @@ function ChartDao() {
      */
     this.insertCompleteChartVote = function(data, cb) {
         var uri = this.getAdminUri();
-            uri += '?action=rip_charts_insert_complete_chart_vote';
+        uri += '?action=rip_charts_insert_complete_chart_vote';
 
         HttpService.post(uri, data, function(err, response, body) {
             if (err) return cb(err, null);
 
             if (response.statusCode !== 200) {
-                var err = new Error('Error in remote server. Status code: ' + response.statusCode);
+                var err = new Error('Error in remote server. Status code: ' + response.statusCode + ' . Body: ' + body);
                 return cb(err, null);
             }
 

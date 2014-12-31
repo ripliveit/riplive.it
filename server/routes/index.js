@@ -16,18 +16,10 @@ module.exports = function(app) {
     app.get('/api/authors', controllers.authors.getAllAuthors);
     app.get('/api/authors/:slug', controllers.authors.getAuthorBySlug);
 
-    app.get('/api/auth/facebook', controllers.auth.authFacebook);
-    app.get('/api/auth/facebook/callback', auth.authenticate('facebook', {
-        successRedirect: '/api/auth/success',
-        failureRedirect: '/api/auth/failure'
-    }));
-
-    app.get('/api/auth/success', controllers.auth.success);
-    app.get('/api/auth/failure', controllers.auth.failure);
-
     app.get('/api/charts', controllers.charts.getAllCompleteCharts);
+    app.get('/api/charts/latest', controllers.charts.getLatestCompleteCharts);
     app.get('/api/charts/:slug', controllers.charts.getCompleteChartBySlug);
-    app.get('/api/charts/complete/:slug', controllers.charts.getAllCompleteChartsByChartSlug);
+    app.get('/api/charts/complete/:slug', controllers.charts.getAllCompleteChartsByChartType);
     app.post('/api/charts/vote', controllers.charts.insertCompleteChartVote);
 
     app.get('/api/highlights', controllers.highlights.getHighlights);

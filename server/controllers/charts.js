@@ -28,10 +28,27 @@ exports.getAllCompleteCharts = function(req, res, next) {
  * @param  {Function} next
  * @return {undefined}
  */
-exports.getAllCompleteChartsByChartSlug = function(req, res, next) {
+exports.getAllCompleteChartsByChartType = function(req, res, next) {
     var slug = req.param('slug');
 
-    chart.getAllCompleteChartsByChartSlug(slug, function(err, data) {
+    chart.getAllCompleteChartsByChartType(slug, function(err, data) {
+        if (err) return next(err);
+
+        res.send(JSON.parse(data));
+    });
+};
+
+/**
+ * Return last complete charts, 
+ * one per type.
+ *
+ * @param  {Function} req
+ * @param  {Function} res
+ * @param  {Function} next
+ * @return {undefined}
+ */
+exports.getLatestCompleteCharts = function(req, res, next) {
+    chart.getLatestCompleteCharts(function(err, data) {
         if (err) return next(err);
 
         res.send(JSON.parse(data));
@@ -67,9 +84,9 @@ exports.getCompleteChartBySlug = function(req, res, next) {
  */
 exports.insertCompleteChartVote = function(req, res, next) {
     var data = req.body;
-    
+
     chart.insertCompleteChartVote(data, function(err, data) {
-        if (err)return next(err);
+        if (err) return next(err);
 
         res.send(JSON.parse(data));
     });
