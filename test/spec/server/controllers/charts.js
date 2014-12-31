@@ -46,7 +46,7 @@ describe('GET /api/charts/:slug', function() {
 describe('GET /api/charts/complete/:slug', function() {
     this.timeout(5000);
 
-    it('should return a JSON array of charts within a specific genre', function(done) {
+    it('should return a JSON array of charts within a specific chart type', function(done) {
         var slug = 'rock-chart';
 
         request(app)
@@ -56,6 +56,27 @@ describe('GET /api/charts/complete/:slug', function() {
             .end(function(err, res) {
                 if (err) throw err;
                 
+                expect(res).to.be.an('object');
+                expect(res.body.status).to.be.equal('ok');
+                expect(res.body.complete_charts).to.be.an('array');
+                expect(res.body.count).to.be.equal(res.body.complete_charts.length);
+                done();
+            });
+    });
+});
+
+describe('GET /api/charts/latest', function() {
+    this.timeout(5000);
+
+    it('should return a JSON array of charts, one per chart type', function(done) {
+
+        request(app)
+            .get('/api/charts/latest')
+            .set('Accept', 'application/json')
+            .expect(200)
+            .end(function(err, res) {
+                if (err) throw err;
+              
                 expect(res).to.be.an('object');
                 expect(res.body.status).to.be.equal('ok');
                 expect(res.body.complete_charts).to.be.an('array');
