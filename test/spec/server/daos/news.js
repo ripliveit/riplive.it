@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var NewsDao = require(__dirname + '/../../daos/news.js');
+var NewsDao = require(process.cwd() + '/server/daos/news.js');
 
 describe('NewsDao', function() {
     it('is an object used to retrieve artist\'s information from remote endpoint', function() {

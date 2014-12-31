@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var memcached = require(__dirname + '/../../services/memcached-client.js');
+var memcached = require(process.cwd() + '/server/services/memcached-client.js');
 
 describe('Memcached', function() {
     it('is an object used to connect to a memcached server', function() {

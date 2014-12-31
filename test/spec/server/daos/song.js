@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var SongDao = require(__dirname + '/../../daos/song.js');
+var SongDao = require(process.cwd() + '/server/daos/song.js');
 
 describe('SongDao', function() {
     it('is an object used to retrieve song information from remote endpoint', function() {

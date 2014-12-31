@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var httpService = require(__dirname + '/../../services/http-service.js');
+var httpService =  require(process.cwd() + '/server/services/http-service.js');
 
 describe('HttpService', function() {
     it('is a simple service used to make Http Request. Wrap request npm package.', function() {

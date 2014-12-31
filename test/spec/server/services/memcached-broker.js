@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var memcachedBroker = require(__dirname + '/../../services/memcached-broker.js');
+var memcachedBroker = require(process.cwd() + '/server/services/memcached-broker.js');
 var fakeKey = 'key';
 var fakeValue = 'this.is.a.value';
 

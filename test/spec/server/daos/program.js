@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var ProgramDao = require(__dirname + '/../../daos/program.js');
+var ProgramDao = require(process.cwd() + '/server/daos/program.js');
 
 describe('ProgramDao', function() {
     it('is an object used to retrieve program information from remote endpoint', function() {

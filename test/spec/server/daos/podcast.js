@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var PodcastDao = require(__dirname + '/../../daos/podcast.js');
+var PodcastDao = require(process.cwd() + '/server/daos/podcast.js');
 
 describe('PodcastDao', function() {
     it('is an object used to retrieve podcasts information from remote endpoint', function() {

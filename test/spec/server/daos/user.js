@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var UserDao = require(__dirname + '/../../daos/user.js');
+var UserDao = require(process.cwd() + '/server/daos/user.js');
 
 describe('UserDao', function() {
     it('is an object used to retrieve user information from remote endpoint', function() {

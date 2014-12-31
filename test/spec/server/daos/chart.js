@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var ChartDao = require(__dirname + '/../../daos/chart.js');
+var ChartDao = require(process.cwd() + '/server/daos/chart.js');
 
 describe('ChartDao', function() {
     it('is an object used to retrieve charts information from remote endpoint', function() {

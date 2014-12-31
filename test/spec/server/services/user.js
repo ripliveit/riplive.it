@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var userService = require(__dirname + '/../../services/user.js');
+var userService = require(process.cwd() + '/server/services/user.js');
 var fakeUser = {
     emails: [{
         value : 'dummy1@email.com'

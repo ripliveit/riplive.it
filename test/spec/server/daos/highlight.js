@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var HighlightDao = require(__dirname + '/../../daos/highlight.js');
+var HighlightDao = require(process.cwd() + '/server/daos/highlight.js');
 
 describe('HighlightDao', function() {
     it('is an object used to retrieve artist\'s information from remote endpoint', function() {

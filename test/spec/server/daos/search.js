@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var SearchDao = require(__dirname + '/../../daos/search.js');
+var SearchDao = require(process.cwd() + '/server/daos/search.js');
 
 describe('SearchDao', function() {
     it('is an object used to search against a remote endpoint', function() {

@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var hasher = require(__dirname + '/../../services/hasher.js');
+var hasher = require(process.cwd() + '/server/services/hasher.js');
 
 describe('Hasher', function() {
     it('is an object used to calculate an MD5 hash', function() {
