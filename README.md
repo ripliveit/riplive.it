@@ -1,9 +1,9 @@
 ## Riplive.it Front end application
-The riplive.it front end application.
-It consists in a NodeJS front end API + static server + an Angular Js application used to 
-show all riplive.it content to the user.
-Run on port 8080.
-Proxied by an Nginx instance.
+The Riplive.it front end application.  
+It consists in a NodeJS front end API + static server + an AngularJS application used to 
+show all riplive.it contents to the user. 
+Run on port 8080. 
+Proxied by an Nginx instance.  
 
 ## Installation and run
 Clone the repository, than install all application's dependencies:
@@ -12,11 +12,11 @@ Clone the repository, than install all application's dependencies:
 
 Launch all unit tests with:
 
-	$ mocha -R spec tests
+	$ mocha -R spec test/spec/server
 
 Run the application:
 
-	$ node server.js
+	$ node app.js
 
 ##  Continuous integration and Deployment
 
