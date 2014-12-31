@@ -57,6 +57,40 @@ module.exports = function(grunt) {
             }
         },
 
+        // The actual grunt server settings
+        connect: {
+            options: {
+                port: 9000,
+                // Change this to '0.0.0.0' to access the server from outside.
+                hostname: 'localhost',
+                livereload: 35729
+            },
+            livereload: {
+                options: {
+                    open: true,
+                    base: [
+                        '.tmp',
+                        '<%= yeoman.app %>'
+                    ]
+                }
+            },
+            test: {
+                options: {
+                    port: 9001,
+                    base: [
+                        '.tmp',
+                        'test',
+                        '<%= yeoman.app %>'
+                    ]
+                }
+            },
+            dist: {
+                options: {
+                    base: '<%= yeoman.dist %>'
+                }
+            }
+        },
+
         // Make sure code styles are up to par and there are no obvious mistakes
         jshint: {
             options: {
@@ -115,11 +149,11 @@ module.exports = function(grunt) {
 
         // Deploy configuration
         sshconfig: {
-            dist: {
-                host:  process.env.SSH_HOST,
+            'server': {
+                host: process.env.SSH_HOST,
                 username: process.env.SSH_USER,
                 password: process.env.SSH_PASSWORD,
-                port: process.env.SSH_PORT,
+                port: process.env.SSH_PORT
             }
         },
         sshexec: {
@@ -134,7 +168,7 @@ module.exports = function(grunt) {
                     'forever list'
                 ].join(' && '),
                 options: {
-                    config: 'dist'
+                    config: 'server'
                 }
             }
         },
@@ -312,6 +346,27 @@ module.exports = function(grunt) {
             }
         }
     });
+
+
+    // grunt.registerTask('serve', function(target) {
+    //     if (target === 'dist') {
+    //         return grunt.task.run(['build', 'connect:dist:keepalive']);
+    //     }
+
+    //     grunt.task.run([
+    //         'clean:server',
+    //         'bower-install',
+    //         'concurrent:server',
+    //         'autoprefixer',
+    //         'connect:livereload',
+    //         'watch'
+    //     ]);
+    // });
+
+    // grunt.registerTask('server', function() {
+    //     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
+    //     grunt.task.run(['serve']);
+    // });
 
     grunt.registerTask('test', [
         'clean:server',
