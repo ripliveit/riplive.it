@@ -10,11 +10,10 @@ angular.module('riplive')
  *
  * @param  {Object} $location
  * @param  {Object} voteService
- * @param  {Object} userService
  * @param  {Object} localStorageService
  * @return {undefined}
  */
-.directive('voteSong', function voteSong($location, voteService, userService, localStorageService) {
+.directive('voteSong', function voteSong($location, voteService, localStorageService) {
     return {
         templateUrl: 'templates/vote-song.html',
         replace: true,
@@ -64,32 +63,15 @@ angular.module('riplive')
 
             /**
              * Handle the vote action business logic.
-             * First check if the user is logged in queryng the browser storage.
-             * If not redirect the user to the login's page.
-             * Otherwise attempt to vote through  voteService.
-             *
-             * In case of failure show a pertinent message.
-             * Otherwise increment the vote plus one and save the results into
-             * the browser storage.
              *
              * @return {undefined}
              */
             var voteHandler = function() {
-                var user = userService.getUserFromLocalStorage();
-
-                if (!user) {
-                    return scope.$apply(function() {
-                        $location.path('/login');
-                    });
-                }
-
                 showLoading();
 
                 var params = {
                     id_song: scope.idSong,
-                    chart_archive_slug: scope.chartArchiveSlug,
-                    uuid_user: user.user.uuid,
-                    username: user.user.username
+                    chart_archive_slug: scope.chartArchiveSlug
                 };
 
                 // Attempts

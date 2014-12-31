@@ -45,6 +45,15 @@ angular.module('riplive')
             charts.$promise.then(function(data) {
                 cb(data);
             });
+        },
+
+
+        getLatestCharts: function(cb) {
+            var charts = Chart.latest();
+
+            charts.$promise.then(function(data) {
+                cb(data);
+            });
         }
     };
 });

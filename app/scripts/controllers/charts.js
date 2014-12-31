@@ -11,7 +11,7 @@ angular.module('riplive')
 .controller('ChartsCtrl', function ChartsCtrl($scope, chartsService) {
     $scope.loading = true;    
     
-    chartsService.getCharts(function(data) {
+    chartsService.getLatestCharts(function(data) {
         $scope.loading = false;
         $scope.charts = data.complete_charts;
     });

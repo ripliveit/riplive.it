@@ -17,7 +17,7 @@ angular.module('riplive')
 
     /**
      * Check if a user can vote a song.
-     * A user can vote onec a day.
+     * A user can vote once a day.
      * First attempt to retrieve the vote log's data
      * from local storage.
      * If a vote log is present than checks if
