@@ -115,11 +115,11 @@ module.exports = function(grunt) {
 
         // Deploy configuration
         sshconfig: {
-            'riplive.it': {
-                host: 'riplive.it',
+            dist: {
+                host:  process.env.SSH_HOST,
                 username: process.env.SSH_USER,
                 password: process.env.SSH_PASSWORD,
-                port: 5430
+                port: process.env.SSH_PORT,
             }
         },
         sshexec: {
@@ -134,7 +134,7 @@ module.exports = function(grunt) {
                     'forever list'
                 ].join(' && '),
                 options: {
-                    config: 'riplive.it'
+                    config: 'dist'
                 }
             }
         },
