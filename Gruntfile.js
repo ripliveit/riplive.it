@@ -164,7 +164,7 @@ module.exports = function(grunt) {
                     'npm install',
                     'bower install',
                     'grunt build',
-                    'forever restartall',
+                    'NODE_ENV=production forever restartall',
                     'forever list'
                 ].join(' && '),
                 options: {
