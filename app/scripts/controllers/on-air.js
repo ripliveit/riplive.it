@@ -83,6 +83,7 @@ angular.module('riplive')
                 title: 'in archive',
                 image: getImage()
             });
+
             return false;
         }
 
@@ -92,18 +93,23 @@ angular.module('riplive')
                 title: 'in archive',
                 image: getImage()
             });
+
             return false;
         }
 
         if (data.type === 'programs') {
             data.image = images['program'];
             changeSong(data);
+
             return false;
         }
+
+        console.log(data);
 
         // Change
         // the current song.
         changeSong({
+            id_song : data.posts[0].id,
             artist: data.artist,
             title: data.title,
             image: data.posts[0]['thumbnail_images']['landscape-medium']['url'],

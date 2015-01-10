@@ -85,6 +85,8 @@ exports.getCompleteChartBySlug = function(req, res, next) {
 exports.insertCompleteChartVote = function(req, res, next) {
     var data = req.body;
 
+    console.log(data);
+
     chart.insertCompleteChartVote(data, function(err, data) {
         if (err) return next(err);
 

@@ -74,6 +74,8 @@ angular.module('riplive')
                     chart_archive_slug: scope.chartArchiveSlug
                 };
 
+                console.log(params);
+
                 // Attempts
                 // to vote the choosen song.
                 voteService.voteSong(params, function(data) {
@@ -84,9 +86,9 @@ angular.module('riplive')
                     }
 
                     scope.userVote += 1;
-                    localStorageService.set(scope.idSong, {
-                        voteDate: new Date()
-                    });
+                    // localStorageService.set(scope.idSong, {
+                    //     voteDate: new Date()
+                    // });
                     showPopOver('Thank you!');
                 });
             };
