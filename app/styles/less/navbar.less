@@ -1,0 +1,57 @@
+#navbar {
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #F2F2F2;
+
+    ul {
+        margin: 0;
+
+        li {
+        	float: none;
+        	overflow: hidden;
+        }
+    }
+
+    button {
+        display: block;
+        float: right;
+        width: 75px;
+        height: 50px;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        border: none;
+        border-left: 1px solid #FFF;
+        border-radius: 0;
+        line-height: 50px;
+        font-size: 28px;
+        color: #333;
+    }
+
+    #small-logo {
+        padding: 3px;
+        position: absolute;
+        left: 15px;
+        z-index: 10001;
+    }
+
+    .player-container {
+        display: block;
+        float: right;
+        width: 75px;
+        margin: 0;
+    }
+
+    .player-volume-up, 
+    .player-volume-off {
+        display: none;
+        visibility: hidden;
+    }
+
+    #navbar-control.slided {
+        display: block!important;
+        visibility: visible!important;
+        .translate3d(translate3d(150px, 0, 0));
+    }
+}
