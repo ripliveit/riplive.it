@@ -96,10 +96,26 @@ describe('ChartDao', function() {
         describe('#insertCompleteChartVote', function() {
             this.timeout(5000);
 
-            it('should insert a vote for single chart', function(done) {
+            it('should insert a vote for a song present in a single chart', function(done) {
                 var vote = {
                     chart_archive_slug: "electronic-chart-2014-10-27",
                     id_song: 9041
+                };
+
+                chartDao.insertCompleteChartVote(vote, function(err, data) {
+                    if (err) throw err;
+
+                    var data = JSON.parse(data);
+
+                    expect(data).to.be.an('object');
+                    expect(data.status).to.be('ok');
+                    done();
+                });
+            });
+
+            it('should insert a vote for a song without specifyng the chart', function(done) {
+                var vote = {
+                    id_song: 12020
                 };
 
                 chartDao.insertCompleteChartVote(vote, function(err, data) {
