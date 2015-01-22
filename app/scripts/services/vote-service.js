@@ -66,6 +66,12 @@ angular.module('riplive')
 
         var vote = ChartVote.save(params);
         vote.$promise.then(function(data) {
+
+            // Persist the vote to local storage.
+            localStorageService.set(params.id_song, {
+                voteDate: new Date()
+            });
+
             cb(data);
         });
     };

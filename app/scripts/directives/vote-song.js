@@ -10,18 +10,17 @@ angular.module('riplive')
  *
  * @param  {Object} $location
  * @param  {Object} voteService
- * @param  {Object} localStorageService
  * @return {undefined}
  */
-.directive('voteSong', function voteSong($location, voteService, localStorageService) {
+.directive('voteSong', function voteSong($location, voteService) {
     return {
         templateUrl: 'templates/vote-song.html',
         replace: true,
         restrict: 'E',
         scope: {
             idSong: '=',
-            chartArchiveSlug: '=',
-            userVote: '='
+            chartArchiveSlug: '=?',
+            userVote: '=?'
         },
         link: function postLink(scope, element, attrs) {
             var btn = element.find('.btn-like');
@@ -38,8 +37,8 @@ angular.module('riplive')
              */
             var showPopOver = function(message) {
                 popOverContent.text(message);
-                popOver.fadeIn(function() {
-                    angular.element(this).delay(1500).fadeOut(1000);
+                popOver.show(function() {
+                    angular.element(this).delay(1500).fadeOut(800);
                 });
             };
 
@@ -67,6 +66,13 @@ angular.module('riplive')
              * @return {undefined}
              */
             var voteHandler = function() {
+                // If undefined
+                // probably is and adv or a program.
+                if (typeof scope.idSong === 'undefined') {
+                    showPopOver('You cannot vote now!');
+                    return false;
+                }
+
                 showLoading();
 
                 var params = {
@@ -74,21 +80,16 @@ angular.module('riplive')
                     chart_archive_slug: scope.chartArchiveSlug
                 };
 
-                console.log(params);
-
                 // Attempts
                 // to vote the choosen song.
                 voteService.voteSong(params, function(data) {
                     hideLoading();
 
                     if (data.status === 'error') {
-                        return showPopOver('You can vote a song once a day!');
+                        return showPopOver('Can\'t vote same song twice a day!');
                     }
 
                     scope.userVote += 1;
-                    // localStorageService.set(scope.idSong, {
-                    //     voteDate: new Date()
-                    // });
                     showPopOver('Thank you!');
                 });
             };
