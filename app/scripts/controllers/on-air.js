@@ -61,9 +61,9 @@ angular.module('riplive')
      */
     socket.on('error', function(err) {
         changeSong({
-                artist: 'No song',
-                title: 'in archive',
-                image: getImage()
+            artist: 'No song',
+            title: 'in archive',
+            image: getImage()
         });
     });
 
@@ -83,27 +83,31 @@ angular.module('riplive')
                 title: 'in archive',
                 image: getImage()
             });
+
             return false;
         }
 
         if (data.type === 'adv') {
             changeSong({
-                artist: 'No song',
-                title: 'in archive',
+                artist: 'Advertising',
+                title: 'This is a jingle dude!',
                 image: getImage()
             });
+
             return false;
         }
 
         if (data.type === 'programs') {
             data.image = images['program'];
             changeSong(data);
+
             return false;
         }
 
         // Change
         // the current song.
         changeSong({
+            id_song: data.posts[0].id,
             artist: data.artist,
             title: data.title,
             image: data.posts[0]['thumbnail_images']['landscape-medium']['url'],
