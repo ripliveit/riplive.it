@@ -40,6 +40,14 @@
 	padding: 0;
 }
 
+.scale2d(@value: 0) {
+     -webkit-transform: scale(@value);
+        -moz-transform: scale(@value);
+         -ms-transform: scale(@value);
+          -o-transform: scale(@value);
+             transform: scale(@value);
+}
+
 .scale3d(@xValue: 0, @yValue: 0, @zValue: 0) {
 	 -webkit-transform: scale3d(@xValue, @yValue, @zValue);
         -moz-transform: scale3d(@xValue, @yValue, @zValue);
