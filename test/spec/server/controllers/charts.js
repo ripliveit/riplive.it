@@ -91,10 +91,8 @@ describe('POST /api/charts/vote', function() {
 
     it('should responde with 200 OK', function(done) {
         var vote = {
-            chart_archive_slug: "electronic-chart-2014-10-27",
-            id_song: 9584,
-            username: "cotto.gustato",
-            uuid_user: "756c58f0-6278-11e4-8293-8d2f2cfa6647"
+            chart_archive_slug: 'electronic-chart-2014-10-27',
+            id_song: 9041
         };
 
         request(app)

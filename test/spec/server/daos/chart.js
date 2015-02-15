@@ -98,7 +98,7 @@ describe('ChartDao', function() {
 
             it('should insert a vote for a song present in a single chart', function(done) {
                 var vote = {
-                    chart_archive_slug: "electronic-chart-2014-10-27",
+                    chart_archive_slug: 'electronic-chart-2014-10-27',
                     id_song: 9041
                 };
 
