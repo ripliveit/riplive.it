@@ -1,73 +1,73 @@
 #hg {
-    width: 100%;
+    background-color: @dark-gray;
     height: 250px;
     position: relative;
     top: 0;
-    background-color: #333333;
+    width: 100%;
 
     .hg-carousel {
         height: 250px;
     }
 
     .hg-grid {
-        width: 100%;
         height: 100%;
+        width: 100%;
 
         .hg-figure {
-            width: 100%;
-            height: 250px;
             background-size: cover;
-            position: relative;
+            height: 250px;
             padding: 0;
+            position: relative;
+            width: 100%;
 
             &:hover {
-                z-index: 2;
                 .scale3d(1.05, 1.05, 1);
+                z-index: 2;
             }
 
             .hg-link {
                 display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
                 height: 100%;
-                z-index: 2;
+                left: 0;
+                position: absolute;
                 text-decoration: none;
+                top: 0;
+                width: 100%;
+                z-index: 2;
             }
         }
 
         h3, h4 {
-            position: absolute;
+            font-weight: bold;
             margin: 0;
             padding: 0;
-            font-weight: bold;
+            position: absolute;
             text-transform: uppercase;
             z-index: 5;
 
             a {
-                color: @color-white; 
+                color: @white; 
                 z-index: 5;
 
                 &:hover {
-                    color: #FF6600;
+                    color: @orange;
                 }
             }
         }
 
         h3 {
-            font-size: 16px;
             bottom: 10px;
+            font-size: 16px;
             right: 20px;
             text-align: right;
         }
 
         h4 {
+            border: 1px solid @orange;
             font-size: 14px;
+            left: 20px;
             padding: 4px;
-            border: 1px solid #FFF;
-            top: 10px;
-            left: 20px;  
+            top: 10px;  
         }
     }
 }

@@ -1,13 +1,13 @@
 #on-air {
-    position: fixed;
-    top: 50px;
-    right: 0;
+    background-color: @white;
     bottom: 0;
-    left: 0;
-    width: 100%;
     height: 100%;
-    background-color: #FFFFFF;
+    left: 0;
+    position: fixed;
+    right: 0;
     text-align: center;
+    top: 50px;
+    width: 100%;
     z-index: 10001;
 
     &..on-air-closed {
@@ -20,46 +20,46 @@
 
 	    h2, 
 	    h3 {
+	        color: @white;
 	        margin: 0;
-	        color: #FFFFFF;
 	        text-transform: uppercase;
 	    }
 
 	    h2 {
-	        padding: 5px;
-	        background-color: #ff6600;
-	        text-align: center;
+	        background-color: @orange;
 	        font-size: 1em;
+	        padding: 5px;
+	        text-align: center;
 	    }
 	}
 
 	#cover-wrapper {
-	    width: 100%;
 	    height: 45%;
 	    position: relative;
+	    width: 100%;
 	}
 
 	#cover {
-	    position: relative;
-	    margin: 0;
-	    height: 100%;
 	    background-position: 50%;
 	    background-size: cover;
+	    height: 100%;
+	    margin: 0;
+	    position: relative;
 	}
 
 	#song-info {
-	    position: absolute;
 	    bottom: 20px;
+	    position: absolute;
 	    width: 100%;
 
 	    h3 {
-	        display: inline-block;
 	        background-color: rgba(0, 0, 0, 0.5);
+	        border: 1px solid @white;
+	        display: inline-block;
 	        font-weight: bold;
 	        padding: 10px 20px;
-	        border: 1px solid #FFF;
+	        text-shadow : 1px 1px 1px @black;
 	        width: 55%;
-	        text-shadow : 1px 1px 1px #000;
 	    }
 	}
 
@@ -75,14 +75,14 @@
 	.player-control,
 	.player-volume-up, 
 	.player-volume-off {
-	    font-size: 5em;
-	    background-color: #FFFFFF;
+	    background-color: @white;
 	    border: none;
 	    border-radius: 0;
+	    font-size: 5em;
 
 	    &:hover {
-	    	background-color: #f8941e;
-	    	color: #FFF;
+	    	background-color: @light-orange;
+	    	color: @white;
 	    }
 
 	    &:active,
@@ -94,10 +94,10 @@
 	.player-volume-up, 
 	.player-volume-off {
 		display: none;
+		float: left;
+		height: 100%;
 		visibility: hidden;
 		width: 33.3%;
-		height: 100%;
-		float: left;
 
 		&:hover:active {
 		   font-size: 4.5em;
@@ -106,9 +106,9 @@
 
 	.player-control {
 	    display: block;
-	    width: 100%;
 	    height: 100%;
 	    margin: 0;
 	    padding: 0;
+	    width: 100%;
 	}
 }
