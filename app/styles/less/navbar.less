@@ -1,46 +1,46 @@
 #navbar {
+    background-color: @light-gray;
     border-radius: 0;
     margin: 0;
     padding: 0;
-    background-color: #F2F2F2;
 
     ul {
         margin: 0;
 
         li {
-        	float: none;
-        	overflow: hidden;
+            float: none;
+            overflow: hidden;
         }
     }
 
     button {
-        display: block;
-        float: right;
-        width: 75px;
-        height: 50px;
-        padding: 0;
-        margin: 0;
         background-color: transparent;
         border: none;
-        border-left: 1px solid #FFF;
+        border-left: 1px solid @white;
         border-radius: 0;
-        line-height: 50px;
+        color: @dark-gray;
+        display: block;
+        float: right;
         font-size: 28px;
-        color: #333;
+        height: 50px;
+        line-height: 50px;
+        margin: 0;
+        padding: 0;
+        width: 75px;
     }
 
     #small-logo {
+        left: 15px;
         padding: 3px;
         position: absolute;
-        left: 15px;
         z-index: 10001;
     }
 
     .player-container {
         display: block;
         float: right;
-        width: 75px;
         margin: 0;
+        width: 75px;
     }
 
     .player-volume-up, 
@@ -50,8 +50,8 @@
     }
 
     #navbar-control.slided {
+        .translate3d(translate3d(150px, 0, 0));
         display: block!important;
         visibility: visible!important;
-        .translate3d(translate3d(150px, 0, 0));
     }
 }
