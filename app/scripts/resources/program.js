@@ -27,7 +27,7 @@ angular.module('riplive')
             params: {
                 count: 24,
                 page: '@page',
-                podcast: '@podcast'
+                'status[]': '@status'
             },
             transformResponse: function(data, headers) {
                 var parsed = JSON.parse(data);

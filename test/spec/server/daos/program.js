@@ -8,7 +8,6 @@ describe('ProgramDao', function() {
         expect(programDao).to.be.an('object');
         expect(programDao).to.have.property('getProgramBySlug');
         expect(programDao).to.have.property('getAllPrograms');
-        expect(programDao).to.have.property('getAllProgramsForPodcast');
         expect(programDao).to.have.property('getProgramsSchedule');
 
         describe('#getProgramBySlug', function() {
@@ -39,29 +38,6 @@ describe('ProgramDao', function() {
                 };
 
                 programDao.getAllPrograms(criteria, function(err, data) {
-                    if (err) throw err;
-
-                    var data = JSON.parse(data);
-
-                    expect(data).to.be.an('object');
-                    expect(data.status).to.be('ok');
-                    expect(data.programs).to.be.an('array');
-                    expect(data.count).to.be.equal(data.programs.length);
-                    done();
-                });
-            });
-        });
-
-        describe('#getAllProgramsForPodcast', function() {
-            this.timeout(5000);
-
-            it('should return all programs that has at least one podcasts', function(done) {
-                var criteria = {
-                    count: 24,
-                    page: 1
-                };
-
-                programDao.getAllProgramsForPodcast(criteria, function(err, data) {
                     if (err) throw err;
 
                     var data = JSON.parse(data);

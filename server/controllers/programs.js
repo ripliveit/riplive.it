@@ -1,5 +1,6 @@
 ﻿var ProgramDao = require('../daos/program.js');
 var program = new ProgramDao();
+var qs = require('querystring');
 
 /**
  * Return a list of programs.
@@ -12,17 +13,11 @@ var program = new ProgramDao();
 exports.getAllPrograms = function(req, res, next) {
     var criteria = {
         count: req.query.count || 24,
-        page: req.query.page || 1
+        page: req.query.page || 1,
+        status: req.query.status || 'publish'
     };
 
-    var method   = 'getAllPrograms';
-    var podcasts = req.query.podcasts;
-
-    if (podcasts) {
-        method = 'getAllProgramsForPodcast';
-    }
-    
-    program[method](criteria, function(err, data) {
+    program.getAllPrograms(criteria, function(err, data) {
         if (err) return next(err);
 
         res.send(JSON.parse(data));

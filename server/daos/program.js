@@ -52,35 +52,11 @@ function ProgramDao() {
             uri += '&count=' + criteria.count;
             uri += '&page='  + criteria.page;
 
-        var hash = this.hasher.getHash(uri);
-
-        this.broker.setTime(600).get(hash, uri, function(err, data) {
-            if (err) return cb(err, null);
-
-            cb(null, data);
-        });
-    };
-
-    /**
-     * Return all programs that are no more published
-     * but that has an archive of podcasts.
-     * Accept a criteria object with
-     * this params:
-     * {
-     *     count  : count,
-     *     page   : page
-     * }
-     * 
-     * @param  {Object} criteria 
-     * @param  {Function} cb Filled with data from remote server,
-     *                       with error otherwise.
-     * @return {undefined}
-     */
-    this.getAllProgramsForPodcast = function(criteria, cb) {
-        var uri = this.getAdminUri();
-            uri += '?action=rip_programs_get_all_programs_for_podcasts';
-            uri += '&count=' + criteria.count;
-            uri += '&page='  + criteria.page;
+        if (Array.isArray(criteria.status)) {
+            criteria.status.forEach(function(status) {
+                uri += '&status[]=' + status;
+            });
+        }
 
         var hash = this.hasher.getHash(uri);
 

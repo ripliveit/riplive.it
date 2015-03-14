@@ -29,7 +29,7 @@ angular.module('riplive')
          */
         var loadPrograms = function() {
             programsService.getPrograms({
-                podcasts: true
+                'status[]': ['publish', 'pending']
             }, function(data) {
                 $scope.programs = data.programs;
             });
