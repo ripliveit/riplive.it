@@ -47,7 +47,7 @@ module.exports = function(app) {
     app.get('/api/songs/genre/:slug', controllers.songs.getSongsByGenre);
     app.get('/api/songs/tag/:slug', controllers.songs.getSongsByTag);
 
-    app.get('/api/users/:uuid', controllers.users.getUserByUuid);
+    app.get('/sitemap.xml', controllers.sitemap.getSiteMap);
 
     app.get('*', function(req, res, next) {
         var index = app.get('staticFolder') + '/index.html';
