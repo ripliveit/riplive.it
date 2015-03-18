@@ -15,13 +15,15 @@ app.set('port', process.env.PORT || 3000);
 app.set('wp_uri', config.wp_uri);
 app.set('admin_uri', config.admin_uri);
 app.set('memcache_uri', config.memcache_uri);
+app.set('view engine', 'ejs'); 
+app.set('views', __dirname + '/server/views');
 app.set('staticFolder', path.join(__dirname, config.static_folder));
 
 // Development
 // configuration.
 app.configure('development', function() {
-    app.use(express.errorHandler());
-    app.use(express.logger('dev'));
+    //app.use(express.errorHandler());
+    //app.use(express.logger('dev'));
 });
 
 app.use(express.static(app.get('staticFolder')));

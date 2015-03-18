@@ -1,5 +1,5 @@
-var SiteMapDao = require('../daos/sitemap.js');
-var siteMap    = new SiteMapDao();
+var SeoDao = require('../daos/seo.js');
+var seoDao = new SeoDao();
 
 /**
  * Return the xml Sitemap (remotelly generated)
@@ -10,7 +10,7 @@ var siteMap    = new SiteMapDao();
  * @return {undefined}
  */
 exports.getSiteMap = function(req, res, next) {
-    siteMap.getSiteMap(function(err, data) {
+    seoDao.getSiteMap(function(err, data) {
         if (err) return next(err);
 
         res.header('Content-Type','text/xml').send(data);

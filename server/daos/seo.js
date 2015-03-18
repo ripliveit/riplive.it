@@ -2,10 +2,10 @@ var util = require('util')
 var BaseDao = require(__dirname + '/base-dao.js');
 
 /**
- * Sitemap Data Access Object.
- * Return the xml sitemap from the remote server.
+ * Seo Data Access Object.
+ * 
  */
-function SiteMapDao() {
+function SeoDao() {
 
     BaseDao.call(this);
 
@@ -28,10 +28,24 @@ function SiteMapDao() {
             cb(null, data);
         });
     };
+
+    this.getMetaByPath = function(path, cb) {
+        var uri = this.getAdminUri();
+            uri += '?action=rip_seo_get_meta_by_path';
+            uri += '&path=' + path;
+
+        var hash = this.hasher.getHash(uri);
+        
+        this.broker.setTime(600).get(hash, uri, function(err, data) {
+            if (err) return cb(err, null);
+
+            cb(null, data);
+        });
+    };
 };
 
 // Inherits
 // from BaseDao
-util.inherits(SiteMapDao, BaseDao);
+util.inherits(SeoDao, BaseDao);
 
-module.exports = SiteMapDao;
+module.exports = SeoDao;

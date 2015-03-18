@@ -49,8 +49,5 @@ module.exports = function(app) {
 
     app.get('/sitemap.xml', controllers.sitemap.getSiteMap);
 
-    app.get('*', function(req, res, next) {
-        var index = app.get('staticFolder') + '/index.html';
-        res.sendfile(index);
-    });
+    app.get('*', controllers.app.render);
 };
