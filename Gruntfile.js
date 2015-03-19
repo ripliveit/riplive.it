@@ -23,52 +23,17 @@ module.exports = function(grunt) {
                 src: ['test/spec/{,*/}*.js']
             }
         },
-
         clean: {
             dist: {
                 files: [{
                     dot: true,
                     src: [
-                        '.tmp',
-                        '<%= static.dist %>/*',
-                        '!<%= static.dist %>/.git*'
+                        '<%= path.public %>/*.min.js',
+                        '<%= path.public %>/*.min.css',
                     ]
                 }]
-            },
-            server: '.tmp'
-        },
-
-        rev: {
-            dist: {
-                files: {
-                    src: [
-                        '<%= static.dist %>/scripts/{,*/}*.js',
-                        '<%= static.dist %>/styles/{,*/}*.css',
-                        '<%= static.dist %>/styles/fonts/*'
-                    ]
-                }
             }
         },
-
-        // Reads HTML for usemin blocks to enable smart builds that automatically
-        // concat, minify and revision files. Creates configurations in memory so
-        // additional tasks can operate on them
-        useminPrepare: {
-            html: 'server/views/index.ejs',
-            options: {
-                dest: '<%= static.dist %>'
-            }
-        },
-
-        // Performs rewrites based on rev and the useminPrepare configuration
-        usemin: {
-            html: ['<%= static.dist %>/{,*/}*.ejs'],
-            css: ['<%= static.dist %>/styles/{,*/}*.css'],
-            options: {
-                assetsDirs: ['<%= static.dist %>']
-            }
-        },
-
         htmlmin: {
             dist: {
                 options: {
@@ -85,63 +50,35 @@ module.exports = function(grunt) {
                 }]
             }
         },
-
-        // Allow the use of non-minsafe AngularJS files. Automatically makes it
-        // minsafe compatible so Uglify does not destroy the ng references
         ngmin: {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '.tmp/concat/scripts',
+                    cwd: '<%= path.public %>/scripts',
                     src: '*.js',
-                    dest: '.tmp/concat/scripts'
+                    dest: '<%= path.public %>/app.min.js'
                 }]
             }
         },
-
-        // Copies remaining files to places other tasks can use
-        copy: {
-            dist: {
-                files: [{
-                    expand: true,
-                    dot: true,
-                    cwd: '<%= static.app %>',
-                    dest: '<%= static.dist %>',
-                    src: [
-                        '*.{ico,png,txt}',
-                        '.htaccess',
-                        '*.html',
-                        'server/',
-                        'views/{,*/}*.html',
-                        'templates/*',
-                        'bower_components/**/*',
-                        'images/{,*/}*.{webp}',
-                        'fonts/*'
-                    ]
-                }, {
-                    expand: true,
-                    cwd: '.tmp/images',
-                    dest: '<%= static.dist %>/images',
-                    src: ['generated/*']
-                }]
+        concat: {
+            options: {
+                separator: ';'
             },
-            styles: {
-                expand: true,
-                cwd: '<%= static.app %>/styles',
-                dest: '.tmp/styles/',
-                src: '{,*/}*.css'
-            }
-        },
-
-        // By default, your `index.html`'s <!-- Usemin block --> will take care of
-        // minification. These next options are pre-configured if you do not wish
-        // to use the Usemin blocks.
-        cssmin: {
             dist: {
                 files: {
-                    '<%= static.dist %>/styles/main.css': [
-                        '.tmp/styles/{,*/}*.css',
-                        '<%= static.app %>/styles/{,*/}*.css'
+                    '<%= path.public %>/vendor.js': [
+                        '<%= path.public %>/vendor/jquery/dist/jquery.js',
+                        '<%= path.public %>/vendor/angular/angular.js',
+                        '<%= path.public %>/vendor/bootstrap/dist/js/bootstrap.js',
+                        '<%= path.public %>/vendor/angular-resource/angular-resource.js',
+                        '<%= path.public %>/vendor/angular-route/angular-route.js',
+                        '<%= path.public %>/vendor/jplayer/dist/jplayer/jquery.jplayer.js',
+                        '<%= path.public %>/vendor/angular-touch/angular-touch.js',
+                        '<%= path.public %>/vendor/angular-sanitize/angular-sanitize.js',
+                        '<%= path.public %>/vendor/angular-carousel/dist/angular-carousel.js',
+                        '<%= path.public %>/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
+                        '<%= path.public %>/vendor/angular-local-storage/dist/angular-local-storage.js',
+                        '<%= path.public %>/vendor/angular-disqus/angular-disqus.js'
                     ]
                 }
             }
@@ -149,25 +86,21 @@ module.exports = function(grunt) {
         uglify: {
             dist: {
                 files: {
-                    '<%= static.dist %>/scripts/scripts.js': [
-                        '<%= static.dist %>/scripts/scripts.js'
+                    '<%= path.public %>/vendor.min.js': [
+                        '<%= path.public %>/vendor.js'
                     ]
                 }
             }
         },
-        concat: {
-            dist: {}
-        },
-
-        // Test settings
-        karma: {
-            unit: {
-                configFile: 'karma.conf.js',
-                singleRun: true
+        cssmin: {
+            dist: {
+                files: {
+                    '<%= path.public %>/main.min.css': [
+                        '<%= path.public %>/styles/main.css'
+                    ]
+                }
             }
         },
-
-        // Deploy configuration
         sshconfig: {
             'server': {
                 host: process.env.SSH_HOST,
@@ -176,7 +109,6 @@ module.exports = function(grunt) {
                 port: process.env.SSH_PORT
             }
         },
-
         sshexec: {
             deploy: {
                 command: [
@@ -195,26 +127,13 @@ module.exports = function(grunt) {
         },
     });
 
-    grunt.registerTask('test', [
-        'clean:server',
-        'copy:styles',
-        'connect:test',
-        'karma'
-    ]);
-
     grunt.registerTask('build', [
         'clean:dist',
-        'bower-install',
-        'useminPrepare',
-        'copy:styles',
-        'concat',
-        'ngmin',
-        'copy:dist',
-        'cssmin',
-        'uglify',
-        'rev',
-        'usemin',
-        'htmlmin'
+        'concat:dist',
+        //'ngmin:dist',
+        'cssmin:dist',
+        'uglify:dist'
+        //'htmlmin'
     ]);
 
     grunt.registerTask('deploy', [
