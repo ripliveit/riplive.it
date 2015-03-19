@@ -25,7 +25,11 @@ angular.module('riplive', [
  * @return {undefined}
  */
 .config(function($routeProvider, $locationProvider, $disqusProvider) {
-    $locationProvider.html5Mode(true).hashPrefix('!');
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    }).hashPrefix('!');
+
     $disqusProvider.setShortname('riplive');
 
     $routeProvider
@@ -78,8 +82,8 @@ angular.module('riplive', [
             controller: 'NewsCtrl'
         })
         .when('/photos', {
-          templateUrl: 'views/photos.html',
-          controller: 'PhotosCtrl'
+            templateUrl: 'views/photos.html',
+            controller: 'PhotosCtrl'
         })
         .when('/programs', {
             templateUrl: 'views/programs.html',
@@ -130,8 +134,8 @@ angular.module('riplive', [
             controller: 'LoginCtrl'
         })
         .when('/search', {
-          templateUrl: 'views/search.html',
-          controller: 'SearchCtrl'
+            templateUrl: 'views/search.html',
+            controller: 'SearchCtrl'
         })
         .otherwise({
             redirectTo: '/'

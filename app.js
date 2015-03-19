@@ -11,6 +11,7 @@ console.log(config);
 // All environments
 app.enable('trust proxy');
 app.disable('x-powered-by');
+app.disable('view cache');
 app.set('port', process.env.PORT || 3000);
 app.set('wp_uri', config.wp_uri);
 app.set('admin_uri', config.admin_uri);

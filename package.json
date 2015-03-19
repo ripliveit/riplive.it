@@ -22,7 +22,8 @@
     "node-uuid": "~1.4.1",
     "connect-memcached": "0.0.6",
     "config": "~1.8.1",
-    "ejs": "~2.3.1"
+    "ejs": "~2.3.1",
+    "nunjucks": "~1.2.0"
   },
   "devDependencies": {
     "expect.js": "^0.3.1",

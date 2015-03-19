@@ -10,6 +10,18 @@ function SeoDao() {
     BaseDao.call(this);
 
     /**
+     * Default metatag.
+     * 
+     * @type {Object}
+     */
+    this.defaultMeta = {
+        title : '',
+        description: 'Seguici con le news, i podcast, i programmi e le classifiche di Radio Illusioni Parallele. riplive.it - the next step',
+        image : 'http://www.riplive.it/images/logo_medium.jpg',
+        url : 'http://www.riplive.it'
+    };
+
+    /**
      * Return the xml sitemap representation.
      * 
      * @param  {Function} cb   Fired with data from remote server,
@@ -29,7 +41,17 @@ function SeoDao() {
         });
     };
 
+    /**
+     * Return metatag,
+     * give a specific path.
+     * 
+     * @param  {string}   path
+     * @param  {Function} cb
+     * @return {undefined}
+     */
     this.getMetaByPath = function(path, cb) {
+        var self = this;
+
         var uri = this.getAdminUri();
             uri += '?action=rip_seo_get_meta_by_path';
             uri += '&path=' + path;
@@ -38,6 +60,18 @@ function SeoDao() {
         
         this.broker.setTime(600).get(hash, uri, function(err, data) {
             if (err) return cb(err, null);
+
+            try {
+                var parsed = JSON.parse(data);
+            } catch(e) {
+                return cb(e, null);
+            }
+
+            if (parsed.status === 'error') {
+                data = self.defaultMeta;
+            } else {
+                data = parsed.meta;
+            }
 
             cb(null, data);
         });

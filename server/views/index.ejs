@@ -1,251 +1,246 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
+    <head>
+        <base href="/" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="fragment" content="!">
+        
+        <title>Riplive .it - <%= meta.title %></title>
+        <meta name="description" content="<%= meta.description %>" />
+        <meta name="keywords" content="webradio, radio, radio illusioni parallele, charts, ripfactor, songs, artists" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<head>
-    <base href="/" />
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="fragment" content="!">
-    
-    <title>Riplive .it - <%= 'a'%></title>
-    <meta name="description" content="" />
-    <meta name="keywords" content="webradio, radio, radio illusioni parallele, charts, ripfactor, songs, artists" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="fb:app_id" content="1380026972276511" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://www.riplive.it" />
+        <meta property="og:title" content="<%= meta.title %>" />
+        <meta property="og:description" content="<%= meta.description %>" />
+        <meta property="og:image" content="<%= meta.image %>" />
 
-    <meta property="fb:app_id" content="1380026972276511" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.riplive.it" />
-    <meta property="og:title" content="" />
-    <meta property="og:description" content="" />
-    <meta property="og:image" content="" />
+        <link rel="shortcut icon" href="favicon.ico" />
 
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/jplayer/skin/pink.flag/jplayer.pink.flag.css" />
-    <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="bower_components/jplayer/skin/pink.flag/jplayer.pink.flag.css" />
+        <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css" />
+        <!-- endbower -->
+        <!-- endbuild -->
 
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
-    <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
+        <!-- build:css({.tmp,app}) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-    <script>
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+        <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', 'UA-25065139-1', 'riplive.it');
-        ga('require', 'displayfeatures');
-        ga('send', 'pageview');
-    </script>
-</head>
+            ga('create', 'UA-25065139-1', 'riplive.it');
+            ga('require', 'displayfeatures');
+            ga('send', 'pageview');
+        </script>
+    </head>
 
-<body ng-app="riplive">
-    <div id="container">
-        <div id="inner-wrapper" class="container-fluid transition">
-            <div id="side-menu" class="transition menu-closed" ng-include src="'templates/side-menu.html'" toggle-side-menu>
+    <body ng-app="riplive">
+        <div id="container">
+            <div id="inner-wrapper" class="container-fluid transition">
+                <div id="side-menu" class="transition menu-closed" ng-include src="'templates/side-menu.html'" toggle-side-menu>
 
-            </div>
-
-            <header id="header" class="header transition">
-                <nav id="navbar" class="navbar">
-                    <a id="small-logo" href="/">
-                        <img src="images/logo_small.png" alt="Radio Illusioni Parallele" title="Radio Illusioni Parallele" />
-                    </a>
-
-                    <ul class="nav navbar-nav navbar-right">
-                        <nav-controls></nav-controls>
-                    </ul>
-                </nav>
-            </header>
-
-            <section id="on-air" class="transition on-air-closed" ng-controller="OnAirCtrl">
-                <div id="on-air-inner" toggle-on-air>
-                    <song-picture data-song="song"></song-picture>
-
-                    <streaming-player data-audio="'http://192.240.97.68:8002/stream'" 
-                        data-autoplay="true" 
-                        data-show-controls="true" 
-                        data-is-streaming="true">
-                    </streaming-player>
-
-                    <vote-song data-id-song="song.id_song"></vote-song>
                 </div>
-            </section>
 
-            <div id="main" class="transition container-fluid" ng-view="">
+                <header id="header" class="header transition">
+                    <nav id="navbar" class="navbar">
+                        <a id="small-logo" href="http://www.riplive.it">
+                            <img src="images/logo_small.png" alt="Radio Illusioni Parallele" title="Radio Illusioni Parallele" />
+                        </a>
 
-            </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <nav-controls></nav-controls>
+                        </ul>
+                    </nav>
+                </header>
 
-            <footer id="footer">
-                <div id="credits" class="col-lg-6 col-lg-offset-3">
-                    <div class="footer-social">
-                        <back-on-top></back-on-top>
+                <section id="on-air" class="transition on-air-closed" ng-controller="OnAirCtrl">
+                    <div id="on-air-inner" toggle-on-air>
+                        <song-picture data-song="song"></song-picture>
+
+                        <streaming-player data-audio="'http://192.240.97.68:8002/stream'" 
+                            data-autoplay="true" 
+                            data-show-controls="true" 
+                            data-is-streaming="true">
+                        </streaming-player>
+
+                        <vote-song data-id-song="song.id_song"></vote-song>
                     </div>
+                </section>
 
-                    <br/>
+                <div id="main" class="transition container-fluid" ng-view>
 
-                    <div class="footer-social">
-                        <a href="http://www.static.riplive.it/feed/" class="btn btn-sm btn-neutral" title="Abbonati al nostro Feed RSS">
-                            <span class="fa fa-rss"></span>
-                        </a>
-                        <a href="https://www.facebook.com/riplive" class="btn btn-sm btn-neutral" title="Seguici su Facebook">
-                            <span class="fa fa-facebook"></span>
-                        </a>
-                        <a href="https://twitter.com/webrip" class="btn btn-sm btn-neutral" title="Seguici su Twitter">
-                            <span class="fa fa-twitter"></span>
-                        </a>
-                        <a href="https://plus.google.com/+RipliveIt/posts" class="btn btn-sm btn-neutral" title="Seguici su Google Plus">
-                            <span class="fa fa-google-plus"></span>
-                        </a>
-                    </div>
-
-                    <br/>
-
-                    <span>
-                        @ 2014 Riplive.it
-                    </span>
-
-                    <br/>
-
-                    <a href="https://www.google.it/maps/place/Radio+Illusioni+Parallele/@45.57476,8.9223407,641m/data=!3m2!1e3!4b1!4m2!3m1!1s0x47868d3c2d0e5705:0x5b92244f59f0fb11?hl=it">
-                        Radio Illusioni Parallele, Via Alberto da Giussano, Canegrate, MI
-                    </a>
                 </div>
-            </footer>
+
+                <footer id="footer">
+                    <div id="credits" class="col-lg-6 col-lg-offset-3">
+                        <div class="footer-social">
+                            <back-on-top></back-on-top>
+                        </div>
+
+                        <br/>
+
+                        <div class="footer-social">
+                            <a href="http://www.static.riplive.it/feed/" class="btn btn-sm btn-neutral" title="Abbonati al nostro Feed RSS">
+                                <span class="fa fa-rss"></span>
+                            </a>
+                            <a href="https://www.facebook.com/riplive" class="btn btn-sm btn-neutral" title="Seguici su Facebook">
+                                <span class="fa fa-facebook"></span>
+                            </a>
+                            <a href="https://twitter.com/webrip" class="btn btn-sm btn-neutral" title="Seguici su Twitter">
+                                <span class="fa fa-twitter"></span>
+                            </a>
+                            <a href="https://plus.google.com/+RipliveIt/posts" class="btn btn-sm btn-neutral" title="Seguici su Google Plus">
+                                <span class="fa fa-google-plus"></span>
+                            </a>
+                        </div>
+
+                        <br/>
+
+                        <span>
+                            @ 2014 Riplive.it
+                        </span>
+
+                        <br/>
+
+                        <a href="https://www.google.it/maps/place/Radio+Illusioni+Parallele/@45.57476,8.9223407,641m/data=!3m2!1e3!4b1!4m2!3m1!1s0x47868d3c2d0e5705:0x5b92244f59f0fb11?hl=it">
+                            Radio Illusioni Parallele, Via Alberto da Giussano, Canegrate, MI
+                        </a>
+                    </div>
+                </footer>
+            </div>
         </div>
-    </div>
 
-    <div id="media-query" class="visible-xs"></div>
-    <div id="analytics" analytics></div>
+        <div id="media-query" class="visible-xs"></div>
+        <div id="analytics" analytics></div>
 
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/jplayer/jquery.jplayer/jquery.jplayer.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
-    <script src="bower_components/angular-disqus/angular-disqus.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-    
-    <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/jplayer/jquery.jplayer/jquery.jplayer.js"></script>
+        <script src="bower_components/angular-touch/angular-touch.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
+        <script src="bower_components/angular-disqus/angular-disqus.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+        
+        <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    
-    <script src="scripts/resources/artist.js"></script>
-    <script src="scripts/resources/artist-genre.js"></script>
-    <script src="scripts/resources/artist-tag.js"></script>
-    <script src="scripts/resources/author.js"></script>
-    <script src="scripts/resources/category.js"></script>
-    <script src="scripts/resources/chart.js"></script>
-    <script src="scripts/resources/chart-vote.js"></script>
-    <script src="scripts/resources/genre-song.js"></script>
-    <script src="scripts/resources/highlight.js"></script>
-    <script src="scripts/resources/news.js"></script>
-    <script src="scripts/resources/podcast.js"></script>
-    <script src="scripts/resources/program.js"></script>
-    <script src="scripts/resources/schedule.js"></script>
-    <script src="scripts/resources/search.js"></script>
-    <script src="scripts/resources/song.js"></script>
-    <script src="scripts/resources/song-genre.js"></script>
-    <script src="scripts/resources/song-tag.js"></script>
-    <script src="scripts/resources/tag.js"></script>
-    <script src="scripts/resources/user.js"></script>
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        
+        <script src="scripts/resources/artist.js"></script>
+        <script src="scripts/resources/artist-genre.js"></script>
+        <script src="scripts/resources/artist-tag.js"></script>
+        <script src="scripts/resources/author.js"></script>
+        <script src="scripts/resources/category.js"></script>
+        <script src="scripts/resources/chart.js"></script>
+        <script src="scripts/resources/chart-vote.js"></script>
+        <script src="scripts/resources/genre-song.js"></script>
+        <script src="scripts/resources/highlight.js"></script>
+        <script src="scripts/resources/news.js"></script>
+        <script src="scripts/resources/podcast.js"></script>
+        <script src="scripts/resources/program.js"></script>
+        <script src="scripts/resources/schedule.js"></script>
+        <script src="scripts/resources/search.js"></script>
+        <script src="scripts/resources/song.js"></script>
+        <script src="scripts/resources/song-genre.js"></script>
+        <script src="scripts/resources/song-tag.js"></script>
+        <script src="scripts/resources/tag.js"></script>
+        <script src="scripts/resources/user.js"></script>
 
-    <script src="scripts/services/artists-service.js"></script>
-    <script src="scripts/services/authors-service.js"></script>
-    <script src="scripts/services/charts-service.js"></script>
-    <script src="scripts/services/general-service.js"></script>
-    <script src="scripts/services/genres-service.js"></script>
-    <script src="scripts/services/highlights-service.js"></script>
-    <script src="scripts/services/news-service.js"></script>
-    <script src="scripts/services/on-air-channel.js"></script>
-    <script src="scripts/services/player-channel.js"></script>
-    <script src="scripts/services/podcasts-service.js"></script>
-    <script src="scripts/services/programs-service.js"></script>
-    <script src="scripts/services/search-service.js"></script>
-    <script src="scripts/services/side-menu-channel.js"></script>
-    <script src="scripts/services/socket.io.js"></script>
-    <script src="scripts/services/songs-service.js"></script>
-    <script src="scripts/services/user-service.js"></script>
-    <script src="scripts/services/vote-service.js"></script>
+        <script src="scripts/services/artists-service.js"></script>
+        <script src="scripts/services/authors-service.js"></script>
+        <script src="scripts/services/charts-service.js"></script>
+        <script src="scripts/services/general-service.js"></script>
+        <script src="scripts/services/genres-service.js"></script>
+        <script src="scripts/services/highlights-service.js"></script>
+        <script src="scripts/services/news-service.js"></script>
+        <script src="scripts/services/on-air-channel.js"></script>
+        <script src="scripts/services/player-channel.js"></script>
+        <script src="scripts/services/podcasts-service.js"></script>
+        <script src="scripts/services/programs-service.js"></script>
+        <script src="scripts/services/search-service.js"></script>
+        <script src="scripts/services/side-menu-channel.js"></script>
+        <script src="scripts/services/socket.io.js"></script>
+        <script src="scripts/services/songs-service.js"></script>
+        <script src="scripts/services/user-service.js"></script>
+        <script src="scripts/services/vote-service.js"></script>
 
-    <script src="scripts/controllers/artist.js"></script>
-    <script src="scripts/controllers/artists.js"></script>
-    <script src="scripts/controllers/artists-genre.js"></script>
-    <script src="scripts/controllers/artists-tag.js"></script>
-    <script src="scripts/controllers/author.js"></script>
-    <script src="scripts/controllers/authors.js"></script>
-    <script src="scripts/controllers/categories.js"></script>
-    <script src="scripts/controllers/chart.js"></script>
-    <script src="scripts/controllers/charts.js"></script>
-    <script src="scripts/controllers/highlights.js"></script>
-    <script src="scripts/controllers/login.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/news.js"></script>
-    <script src="scripts/controllers/news-list.js"></script>
-    <script src="scripts/controllers/on-air.js"></script>
-    <script src="scripts/controllers/photos.js"></script>
-    <script src="scripts/controllers/podcast.js"></script>
-    <script src="scripts/controllers/podcasts.js"></script>
-    <script src="scripts/controllers/podcast-program.js"></script>
-    <script src="scripts/controllers/program.js"></script>
-    <script src="scripts/controllers/programs.js"></script>
-    <script src="scripts/controllers/schedule.js"></script>
-    <script src="scripts/controllers/search.js"></script>
-    <script src="scripts/controllers/song.js"></script>
-    <script src="scripts/controllers/songs.js"></script>
-    <script src="scripts/controllers/songs-genre.js"></script>
-    <script src="scripts/controllers/songs-tag.js"></script>
-    <script src="scripts/controllers/tags.js"></script>
+        <script src="scripts/controllers/artist.js"></script>
+        <script src="scripts/controllers/artists.js"></script>
+        <script src="scripts/controllers/artists-genre.js"></script>
+        <script src="scripts/controllers/artists-tag.js"></script>
+        <script src="scripts/controllers/author.js"></script>
+        <script src="scripts/controllers/authors.js"></script>
+        <script src="scripts/controllers/categories.js"></script>
+        <script src="scripts/controllers/chart.js"></script>
+        <script src="scripts/controllers/charts.js"></script>
+        <script src="scripts/controllers/highlights.js"></script>
+        <script src="scripts/controllers/login.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/news.js"></script>
+        <script src="scripts/controllers/news-list.js"></script>
+        <script src="scripts/controllers/on-air.js"></script>
+        <script src="scripts/controllers/photos.js"></script>
+        <script src="scripts/controllers/podcast.js"></script>
+        <script src="scripts/controllers/podcasts.js"></script>
+        <script src="scripts/controllers/podcast-program.js"></script>
+        <script src="scripts/controllers/program.js"></script>
+        <script src="scripts/controllers/programs.js"></script>
+        <script src="scripts/controllers/schedule.js"></script>
+        <script src="scripts/controllers/search.js"></script>
+        <script src="scripts/controllers/song.js"></script>
+        <script src="scripts/controllers/songs.js"></script>
+        <script src="scripts/controllers/songs-genre.js"></script>
+        <script src="scripts/controllers/songs-tag.js"></script>
+        <script src="scripts/controllers/tags.js"></script>
 
-    <script src="scripts/directives/analytics.js"></script>
-    <script src="scripts/directives/back-on-top.js"></script>
-    <script src="scripts/directives/photos-control.js"></script>
-    <script src="scripts/directives/loading-spinner.js"></script>
-    <script src="scripts/directives/nav-controls.js"></script>
-    <script src="scripts/directives/search.js"></script>
-    <script src="scripts/directives/social-buttons.js"></script>
-    <script src="scripts/directives/song-picture.js"></script>
-    <script src="scripts/directives/streaming-player.js"></script>
-    <script src="scripts/directives/toggle-side-menu.js"></script>
-    <script src="scripts/directives/toggle-on-air.js"></script>
-    <script src="scripts/directives/top-highlights.js"></script>
-    <script src="scripts/directives/when-scrolled.js"></script>
-    <script src="scripts/directives/vote-song.js"></script>
+        <script src="scripts/directives/analytics.js"></script>
+        <script src="scripts/directives/back-on-top.js"></script>
+        <script src="scripts/directives/photos-control.js"></script>
+        <script src="scripts/directives/loading-spinner.js"></script>
+        <script src="scripts/directives/nav-controls.js"></script>
+        <script src="scripts/directives/search.js"></script>
+        <script src="scripts/directives/social-buttons.js"></script>
+        <script src="scripts/directives/song-picture.js"></script>
+        <script src="scripts/directives/streaming-player.js"></script>
+        <script src="scripts/directives/toggle-side-menu.js"></script>
+        <script src="scripts/directives/toggle-on-air.js"></script>
+        <script src="scripts/directives/top-highlights.js"></script>
+        <script src="scripts/directives/when-scrolled.js"></script>
+        <script src="scripts/directives/vote-song.js"></script>
 
-    <script src="scripts/filters/date-format.js"></script>
-    <script src="scripts/filters/nl2br.js"></script>
-    <script src="scripts/filters/unsafe-html.js"></script>
-    <script src="scripts/filters/strip-html.js"></script>
-    <!-- endbuild -->
-</body>
-
+        <script src="scripts/filters/date-format.js"></script>
+        <script src="scripts/filters/nl2br.js"></script>
+        <script src="scripts/filters/unsafe-html.js"></script>
+        <script src="scripts/filters/strip-html.js"></script>
+        <!-- endbuild -->
+    </body>
 </html>
