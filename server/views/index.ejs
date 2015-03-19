@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html>
     <head>
         <base href="/" />
         <meta charset="utf-8">
@@ -20,19 +20,11 @@
 
         <link rel="shortcut icon" href="favicon.ico" />
 
-        <!-- build:css styles/vendor.css -->
-        <!-- bower:css -->
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="bower_components/jplayer/skin/pink.flag/jplayer.pink.flag.css" />
-        <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css" />
-        <!-- endbower -->
-        <!-- endbuild -->
+        <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="vendor/angular-carousel/dist/angular-carousel.css" />
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-
-        <!-- build:css({.tmp,app}) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
         <script>
@@ -58,7 +50,6 @@
         <div id="container">
             <div id="inner-wrapper" class="container-fluid transition">
                 <div id="side-menu" class="transition menu-closed" ng-include src="'templates/side-menu.html'" toggle-side-menu>
-
                 </div>
 
                 <header id="header" class="header transition">
@@ -87,9 +78,7 @@
                     </div>
                 </section>
 
-                <div id="main" class="transition container-fluid" ng-view>
-
-                </div>
+                <div id="main" class="transition container-fluid" ng-view></div>
 
                 <footer id="footer">
                     <div id="credits" class="col-lg-6 col-lg-offset-3">
@@ -132,29 +121,23 @@
 
         <div id="media-query" class="visible-xs"></div>
         <div id="analytics" analytics></div>
+     
+        <script src="vendor/jquery/dist/jquery.js"></script>
+        <script src="vendor/angular/angular.js"></script>
+        <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="vendor/angular-resource/angular-resource.js"></script>
+        <script src="vendor/angular-route/angular-route.js"></script>
+        <script src="vendor/jplayer/dist/jplayer/jquery.jplayer.js"></script>
+        <script src="vendor/angular-touch/angular-touch.js"></script>
+        <script src="vendor/angular-sanitize/angular-sanitize.js"></script>
+        <script src="vendor/angular-carousel/dist/angular-carousel.js"></script>
+        <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="vendor/angular-local-storage/dist/angular-local-storage.js"></script>
+        <script src="vendor/angular-disqus/angular-disqus.js"></script>
 
-        <!-- build:js scripts/vendor.js -->
-        <!-- bower:js -->
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="bower_components/angular-resource/angular-resource.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
-        <script src="bower_components/jplayer/jquery.jplayer/jquery.jplayer.js"></script>
-        <script src="bower_components/angular-touch/angular-touch.js"></script>
-        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-        <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
-        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-        <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
-        <script src="bower_components/angular-disqus/angular-disqus.js"></script>
-        <!-- endbower -->
-        <!-- endbuild -->
-        
         <script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        
         <script src="scripts/resources/artist.js"></script>
         <script src="scripts/resources/artist-genre.js"></script>
         <script src="scripts/resources/artist-tag.js"></script>
@@ -241,6 +224,5 @@
         <script src="scripts/filters/nl2br.js"></script>
         <script src="scripts/filters/unsafe-html.js"></script>
         <script src="scripts/filters/strip-html.js"></script>
-        <!-- endbuild -->
     </body>
 </html>

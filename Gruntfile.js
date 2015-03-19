@@ -3,43 +3,10 @@ module.exports = function(grunt) {
     require('time-grunt')(grunt);
 
     grunt.initConfig({
-        static: {
-            app: 'app',
-            dist: 'dist'
+        path: {
+            public: 'public',
+            server: 'server'
         },
-
-        connect: {
-            options: {
-                port: 9000,
-                hostname: 'localhost',
-                livereload: 35729
-            },
-            livereload: {
-                options: {
-                    open: true,
-                    base: [
-                        '.tmp',
-                        '<%= static.app %>'
-                    ]
-                }
-            },
-            test: {
-                options: {
-                    port: 9001,
-                    base: [
-                        '.tmp',
-                        'test',
-                        '<%= static.app %>'
-                    ]
-                }
-            },
-            dist: {
-                options: {
-                    base: '<%= static.dist %>'
-                }
-            }
-        },
-
         jshint: {
             options: {
                 jshintrc: '.jshintrc',
@@ -47,7 +14,7 @@ module.exports = function(grunt) {
             },
             all: [
                 'Gruntfile.js',
-                '<%= static.app %>/scripts/{,*/}*.js'
+                '<%= path.public %>/scripts/{,*/}*.js'
             ],
             test: {
                 options: {
