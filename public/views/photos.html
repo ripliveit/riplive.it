@@ -1,0 +1,42 @@
+<div id="photos" class="container content">
+    <h1 class="single-title text-center">
+        Photos
+    </h1>
+
+    <photos-control></photos-control>
+
+    <div class="media-wrapper">
+        <h4 class="media-wrapper-title bolder">
+            <span class="fa fa-camera"></span> #ripliveit
+        </h4>
+
+        <div class="media-block media-block-instagram col-sm-6 col-md-4 col-lg-4" ng-repeat="p in photos">
+            <div class="thumbnail">
+                <img ng-src="{{p.images.standard_resolution.url}}" />
+
+                <div class="caption transition">
+                    <p ng-bind-html="(p.caption.text | limitTo : 50) + '...'"></p>
+
+                    <h5>
+                        By
+                        <a ng-href="http://instagram.com/{{p.user.username}}" title="{{p.user.username}}" class="color-news">
+                            {{p.user.username}}
+                        </a>
+                    </h5>
+
+                    <social-buttons data-href="'/photos'" data-image="p.images.standard_resolution.url" data-title="p.user.username" data-text="p.caption.text">
+                    </social-buttons>
+                </div>
+            </div>
+        </div>
+
+        <loading-spinner data-visible="loading"></loading-spinner>
+    </div>
+
+    <div class="row" ng-hide="loading">
+        <div class="btn btn-full-size btn-neutral transition" ng-click="loadData()">
+            <span class="bold">Load more</span><br/>
+            <span class="fa fa-chevron-down"></span>
+        </div>
+    </div>
+</div>

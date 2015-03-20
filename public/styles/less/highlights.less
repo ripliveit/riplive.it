@@ -1,0 +1,73 @@
+#hg {
+    background-color: @dark-gray;
+    height: 250px;
+    position: relative;
+    top: 0;
+    width: 100%;
+
+    .hg-carousel {
+        height: 250px;
+    }
+
+    .hg-grid {
+        height: 100%;
+        width: 100%;
+
+        .hg-figure {
+            background-size: cover;
+            height: 250px;
+            padding: 0;
+            position: relative;
+            width: 100%;
+
+            &:hover {
+                .scale3d(1.05, 1.05, 1);
+                z-index: 2;
+            }
+
+            .hg-link {
+                display: block;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                text-decoration: none;
+                top: 0;
+                width: 100%;
+                z-index: 2;
+            }
+        }
+
+        h3, h4 {
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            text-transform: uppercase;
+            z-index: 5;
+
+            a {
+                color: @white; 
+                z-index: 5;
+
+                &:hover {
+                    color: @orange;
+                }
+            }
+        }
+
+        h3 {
+            bottom: 10px;
+            font-size: 16px;
+            right: 20px;
+            text-align: right;
+        }
+
+        h4 {
+            border: 1px solid @orange;
+            font-size: 14px;
+            left: 20px;
+            padding: 4px;
+            top: 10px;  
+        }
+    }
+}

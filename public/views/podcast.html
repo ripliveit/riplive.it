@@ -1,0 +1,72 @@
+<div id="podcast" class="single content container-fluid" itemscope itemtype="http://schema.org/RadioEpisode">
+    <div class="cover-wrapper">
+        <div class="cover" ng-style="{'background-image': 'url(' + podcast.podcast_images['image_large'] + ')'}">
+            <div class="cover-picker">
+                <header class="cover-header">
+                    <a ng-href="/podcasts" class="cover-label btn btn-podcasts" role="button">
+                        <span class="fa fa-cloud"></span> Podcasts
+                    </a>
+
+                    <h1 class="cover-title" itemprop="name">
+                        {{podcast.title}}
+                    </h1>
+
+                    <h2>
+                        <span itemprop="datePublished">
+                            {{podcast.date | dateFormat}}
+                        </span>
+                    </h2>
+
+                    <span class="fa fa-chevron-down"></span>
+                </header>
+            </div>
+        </div>
+    </div>
+
+    <article class="single-article col-lg-6 col-lg-offset-3">
+        <streaming-player data-audio="podcast.url" data-autoplay="true" data-show-controls="true" data-is-streaming="false"></streaming-player>
+
+        <p itemprop="text" ng-bind-html="podcast.summary | unsafeHtml"></p>
+    </article>
+
+    <div class="single-article-info col-lg-6 col-lg-offset-3">
+        <div class="single-article-author">
+            <h3 class="bold">
+                <a ng-href="/programs/{{podcast.program_slug}}" title="{{podcast.program_title}}" itemprop="partOfSeries">
+                        {{podcast.program_title}}
+                    </a>
+            </h3>
+
+            <h4>
+                With :
+            </h4>
+
+            <a ng-href="/authors/{{a.slug}}" class="author-info" ng-repeat="a in podcast.authors">
+                <figure class="pull-left text-center author-picture" ng-href="/authors/{{a.slug}}">
+                    <img ng-src="{{a.author_images['thumbnail']}}" title="{{a.nickname}}" />
+                </figure>
+
+                <div class="pull-left">
+                    <h4 itemprop="name">
+                        {{a.nickname}}
+                    </h4>
+
+                    <h5 itemprop="email">
+                        {{a.email}}
+                    </h5>
+                </div>
+
+                <span class="fa fa-chevron-right"></span>
+            </a>
+        </div>
+
+        <div class="single-article-taxonomy">
+            <h4 class="bold">
+                Share this
+                <span class="fa fa-heart"></span>
+            </h4>
+
+            <social-buttons data-href="'/podcasts/' + podcast.program_slug + '/' + podcast.id" data-image="podcast.podcast_images['thumbnail']" data-title="podcast.title" data-text="podcast.summary | stripHtml"></social-buttons>
+        </div>
+    </div>
+</div>

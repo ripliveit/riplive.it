@@ -1,0 +1,105 @@
+<div id="artist" class="single content container-fluid" itemscope itemtype="http://schema.org/MusicGroup">
+    <div class="cover-wrapper">
+        <div class="cover" ng-style="{'background-image': 'url(' + artist.artist_images['image_large'] + ')'}">
+            <div class="cover-picker">
+                <header class="cover-header">
+                    <a ng-href="/artists" class="cover-label btn btn-artists">
+                       <span class="fa fa-user"></span> Artists
+                    </a>
+
+                    <h1 class="cover-title" itemprop="name">
+                        {{artist.artist_title}}
+                    </h1>
+
+                    <span class="fa fa-chevron-down"></span>
+                </header>
+            </div>
+        </div>
+    </div>
+
+    <article class="single-article col-lg-6 col-lg-offset-3">
+        <p class="text-center" ng-bind-html="artist.artist_content" itemprop="description"></p>
+
+        <div>
+            <h4 class="bold">
+                You can find {{artist.artist_title}} on:
+            </h4>
+
+            <a ng-href="{{artist.artist_facebook}}" ng-show="artist.artist_facebook" class="btn btn-lg btn-fb fa fa-facebook">
+            </a>
+
+            <a ng-href="{{artist.artist_twitter}}" ng-show="artist.artist_twitter" class="btn btn-lg btn-twitter fa fa-twitter">
+            </a>
+
+            <a ng-href="{{artist.artist_gplus}}" ng-show="artist.artist_gplus" class="btn btn-lg btn-artists fa fa-google-plus">
+            </a>
+
+            <a ng-href="{{artist.artist_itunes}}" ng-show="artist.artist_itunes" class="btn btn-lg btn-podcasts fa fa-apple">
+            </a>
+        </div>
+    </article>
+
+    <div class="single-article-info col-lg-6 col-lg-offset-3">
+        <div class="row">
+            <div class="single-article-author col-lg-12">
+                <h2 class="bold">
+                    {{artist.artist_title}}
+                </h2>
+
+                <ul id="information">
+                    <li class="information-item" ng-if="artist.artist_lineup">
+                        <h4>
+                            <small>Line up:</small> {{artist.artist_lineup}}
+                        </h4>
+                    </li>
+                    <li class="information-item" ng-if="artist.artist_label">
+                        <h4>
+                            <small>Label:</small>  {{artist.artist_label}}
+                        </h4>
+                    </li>
+                    <li class="information-item" ng-if="artist.artist_booking">
+                        <h4>
+                            <small>Booking:</small> {{artist.artist_booking}}
+                        </h4>
+                    </li>
+                    <li class="information-item" ng-if="artist.artist_press">
+                        <h4>
+                            <small>Press:</small> {{artist.artist_press}}
+                        </h4>
+                    </li>
+                    <li class="information-item" ng-if="artist.artist_email">
+                        <h4 itemprop="email">
+                            <small>Email:</small>{{artist.artist_email}}
+                        </h4>
+                    </li>
+                    <li class="information-item" ng-if="artist.artist_telephone">
+                        <h4 itemprop="telephone">
+                            <small>Telephone:</small> {{artist.artist_telephone}}
+                        </h4>
+                    </li>
+                    <li class="information-item" ng-if="artist.artist_website">
+                        <h4>
+                            <a ng-href="{{artist.artist_website}}" title="website" itemprop="sameAs">
+                                <small>Website:</small> {{artist.artist_website}}
+                            </a>
+                        </h4>
+                    </li>
+                    <li class="information-item" ng-if="artist.artist_provincia">
+                        <h4>
+                            <small>Province:</small> {{artist.artist_provincia}}
+                        </h4>
+                    </li>
+                </ul>
+            </div>
+            <!--
+            <div class="single-article-taxonomy col-lg-6">
+                <h4 class="bold">
+                    Share this
+                </h4>
+
+                <social-buttons data-href="'/artists/' + artist.artist_slug" data-image="artist.artist_images['thumbnail']" data-title="artist.artist_title" data-text="artist.artist_excerpt | stripHtml"></social-buttons>
+            </div>
+            -->
+        </div>
+    </div>
+</div>

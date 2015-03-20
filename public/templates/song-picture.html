@@ -1,0 +1,46 @@
+<div id="cover-wrapper">
+    <figure id="cover" ng-style="{'background-image': 'url(' + song.image + ')'}">
+        <h2>
+            Now On Air
+        </h2>
+
+        <div id="song-info">
+            <h3>
+                {{song.artist}}
+
+                <br/>{{song.title}}
+            </h3>
+        </div>
+    </figure>
+
+    <article id="song-content">
+        <header>
+            <h2>
+                You are listenin'
+            </h2>
+            <h4>
+                <strong>Artist</strong> : {{song.artist}}
+            </h4>
+            <h4>
+                <strong>Track</strong> : {{song.title}}
+            </h4>
+            <h4>
+                <strong>Album</strong> : {{song.info.custom_fields['songs-album'][0]}}
+            </h4>
+            <h4>
+               <strong>Year</strong> : {{song.info.custom_fields['songs-year'][0]}}
+            </h4>
+            <h4>
+               <strong>Genre</strong> : {{song.info['taxonomy_song-genre'][0]['title']}}
+            </h4>
+            <h4>
+                Tags : 
+                <span ng-repeat="tag in song.info['taxonomy_song-tag']">
+                    {{tag.title}}
+                </span>
+            </h4>
+        </header>
+
+        <div id="lyrics" ng-bind-html="song.info.content"></div>
+    </article>
+</div>
