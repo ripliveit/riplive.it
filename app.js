@@ -23,8 +23,8 @@ app.set('staticFolder', path.join(__dirname, config.static_folder));
 // Development
 // configuration.
 app.configure('development', function() {
-    //app.use(express.errorHandler());
-    //app.use(express.logger('dev'));
+    app.use(express.errorHandler());
+    app.use(express.logger('dev'));
 });
 
 app.use(express.static(app.get('staticFolder')));

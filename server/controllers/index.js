@@ -27,7 +27,8 @@ controllers.index = {
             if (err) return next();
 
             res.render('index', {
-                meta: data
+                meta: data,
+                env : process.env.NODE_ENV
             });
         });
     }

@@ -32,31 +32,16 @@ module.exports = function(grunt) {
                         '<%= path.public %>/*.min.css',
                     ]
                 }]
-            }
-        },
-        htmlmin: {
-            dist: {
-                options: {
-                    collapseWhitespace: true,
-                    collapseBooleanAttributes: true,
-                    removeCommentsFromCDATA: true,
-                    removeOptionalTags: true
-                },
+            },
+            flat: {
                 files: [{
-                    expand: true,
-                    cwd: '<%= static.dist %>',
-                    src: ['*.ejs', 'views/{,*/}*.html'],
-                    dest: '<%= static.dist %>'
-                }]
-            }
-        },
-        ngmin: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%= path.public %>/scripts',
-                    src: '*.js',
-                    dest: '<%= path.public %>/app.min.js'
+                    dot: true,
+                    src: [
+                        '<%= path.public %>/*.js',
+                        '<%= path.public %>/*.css',
+                        '!<%= path.public %>/*.min.js',
+                        '!<%= path.public %>/*.min.css',
+                    ]
                 }]
             }
         },
@@ -79,17 +64,34 @@ module.exports = function(grunt) {
                         '<%= path.public %>/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
                         '<%= path.public %>/vendor/angular-local-storage/dist/angular-local-storage.js',
                         '<%= path.public %>/vendor/angular-disqus/angular-disqus.js'
+                    ],
+                    '<%= path.public %>/app.js': [
+                        '<%= path.public %>/scripts/**/*.js'
                     ]
                 }
             }
         },
+        ngAnnotate: {
+            options: {
+                singleQuotes: true,
+                separator: ';'
+            },
+            dist: {
+                files: [{
+                    src: '<%= path.public %>/app.js',
+                    dest: '<%= path.public %>/app.js'
+                }]
+            }
+        },
         uglify: {
             dist: {
-                files: {
-                    '<%= path.public %>/vendor.min.js': [
-                        '<%= path.public %>/vendor.js'
-                    ]
-                }
+                files: [{
+                    src: '<%= path.public %>/vendor.js',
+                    dest: '<%= path.public %>/vendor.min.js'
+                },{
+                    src: '<%= path.public %>/app.js',
+                    dest: '<%= path.public %>/app.min.js'
+                }]
             }
         },
         cssmin: {
@@ -130,10 +132,10 @@ module.exports = function(grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'concat:dist',
-        //'ngmin:dist',
+        'ngAnnotate:dist',
+        'uglify:dist',
         'cssmin:dist',
-        'uglify:dist'
-        //'htmlmin'
+        'clean:flat'
     ]);
 
     grunt.registerTask('deploy', [
