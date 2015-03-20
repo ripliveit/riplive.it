@@ -4,7 +4,7 @@ node_modules
 *.sass-cache
 *.sln
 *.njsproj
-app/bower_components
+public/vendor/
 heroku
 /views
 /dist
