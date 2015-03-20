@@ -4,8 +4,12 @@ node_modules
 *.sass-cache
 *.sln
 *.njsproj
-public/vendor/
 heroku
 /views
 /dist
 nbproject
+
+public/vendor/
+public/vendor.min.js
+public/app.min.js
+public/main.min.css
