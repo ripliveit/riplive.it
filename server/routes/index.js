@@ -1,5 +1,4 @@
 var controllers = require('../controllers');
-var auth = require('../services/auth.js');
 
 /**
  * Exports all routes (defined in alphabetical order).
