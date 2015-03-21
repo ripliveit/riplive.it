@@ -1,0 +1,139 @@
+.single {
+    overflow: hidden;
+    position: relative;
+}
+
+.single-article {
+    font-family: @font-familty-regular;
+    margin-top: 40px;
+    padding: 0 25px;
+
+    &:first-letter {
+        font-size: 72px;
+        font-weight: bold;
+    }
+
+    p {
+        font-size: 19.5px;
+        line-height: 1.8em;
+        margin: 0 0 1em;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+
+        &.alignright,
+        &.alignleft {
+            margin: 0 0 1em 1em;
+            width: 100%;
+        }
+
+        &.alignright {
+            float: right;
+        }
+
+        &.alignleft {
+            float: left;
+        }
+
+        &.aligncenter {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+    }
+}
+
+.single-article-info {
+    margin-bottom: 40px;
+    margin-top: 40px;
+    padding: 0 25px;
+
+    .single-article-author, .single-article-taxonomy {
+        border-top: 1px solid @light-gray;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+
+    .author-info {
+        border-bottom: 1px solid @light-grauy;
+        display: block;
+        margin: 10px 0;
+        overflow: hidden;
+        padding: 10px 0;
+        position: relative;
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+
+        &:hover {
+            background-color: @light-grauy;
+        }
+    }
+
+    .author-picture {
+        margin-top: -7px;
+        padding: 0 10px 0 0;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        img {
+            height: 75px;
+            width: 75px;
+        }
+    }
+
+    .fa-chevron-right {
+        margin-top: -7px;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+    }
+
+    .single-share {
+        margin: 20px 0;
+        .btn {
+            font-size: 2em;
+            margin: 5px 0;
+            width: 100%;
+        }
+    }
+}
+
+#information {
+    .information-item {
+        font-size: 17.5px;
+        margin: 10px 0;
+    }
+}
+
+.single-article-navigation {
+    .single-article-prev,
+    .single-article-next {
+        background-color: @white;
+        border: 1px solid @middle-gray;
+        bottom: 0;
+        display: block;
+        font-size: 18px;
+        height: 50px;
+        line-height: 50px;
+        margin: 25px 0;
+        opacity: 0.8;
+        position: fixed;
+        text-align: center;
+        width: 75px;
+    }
+
+    .single-article-prev {
+        border-left: none;
+        left: 0;
+    }
+
+    .single-article-next {
+        border-right: none;
+        right: 0;
+    }    
+}

@@ -1,0 +1,68 @@
+.cover-wrapper {
+    height: 400px;
+    position: relative;
+    width: 100%;
+
+    &:after {
+    	.gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.71));
+    }
+}
+
+.cover {
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    min-height: 400px;
+    position: absolute;
+    width: 100%;
+
+    .cover-info {
+        border-bottom: 1px solid @white;
+        color: @white;
+        display: inline-block;
+        font-size: 17px;
+        left: 25px;
+        padding: 15px 0;
+        position: absolute;
+        top: 25px;
+        z-index: 2;
+
+        .cover-author-picture {
+            display: inline-block;
+            height: 45px;
+            margin: 0 10px 0 0;
+            width: 45px;
+
+            img {
+			    border: 2px solid @light-gray;
+			    border-radius: 45px;
+			    height: 45px;
+			    width: 45px;
+			}
+        }
+    }
+
+    .cover-picker {
+	    bottom: 25px;
+	    position: absolute;
+	    width: 100%;
+	    z-index: 2;
+	}
+
+	.cover-header {
+	    color: @white;
+	    margin: 0 auto;
+	    text-align: center;
+
+	    .cover-title {
+		    font-size: 26px;
+		    font-weight: bold;
+		    text-transform: uppercase;
+		    word-wrap: break-word;
+		}
+
+		.cover-subtitle {
+		    font-size: 22px;
+		}
+	}
+}

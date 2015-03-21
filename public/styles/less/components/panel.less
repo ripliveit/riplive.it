@@ -1,0 +1,43 @@
+.panel-group {
+    margin: 0;
+}
+
+.panel {
+    border-radius: 0;
+
+    .panel-default {
+        border: none;
+    }
+
+    .panel-heading {
+        background-color: @light-gray;
+        border: none;
+        border-bottom: 1px solid @white;
+        border-radius: 0;
+        font-weight: bolder;
+        padding: 0;
+        text-transform: uppercase;
+
+        .open & {
+        	background-color: #9b59b6;
+        	color: #FFF;
+        }
+    }
+
+    .panel-title {
+    	a {
+    	    color: inherit;
+    	    cursor: pointer;
+    	    display: block;
+    	    height: 100%;
+    	    padding: 15px;
+    	    width: 100%;
+    	}
+    }
+
+    .panel-body {
+        border: none;
+        padding: 0;
+    }
+}
+
