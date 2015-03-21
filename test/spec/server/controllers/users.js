@@ -3,7 +3,7 @@ var request = require('supertest');
 var app = require(process.cwd() + '/app.js');
 
 describe('GET /api/users/:uuid', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a single JSON user object', function(done) {
         var uuid = 'c2cfc9e0-b749-11e3-8ade-ff64b8dd6b9c';

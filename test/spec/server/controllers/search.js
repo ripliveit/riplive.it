@@ -3,7 +3,7 @@ var request = require('supertest');
 var app = require(process.cwd() + '/app.js');
 
 describe('GET /api/search', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a JSON array of search results', function(done) {
         var query = '?search=dracula&count=1';
