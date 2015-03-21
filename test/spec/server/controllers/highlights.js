@@ -3,7 +3,7 @@ var request = require('supertest');
 var app = require(process.cwd() + '/app.js');
 
 describe('GET /api/highlights', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a JSON array of highlights', function(done) {
         request(app)

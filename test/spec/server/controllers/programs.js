@@ -3,7 +3,7 @@ var request = require('supertest');
 var app = require(process.cwd() + '/app.js');
 
 describe('GET /api/programs', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a JSON array of programs', function(done) {
         request(app)
@@ -23,7 +23,7 @@ describe('GET /api/programs', function() {
 });
 
 describe('GET /api/programs/:slug', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a JSON programs object', function(done) {
         var slug = 'back-to-the-movies';
@@ -44,7 +44,7 @@ describe('GET /api/programs/:slug', function() {
 });
 
 describe('GET /api/schedule', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a JSON array object rapresenting the weekly programs schedule', function(done) {
          request(app)

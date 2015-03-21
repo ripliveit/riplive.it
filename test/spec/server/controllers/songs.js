@@ -3,7 +3,7 @@ var request = require('supertest');
 var app = require(process.cwd() + '/app.js');
 
 describe('GET /api/songs', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a JSON array of songs', function(done) {
         request(app)
@@ -23,7 +23,7 @@ describe('GET /api/songs', function() {
 });
 
 describe('GET /api/songs/:slug', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a single JSON news object', function(done) {
         var slug = 'a-ton-of-love';
@@ -44,7 +44,7 @@ describe('GET /api/songs/:slug', function() {
 });
 
 describe('GET /api/songs/genre/:slug', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a JSON array of news of the same tag', function(done) {
         var slug = 'rock';
@@ -66,7 +66,7 @@ describe('GET /api/songs/genre/:slug', function() {
 });
 
 describe('GET /api/songs/tag/:slug', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a JSON array of news of the same category', function(done) {
         var slug = 'rotazione';

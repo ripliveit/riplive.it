@@ -3,7 +3,7 @@ var request = require('supertest');
 var app = require(process.cwd() + '/app.js');
 
 describe('GET /api/charts', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a JSON array of charts', function(done) {
         request(app)
@@ -23,7 +23,7 @@ describe('GET /api/charts', function() {
 });
 
 describe('GET /api/charts/:slug', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a single JSON chart object', function(done) {
         var slug = 'pop-chart-2014-10-13';
@@ -44,7 +44,7 @@ describe('GET /api/charts/:slug', function() {
 });
 
 describe('GET /api/charts/complete/:slug', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a JSON array of charts within a specific chart type', function(done) {
         var slug = 'rock-chart';
@@ -66,7 +66,7 @@ describe('GET /api/charts/complete/:slug', function() {
 });
 
 describe('GET /api/charts/latest', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should return a JSON array of charts, one per chart type', function(done) {
 
@@ -87,7 +87,7 @@ describe('GET /api/charts/latest', function() {
 });
 
 describe('POST /api/charts/vote', function() {
-    this.timeout(5000);
+    this.timeout(10000);
 
     it('should responde with 200 OK', function(done) {
         var vote = {
