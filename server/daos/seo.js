@@ -1,4 +1,4 @@
-var util = require('util')
+var util = require('util');
 var BaseDao = require(__dirname + '/base-dao.js');
 
 /**

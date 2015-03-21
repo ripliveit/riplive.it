@@ -46,7 +46,7 @@ module.exports = function(app) {
     app.get('/api/songs/genre/:slug', controllers.songs.getSongsByGenre);
     app.get('/api/songs/tag/:slug', controllers.songs.getSongsByTag);
 
-    app.get('/sitemap.xml', controllers.sitemap.getSiteMap);
+    app.get('/sitemap.xml', controllers.seo.getSiteMap);
 
     app.get('*', controllers.index.render);
 };
