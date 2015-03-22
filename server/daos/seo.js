@@ -15,7 +15,7 @@ function SeoDao() {
      * @type {Object}
      */
     this.defaultMeta = {
-        title : '',
+        title : 'Riplive.it - The next step',
         path: '',
         description: 'Seguici con le news, i podcast, i programmi e le classifiche di Radio Illusioni Parallele. riplive.it - the next step',
         image : 'http://www.riplive.it/images/logo_medium.jpg',
