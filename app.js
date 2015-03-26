@@ -27,6 +27,7 @@ app.configure('development', function() {
     app.use(express.logger('dev'));
 });
 
+
 app.use(express.static(app.get('staticFolder')));
 app.use(express.favicon());
 app.use(express.json());
@@ -34,6 +35,8 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(app.router);
+app.use(require('prerender-node').set('prerenderToken', 'NfHYwNEeopnd3fYX7R8n'));
+
 
 // Error Handler
 app.use(function(err, req, res, next) {
