@@ -12,7 +12,7 @@ console.log(config);
 app.enable('trust proxy');
 app.disable('x-powered-by');
 app.disable('view cache');
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8000);
 app.set('wp_uri', config.wp_uri);
 app.set('admin_uri', config.admin_uri);
 app.set('memcache_uri', config.memcache_uri);
@@ -23,11 +23,11 @@ app.set('staticFolder', path.join(__dirname, config.static_folder));
 // Development
 // configuration.
 app.configure('development', function() {
-    app.use(express.errorHandler());
-    app.use(express.logger('dev'));
+    // app.use(express.errorHandler());
+    // app.use(express.logger('dev'));
 });
 
-
+app.use(require('prerender-node').set('prerenderToken', 'NfHYwNEeopnd3fYX7R8n'));
 app.use(express.static(app.get('staticFolder')));
 app.use(express.favicon());
 app.use(express.json());
@@ -35,8 +35,6 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser());
 app.use(app.router);
-app.use(require('prerender-node').set('prerenderToken', 'NfHYwNEeopnd3fYX7R8n'));
-
 
 // Error Handler
 app.use(function(err, req, res, next) {
