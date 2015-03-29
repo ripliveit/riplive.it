@@ -107,9 +107,22 @@
 	    list-style-type: none;
 	}
 
-	.list-category {
-	    display: inline;
-	    list-style-type: none;
+	.list-controls {
+	    margin: 10px auto;
+
+	    .btn {
+		    display: inline-block;
+		    font-size: 18px;
+		    width: 55px;
+		}
+
+		.btn-vote {
+		    color: @white;
+
+		    &:hover {
+			    cursor: default;
+			}
+		}
 	}
 }
 

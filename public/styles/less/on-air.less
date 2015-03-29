@@ -45,6 +45,12 @@
 	    height: 100%;
 	    margin: 0;
 	    position: relative;
+
+	    @media(min-width: @screen-sm) {
+	        left: 0;
+	        position: absolute;
+	        width: 50%;
+	    }
 	}
 
 	#song-info {
@@ -66,7 +72,43 @@
 	#song-content {
 	    display: none;
 	    visibility: hidden;
+
+	    @media(min-width: @screen-sm) {
+            background-color: @white;
+            border-bottom: 1px solid @light-gray;
+            display: block;
+            height: 100%;
+            overflow-y: scroll;
+            position: absolute;
+            right: 0;
+            visibility: visible;
+            width: 50%;
+	    }
+
+	    h4 {
+	    	@media(min-width: @screen-sm) {
+				&:first-of-type {
+			        padding-top: 20px;
+			    }
+
+			    padding: 0 0 0 20px;
+			    text-align: left;
+			}
+	    }
 	}
+
+	#lyrics {
+        font-size: 16px;
+        padding: 0 0 0 20px;
+        text-align: left;
+    }
+
+	#like {
+        bottom: 0;
+        height: 25%;
+        left: 0;
+        position: absolute;
+    }
 
 	.player-container {
 	    height: 30%;
@@ -102,6 +144,11 @@
 		&:hover:active {
 		   font-size: 4.5em;
 		}
+
+		@media(min-width: @screen-sm) {
+		    display: block;
+		    visibility: visible;
+		}
 	}
 
 	.player-control {
@@ -110,5 +157,12 @@
 	    margin: 0;
 	    padding: 0;
 	    width: 100%;
+
+	    @media(min-width: @screen-sm) {
+            border-left: 1px solid @light-gray;
+            border-right: 1px solid @light-gray;
+            float: left;
+            width: 33.3%;
+	    }
 	}
 }

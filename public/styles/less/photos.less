@@ -1,0 +1,50 @@
+#photos {
+    
+    #photos-control {
+        .btn.rotated {
+            .rotate2d(90deg);
+            .transition(0.6);
+        }
+    }
+
+    .media-block-instagram {
+        .transition(0.6);
+        float: none;
+        height: auto;
+        margin: 0 auto;
+        max-width: 100%;
+        overflow: hidden;
+        width: 70%;
+
+        .caption {
+            background-color: rgba(0, 0, 0, 0.7);
+            bottom: 0;
+            color: @white;
+            position: absolute;
+            visibility: hidden;
+            width: 100%;
+        }
+
+        h5 {
+            font-size: 0.67em;
+            text-transform: uppercase;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .single-share {
+            bottom: 10px;
+            position: absolute;
+            right: 10px;
+        }
+
+        &:hover {
+            .caption {
+                font-size: 1.5em;
+                visibility: visible;
+            }
+        }
+    }
+}
