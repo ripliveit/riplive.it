@@ -3,6 +3,10 @@
     position: relative;
     width: 100%;
 
+    @media(min-width: @screen-sm) {
+        height: 700px;
+    }
+
     &:after {
     	.gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.71));
     }
@@ -54,11 +58,20 @@
 	    margin: 0 auto;
 	    text-align: center;
 
+        @media(min-width: @screen-sm) {
+            margin: 0 auto;
+            width: 675px;
+        }
+
 	    .cover-title {
 		    font-size: 26px;
 		    font-weight: bold;
 		    text-transform: uppercase;
 		    word-wrap: break-word;
+
+            @media(min-width: @screen-sm) {
+                font-size: 32px;
+            }
 		}
 
 		.cover-subtitle {

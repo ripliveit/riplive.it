@@ -4,6 +4,8 @@
         overflow: hidden;
         text-align: center;
 
+
+
         .btn {
             border: 5px solid @white;
             display: block;
@@ -11,6 +13,11 @@
             font-size: 3em;
             padding: 30px;
             width: 50%;
+
+            @media(min-width: @screen-sm) {
+                font-size: 5em;
+                width: 25%;
+            }
 
             &:hover {
                 background-color: @light-orange;
@@ -21,6 +28,10 @@
         .player-volume-up,
         .player-volume-off {
             display: none;
+
+            @media(min-width: @screen-sm) {
+                display: block;
+            }
         }
 
         .jp-progress {
@@ -73,6 +84,18 @@
             float: right;
             padding-right: 5px;
             text-align: right;
+        }
+    }
+}
+
+#podcasts-block {
+    .media-block:last-of-type {
+        @media(min-width: @screen-sm) {
+            display: none;
+        }
+
+        @media(min-width: @screen-lg) {
+            display: block;
         }
     }
 }
