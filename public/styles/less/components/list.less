@@ -16,8 +16,6 @@
 	.list-divider-title {
 	    line-height: 50px;
 	    margin: 0;
-
-	    .;
 	}
 
 	&.collapsed {
@@ -26,22 +24,12 @@
 		    text-align: center;
 		}
 
-		// .list-object {
-		//     float: none !important;
-		//     height: 125px;
-		//     margin: 0 auto 10px;
-		//     width: 125px;
-		// }
-
-		// .list-image {
-		//     height: 125px;
-		//     width: 125px;
-		// }
-
-		// .list-body {
-		//     float: none !important;
-		//     width: 100%;
-		// }
+		.list-divider {
+			@media(min-width: @screen-sm) {
+				padding-left: 20px;
+			    text-align: left;
+			}        
+		}
 	}
 }
 
@@ -53,10 +41,19 @@
     padding: 10px 15px;
     width: 100%;
 
+    @media(min-width: @screen-sm) {
+        padding: 20px 15px;
+        text-align: left;
+	}
+
     .list-object {
 	    display: block;
 	    height: 65px;
 	    width: 65px;
+
+	    @media(min-width: @screen-sm) {
+			float: left !important;
+		}
 
 	    .collapsed & {
 	    	float: none !important;
@@ -80,6 +77,11 @@
 	    padding: 0 0 0 10px;
 	    position: relative;
 	    width: 75%;
+
+	    @media(min-width: @screen-sm) {
+	        float: left !important;
+	        width: 80%;
+		}
 
 	    .collapsed & {
 	    	float: none !important;
@@ -107,9 +109,28 @@
 	    list-style-type: none;
 	}
 
-	.list-category {
-	    display: inline;
-	    list-style-type: none;
+	.list-controls {
+	    margin: 10px auto;
+
+	    @media(min-width: @screen-sm) {
+	        margin-top: -17.5px;
+	        position: absolute;
+	        right: 25px;
+	        top: 50%;
+		}
+
+	    .btn {
+		    display: inline-block;
+		    font-size: 18px;
+		    width: 55px;
+		}
+
+		.btn-vote {
+		    color: @white;
+
+		    &:hover {
+			    cursor: default;
+			}
+		}
 	}
 }
-

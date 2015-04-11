@@ -120,6 +120,14 @@
     padding: 0;
 }
 
+.rotate2d(@degree) {
+       -moz-transform: rotate(@degree);
+        -ms-transform: rotate(@degree);
+         -o-transform: rotate(@degree);
+    -webkit-transform: rotate(@degree);
+            transform: rotate(@degree);
+}
+
 .scale2d(@value: 0) {
         -moz-transform: scale(@value);
          -ms-transform: scale(@value);

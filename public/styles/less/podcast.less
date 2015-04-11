@@ -1,0 +1,101 @@
+#podcast {
+    .player-container {
+        margin: 20px 0;
+        overflow: hidden;
+        text-align: center;
+
+
+
+        .btn {
+            border: 5px solid @white;
+            display: block;
+            float: left;
+            font-size: 3em;
+            padding: 30px;
+            width: 50%;
+
+            @media(min-width: @screen-sm) {
+                font-size: 5em;
+                width: 25%;
+            }
+
+            &:hover {
+                background-color: @light-orange;
+                color: @white;
+            }
+        }
+
+        .player-volume-up,
+        .player-volume-off {
+            display: none;
+
+            @media(min-width: @screen-sm) {
+                display: block;
+            }
+        }
+
+        .jp-progress {
+            background: none;
+            background-color: @light-gray;
+            border: 5px solid @white;
+            display: block !important;
+            height: 40px;
+            margin: 5px 0;
+            overflow: hidden;
+            padding: 0;
+            visibility: visible!important;
+            width: 100%;
+        }
+
+        .jp-seek-bar {
+            background: none;
+            cursor: pointer;
+            height: 100%;
+            overflow: hidden;
+            width: 0px;
+        }
+
+        .jp-play-bar {
+            background: none;
+            background-color: @light-orange;
+            height: 100%;
+            overflow: hidden;
+            width: 0px;
+        }
+
+        .jp-time-holder {
+            display: block !important;
+            visibility: visible!important;
+        }
+
+        .jp-current-time,
+        .jp-duration {
+            color: @black;
+            font-size: 1em;
+        }
+
+        .jp-current-time {
+            float: left;
+            padding-left: 5px;
+            text-align: left;
+        }
+
+        .jp-duration {
+            float: right;
+            padding-right: 5px;
+            text-align: right;
+        }
+    }
+}
+
+#podcasts-block {
+    .media-block:last-of-type {
+        @media(min-width: @screen-sm) {
+            display: none;
+        }
+
+        @media(min-width: @screen-lg) {
+            display: block;
+        }
+    }
+}

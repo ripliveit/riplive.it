@@ -47,12 +47,25 @@
     .player-volume-off {
         display: none;
         visibility: hidden;
+
+        @media(min-width: @screen-sm) {
+                display: block;
+                visibility: visible;
+        }
     }
 
     #navbar-control.slided {
-        .translate3d(translate3d(150px, 0, 0));
         display: block!important;
         visibility: visible!important;
+        .translate3d(translate3d(150px, 0, 0));
+
+        @media(min-width: @screen-sm) {
+            display: block!important;
+            visibility: visible!important;
+
+            .translate3d(300px, 0, 0);
+            .scale3d(1, 1, 1);
+        }
     }
 
     .navbar-toggle:focus, 
@@ -68,3 +81,5 @@
         visibility: hidden;
     }
 }
+
+

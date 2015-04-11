@@ -22,4 +22,13 @@
         .translate3d(0, -250px);
         position: fixed;
     }
+
+    @media(min-width: @screen-sm) {
+        &.header-translated {
+            position: fixed;
+            .translate3d(0, -500px, 0);
+            .scale3d(1, 1, 1);
+            .backface-visibility;
+        }
+    }
 }

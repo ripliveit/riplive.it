@@ -5,6 +5,10 @@
     top: 0;
     width: 100%;
 
+    @media(min-width: @screen-sm) {
+        height: 500px;
+    }
+
     .hg-carousel {
         height: 250px;
     }
@@ -19,6 +23,19 @@
             padding: 0;
             position: relative;
             width: 100%;
+
+            @media(min-width: @screen-sm) {
+                height: 250px;
+                padding: 0;
+                width: 50%;
+            }
+
+            @media(min-width: @screen-lg) {
+                height: 250px;
+                padding: 0;
+                position: relative;
+                width: 33.33%;
+            }
 
             &:hover {
                 .scale3d(1.05, 1.05, 1);
@@ -60,6 +77,10 @@
             font-size: 16px;
             right: 20px;
             text-align: right;
+
+            @media(min-width: @screen-sm) {
+                font-size: 16px;
+            }
         }
 
         h4 {
@@ -68,6 +89,10 @@
             left: 20px;
             padding: 4px;
             top: 10px;  
+
+            @media(min-width: @screen-sm) {
+                font-size: 14px;
+            }
         }
     }
 }
