@@ -21,12 +21,12 @@ angular.module('riplive')
      * @type {Object}
      */
     var images = {
-        program: 'http://www.static.riplive.it/wp-content/uploads/2014/04/rip_authors.jpg',
+        program: 'https://s3-eu-west-1.amazonaws.com/riplive.it-images/onair/rip_authors.jpg',
         notFound: [
-            'http://www.static.riplive.it/wp-content/uploads/2014/03/vinyl-1.jpg',
-            'http://www.static.riplive.it/wp-content/uploads/2014/03/vinyl-2.jpg',
-            'http://www.static.riplive.it/wp-content/uploads/2014/03/vinyl-3.jpg',
-            'http://www.static.riplive.it/wp-content/uploads/2014/03/vinyl-4.jpg'
+            'https://s3-eu-west-1.amazonaws.com/riplive.it-images/onair/vinyl-1.jpg',
+            'https://s3-eu-west-1.amazonaws.com/riplive.it-images/onair/vinyl-2.jpg',
+            'https://s3-eu-west-1.amazonaws.com/riplive.it-images/onair/vinyl-3.jpg',
+            'https://s3-eu-west-1.amazonaws.com/riplive.it-images/onair/vinyl-4.jpg'
         ]
     };
 
