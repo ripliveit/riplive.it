@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Riplive.it player</title>
+    <meta name="description" content="Ascolta Riplive.it" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="favicon.ico?v=1" />
+    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/main.min.css">
+    <style>
+    #external-player {
+        padding: 10px;
+        width: 260px;
+    }
+    
+    .btn-lg {
+        border-radius: 0;
+        font-size: 22px;
+        padding: 0;
+        width: 55px;
+        height: 55px;
+        line-height: 55px;
+        background-color: white;
+        border: 1px solid #cccccc;
+    }
+
+    .btn-lg:hover {
+        background-color: #f8941e;
+        color: #FFFFFF;
+    }
+    
+    .player-container .jp-progress {
+        background: none;
+        border: 1px solid #cccccc;
+        background-color: #FFFFFF;
+        width: 232px;
+        height: 25px;
+        padding: 0;
+        overflow: hidden;
+        margin: 5px 0;
+        display: block;
+        visibility: visible;
+    }
+    
+    .player-container .jp-seek-bar {
+        background: none;
+        width: 0px;
+        height: 100%;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .player-container .jp-play-bar {
+        background: none;
+        width: 0px;
+        height: 100%;
+        overflow: hidden;
+        background-color: #f8941e;
+    }
+    
+    .player-container .jp-time-holder {
+        display: block !important;
+        visibility: visible!important;
+    }
+    
+    .player-container .jp-current-time,
+    .player-container .jp-duration {
+        color: #000;
+        font-size: 1em;
+    }
+    
+    .player-container .jp-current-time {
+        float: left;
+        text-align: left;
+        padding-left: 5px;
+    }
+    
+    .player-container .jp-duration {
+        float: right;
+        text-align: right;
+        padding-right: 5px;
+    }
+    </style>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-25065139-1', 'riplive.it');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="external-player" class="player-container">
+            <div class="player-hidden"></div>
+            <button id="volume-off" class="player-volume-off btn btn-lg btn-neutral fa fa-volume-off"></button>
+            <button id="play" class="player-control btn btn-lg btn-neutral fa fa-play"></button>
+            <button id="stop" class="player-control btn btn-lg btn-neutral fa fa-stop"></button>
+            <button id="volume-up" class="player-volume-up btn btn-lg btn-neutral fa fa-volume-up"></button>
+            <div class="clearfix">
+                <div class="jp-progress">
+                    <div class="jp-seek-bar">
+                        <div class="jp-play-bar"></div>
+                    </div>
+                </div>
+                <div class="jp-time-holder">
+                    <div class="jp-current-time"></div>
+                    <div class="jp-duration"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="analytics" analytics></div>
+    <script src="/vendor/jquery/dist/jquery.js"></script>
+    <script src="/vendor/jplayer/dist/jplayer/jquery.jplayer.js"></script>
+    <script>
+    function cretePlayer() {
+        var volume = 1;
+        var playing = false;
+        var player = $('.player-hidden');
+        var control = $('.player-control');
+        var search = window.location.search;
+        var value  = search.split('=');
+        var stream = value[1];
+
+        player.jPlayer({
+            ready: function() {
+                $(this).jPlayer('setMedia', {
+                    mp3: stream
+                });
+            },
+            pause: function() {
+                $(this).jPlayer('pause');
+            },
+            stop: function() {
+                $(this).jPlayer('pause', 0);
+            },
+            error: function(event) {
+                if (event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
+                    $(this).jPlayer('setMedia', {
+                        mp3: stream
+                    }).jPlayer('play');
+                }
+            },
+            swfPath: 'js',
+            supplied: 'mp3',
+            preload: 'none',
+            wmode: 'window',
+            cssSelectorAncestor: '.player-container',
+            cssSelector: {
+                seekBar: '.jp-seek-bar',
+                currentTime: '.jp-current-time',
+                duration: '.jp-duration'
+            },
+            toggleDuration: true
+        }).bind($.jPlayer.event.play, function() {
+            $(this).jPlayer('pauseOthers', 0);
+        });
+
+        player.on($.jPlayer.event.play, function() {
+            playing = true;
+            control.removeClass('fa-play')
+                .addClass('fa-pause');
+        });
+
+        player.on($.jPlayer.event.pause, function() {
+            playing = false;
+            control.removeClass('fa-pause')
+                .addClass('fa-play');
+        });
+
+        player.on($.jPlayer.event.stop, function() {
+            playing = false;
+            control.removeClass('fa-pause')
+                .addClass('fa-play');
+        });
+
+        player.on($.jPlayer.event.error, function(err) {
+            control.removeClass('fa-pause')
+                .addClass('fa-play');
+        });
+
+        $('#play').on('click', function() {
+            if (playing === false) {
+                player.jPlayer('play');
+            } else {
+                player.jPlayer('pause');
+            }
+        });
+
+        $('#stop').on('click', function() {
+            player.jPlayer('stop');
+        });
+
+        $('#volume-up').on('click', function() {
+            if (volume >= 1) {
+                return false;
+            }
+
+            volume += .1;
+            player.jPlayer('volume', volume);
+        });
+
+        $('#volume-off').on('click', function() {
+            if (volume <= 0) {
+                return false;
+            }
+
+            volume -= .1;
+            player.jPlayer('volume', volume);
+        });
+    }
+
+    $(document).ready(cretePlayer);
+    </script>
+</body>
+
+</html>
