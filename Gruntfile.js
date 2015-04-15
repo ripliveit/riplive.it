@@ -5,6 +5,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         path: {
             public: 'public',
+            temp  :  '.tmp',
             server: 'server'
         },
         jshint: {
@@ -28,19 +29,8 @@ module.exports = function(grunt) {
                 files: [{
                     dot: true,
                     src: [
-                        '<%= path.public %>/*.min.js',
-                        '<%= path.public %>/*.min.css',
-                    ]
-                }]
-            },
-            flat: {
-                files: [{
-                    dot: true,
-                    src: [
-                        '<%= path.public %>/*.js',
-                        '<%= path.public %>/*.css',
-                        '!<%= path.public %>/*.min.js',
-                        '!<%= path.public %>/*.min.css',
+                        '<%= path.temp %>',
+                        '<%= path.public %>/js/*.min.js'
                     ]
                 }]
             }
@@ -51,7 +41,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    '<%= path.public %>/js/bundle.js': [
+                    '<%= path.temp %>/vendor.js': [
                         '<%= path.public %>/vendor/jquery/dist/jquery.js',
                         '<%= path.public %>/vendor/angular/angular.js',
                         '<%= path.public %>/vendor/bootstrap/dist/js/bootstrap.js',
@@ -64,7 +54,17 @@ module.exports = function(grunt) {
                         '<%= path.public %>/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
                         '<%= path.public %>/vendor/angular-local-storage/dist/angular-local-storage.js',
                         '<%= path.public %>/vendor/angular-disqus/angular-disqus.js',
+                    ],
+                    '<%= path.temp %>/app.js': [
                         '<%= path.public %>/js/**/*.js'
+                    ]
+                }
+            },
+            bundle: {
+                files: {
+                    '<%= path.temp %>/bundle.js': [
+                        '<%= path.temp %>/vendor.js',
+                        '<%= path.temp %>/app.js',
                     ]
                 }
             }
@@ -76,15 +76,16 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: [{
-                    src: '<%= path.public %>/js/bundle.js',
-                    dest: '<%= path.public %>/js/bundle.js'
+                    src: '<%= path.temp %>/app.js',
+                    dest: '<%= path.temp %>/app.js'
                 }]
             }
         },
         uglify: {
             dist: {
-                files: [{
-                    src: '<%= path.public %>/js/bundle.js',
+                files: [
+                {
+                    src: '<%= path.temp %>/bundle.js',
                     dest: '<%= path.public %>/js/bundle.min.js'
                 }]
             }
@@ -143,10 +144,11 @@ module.exports = function(grunt) {
         'clean:dist',
         'concat:dist',
         'ngAnnotate:dist',
+        'concat:bundle',
         'uglify:dist',
         'less:dist',
         'cssmin:dist',
-        'clean:flat'
+        //'clean:dist'
     ]);
 
     grunt.registerTask('deploy', [
