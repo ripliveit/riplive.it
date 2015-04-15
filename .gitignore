@@ -12,5 +12,6 @@ nbproject
 
 public/vendor/
 public/js/bundle.min.js
+public/css/style.css
 public/css/style.min.css
 public/css/style.css.map
