@@ -1,4 +1,5 @@
 #header {
+    .transition(all, 0.6s, ease-in-out);
     position: fixed;
     top: 0;
     width: 100%;
@@ -19,16 +20,16 @@
 
     &.header-translated {
         .backface-visibility;
-        .translate3d(0, -250px);
         position: fixed;
+        .translate3d(0, -250px);
     }
 
     @media(min-width: @screen-sm) {
         &.header-translated {
-            position: fixed;
             .translate3d(0, -500px, 0);
             .scale3d(1, 1, 1);
             .backface-visibility;
+            position: fixed;
         }
     }
 }

@@ -8,7 +8,7 @@
     </h2>
 
     <div class="list-wrapper">
-        <div class="list-group collapsed" ng-repeat="(letter, artist) in artists">
+        <div class="list-group" ng-repeat="(letter, artist) in artists">
             <div class="list-divider">
                 <h2 class="list-divider-title bolder">
                     {{letter}}
@@ -16,11 +16,11 @@
             </div>
 
             <div class="list-group-item " ng-repeat="a in artist">
-                <a class="list-object pull-left" ng-href="/artists/{{a.artist_slug}}">
+                <a class="list-object" ng-href="/artists/{{a.artist_slug}}">
                     <img class="list-image" ng-src="{{a.artist_images['thumbnail']}}" alt="{{a.artist_title}}" />
                 </a>
 
-                <div class="list-body pull-left">
+                <div class="list-body">
                     <h3 class="bold">
                         <a ng-href="/artists/{{a.artist_slug}}">
                             {{a.artist_title}}

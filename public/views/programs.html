@@ -12,7 +12,7 @@
             <div class="thumbnail thumbnail-fixed">
 
                 <a class="media-block-link" ng-href="/programs/{{p.slug}}">
-                    <img class="media-block-img" ng-src="{{p.program_images['image_medium']}}" alt="{{p.title}}" />
+                    <figure class="media-block-img" ng-style="{'background-image': 'url(' + p.program_images.image_medium + ')'}"></figure>
                 </a>
 
                 <a ng-href="" class="media-block-category btn btn-xs btn-programs">

@@ -31,11 +31,11 @@
                 <div class="list-group">
                     <div class="list-group-item" ng-repeat="p in s.programs">
 
-                        <a class="list-object pull-left" ng-href="/authors/{{a.slug}}">
+                        <a class="list-object" ng-href="/authors/{{a.slug}}">
                             <img class="list-image" ng-src="{{p.program_images.thumbnail}}" alt="{{p.program_title}}" />
                         </a>
 
-                        <div class="list-body pull-left">
+                        <div class="list-body">
                             <h3>
                                 <a ng-href="/programs/{{p.slug}}"> 
                                     {{p.program_title}} 
@@ -49,7 +49,7 @@
                                 </span>
                             </h3>
 
-                            <h4 class="bold">
+                            <h4>
                                 {{p.schedule}}
                             </h4>
 

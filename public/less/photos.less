@@ -1,5 +1,4 @@
 #photos {
-    
     #photos-control {
         .btn.rotated {
             .rotate2d(90deg);
@@ -7,22 +6,28 @@
         }
     }
 
+    .media-wrapper-large {
+        .media-block-instagram {
+            float: none;
+            height: auto;
+            margin: 0 auto;
+            max-width: 100%;
+            overflow: hidden;
+            width: 70%;
+        }
+    }
+
     .media-block-instagram {
-        .transition(0.6);
-        float: none;
-        height: auto;
-        margin: 0 auto;
-        max-width: 100%;
-        overflow: hidden;
-        width: 70%;
+        .transition(all, 0.6s, ease-in-out);
 
         .caption {
             background-color: rgba(0, 0, 0, 0.7);
             bottom: 0;
             color: @white;
+            opacity: 0;
             position: absolute;
-            visibility: hidden;
             width: 100%;
+            .transition(opacity, 0.2s, ease-in);
         }
 
         h5 {
@@ -43,7 +48,8 @@
         &:hover {
             .caption {
                 font-size: 1.5em;
-                visibility: visible;
+                height: 100%;
+                opacity: 1;
             }
         }
     }

@@ -1,0 +1,48 @@
+.stripe {
+    height: 300px;
+    margin: 25px 0 45px;
+    position: relative;
+
+    .stripe-category {
+        left: 0;
+        position: absolute;
+        top: 0;
+        z-index: 2;
+    }
+
+    .stripe-figure {
+        height: 300px;
+        position: relative;
+    }
+
+    .stripe-link {
+        background-position: center;
+        background-size: cover;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: 100%;
+
+        &:after {
+            .gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1));
+        }
+    }
+
+    .stripe-information {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        text-transform: uppercase;
+        z-index: 2;
+    }
+
+    .stripe-title {
+        @media only screen and (min-width: @screen-sm) {
+            font-size: 20px;
+        }
+
+        @media only screen and (min-width: @screen-md) {
+            font-size: 28px;
+        }
+    }
+}

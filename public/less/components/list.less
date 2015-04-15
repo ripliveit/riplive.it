@@ -10,26 +10,18 @@
     .list-divider {
 	    background-color: @light-gray;
 	    height: 50px;
+	    text-align: center;
 	    width: 100%;
+
+	    @media(min-width: @screen-sm) {
+	    	padding-left: 20px;
+	        text-align: left;
+	    }
 	}
 
 	.list-divider-title {
 	    line-height: 50px;
 	    margin: 0;
-	}
-
-	&.collapsed {
-		.list-divider,
-		.list-group-item {
-		    text-align: center;
-		}
-
-		.list-divider {
-			@media(min-width: @screen-sm) {
-				padding-left: 20px;
-			    text-align: left;
-			}        
-		}
 	}
 }
 
@@ -47,46 +39,34 @@
 	}
 
     .list-object {
-	    display: block;
-	    height: 65px;
-	    width: 65px;
+    	display: block;
+	    float: none;
+		height: 125px;
+		margin: 0 auto 10px;
+		width: 125px;
 
 	    @media(min-width: @screen-sm) {
-			float: left !important;
+			float: left;
 		}
-
-	    .collapsed & {
-	    	float: none !important;
-		    height: 125px;
-		    margin: 0 auto 10px;
-		    width: 125px;
-	    }
 	}
 
 	.list-image {
-	    height: 65px;
-	    width: 65px;
-
-	    .collapsed & {
-	    	height: 125px;
-		    width: 125px;
-	    }
+	    height: 125px;
+		width: 125px;
 	}
 
 	.list-body {
+	    float: none;
 	    padding: 0 0 0 10px;
 	    position: relative;
-	    width: 75%;
+	    text-align: center;
+	    width: 100%;
 
 	    @media(min-width: @screen-sm) {
-	        float: left !important;
+	        float: left;
+	        text-align: left;
 	        width: 80%;
 		}
-
-	    .collapsed & {
-	    	float: none !important;
-		    width: 100%;
-	    }
 
 		> h3 {
 		    text-transform: uppercase;
@@ -111,11 +91,13 @@
 
 	.list-controls {
 	    margin: 10px auto;
+	    text-align: center;
 
 	    @media(min-width: @screen-sm) {
 	        margin-top: -17.5px;
 	        position: absolute;
 	        right: 25px;
+	        text-align: left;
 	        top: 50%;
 		}
 

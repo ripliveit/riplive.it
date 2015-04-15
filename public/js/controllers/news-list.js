@@ -14,6 +14,9 @@ angular.module('riplive')
     var current = 1;
     var pages = 0;
 
+    $scope.loading = true;
+    $scope.data = [];
+
     /**
      * Load all news
      *                   
@@ -21,17 +24,17 @@ angular.module('riplive')
      */
     newsService.getNews({
         page: current,
-        count : 26
+        count : 25
     }, function(data) {
         pages = data.pages;
 
-        $scope.title = 'News';
-        $scope.subtitle = '';
-        $scope.firsts = data.posts.splice(0, 2);
-        $scope.posts = data.posts;
-    });
+        $scope.title = 'News';     
 
-    $scope.loading = true;
+        $scope.data.push({
+            first : data.posts.shift(),
+            posts : data.posts
+        });
+    });
 
     /**
      * Load data only when user scroll 
@@ -48,9 +51,13 @@ angular.module('riplive')
         current += 1;
 
         newsService.getNews({
-            page: current
+            page: current,
+            count : 25
         }, function(data) {
-            generalService.pushToArray(data.posts, $scope.posts);
+            $scope.data.push({
+                first : data.posts.shift(),
+                posts : data.posts
+            });
         });
     };
 });

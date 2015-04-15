@@ -8,13 +8,13 @@
     </h2>
 
     <div class="list-wrapper">
-        <div class="list-group collapsed">
+        <div class="list-group">
             <div class="list-group-item" ng-repeat="s in chart.songs" itemscope itemtype="http://schema.org/MusicRecording">
-                <a class="list-object pull-left" ng-href="/songs/{{s.song_slug}}">
+                <a class="list-object" ng-href="/songs/{{s.song_slug}}">
                     <img class="list-image" ng-src="{{s.song_images['thumbnail']}}" alt="{{s.song_title}}" itemprop="image"/>
                 </a>
 
-                <div class="list-body pull-left">
+                <div class="list-body">
                     <h3 class="bold">
                         <a ng-href="/songs/{{s.song_slug}}" itemprop="name">
                             {{s.song_title}}
@@ -36,20 +36,6 @@
                              {{s.song_album}}
                         </a>    
                     </h4>
-
-                    <ul class="list-category-wrapper">
-                        <li class="list-category">
-                            <strong>
-                                Genre:
-                            </strong>
-                        </li>
-
-                        <li class="list-category" ng-repeat="g in s.song_genre">
-                            <a ng-href="/songs/{{s.song_slug}}" title="{{s.song_title}}" itemprop="genre">
-                               {{g.name}}{{$last ? '' : ', '}}
-                           </a>
-                        </li>
-                    </ul>
 
                     <ul class="list-category-wrapper">
                         <li class="list-category">

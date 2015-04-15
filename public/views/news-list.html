@@ -7,89 +7,84 @@
         {{subtitle}}
     </h2>
 
-    <div class="media-wrapper">
-        <div class="media-block media-block-first col-lg-12" ng-show="firsts">
-            <div class="thumbnail" ng-repeat="first in firsts">
-                <a class="media-block-link" ng-href="/news/{{first.slug}}">
-                    <img class="media-block-img" ng-src="{{first.thumbnail_images['landscape-medium'].url}}" alt="{{first.title}}" />
-                </a>
+    <h4 class="media-wrapper-title bolder">
+        <span class="fa fa-bullhorn"></span> Latests articles
+    </h4>
+    
+    <div class="media-wrapper" ng-repeat="post in data">
+        <div class="stripe">
+            <a ng-href="/categories/{{post.first.categories[0].slug}}" class="stripe-category btn btn-xs btn-news">
+                {{post.first.categories[0].title}}
+            </a>
 
-                <a ng-href="/categories/{{first.categories[0]['slug']}}" class="media-block-category btn btn-xs btn-news">
-                    {{first.categories[0]['title']}}
-                </a>
+            <figure class="stripe-figure">
+                <a class="stripe-link" ng-href="/news/{{p.slug}}" title="{{post.first.title}}" 
+                ng-style="{'background-image': 'url(' + post.first.thumbnail_images['landscape-large'].url + ')'}"></a>
+            </figure>
 
-                <div class="caption">
-                    <h3 class="media-block-title bold">
-                        <a ng-href="/news/{{first.slug}}">
-                            {{first.title}}
-                        </a>
-                    </h3>
+            <div class="stripe-information">
+                <h2 class="stripe-title">
+                    <a class="color-white" ng-href="/news/{{p.slug}}" title="{{post.first.title}}">
+                        {{post.first.title}}
+                    </a>
+                </h2>
 
-                    <h5 class="media-block-author">
-                        By
-                        
-                        <a class="color-news" ng-href="/authors/{{first.author.nickname}}">
-                            {{first.author.nickname}}
-                        </a>
-                        
-                        -
+                <h5 class="stripe-author color-white">
+                    By
+                    
+                    <a class="color-news" ng-href="/authors/Val" href="/authors/Val">
+                        Val
+                    </a>
+                    
+                    -
 
-                        <span>
-                            {{first.date | dateFormat}}
-                        </span>
-                    </h5>
-                </div>
-                
-                <social-buttons data-href="'/news/' + first.slug" data-image="first.thumbnail_images.medium.url" data-title="first.title" data-text="first.excerpt | stripHtml">
-                </social-buttons>
+                    <span>
+                        14 April 2015
+                    </span>
+                </h5>
             </div>
         </div>
 
-        <h4 class="media-wrapper-title bolder">
-            <span class="fa fa-bullhorn"></span> Latests articles
-        </h4>
-        
-        <div class="media-block col-sm-6 col-md-4 col-lg-3" ng-repeat="p in posts">
-            <div class="thumbnail thumbnail-fixed">
+        <div class="media-block col-sm-6 col-md-4 col-lg-3" ng-repeat="p in post.posts">
+                <div class="thumbnail thumbnail-fixed">
+                    <a class="media-block-link" ng-href="/news/{{p.slug}}">
+                        <figure class="media-block-img" ng-style="{'background-image': 'url(' + p.thumbnail_images.medium.url + ')'}"></figure>
+                    </a>
 
-                <a class="media-block-link" ng-href="/news/{{p.slug}}">
-                    <img class="media-block-img" ng-src="{{p.thumbnail_images.medium.url}}" alt="{{p.title}}" />
-                </a>
+                    <a ng-href="/categories/{{p.categories[0].slug}}" class="media-block-category btn btn-xs btn-news">
+                        {{p.categories[0].title}}
+                    </a>
 
-                <a ng-href="/categories/{{p.categories[0]['slug']}}" class="media-block-category btn btn-xs btn-news">
-                    {{p.categories[0]['title']}}
-                </a>
+                    <div class="caption">
+                        <h3 class="media-block-title bold">
+                            <a ng-href="/news/{{p.slug}}">
+                                {{p.title}}
+                            </a>
+                        </h3>
 
-                <div class="caption">
-                    <h3 class="media-block-title bold">
-                        <a ng-href="/news/{{p.slug}}">
-                            {{p.title}}
-                        </a>
-                    </h3>
+                        <p ng-bind-html="(p.excerpt | limitTo : 50) + '...'" class="visible-md visible-lg"></p>
 
-                    <p ng-bind-html="(p.excerpt | limitTo : 50) + '...'" class="visible-md visible-lg"></p>
+                        <h5>
+                            By
+                            
+                            <a class="color-news" ng-href="/authors/{{p.author.nickname}}">
+                                {{p.author.nickname}}
+                            </a>
+                            
+                            -
 
-                    <h5>
-                        By
-                        
-                        <a class="color-news" ng-href="/authors/{{p.author.nickname}}">
-                            {{p.author.nickname}}
-                        </a>
-                        
-                        -
+                            <span>
+                                {{p.date | dateFormat}}
+                            </span>
+                        </h5>
+                    </div>
 
-                        <span>
-                            {{p.date | dateFormat}}
-                        </span>
-                    </h5>
+                    <a ng-href="/news/{{p.slug}}" class="media-block-more btn btn-neutral" role="button">
+                        Read <span class="fa fa-angle-right"></span>
+                    </a> 
                 </div>
-
-                <a ng-href="/news/{{p.slug}}" class="media-block-more btn btn-neutral" role="button">
-                    Read <span class="fa fa-angle-right"></span>
-                </a> 
-            </div>
         </div>
-
-        <loading-spinner data-visible="loading"></loading-spinner>
     </div>
+
+    <loading-spinner data-visible="loading"></loading-spinner>
 </div>
