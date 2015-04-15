@@ -3,12 +3,12 @@
         Authors
     </h1>
 
-    <div class="media-wrapper">
-        <h4 class="media-wrapper-title bolder">
-            <span class="fa fa-pencil"></span> All ripers
-        </h4>
+    <h4 class="media-wrapper-title bolder">
+        <span class="fa fa-pencil"></span> All ripers
+    </h4>
 
-        <div class="media-block col-sm-4 col-md-4 col-lg-3" ng-repeat="a in authors['authors']">
+    <div class="media-wrapper container">
+        <div class="media-block col-sm-6 col-md-6 col-lg-4" ng-repeat="a in authors['authors']">
             <div class="thumbnail thumbnail-fixed">
                 <a class="media-block-link " ng-href="/authors/{{a.slug}}">
                     <figure class="media-block-img" ng-style="{'background-image': 'url(' + a.author_images.landscape_medium + ')'}"></figure>

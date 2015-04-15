@@ -45,7 +45,8 @@
             </div>
         </div>
 
-        <div class="media-block col-sm-6 col-md-4 col-lg-3" ng-repeat="p in post.posts">
+        <div class="container">
+            <div class="media-block col-sm-6 col-md-6 col-lg-4" ng-repeat="p in post.posts">
                 <div class="thumbnail thumbnail-fixed">
                     <a class="media-block-link" ng-href="/news/{{p.slug}}">
                         <figure class="media-block-img" ng-style="{'background-image': 'url(' + p.thumbnail_images.medium.url + ')'}"></figure>
@@ -83,6 +84,7 @@
                         Read <span class="fa fa-angle-right"></span>
                     </a> 
                 </div>
+        </div>
         </div>
     </div>
 
