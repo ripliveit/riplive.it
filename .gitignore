@@ -11,6 +11,6 @@ heroku
 nbproject
 
 public/vendor/
-public/vendor.min.js
-public/app.min.js
-public/main.min.css
+public/js/bundle.min.js
+public/css/style.min.css
+public/css/style.css.map

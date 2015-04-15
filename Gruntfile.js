@@ -14,7 +14,7 @@ module.exports = function(grunt) {
             },
             all: [
                 'Gruntfile.js',
-                '<%= path.public %>/scripts/{,*/}*.js'
+                '<%= path.public %>/js/{,*/}*.js'
             ],
             test: {
                 options: {
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    '<%= path.public %>/vendor.js': [
+                    '<%= path.public %>/js/bundle.js': [
                         '<%= path.public %>/vendor/jquery/dist/jquery.js',
                         '<%= path.public %>/vendor/angular/angular.js',
                         '<%= path.public %>/vendor/bootstrap/dist/js/bootstrap.js',
@@ -63,10 +63,8 @@ module.exports = function(grunt) {
                         '<%= path.public %>/vendor/angular-carousel/dist/angular-carousel.js',
                         '<%= path.public %>/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
                         '<%= path.public %>/vendor/angular-local-storage/dist/angular-local-storage.js',
-                        '<%= path.public %>/vendor/angular-disqus/angular-disqus.js'
-                    ],
-                    '<%= path.public %>/app.js': [
-                        '<%= path.public %>/scripts/**/*.js'
+                        '<%= path.public %>/vendor/angular-disqus/angular-disqus.js',
+                        '<%= path.public %>/js/**/*.js'
                     ]
                 }
             }
@@ -78,27 +76,39 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: [{
-                    src: '<%= path.public %>/app.js',
-                    dest: '<%= path.public %>/app.js'
+                    src: '<%= path.public %>/js/bundle.js',
+                    dest: '<%= path.public %>/js/bundle.js'
                 }]
             }
         },
         uglify: {
             dist: {
                 files: [{
-                    src: '<%= path.public %>/vendor.js',
-                    dest: '<%= path.public %>/vendor.min.js'
-                },{
-                    src: '<%= path.public %>/app.js',
-                    dest: '<%= path.public %>/app.min.js'
+                    src: '<%= path.public %>/js/bundle.js',
+                    dest: '<%= path.public %>/js/bundle.min.js'
                 }]
             }
+        },
+        less: {
+            dist: {
+                options: {
+                    strictMath: true,
+                    sourceMap: true,
+                    outputSourceFiles: true,
+                    sourceMapFilename: '<%= path.public %>/css/style.css.map',
+                    sourceMapURL: 'http://www.riplive.it/css/style.css.map'
+                },
+                files: [{
+                    src: '<%= path.public %>/less/style.less',
+                    dest: '<%= path.public %>/css/style.css'
+                }]
+            },
         },
         cssmin: {
             dist: {
                 files: {
-                    '<%= path.public %>/main.min.css': [
-                        '<%= path.public %>/styles/main.css'
+                    '<%= path.public %>/css/style.min.css': [
+                        '<%= path.public %>/css/style.css'
                     ]
                 }
             }
@@ -134,6 +144,7 @@ module.exports = function(grunt) {
         'concat:dist',
         'ngAnnotate:dist',
         'uglify:dist',
+        'less:dist',
         'cssmin:dist',
         'clean:flat'
     ]);
