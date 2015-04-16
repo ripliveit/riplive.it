@@ -32,39 +32,62 @@
         margin: 0 0 1em;
     }
 
+    blockquote {
+        //border-left: none;
+        font-weight: bolder;
+        quotes: "\201C""\201D""\2018""\2019";
+
+        &:before {
+            content: open-quote;
+            font-size: 32px;
+            padding: 20px;
+        }
+
+        p {
+            display: inline;
+            font-size: 32px;
+            font-style: italic;
+            line-height: 1;
+            margin: 0;
+        }
+    }
+
     img {
-        max-width: 100%;
         height: auto;
+        margin: 0.5em auto;
+        max-width: 100%;
+        width: 100%;
 
         @media(min-width: @screen-sm) {
-            &,
-            &.alignright,
-            &.alignleft,
-            &.aligncenter { 
-                height: auto;
-                width: auto;
-            }
+            height: auto;
+            width: auto;
         }
+    }
 
-        &.alignright,
-        &.alignleft {
-            margin: 0 0 1em 1em;
-            width: 100%;
-        }
+    .alignright {
+        float: right;
+        padding: 0 0 0 0.5em;
+    }
 
-        &.alignright {
-            float: right;
-        }
+    .alignleft {
+        float: left;
+        margin: 0;
+        padding: 0 0.5em 0 0;
+    }
 
-        &.alignleft {
-            float: left;
-        }
+    .aligncenter {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-        &.aligncenter {
+    .wp-caption {
+        background-color: @light-gray;
+        padding: 10px;
+
+        img {
             display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;
+            margin: 0 auto;
         }
     }
 
@@ -124,8 +147,12 @@
         margin: 20px 0;
 
         .btn {
+            color: @white;
             font-size: 2em;
+            height: auto;
+            line-height: inherit;
             margin: 5px 0;
+            padding: 6px 12px;
             width: 100%;
 
             @media(min-width: @screen-sm) {
@@ -157,6 +184,7 @@
         position: fixed;
         text-align: center;
         width: 75px;
+        z-index: 2;
 
         @media(min-width: @screen-sm) {
             width: 100px;    

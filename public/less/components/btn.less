@@ -5,6 +5,7 @@
     &:active, 
     &:focus,
     &:active:focus {
+        box-shadow: none;
         outline: none!important;
     }
 
@@ -12,97 +13,135 @@
         font-family:'FontAwesome' !important;
     }
 
-    &-full-size {
-        width: 100%;
-        font-size: 18px;
-        margin: 10px 0;
-        padding: 16px;
-        text-transform: uppercase;
-    }
-
     &-artists {
-        background-color:#e74c3c;
+        background-color: @red;
 
         &:hover {
-            background-color: #e96051;
+            background-color: @red-hover;
         }
     }
 
     &-authors {
-        background-color:#f8941e;
+        background-color: @light-orange;
+
+        &:hover {
+            background-color: @light-orange-hover;
+        }
     }
 
     &-charts {
-        background-color:#1bbc9b;
+        background-color: @green;
 
         &:hover {
-            background-color: #0db492;
+            background-color: @green-hover;
         }
     }
 
     &-news {
-        background-color:#ff6600;
+        background-color: @orange;
 
         &:hover {
-            background-color: #ff8737
+            background-color: @orange-hover;
         }
     }
 
     &-photos {
-        background-color: #8e664d;
+        background-color: @brown;
+
+        &:hover {
+            background-color: lighten(@brown, 20%);
+        }
     }
 
     &-podcasts {
-        background-color:#107fc9;
+        background-color: @blue;
 
         &:hover {
-            background-color:#54c9ff;
+            background-color: @blue-hover;
         }
     }
 
     &-programs {
-        background-color:#19b5fe;
+        background-color: @azure;
 
         &:hover {
-            background-color: #49c1fa
+            background-color: @azure-hover;
         }
     }
 
     &-schedule {
-        background-color:#9b59b6;
+        background-color: @violet;
+
+        &:hover {
+            background-color:lighten(@violet, 20%);
+        }
     }
 
     &-songs {
-        background-color:#2ecc71;
+        background-color: @light-green;
 
         &:hover {
-            background-color:#53d68b
+            background-color: @light-green-hover;
         }
     }
 
     &-fb {
-        background-color: #38619f;
+        background-color: @color-fb;
+
+        &:hover {
+            background-color: lighten(@color-fb, 20%);
+        }
     }
 
     &-twitter {
-        background-color: #2eacdf;
+        background-color: @color-twitter;
+
+        &:hover {
+            background-color: lighten(@color-twitter, 20%);
+        }
     }
 
     &-spotify {
-        background-color: #84bd00;
+        background-color: lighten(@color-spotify, 20%);
 
         &:hover {
-            background-color: #80b819;
+            background-color: @color-spotify;
         }
     }
 
     &-neutral {
         background-color: @white;
-        border: 1px solid #d6d6d6;
+        border: 1px solid @gray;
         color: @black;
 
         &:hover {
             background-color: @light-gray;
+        }
+    }
+
+    &-share {
+        font-size: 16px;
+        height: 35px;
+        line-height: 35px;
+        padding: 0;
+        width: 35px;
+    }
+
+    &-full-size {
+        display: block;
+        font-size: 18px;
+        margin: 10px auto;
+        padding: 8px;
+        text-transform: uppercase;
+        width: 100%;
+        // .material-shadow(2);
+
+        // &:hover {
+        //     .material-shadow(1);
+        // }
+
+        @media only screen and (min-width: @screen-md) {
+            width: 1110px;
         }
     }
 }

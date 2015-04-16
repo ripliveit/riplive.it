@@ -138,6 +138,12 @@ module.exports = function(grunt) {
                 }
             }
         },
+        watch: {
+            less: {
+                files: '<%= path.public %>/less/**/*.less',
+                tasks: 'less:dist'
+            }
+        }
     });
 
     grunt.registerTask('build', [
@@ -147,8 +153,11 @@ module.exports = function(grunt) {
         'concat:bundle',
         'uglify:dist',
         'less:dist',
-        'cssmin:dist',
-        //'clean:dist'
+        'cssmin:dist'
+    ]);
+
+    grunt.registerTask('watchfiles', [
+        'watch:less'
     ]);
 
     grunt.registerTask('deploy', [

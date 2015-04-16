@@ -12,7 +12,8 @@ angular.module('riplive')
  */
 .controller('NewsListCtrl', function NewsListCtrl($scope, newsService, generalService) {
     var current = 1;
-    var pages = 0;
+    var pages   = 0;
+    var count   = 25;
 
     $scope.loading = true;
     $scope.data = [];
@@ -24,7 +25,7 @@ angular.module('riplive')
      */
     newsService.getNews({
         page: current,
-        count : 25
+        count : count
     }, function(data) {
         pages = data.pages;
 
@@ -52,7 +53,7 @@ angular.module('riplive')
 
         newsService.getNews({
             page: current,
-            count : 25
+            count : count
         }, function(data) {
             $scope.data.push({
                 first : data.posts.shift(),

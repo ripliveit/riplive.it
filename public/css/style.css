@@ -8612,17 +8612,11 @@ a.btn-neutral:hover {
 .btn:active,
 .btn:focus,
 .btn:active:focus {
+  box-shadow: none;
   outline: none!important;
 }
 .btn.fa {
   font-family: 'FontAwesome' !important;
-}
-.btn-full-size {
-  width: 100%;
-  font-size: 18px;
-  margin: 10px 0;
-  padding: 16px;
-  text-transform: uppercase;
 }
 .btn-artists {
   background-color: #e74c3c;
@@ -8632,6 +8626,9 @@ a.btn-neutral:hover {
 }
 .btn-authors {
   background-color: #f8941e;
+}
+.btn-authors:hover {
+  background-color: #ffb154;
 }
 .btn-charts {
   background-color: #1bbc9b;
@@ -8648,6 +8645,9 @@ a.btn-neutral:hover {
 .btn-photos {
   background-color: #8e664d;
 }
+.btn-photos:hover {
+  background-color: #bd9a84;
+}
 .btn-podcasts {
   background-color: #107fc9;
 }
@@ -8663,6 +8663,9 @@ a.btn-neutral:hover {
 .btn-schedule {
   background-color: #9b59b6;
 }
+.btn-schedule:hover {
+  background-color: #c6a0d5;
+}
 .btn-songs {
   background-color: #2ecc71;
 }
@@ -8672,14 +8675,20 @@ a.btn-neutral:hover {
 .btn-fb {
   background-color: #38619f;
 }
+.btn-fb:hover {
+  background-color: #7095cd;
+}
 .btn-twitter {
   background-color: #2eacdf;
 }
+.btn-twitter:hover {
+  background-color: #86cfed;
+}
 .btn-spotify {
-  background-color: #84bd00;
+  background-color: #bdff24;
 }
 .btn-spotify:hover {
-  background-color: #80b819;
+  background-color: #84bd00;
 }
 .btn-neutral {
   background-color: #ffffff;
@@ -8688,6 +8697,26 @@ a.btn-neutral:hover {
 }
 .btn-neutral:hover {
   background-color: #f2f2f2;
+}
+.btn-share {
+  font-size: 16px;
+  height: 35px;
+  line-height: 35px;
+  padding: 0;
+  width: 35px;
+}
+.btn-full-size {
+  display: block;
+  font-size: 18px;
+  margin: 10px auto;
+  padding: 8px;
+  text-transform: uppercase;
+  width: 100%;
+}
+@media only screen and (min-width: 992px) {
+  .btn-full-size {
+    width: 1110px;
+  }
 }
 .cover-wrapper {
   height: 400px;
@@ -9740,35 +9769,55 @@ a.btn-neutral:hover {
   line-height: 1.8em;
   margin: 0 0 1em;
 }
+.single-article blockquote {
+  font-weight: bolder;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+.single-article blockquote:before {
+  content: open-quote;
+  font-size: 32px;
+  padding: 20px;
+}
+.single-article blockquote p {
+  display: inline;
+  font-size: 32px;
+  font-style: italic;
+  line-height: 1;
+  margin: 0;
+}
 .single-article img {
-  max-width: 100%;
   height: auto;
+  margin: 0.5em auto;
+  max-width: 100%;
+  width: 100%;
 }
 @media (min-width: 768px) {
-  .single-article img,
-  .single-article img.alignright,
-  .single-article img.alignleft,
-  .single-article img.aligncenter {
+  .single-article img {
     height: auto;
     width: auto;
   }
 }
-.single-article img.alignright,
-.single-article img.alignleft {
-  margin: 0 0 1em 1em;
-  width: 100%;
-}
-.single-article img.alignright {
+.single-article .alignright {
   float: right;
+  padding: 0 0 0 0.5em;
 }
-.single-article img.alignleft {
+.single-article .alignleft {
   float: left;
+  margin: 0;
+  padding: 0 0.5em 0 0;
 }
-.single-article img.aligncenter {
+.single-article .aligncenter {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
+}
+.single-article .wp-caption {
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+.single-article .wp-caption img {
+  display: block;
+  margin: 0 auto;
 }
 .single-article .wp-caption-text {
   font-size: 14px;
@@ -9817,8 +9866,12 @@ a.btn-neutral:hover {
   margin: 20px 0;
 }
 .single-article-info .single-share .btn {
+  color: #ffffff;
   font-size: 2em;
+  height: auto;
+  line-height: inherit;
   margin: 5px 0;
+  padding: 6px 12px;
   width: 100%;
 }
 @media (min-width: 768px) {
@@ -9848,6 +9901,7 @@ a.btn-neutral:hover {
   position: fixed;
   text-align: center;
   width: 75px;
+  z-index: 2;
 }
 @media (min-width: 768px) {
   .single-navigation .single-article-prev,

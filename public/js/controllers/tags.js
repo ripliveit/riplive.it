@@ -16,18 +16,25 @@ angular.module('riplive')
     var slug = $routeParams.slug;
     var current = 1;
     var pages = 0;
+    var count = 25;
+
+    $scope.loading = true;
+    $scope.data = [];
 
     newsService.getNewsByTag({
-        slug: slug
+        slug: slug,
+        count: count
     }, function(data) {
         pages = data.pages;
 
         $scope.title = 'News';
         $scope.subtitle = data.tag.title;
-        $scope.posts = data.posts;
-    });
 
-    $scope.loading = true;
+        $scope.data.push({
+            first: data.posts.shift(),
+            posts: data.posts
+        });
+    });
 
     $scope.loadData = function() {
         if (current >= pages) {
@@ -39,11 +46,15 @@ angular.module('riplive')
 
         var params = {
             slug: slug,
-            page: current
+            page: current,
+            count: count
         };
 
         newsService.getNewsByTag(params, function(data) {
-            generalService.pushToArray(data.posts, $scope.posts);
+            $scope.data.push({
+                first: data.posts.shift(),
+                posts: data.posts
+            });
         });
     };
 });
