@@ -37,7 +37,6 @@
     }
 
     blockquote {
-        //border-left: none;
         font-weight: bolder;
         quotes: "\201C""\201D""\2018""\2019";
 
@@ -60,6 +59,7 @@
         height: auto;
         margin: 0.5em auto;
         max-width: 100%;
+        padding: 0;
         width: 100%;
 
         @media(min-width: @screen-sm) {
@@ -70,13 +70,19 @@
 
     .alignright {
         float: right;
-        padding: 0 0 0 0.5em;
+
+        @media(min-width: @screen-sm) {
+            padding: 0 0 0 0.5em;
+        }
     }
 
     .alignleft {
         float: left;
         margin: 0;
-        padding: 0 0.5em 0 0;
+
+        @media(min-width: @screen-sm) {
+            padding: 0 0.5em 0 0;
+        }
     }
 
     .aligncenter {

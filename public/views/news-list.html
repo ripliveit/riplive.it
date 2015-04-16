@@ -32,14 +32,14 @@
                 <h5 class="stripe-author color-white">
                     By
                     
-                    <a class="color-news" ng-href="/authors/Val" href="/authors/Val">
-                        Val
+                    <a class="color-news" ng-href="/authors/{{post.first.author.nickname}}" href="/authors/Val">
+                        {{post.first.author.nickname}}
                     </a>
                     
                     -
 
                     <span>
-                        14 April 2015
+                        {{p.date | dateFormat}}
                     </span>
                 </h5>
             </div>

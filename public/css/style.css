@@ -9758,6 +9758,14 @@ a.btn-neutral:hover {
   background-color: #f8941e;
   color: #ffffff;
 }
+.single-article h1,
+.single-article h2,
+.single-article h3,
+.single-article h4,
+.single-article h5,
+.single-article h6 {
+  font-weight: bold;
+}
 .single-article a {
   color: #f8941e;
 }
@@ -9789,6 +9797,7 @@ a.btn-neutral:hover {
   height: auto;
   margin: 0.5em auto;
   max-width: 100%;
+  padding: 0;
   width: 100%;
 }
 @media (min-width: 768px) {
@@ -9799,12 +9808,20 @@ a.btn-neutral:hover {
 }
 .single-article .alignright {
   float: right;
-  padding: 0 0 0 0.5em;
+}
+@media (min-width: 768px) {
+  .single-article .alignright {
+    padding: 0 0 0 0.5em;
+  }
 }
 .single-article .alignleft {
   float: left;
   margin: 0;
-  padding: 0 0.5em 0 0;
+}
+@media (min-width: 768px) {
+  .single-article .alignleft {
+    padding: 0 0.5em 0 0;
+  }
 }
 .single-article .aligncenter {
   display: block;
@@ -9814,6 +9831,8 @@ a.btn-neutral:hover {
 .single-article .wp-caption {
   background-color: #f2f2f2;
   padding: 10px;
+  max-width: 100%;
+  margin: 0.5em 0;
 }
 .single-article .wp-caption img {
   display: block;
