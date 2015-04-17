@@ -8,9 +8,8 @@
     <meta name="description" content="Ascolta Riplive.it" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" href="favicon.ico?v=1" />
-    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/main.min.css">
+    <link rel="stylesheet" href="/css/style.min.css?v=1">
+
     <style>
     #external-player {
         padding: 10px;
@@ -109,16 +108,19 @@
     <div id="container">
         <div id="external-player" class="player-container">
             <div class="player-hidden"></div>
+
             <button id="volume-off" class="player-volume-off btn btn-lg btn-neutral fa fa-volume-off"></button>
             <button id="play" class="player-control btn btn-lg btn-neutral fa fa-play"></button>
             <button id="stop" class="player-control btn btn-lg btn-neutral fa fa-stop"></button>
             <button id="volume-up" class="player-volume-up btn btn-lg btn-neutral fa fa-volume-up"></button>
+
             <div class="clearfix">
                 <div class="jp-progress">
                     <div class="jp-seek-bar">
                         <div class="jp-play-bar"></div>
                     </div>
                 </div>
+
                 <div class="jp-time-holder">
                     <div class="jp-current-time"></div>
                     <div class="jp-duration"></div>
@@ -126,7 +128,9 @@
             </div>
         </div>
     </div>
+
     <div id="analytics" analytics></div>
+
     <script src="/vendor/jquery/dist/jquery.js"></script>
     <script src="/vendor/jplayer/dist/jplayer/jquery.jplayer.js"></script>
     <script>
@@ -138,6 +142,10 @@
         var search = window.location.search;
         var value  = search.split('=');
         var stream = value[1];
+
+        if (!stream || typeof stream === 'undefined') {
+            return false;
+        }
 
         player.jPlayer({
             ready: function() {
