@@ -9,6 +9,7 @@ heroku
 /views
 /dist
 nbproject
+.idea
 
 public/vendor/
 public/js/bundle.min.js
