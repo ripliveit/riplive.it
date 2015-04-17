@@ -120,6 +120,45 @@
     </div>
 </div>
 
+<div id="related" class="container-fluid">
+    <h2 class="single-subtitle text-center">
+        Read Next
+    </h2>
+    
+    <div class="stripe" ng-repeat="post in related">
+        <a ng-href="/categories/{{post.categories[0].slug}}" class="stripe-category btn btn-xs btn-news">
+            {{post.categories[0].title}}
+        </a>
+
+        <figure class="stripe-figure">
+            <a class="stripe-link" ng-href="/news/{{post.slug}}" title="{{post.title}}" 
+            ng-style="{'background-image': 'url(' + post.thumbnail_images['landscape-large'].url + ')'}"></a>
+        </figure>
+
+        <div class="stripe-information">
+            <h2 class="stripe-title">
+                <a class="color-white" ng-href="/news/{{post.slug}}" title="{{post.title}}">
+                    {{post.title}}
+                </a>
+            </h2>
+
+            <h5 class="stripe-author color-white">
+                By
+                
+                <a class="color-news" ng-href="/authors/{{post.author.nickname}}" href="/authors/Val">
+                    {{post.author.nickname}}
+                </a>
+                
+                -
+
+                <span>
+                    {{post.date | dateFormat}}
+                </span>
+            </h5>
+        </div>
+    </div>
+</div>
+
 <div id="comments" class="single content container-fluid">
     <div id="comment-wrapper" class="col-lg-8 col-lg-offset-2 hidden-xs">
         <h2 class="single-subtitle text-center">

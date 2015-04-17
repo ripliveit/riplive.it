@@ -6,10 +6,10 @@ angular.module('riplive')
  * Retrieve and display a specific news (by it's slug) and
  * the inherent author's data.
  *
- * @param {Object} $scope         [description]
- * @param {Object} $routeParams   [description]
- * @param {Object} newsService    [description]
- * @param {Object} authorsService [description]
+ * @param {Object} $scope
+ * @param {Object} $routeParams
+ * @param {Object} newsService
+ * @param {Object} authorsService
  */
 .controller('NewsCtrl', function NewsCtrl($scope, $routeParams, newsService, authorsService) {
     var slug = $routeParams.slug;
@@ -28,5 +28,14 @@ angular.module('riplive')
 
         // Disqus one?
         $scope.id = data.post.slug;
+
+        newsService.getRelatedNews(slug, {
+            slug: data.post.tags[0].slug,
+            count: 4
+        }, function(related) {
+            $scope.related = related;
+
+            console.log($scope.related);
+        });
     });
 });

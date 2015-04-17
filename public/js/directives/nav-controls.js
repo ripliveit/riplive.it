@@ -19,9 +19,9 @@ angular.module('riplive')
         replace: true,
         restrict: 'E',
         link: function postLink(scope, element, attrs) {
-            var controls = element;
+            var controls      = element;
             var playerControl = element.find('.player-control');
-            var onAirControl = element.find('#on-air-btn');
+            var onAirControl  = element.find('#on-air-btn');
 
             // Notify when user click on side menu button.
             scope.toggleSideMenu = function() {
@@ -35,7 +35,6 @@ angular.module('riplive')
 
             // Notify when user click on play/pause button.
             scope.playPause = function() {
-                console.log('playPause');
                 playerChannel.publish('playPause');
             };
 

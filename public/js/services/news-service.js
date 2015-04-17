@@ -78,6 +78,30 @@ angular.module('riplive')
             tags.$promise.then(function(data) {
                 cb(data);
             });
+        },
+
+        /**
+         * Return all news with the same tag,
+         * except the one specified by the slug parameter.
+         * 
+         * @param  {String}   slug   Slug of the news from wich start the relation.
+         * @param  {Object}   params Used for pagination.
+         * @param  {Function} cb     Fired when date are retrieved from the server.
+         * @return {undefined}
+         */
+        getRelatedNews: function(slug, params, cb) {
+            var tags = Tag.list(params);
+            var related = [];
+
+            tags.$promise.then(function(data) {
+                data.posts.forEach(function(post) {
+                    if (post.slug !== slug) {
+                        related.push(post);
+                    }
+                });
+
+                cb(related);
+            });
         }
     };
 });

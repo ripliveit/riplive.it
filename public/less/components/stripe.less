@@ -1,7 +1,16 @@
 .stripe {
     height: 300px;
-    margin: 25px 0 45px;
+    margin: 5px 0 30px;
     position: relative;
+    .material-shadow(3);
+
+    @media (min-width: @screen-sm) {
+        margin: 15px 0 35px;
+    }
+
+    @media (min-width: @screen-md) {
+        margin: 15px 0 45px;
+    }
 
     .stripe-category {
         left: 0;
@@ -24,7 +33,13 @@
         width: 100%;
 
         &:after {
-            .gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1));
+            opacity: 1;
+            .transition(opacity, 0.2s, ease-in);
+            .gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1));
+        }
+
+        &:hover:after {
+            opacity: 0.3;
         }
     }
 
@@ -37,11 +52,9 @@
     }
 
     .stripe-title {
-        @media only screen and (min-width: @screen-sm) {
-            font-size: 20px;
-        }
+        font-size: 20px;
 
-        @media only screen and (min-width: @screen-md) {
+        @media (min-width: @screen-sm) {
             font-size: 28px;
         }
     }

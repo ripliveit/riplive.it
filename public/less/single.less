@@ -38,6 +38,7 @@
 
     blockquote {
         font-weight: bolder;
+        padding: 10px 20px 25px 10px;
         quotes: "\201C""\201D""\2018""\2019";
 
         &:before {
@@ -48,10 +49,14 @@
 
         p {
             display: inline;
-            font-size: 32px;
+            font-size: 22px;
             font-style: italic;
             line-height: 1;
             margin: 0;
+
+            @media(min-width: @screen-sm) {
+                font-size: 32px;
+            }
         }
     }
 
