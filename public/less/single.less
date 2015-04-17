@@ -140,7 +140,7 @@
         }
 
         &:hover {
-            background-color: @light-gray;
+            background-color: @white;
         }
     }
 
@@ -190,7 +190,7 @@
     .single-article-prev,
     .single-article-next {
         background-color: @white;
-        border: 1px solid @middle-gray;
+        border: 1px solid @gray;
         bottom: 0;
         display: block;
         font-size: 18px;
@@ -202,6 +202,7 @@
         text-align: center;
         width: 75px;
         z-index: 2;
+        .material-shadow(1);
 
         @media(min-width: @screen-sm) {
             width: 100px;    
