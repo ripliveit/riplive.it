@@ -1,4 +1,5 @@
-.btn {
+.btn,
+a.btn {
     border-radius: 0;
     font-family:'open_sansregular';
 
@@ -87,6 +88,7 @@
 
     &-fb {
         background-color: @color-fb;
+        color: @white;
 
         &:hover {
             background-color: lighten(@color-fb, 20%);
@@ -95,6 +97,7 @@
 
     &-twitter {
         background-color: @color-twitter;
+        color: @white;
 
         &:hover {
             background-color: lighten(@color-twitter, 20%);
@@ -103,6 +106,7 @@
 
     &-spotify {
         background-color: @color-spotify;
+        color: @white;
 
         &:hover {
             background-color: lighten(@color-spotify, 10%);
@@ -119,7 +123,8 @@
         }
     }
 
-    &-share {
+    &-share,
+    &-square {
         font-size: 16px;
         height: 35px;
         line-height: 35px;
@@ -134,13 +139,8 @@
         padding: 8px;
         text-transform: uppercase;
         width: 100%;
-        // .material-shadow(2);
 
-        // &:hover {
-        //     .material-shadow(1);
-        // }
-
-        @media only screen and (min-width: @screen-md) {
+        @media (min-width: @screen-md) {
             width: 1110px;
         }
     }

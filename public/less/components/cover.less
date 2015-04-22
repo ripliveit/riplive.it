@@ -8,7 +8,8 @@
     }
 
     &:after {
-    	.gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.71));
+    	.gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 1));
+        opacity: 0.9;
     }
 }
 
@@ -72,6 +73,18 @@
 
             @media(min-width: @screen-sm) {
                 font-size: 32px;
+            }
+
+            &-big {
+                font-size: 32px;
+
+                @media(min-width: @screen-sm) {
+                    font-size: 48px;
+                }
+
+                @media(min-width: @screen-md) {
+                    font-size: 80px;
+                }
             }
 		}
 
