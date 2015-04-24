@@ -8,29 +8,16 @@
     </h2>
 
     <div id="legend">
-        <h3 class="hidden-xs">
+        <h3>
             Choose a program
             <span class="fa fa-microphone"></span>
         </h3>
 
-        <select id="programs-select" class="form-control visible-xs" ng-model="currentProgram">
+        <select id="programs-select" class="form-control select-box" ng-model="currentProgram">
             <option value="">Choose a program</option>
             <option value="all_programs">All Programs</option>
             <option ng-repeat="pr in programs" value="{{pr.slug}}">{{pr.program_title}}</option>
         </select>
-
-        <ul class="unordered hidden-xs">
-            <li class="legend-item">
-                <a ng-href="/podcasts" class="btn btn-md btn-podcasts">
-                    All Programs
-                </a>
-            </li>
-            <li class="legend-item" ng-repeat="pr in programs">
-                <a ng-href="/podcasts/{{pr.slug}}" class="btn btn-md btn-podcasts">
-                    {{pr.program_title}}
-                </a>
-            </li>
-        </ul>
     </div>
 
     <div class="list-wrapper">

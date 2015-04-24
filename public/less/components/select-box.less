@@ -1,0 +1,21 @@
+.select-box {
+    border: 1px solid @gray;
+    border-radius: 0;
+    box-shadow: none;
+    color: @black;
+    height: 40px;
+    margin: 25px auto 35px;
+    width: 95%;
+    .material-shadow(1);
+
+    @media (min-width: @screen-md) {
+        margin: 25px auto 45px;
+        width: 992px;
+    }
+
+    &:focus {
+        border-color: @gray;
+        box-shadow: 1px 1px 10px @light-orange;
+        outline: none;
+    }
+}

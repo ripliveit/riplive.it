@@ -8,24 +8,16 @@
     </h2>
     
     <div id="legend">
-        <h3 class="hidden-xs">
+        <h3>
             Choose a genre
             <span class="fa fa-headphones"></span>
         </h3>
 
-        <select id="genre-select" class="form-control visible-xs" ng-model="currentGenre" ng-options="g.name for g in songsGenres">
+        <select id="genre-select" class="form-control select-box" ng-model="currentGenre" ng-options="g.name for g in songsGenres">
             <option value="">
                 All genres
             </option>
         </select>
-
-        <ul class="unordered hidden-xs">
-            <li class="legend-item" ng-repeat="g in songsGenres">
-                <a class="btn btn-md btn-songs" ng-href="/songs/genre/{{g.slug}}">
-                    {{g.name}}
-                </a>
-            </li>
-        </ul>
     </div>
 
     <div class="list-wrapper">
