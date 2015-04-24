@@ -52,6 +52,10 @@ function NewsDao() {
             uri += '?page=' + criteria.page;
             uri += '&count=' + criteria.count;
 
+        if (typeof criteria.author !== 'undefined' && criteria.author) {
+            uri += '&author_name=' + criteria.author;
+        }
+
         var hash = this.hasher.getHash(uri);
 
         this.broker.setTime(30).get(hash, uri, function(err, data) {

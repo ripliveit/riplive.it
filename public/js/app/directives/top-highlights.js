@@ -15,7 +15,7 @@ angular.module('riplive')
  */
 .directive('topHighlights', function($window, $rootScope, $location, onAirChannel) {
     return {
-        templateUrl: 'templates/top-highlights.html',
+        templateUrl: 'js/app/templates/top-highlights.html',
         replace: true,
         restrict: 'E'
     };

@@ -20,7 +20,7 @@ angular.module('riplive')
             showControls : '=',
             isStreaming : '='
         },
-        templateUrl: 'templates/streaming-player.html',
+        templateUrl: 'js/app/templates/streaming-player.html',
         link: function postLink(scope, element, attrs) {
 
             var stream = scope.audio;

@@ -1,0 +1,68 @@
+<div id="news-author" class="single content" when-scrolled="loadData()">
+    <div class="container-fluid" ng-controller="AuthorCtrl">
+        <header class="text-center">
+            <h1 class="single-title">
+                {{author.nickname}}
+            </h1>
+        </header>
+
+        <div class="author-profile">
+            <figure class="author-picture">
+                <img ng-src="{{author.author_images.thumbnail}}" title="{{author.nickname}}" alt="{{author.nickname}}"/>
+            </figure>
+
+            <article class="author-description" ng-bind-html="author.description">
+            </article>
+        </div>
+    </div>
+
+    <div class="media-wrapper">
+        <header class="text-center">
+            <h2 class="single-subtitle">
+                Stories by this author 
+            </h2>
+        </header>
+
+        <div class="container">
+            <div class="media-block col-sm-6 col-md-6 col-lg-4" ng-repeat="p in posts">
+                <div class="thumbnail thumbnail-fixed">
+                    <a class="media-block-link" ng-href="/news/{{p.slug}}">
+                        <figure class="media-block-img" ng-style="{'background-image': 'url(' + p.thumbnail_images.medium.url + ')'}"></figure>
+                    </a>
+
+                    <a ng-href="/categories/{{p.categories[0].slug}}" class="media-block-category btn btn-xs btn-news">
+                        {{p.categories[0].title}}
+                    </a>
+
+                    <div class="caption">
+                        <h3 class="media-block-title bold">
+                            <a ng-href="/news/{{p.slug}}">
+                                {{p.title}}
+                            </a>
+                        </h3>
+
+                        <p ng-bind-html="(p.excerpt | limitTo : 50) + '...'" class="visible-md visible-lg"></p>
+
+                        <h5>
+                            By
+                            
+                            <a class="color-news" ng-href="/authors/{{p.author.nickname}}">
+                                {{p.author.nickname}}
+                            </a>
+                            
+                            -
+
+                            <span>
+                                {{p.date | dateFormat}}
+                            </span>
+                        </h5>
+                    </div>
+
+                    <a ng-href="/news/{{p.slug}}" class="media-block-more btn btn-neutral" role="button">
+                        Read <span class="fa fa-angle-right"></span>
+                    </a> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

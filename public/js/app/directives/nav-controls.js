@@ -15,7 +15,7 @@ angular.module('riplive')
  */
 .directive('navControls', function(playerChannel, sideMenuChannel, onAirChannel) {
     return {
-        templateUrl: 'templates/nav-controls.html',
+        templateUrl: 'js/app/templates/nav-controls.html',
         replace: true,
         restrict: 'E',
         link: function postLink(scope, element, attrs) {

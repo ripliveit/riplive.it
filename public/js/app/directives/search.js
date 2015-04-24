@@ -12,7 +12,7 @@ angular.module('riplive')
  */
 .directive('search', function($location, $timeout, sideMenuChannel) {
     return {
-        templateUrl: 'templates/search.html',
+        templateUrl: 'js/app/templates/search.html',
         restrict: 'E',
         replace: 'true',
         scope: {

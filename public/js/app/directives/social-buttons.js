@@ -13,7 +13,7 @@ angular.module('riplive')
     return {
         replace: true,
         restrict: 'E',
-        templateUrl: 'templates/social-buttons.html',
+        templateUrl: 'js/app/templates/social-buttons.html',
         scope: {
             href: '=',
             image: '=',

@@ -11,7 +11,7 @@ angular.module('riplive')
  */
 .directive('photosControl', function photosControl() {
     return {
-        templateUrl: 'templates/photos-control.html',
+        templateUrl: 'js/app/templates/photos-control.html',
         replace: true,
         restrict: 'E',
         link: function postLink(scope, element, attrs) {

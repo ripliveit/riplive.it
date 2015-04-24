@@ -15,7 +15,7 @@ module.exports = function(grunt) {
             },
             all: [
                 'Gruntfile.js',
-                '<%= path.public %>/js/{,*/}*.js'
+                '<%= path.public %>/js/app/{,*/}*.js'
             ],
             test: {
                 options: {
@@ -56,7 +56,7 @@ module.exports = function(grunt) {
                         '<%= path.public %>/vendor/angular-disqus/angular-disqus.js',
                     ],
                     '<%= path.temp %>/app.js': [
-                        '<%= path.public %>/js/**/*.js'
+                        '<%= path.public %>/js/app/**/*.js'
                     ]
                 }
             },

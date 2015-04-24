@@ -27,9 +27,11 @@
                         </a>
                     </p>
 
-                    <h6>
-                        Article written: {{a.number_of_posts}}
-                    </h6>
+                    <h5 ng-if="a.number_of_posts != 0">
+                        <a ng-href="/authors/{{a.slug}}">
+                            Article written: {{a.number_of_posts}}
+                        </a>
+                    </h5>
                 </div>
 
                 <a ng-href="/authors/{{a.slug}}" class="media-block-more btn btn-authors" role="button">

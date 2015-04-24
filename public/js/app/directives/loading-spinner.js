@@ -9,7 +9,7 @@ angular.module('riplive')
  */
 .directive('loadingSpinner', function() {
     return {
-        templateUrl: 'templates/loading-spinner.html',
+        templateUrl: 'js/app/templates/loading-spinner.html',
         restrict: 'E',
         replace: true,
         scope: {

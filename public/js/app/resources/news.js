@@ -26,7 +26,8 @@ angular.module('riplive')
             method: 'GET',
             params: {
                 count: 24,
-                page: '@page'
+                page: '@page',
+                author: '@author'
             },
             transformResponse: function(data, headers) {
                 var parsed = JSON.parse(data);

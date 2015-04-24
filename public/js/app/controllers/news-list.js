@@ -8,9 +8,8 @@ angular.module('riplive')
  * 
  * @param {Object} $scope         
  * @param {Object} newsService
- * @param {Object} generalService
  */
-.controller('NewsListCtrl', function NewsListCtrl($scope, newsService, generalService) {
+.controller('NewsListCtrl', function NewsListCtrl($scope, newsService) {
     var current = 1;
     var pages   = 0;
     var count   = 25;

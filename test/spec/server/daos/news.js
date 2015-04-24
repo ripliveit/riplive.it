@@ -8,6 +8,7 @@ describe('NewsDao', function() {
         expect(newsDao).to.be.an('object');
         expect(newsDao).to.have.property('getNewsBySlug');
         expect(newsDao).to.have.property('getAllNews');
+        expect(newsDao).to.have.property('getNewsByAuthorSlug');
         expect(newsDao).to.have.property('getNewsByCategory');
         expect(newsDao).to.have.property('getNewsByTag');
 

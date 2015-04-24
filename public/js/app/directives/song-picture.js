@@ -15,6 +15,6 @@ angular.module('riplive')
         scope: {
             song: '='
         },
-        templateUrl: 'templates/song-picture.html'
+        templateUrl: 'js/app/templates/song-picture.html'
     };
 });

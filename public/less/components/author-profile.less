@@ -1,0 +1,26 @@
+.author-profile {
+    .material-shadow(1);
+    background-color: @white;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    overflow: hidden;
+    padding: 20px;
+
+    .author-picture {
+        float: left;
+        margin: 0 10px 0 0;
+
+        > img {
+            .material-shadow(1);
+            border: 5px solid orange;
+            border-radius: 140px;
+            width: 140px;
+        }
+    }
+
+    .author-description {
+        float: left;
+        font-size: 19px;
+        width: calc(100% - 160px);
+    }
+}

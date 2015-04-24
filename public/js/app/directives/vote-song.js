@@ -14,7 +14,7 @@ angular.module('riplive')
  */
 .directive('voteSong', function voteSong($location, voteService) {
     return {
-        templateUrl: 'templates/vote-song.html',
+        templateUrl: 'js/app/templates/vote-song.html',
         replace: true,
         restrict: 'E',
         scope: {

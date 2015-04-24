@@ -9,7 +9,7 @@ angular.module('riplive')
      */
     .directive('backOnTop', function() {
         return {
-            templateUrl: 'templates/back-on-top.html',
+            templateUrl: 'js/app/templates/back-on-top.html',
             restrict: 'E',
             link: function postLink(scope, element, attrs) {
                 element.on('click', function() {

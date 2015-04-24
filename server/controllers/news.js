@@ -11,8 +11,9 @@ var news = new NewsDao();
  */
 exports.getAllNews = function(req, res, next) {
     var criteria = {
-        count: req.query.count || 24,
-        page: req.query.page || 1
+        count: req.query.count  || 24,
+        page : req.query.page   || 1,
+        author: req.query.author || null
     };
 
     news.getAllNews(criteria, function(err, data) {

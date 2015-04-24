@@ -1,0 +1,87 @@
+<div id="author" class="single content" itemscope itemtype="http://schema.org/Person">
+    <div class="cover-wrapper">
+        <div class="cover" ng-style="{'background-image': 'url(' + author.author_images['image_large'] + ')'}">
+            <div class="cover-picker">
+                <header class="cover-header">
+                    <a ng-href="/authors" class="cover-label btn btn-news">
+                        <span class="fa fa-pencil"></span> Authors
+                    </a>
+
+                    <h1 class="cover-title cover-title-big" itemprop="name">
+                        {{author.nickname}}
+                    </h1>
+
+                    <h2 class="cover-subtitle">
+                        <a class="color-news" ng-href="/authors/{{news.author.slug}}" itemprop="email">
+                            {{author.email}}
+                        </a>
+                    </h2>
+
+                    <!--
+                    <h3>
+                        <span itemprop="alternateName">
+                            {{author.first_name}} {{author.last_name}}
+                        </span>
+                    </h3>
+                    -->
+                </header>
+            </div>
+        </div>
+    </div>
+
+    <article class="single-article col-lg-6 col-lg-offset-3">
+        <p ng-bind-html="author.description" itemprop="text"></p>
+    </article>
+</div>
+
+<div class="media-wrapper" when-scrolled="loadData()">
+    <header class="text-center">
+        <h2 class="single-subtitle">
+            Stories by this author 
+        </h2>
+    </header>
+
+    <div class="container">
+        <div class="media-block col-sm-6 col-md-6 col-lg-4" ng-repeat="p in posts">
+            <div class="thumbnail thumbnail-fixed">
+                <a class="media-block-link" ng-href="/news/{{p.slug}}">
+                    <figure class="media-block-img" ng-style="{'background-image': 'url(' + p.thumbnail_images.medium.url + ')'}"></figure>
+                </a>
+
+                <a ng-href="/categories/{{p.categories[0].slug}}" class="media-block-category btn btn-xs btn-news">
+                    {{p.categories[0].title}}
+                </a>
+
+                <div class="caption">
+                    <h3 class="media-block-title bold">
+                        <a ng-href="/news/{{p.slug}}">
+                            {{p.title}}
+                        </a>
+                    </h3>
+
+                    <p ng-bind-html="(p.excerpt | limitTo : 50) + '...'" class="visible-md visible-lg"></p>
+
+                    <h5>
+                        By
+                        
+                        <a class="color-news" ng-href="/authors/{{p.author.nickname}}">
+                            {{p.author.nickname}}
+                        </a>
+                        
+                        -
+
+                        <span>
+                            {{p.date | dateFormat}}
+                        </span>
+                    </h5>
+                </div>
+
+                <a ng-href="/news/{{p.slug}}" class="media-block-more btn btn-neutral" role="button">
+                    Read <span class="fa fa-angle-right"></span>
+                </a> 
+            </div>
+        </div>
+    </div>
+
+    <loading-spinner data-visible="loading"></loading-spinner>
+</div>

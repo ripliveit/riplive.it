@@ -19,9 +19,9 @@ angular.module('riplive')
     return {
 
         /**
-         * Return a single chart.
+         * Return a single news.
          *
-         * @param  {String}   slug The chart's unique slug.
+         * @param  {String}   slug The news unique slug.
          * @param  {Function} cb Fired when date are retrieved from the server.
          * @return {undefined}
          */
@@ -42,7 +42,7 @@ angular.module('riplive')
          * @param  {Function}  cb Fired when date are retrieved from the server.
          * @return {undefined}
          */
-        getNews: function(params, cb) {
+        getNews: function(params, cb) {           
             var news = News.list(params);
 
             news.$promise.then(function(data) {
