@@ -1,0 +1,38 @@
+#scheduled {
+    position: relative;
+
+    .scheduled-picture { 
+        background-size: cover;
+        background-position: center top;
+        display: block;
+        height: 375px;
+        position: relative;
+        .material-shadow(1);
+
+        &:after {
+            opacity: 1;
+            .transition(opacity, 0.2s, ease-in);
+            .gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1));
+        }
+
+        &:hover:after {
+            opacity: 0.3;
+        }
+    }
+
+    .caption {
+        bottom: 0;
+        color: @white;
+        padding: 15px;
+        position: absolute;
+
+        h2 {
+            font-size: 24px;
+            text-transform: uppercase;
+
+            @media(min-width: @screen-sm) {
+                font-size: 36px;     
+            }
+        }
+    }
+}

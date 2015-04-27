@@ -15,6 +15,12 @@ angular.module('riplive')
     var Program = $injector.get('program');
     var Schedule = $injector.get('schedule');
 
+    function convertToSeconds(hhMM) {
+        var split = hhMM.split(':');
+        var hour  = split[0];
+        var minutes = split[1];
+    }
+
     return {
 
         /**
@@ -35,7 +41,8 @@ angular.module('riplive')
         },
 
         /**
-         * Returna list of programs.
+         * Return a list of programs,
+         * where the first is the next scheduled.
          *
          * @param  {Object}    params Used for pagination.
          * @param  {Function}  cb Fired when date are retrieved from the server.
@@ -45,6 +52,46 @@ angular.module('riplive')
             var programs = Program.list(params);
 
             programs.$promise.then(function(data) {
+                var first       = null;
+                var now         = moment();
+                var today       = now.format('dddd');
+                var currentHour = now.format('HH:mm');
+
+                for (var i = 0; i < data.programs.length; i++) {
+                    var program     = data.programs[i];
+                    var programDays = program.program_information['programs-days'];
+                    var schedule    = program.program_information['programs-schedule'];
+                    var parsed      = moment(schedule, 'HH:mm');
+
+                    if (typeof programDays === 'undefined') {
+                        continue;
+                    }
+
+                    for (var j = 0; j < programDays.length; j++) {
+                        var programDay = programDays[j];
+
+                        if (today === programDay) {
+                            if (now.unix() > parsed.unix()) {
+                                continue;
+                            }
+
+                            if (first === null) {
+                                first = program;
+                            } else {
+                                var firstUnix   = moment(first.program_information['programs-schedule'], 'HH:mm').unix();
+                                var programUnix = parsed.unix();
+
+                                if (programUnix < firstUnix) {
+                                    first = program;
+                                }
+                            }
+                        }
+                    }                    
+                }
+
+                data.programs.splice(data.programs.indexOf(first), 1);
+                data.programs.unshift(first);
+
                 cb(data);
             });
         },

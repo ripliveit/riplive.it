@@ -4,47 +4,72 @@
     </h1>
 
     <div class="media-wrapper">
-        <h4 class="media-wrapper-title bolder">
+        <div id="scheduled" class="container">
+            <h3>
+                Next scheduled
+            </h3>
+
+            <a class="scheduled-picture" ng-href="/programs/{{scheduled.slug}}" ng-style="{'background-image': 'url(' + scheduled.program_images.landscape_medium + ')'}"></a>
+
+            <div class="caption">
+                <h2>
+                    <a ng-href="/programs/{{scheduled.slug}}" title="{{scheduled.program_title}}" class="color-white">
+                        {{scheduled.program_title}} - at {{scheduled.program_information['programs-schedule']}}
+                    </a>
+                </h2>
+
+                <h4>
+                    With:
+                    
+                    <a ng-repeat="a in scheduled.program_information['programs-authors']" ng-href="/authors/{{a.nickname}}" class="color-white">
+                        {{a.nickname}}{{$last ? '' : ', '}}
+                    </a>
+                </h4>
+            </div>
+        </div>
+
+        <h2 class="single-subtitle text-center">
             <span class="fa fa-microphone"></span> All programs
-        </h4>
+        </h2>
 
-        <div class="media-block col-sm-4 col-md-4 col-lg-3" ng-repeat="p in programs">
-            <div class="thumbnail thumbnail-fixed">
+        <div class="container">
+            <div class="media-block col-sm-4 col-md-4 col-lg-4" ng-repeat="p in programs">
+                <div class="thumbnail thumbnail-fixed">
+                    <a class="media-block-link" ng-href="/programs/{{p.slug}}">
+                        <figure class="media-block-img" ng-style="{'background-image': 'url(' + p.program_images.image_medium + ')'}"></figure>
+                    </a>
 
-                <a class="media-block-link" ng-href="/programs/{{p.slug}}">
-                    <figure class="media-block-img" ng-style="{'background-image': 'url(' + p.program_images.image_medium + ')'}"></figure>
-                </a>
+                    <a ng-href="" class="media-block-category btn btn-xs btn-programs">
+                        {{p.program_category[0]['name']}}
+                    </a>
 
-                <a ng-href="" class="media-block-category btn btn-xs btn-programs">
-                    {{p.program_category[0]['name']}}
-                </a>
+                    <div class="caption">
+                        <h3 class="media-block-title bold">
+                            <a ng-href="/programs/{{p.slug}}">
+                                {{p.program_title}}
+                            </a>
+                        </h3>
 
-                <div class="caption">
-                    <h3 class="media-block-title bold">
-                        <a ng-href="/programs/{{p.slug}}">
-                            {{p.program_title}}
-                        </a>
-                    </h3>
+                        <h4>
+                            <span ng-repeat="d in p.program_information['programs-days']">
+                                On {{d}},
+                                at {{p.program_information['programs-schedule']}}
+                            </span>
+                        </h4>
 
-                    <h4>
-                        <span ng-repeat="d in p.program_information['programs-days']">
-                            On {{d}},
-                            at {{p.program_information['programs-schedule']}}
-                        </span>
-                    </h4>
+                        <h5>
+                            With:
+                            
+                            <a ng-repeat="a in p.program_information['programs-authors']" ng-href="/authors/{{a.nickname}}">
+                                {{a.nickname}}{{$last ? '' : ', '}}
+                            </a>
+                        </h5>
+                    </div>
 
-                    <h5>
-                        With:
-                        
-                        <a ng-repeat="a in p.program_information['programs-authors']" ng-href="/authors/{{a.nickname}}">
-                            {{a.nickname}}{{$last ? '' : ', '}}
-                        </a>
-                    </h5>
+                    <a ng-href="/programs/{{p.slug}}" class="media-block-more btn btn-neutral" role="button">
+                        Discover <span class="fa fa-angle-right"></span>
+                    </a> 
                 </div>
-
-                <a ng-href="/programs/{{p.slug}}" class="media-block-more btn btn-neutral" role="button">
-                    Discover <span class="fa fa-angle-right"></span>
-                </a> 
             </div>
         </div>
 

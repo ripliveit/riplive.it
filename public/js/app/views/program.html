@@ -7,95 +7,93 @@
                         <span class="fa fa-microphone"></span> Programs
                     </a>
 
-                    <h1 class="cover-title" itemprop="name">
+                    <h1 class="cover-title cover-title-big" itemprop="name">
                         {{program.program_title}}
                     </h1>
-                    
-                    <h2 class="cover-subtitle">
-                        <span ng-repeat="d in program.program_information['programs-days']">
-                            On {{d}}, at {{program.program_information['programs-schedule']}}
-                        </span>
-                    </h2>
-
-                    <span class="fa fa-chevron-down"></span>
                 </header>
             </div>
         </div>
     </div>
 
-    <article class="single-article col-lg-6 col-lg-offset-3">
-        <p ng-bind-html="program.program_content" itemprop="text"></p>
-
-        <div class="text-right">
-            <a ng-href="/podcasts/{{program.slug}}" ng-show="program.total_podcasts" class="btn btn-vote btn-lg btn-programs color-white" itemprop="numberOfEpisodes">
-                Total Podcasts {{program.total_podcasts}} <span class="fa fa-angle-right"></span>
-            </a>
-        </div>
-    </article>
-
-    <div class="single-article-info col-lg-6 col-lg-offset-3">
+    <div id="program-information" class="col-lg-6 col-lg-offset-3">
         <div class="single-article-author">
-            <h4 class="bold">
-                {{program.program_title}}
-            </h4>
-
-            <ul id="information">
+            <ul class="information">
                 <li class="information-item">
-                    <span class="fa fa fa-microphone"></span> Program Run:
+                    <h3>
+                        <span class="fa fa fa-microphone"></span> Program Run
+                    </h3>
+                    
+                    <span ng-repeat="d in program.program_information['programs-days']">
+                        On {{d}}, at {{program.program_information['programs-schedule']}}
+                    </span>
+                </li>
 
-                    <strong>
-                        <span ng-repeat="d in program.program_information['programs-days']">
-                            On {{d}}, at {{program.program_information['programs-schedule']}}
-                        </span>
-                    </strong>
+                <li class="information-item" ng-if="program.program_information['reruns-days']">
+                    <h3>
+                        <span class="fa fa-repeat"></span> Program Rerun
+                    </h3>
+
+                    <span ng-repeat="d in program.program_information['reruns-days']">
+                        On {{d}}, at {{program.program_information['reruns-schedule']}}
+                    </span>
                 </li>
 
                 <li class="information-item">
-                    <span class="fa fa-repeat"></span> Program ReRun: 
+                    <h3>
+                        Description
+                    </h3>
 
-                    <strong>
-                        <span ng-repeat="d in program.program_information['reruns-days']">
-                            On {{d}}, at {{program.program_information['reruns-schedule']}}
-                        </span>
-                    </strong>
+                    <p ng-bind-html="program.program_content" itemprop="text"></p>
                 </li>
+
+                <li class="information-item">
+                    <h3 class="bold">
+                        With
+                    </h3>
+
+                    <div class="single-article-info" ng-repeat="a in program.program_information['programs-authors']">
+                        <a ng-href="/authors/{{a.slug}}" class="author-info">
+                            <figure class="pull-left text-center author-picture" ng-href="/authors/{{a.slug}}">
+                                <img ng-src="{{a.author_images['thumbnail']}}" title="{{a.nickname}}" />
+                            </figure>
+
+                            <div class="pull-left">
+                                <h4 itemprop="name">
+                                    {{a.nickname}}
+                                </h4>
+
+                                <h5 itemprop="email">
+                                    {{a.email}}
+                                </h5>
+                            </div>
+
+                            <span class="fa fa-chevron-right"></span>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="information-item">
+                    <h3>
+                        Podcasts
+                    </h3>
+
+                    <a ng-href="/podcasts/{{program.slug}}" ng-show="program.total_podcasts" class="btn btn-vote btn-lg btn-programs color-white" itemprop="numberOfEpisodes">
+                        Total Podcasts {{program.total_podcasts}} <span class="fa fa-angle-right"></span>
+                    </a>
+                </li>
+
+                <li class="information-item">
+                    <h3>
+                        Follow {{program.program_title}}:
+                    </h3>
+
+                    <div class="single-share">
+                        <a ng-href="{{program.program_information['programs-facebook']}}" ng-show="program.program_information['programs-facebook']" class="btn btn-lg btn-fb fa fa-facebook"></a>
+
+                        <a ng-href="{{program.program_information['programs-twitter']}}" ng-show="program.program_information['programs-twitter']" class="btn btn-lg btn-twitter fa fa-twitter"></a>
+                    </div>
+                </li> 
             </ul>
-
-            <h4 class="bold">
-                With :
-            </h4>
-
-            <a ng-href="/authors/{{a.slug}}" class="author-info" ng-repeat="a in program.program_information['programs-authors']">
-                <figure class="pull-left text-center author-picture" ng-href="/authors/{{a.slug}}">
-                    <img ng-src="{{a.author_images['thumbnail']}}" title="{{a.nickname}}" />
-                </figure>
-
-                <div class="pull-left">
-                    <h4 itemprop="name">
-                        {{a.nickname}}
-                    </h4>
-
-                    <h5 itemprop="email">
-                        {{a.email}}
-                    </h5>
-                </div>
-
-                <span class="fa fa-chevron-right"></span>
-            </a>
-        </div>
-
-        <div class="single-article-taxonomy">
-            <h4 class="bold">
-                Follow {{program.program_title}}:
-            </h4>
-
-            <div class="single-share">
-                <a ng-href="{{program.program_information['programs-facebook']}}" ng-show="program.program_information['programs-facebook']" class="btn btn-lg btn-fb fa fa-facebook"></a>
-
-                <a ng-href="{{program.program_information['programs-twitter']}}" ng-show="program.program_information['programs-twitter']" class="btn btn-lg btn-twitter fa fa-twitter"></a>
-
-                <a ng-href="{{program.program_information['programs-facebook']}}" ng-show="program.program_information['programs-facebook']" class="btn btn-lg btn-facebook fa fa-facebook"></a>
-            </div>
         </div>
     </div>
 </div>

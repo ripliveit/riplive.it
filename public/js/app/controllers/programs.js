@@ -12,7 +12,8 @@ angular.module('riplive')
     $scope.loading = true;
 
     programsService.getPrograms({}, function(data) {
-        $scope.loading = false;
-        $scope.programs = data.programs;
+        $scope.loading   = false;
+        $scope.scheduled = data.programs.shift();
+        $scope.programs  = data.programs;
     });
 });
