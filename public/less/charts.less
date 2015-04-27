@@ -1,11 +1,21 @@
-#chart {
+#charts,
+#chart,
+#related-charts {
     .btn-like {
+        .transition(all, 0.5s, ease-in-out);
+        background-color: transparent;
+        color: @red;
         position: relative;
 
+        &:hover {
+            .scale3d(1.5, 1.5, 1);
+        }
+
         .popover {
+            .material-shadow(1);
             border: 1px solid @light-gray;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             border-radius: 0;
+            color: @black;
             display: none;
             left: 50%;
             margin-left: -100px;
@@ -13,5 +23,37 @@
             top: -50px;
             width: 200px;
         }
+    }
+
+    .btn {
+        display: inline-block;
+        font-size: 18px;
+        width: 55px;
+    }
+
+    .btn-vote {
+        color: @black;
+        text-align: center;
+        width: auto;
+    }
+
+    .song-number {
+        color: @black;
+        display: inline-block;
+        font-family: @font-family-regular;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .text {
+        display: block;
+    }
+}
+
+#related-charts {
+    margin: 25px 0;
+
+    @media (min-width: @screen-sm) {
+        margin: 55px 0;
     }
 }

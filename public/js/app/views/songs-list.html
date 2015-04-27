@@ -29,11 +29,11 @@
             </div>
 
             <div class="list-group-item " ng-repeat="s in songs">
-                <a class="list-object pull-left" ng-href="/songs/{{s.song_slug}}">
+                <a class="list-object" ng-href="/songs/{{s.song_slug}}">
                     <img class="list-image" ng-src="{{s.song_images['thumbnail']}}" alt="{{s.song_title}}" />
                 </a>
 
-                <div class="list-body pull-left">
+                <div class="list-body">
                     <h3 class="bold">
                         <a ng-href="/songs/{{s.song_slug}}">
                             {{s.song_title}}

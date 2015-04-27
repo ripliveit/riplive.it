@@ -37,6 +37,18 @@ angular.module('riplive')
                 var parsed = JSON.parse(data);
                 return parsed;
             }
-        }
+        },
+        complete: {
+            url: '/api/charts/complete/:slug',
+            isArray: false,
+            method: 'GET',
+            params: {
+                slug: '@slug'
+            },
+            transformResponse: function(data, headers) {
+                var parsed = JSON.parse(data);
+                return parsed;
+            }
+        },
     });
 });
