@@ -35,7 +35,7 @@
     }
 
     #cover-wrapper {
-        height: 40%;
+        height: ~"calc(40% - 25px)";
         position: relative;
         width: 100%;
     }
@@ -88,9 +88,9 @@
 
         h4 {
             @media(min-width: @screen-sm) {
-
                 padding: 0 0 0 20px;
                 text-align: left;
+
                 &:first-of-type {
                     padding-top: 20px;
                 }
@@ -105,16 +105,20 @@
     }
 
     .btn-like {
+        background-color: @white;
+        border-top: 1px solid @light-gray;
+        color: @red;
         display: block;
-        font-size: 88px;
-        height: 25%;
-        line-height: inherit;
+        font-size: 98px;
+        height: 30%;
         margin: 0;
         padding: 0;
         position: absolute;
-        text-align: center;
-        vertical-align: top;
         width: 100%;
+
+        .popover {
+            top: 45px;
+        }
     }
 
     .btn-vote {
@@ -122,6 +126,7 @@
     }
 
     .player-container {
+        border-top: 1px solid @light-gray;
         height: 30%;
     }
 
