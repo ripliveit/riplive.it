@@ -54,6 +54,7 @@ module.exports = function(grunt) {
                         '<%= path.public %>/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
                         '<%= path.public %>/vendor/angular-local-storage/dist/angular-local-storage.js',
                         '<%= path.public %>/vendor/angular-disqus/angular-disqus.js',
+                        '<%= path.public %>/vendor/moment/moment.js',
                     ],
                     '<%= path.temp %>/app.js': [
                         '<%= path.public %>/js/app/**/*.js'
