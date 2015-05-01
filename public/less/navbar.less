@@ -10,7 +10,7 @@
 
         li {
             float: none;
-            overflow: hidden;
+            // overflow: hidden;
         }
     }
 
@@ -27,14 +27,28 @@
         line-height: 50px;
         margin: 0;
         padding: 0;
-        width: 75px;
+        
+        // Commented only for expo.
+        // width: 75px;
+
+        width: 70px;
+
+        @media(min-width: @screen-sm) {
+           width: 75px;
+        }
     }
 
     #small-logo {
-        left: 15px;
+        // Commented only for expo.
+        // left: 15px;
+        left: 5px;
         padding: 3px;
         position: absolute;
         z-index: 10001;
+
+        @media(min-width: @screen-sm) {
+           left: 15px;
+        }
     }
 
     .player-container {
@@ -50,8 +64,8 @@
         visibility: hidden;
 
         @media(min-width: @screen-sm) {
-                display: block;
-                visibility: visible;
+            display: block;
+            visibility: visible;
         }
     }
 
@@ -80,6 +94,21 @@
     .player-hidden {
         display: inline;
         visibility: hidden;
+    }
+
+    #rebel {
+        position: relative;
+
+        .popover {
+            top: 45px;
+            width: 170px;
+            left: -45px;
+
+            @media(min-width: @screen-sm) {
+                width: 200px;
+                left: -62px;
+            }
+        }
     }
 }
 

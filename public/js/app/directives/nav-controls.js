@@ -22,6 +22,9 @@ angular.module('riplive')
             var controls      = element;
             var playerControl = element.find('.player-control');
             var onAirControl  = element.find('#on-air-btn');
+            var rebel         = element.find('#rebel');
+            var popover       = element.find('.popover');
+            var open          = false;
 
             // Notify when user click on side menu button.
             scope.toggleSideMenu = function() {
@@ -84,6 +87,16 @@ angular.module('riplive')
 
                     onAirControl.removeClass('fa-level-down')
                         .addClass('fa-level-up');
+                }
+            });
+
+            rebel.on('click', function() {
+                if (open === false) {
+                    open = true;
+                    popover.show();
+                } else {
+                    open = false;
+                    popover.hide();
                 }
             });
         }
