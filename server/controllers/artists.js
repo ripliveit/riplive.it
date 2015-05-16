@@ -1,5 +1,12 @@
-﻿var ArtistDao = require('../daos/artist.js');
-var artist = new ArtistDao();
+﻿var config      = require('config');
+var memcached   = require(__dirname + '/../services/memcached-client.js');
+var HttpService = require(__dirname + '/../services/http-service.js');
+var hasher      = require(__dirname + '/../services/hasher.js');
+var Broker      = require(__dirname + '/../services/memcached-broker.js');
+var ArtistDao   = require('../daos/artist.js');
+
+var broker      = new Broker(memcached, HttpService);
+var artist      = new ArtistDao(config, hasher, broker);
 
 /**
  * Return a list of artists.
@@ -19,7 +26,13 @@ exports.getAllArtists = function(req, res, next) {
     artist.getAllArtists(criteria, function(err, data) {
         if (err) return next(err);
         
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -37,7 +50,13 @@ exports.getArtistBySlug = function(req, res, next) {
     artist.getArtistBySlug(slug, function(err, data) {
         if (err) return next(err);
         
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -61,7 +80,13 @@ exports.getArtistsByGenre = function(req, res, next) {
     artist.getArtistsByGenre(slug, criteria, function(err, data) {
         if (err) return next(err);
         
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -85,7 +110,13 @@ exports.getArtistsByTag = function(req, res, next) {
     artist.getArtistsByTag(slug, criteria, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -101,6 +132,12 @@ exports.getArtistsGenres = function(req, res, next) {
     artist.getArtistsGenres(function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };

@@ -1,5 +1,12 @@
-var ChartDao = require('../daos/chart.js');
-var chart = new ChartDao();
+var config      = require('config');
+var memcached   = require(__dirname + '/../services/memcached-client.js');
+var HttpService = require(__dirname + '/../services/http-service.js');
+var hasher      = require(__dirname + '/../services/hasher.js');
+var Broker      = require(__dirname + '/../services/memcached-broker.js');
+var ChartDao    = require('../daos/chart.js');
+
+var broker      = new Broker(memcached, HttpService);
+var chart       = new ChartDao(config, hasher, broker);
 
 /**
  * Return all charts.

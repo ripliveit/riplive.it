@@ -1,7 +1,29 @@
-var expect = require('expect.js');
-var SearchDao = require(process.cwd() + '/server/daos/search.js');
+var expect      = require('expect.js');
+var sinon       = require('sinon');
+var config      = require('config');
+var memcached   = require(process.cwd() + '/server/services/memcached-client.js');
+var HttpService = require(process.cwd() + '/server/services/http-service.js');
+var hasher      = require(process.cwd() + '/server/services/hasher.js');
+var Broker      = require(process.cwd() + '/server/services/memcached-broker.js');
+var SearchDao   = require(process.cwd() + '/server/daos/search.js');
+var broker      = new Broker(memcached, HttpService);
 
 describe('SearchDao', function() {
+
+    beforeEach(function() {
+        sinon.stub(memcached, 'get', function(key, cb) {
+            return cb(null, false);
+        });
+
+        sinon.stub(memcached, 'set', function(key, value, lifetime, cb) {
+            return cb(null, value);
+        });
+
+        sinon.stub(broker, 'set', function(key, body, cb) {
+            return cb(null, body);
+        });
+    });
+    
     it('is an object used to search against a remote endpoint', function() {
         var searchDao = new SearchDao();
 

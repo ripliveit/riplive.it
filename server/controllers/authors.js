@@ -1,5 +1,12 @@
-﻿var AuthorDao = require('../daos/author.js');
-var author = new AuthorDao();
+﻿var config      = require('config');
+var memcached   = require(__dirname + '/../services/memcached-client.js');
+var HttpService = require(__dirname + '/../services/http-service.js');
+var hasher      = require(__dirname + '/../services/hasher.js');
+var Broker      = require(__dirname + '/../services/memcached-broker.js');
+var AuthorDao   = require('../daos/author.js');
+
+var broker      = new Broker(memcached, HttpService);
+var author      = new AuthorDao(config, hasher, broker);
 
 /**
  * Return a list of all authors.
@@ -17,7 +24,13 @@ exports.getAllAuthors = function(req, res, next) {
     author.getAllAuthors(criteria, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -36,6 +49,12 @@ exports.getAuthorBySlug = function(req, res, next) {
     author.getAuthorBySlug(slug, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code || 200, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };

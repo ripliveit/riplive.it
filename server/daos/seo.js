@@ -5,9 +5,9 @@ var BaseDao = require(__dirname + '/base-dao.js');
  * Seo Data Access Object.
  * 
  */
-function SeoDao() {
+function SeoDao(config, hasher, broker) {
 
-    BaseDao.call(this);
+    BaseDao.call(this, config, hasher, broker);
 
     /**
      * Default metatag.

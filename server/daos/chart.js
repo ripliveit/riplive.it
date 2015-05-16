@@ -7,9 +7,9 @@ var HttpService = require('../services/http-service.js');
  * Implement method to retrieve and manipulate Chart Object.
  * Use the Broker to retrieve and save data to / from memcached.
  */
-function ChartDao() {
+function ChartDao(config, hasher, broker) {
 
-    BaseDao.call(this);
+    BaseDao.call(this, config, hasher, broker);
 
     /**
      * Return all complete charts.

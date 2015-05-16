@@ -8,9 +8,9 @@ var BaseDao = require(__dirname + '/base-dao.js');
  * Use the broker to retrieve and save data from / to memcached.
  * Each method map the remote Wordpress song's data uri.
  */
-function SongDao() {
+function SongDao(config, hasher, broker) {
     
-    BaseDao.call(this);
+    BaseDao.call(this, config, hasher, broker);
     
     /**
      * Return a specific song.

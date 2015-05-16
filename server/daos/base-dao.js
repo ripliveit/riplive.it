@@ -1,12 +1,8 @@
-var config = require('config');
-var hasher = require(__dirname + '/../services/hasher.js');
-var broker = require(__dirname + '/../services/memcached-broker.js');
-
 /**
  * A Dao from which 
  * all other Dao inherits.
  */
-function BaseDao() {
+function BaseDao(config, hasher, broker) {
 
     /**
      * Wordpress URI.

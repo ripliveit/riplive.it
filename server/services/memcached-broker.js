@@ -1,13 +1,24 @@
-﻿var request = require('request');
-var memcached = require('./memcached-client.js');
-var HttpService = require('./http-service.js');
-
-/**
+﻿/**
  * A broker responsible to save and
  * retrieve data from memcached.
  */
-function MemcachedBroker() {
+function MemcachedBroker(memcached, HttpService) {
     var self = this;
+
+    /**
+     * And object uset to persist data
+     * 
+     * @type {Object}
+     */
+    this.memcached = memcached;
+
+    /**
+     * Used to make http request to remote 
+     * server.
+     * 
+     * @type {Object}
+     */
+    this.HttpService = HttpService;
 
     /**
      * Default lifetime
@@ -24,9 +35,11 @@ function MemcachedBroker() {
      * @return {undefined}
      */
     var doRequest = function(uri, key, cb) {
-        HttpService.get(uri, function(err, response, body) {
+        self.HttpService.get(uri, function(err, response, body) {
             if (err) return cb(err, null);
 
+            console.log('inside do request');
+            
             // Persists 
             // on memcached.
             self.set(key, body, cb);
@@ -67,7 +80,7 @@ function MemcachedBroker() {
      * @param {Function} cb
      */
     this.set = function(key, value, cb) {
-        memcached.set(key, value, lifetime, function(err) {
+        self.memcached.set(key, value, lifetime, function(err) {
             if (err) return cb(err);
 
             //console.log('saved in cache with success');
@@ -88,7 +101,7 @@ function MemcachedBroker() {
      * @return {undefined}
      */
     this.get = function(key, uri, cb) {
-        memcached.get(key, function(err, data) {
+        self.memcached.get(key, function(err, data) {
             if (err) return cb(err, null);
 
             if (!data) {
@@ -102,4 +115,4 @@ function MemcachedBroker() {
     };
 };
 
-module.exports = new MemcachedBroker();
+module.exports = MemcachedBroker;

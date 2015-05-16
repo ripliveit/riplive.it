@@ -1,5 +1,12 @@
-﻿var NewsDao = require('../daos/news.js');
-var news = new NewsDao();
+﻿var config      = require('config');
+var memcached   = require(__dirname + '/../services/memcached-client.js');
+var HttpService = require(__dirname + '/../services/http-service.js');
+var hasher      = require(__dirname + '/../services/hasher.js');
+var Broker      = require(__dirname + '/../services/memcached-broker.js');
+var NewsDao     = require('../daos/news.js');
+
+var broker      = new Broker(memcached, HttpService);
+var news        = new NewsDao(config, hasher, broker);
 
 /**
  * Return a list of news.

@@ -1,8 +1,15 @@
-var fs = require('fs');
-var files = fs.readdirSync(__dirname);
+var config      = require('config');
+var memcached   = require(__dirname + '/../services/memcached-client.js');
+var HttpService = require(__dirname + '/../services/http-service.js');
+var hasher      = require(__dirname + '/../services/hasher.js');
+var Broker      = require(__dirname + '/../services/memcached-broker.js');
+var fs          = require('fs');
+var files       = fs.readdirSync(__dirname);
 var controllers = {};
-var SeoDao = require('../daos/seo.js');
-var seoDao = new SeoDao();
+var SeoDao      = require('../daos/seo.js');
+
+var broker      = new Broker(memcached, HttpService);
+var seoDao      = new SeoDao(config, hasher, broker);
 
 /**
  * Dinamically load all controllers,

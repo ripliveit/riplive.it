@@ -1,5 +1,12 @@
+var config       = require('config');
+var memcached    = require(__dirname + '/../services/memcached-client.js');
+var HttpService  = require(__dirname + '/../services/http-service.js');
+var hasher       = require(__dirname + '/../services/hasher.js');
+var Broker       = require(__dirname + '/../services/memcached-broker.js');
 var HighlightDao = require('../daos/highlight.js');
-var highlight = new HighlightDao();
+
+var broker       = new Broker(memcached, HttpService);
+var highlight    = new HighlightDao(config, hasher, broker);
 
 /**
  * Return a list of all highlights.

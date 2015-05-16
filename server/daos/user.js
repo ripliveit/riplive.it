@@ -6,9 +6,9 @@ var BaseDao = require(__dirname + '/base-dao.js');
  * Implements method to retrieve and manipulate User Object.
  * Use the Broker to retrieve and save data to / from memcached.
  */
-var UserDao = function() {
+var UserDao = function(config, hasher, broker) {
 
-    BaseDao.call(this);
+    BaseDao.call(this, config, hasher, broker);
     
     /**
      * Retrieve a user by it's unique identifier.

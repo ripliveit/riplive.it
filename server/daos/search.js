@@ -6,9 +6,9 @@ var BaseDao = require(__dirname + '/base-dao.js');
  * Implement method to perform search.
  * Use the Broker to retrieve and save data to / from memcached.
  */
-function SearchDao() {
+function SearchDao(config, hasher, broker) {
 
-    BaseDao.call(this);
+    BaseDao.call(this, config, hasher, broker);
     
     /**
      * Perform a serch on remote Wordpress API.

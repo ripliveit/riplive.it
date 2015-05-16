@@ -6,9 +6,9 @@ var BaseDao = require(__dirname + '/base-dao.js');
  * Implement method to retrieve and manipulate Podcast Object.
  * Use the Broker to retrieve and save data to / from memcached.
  */
-function PodcastDao() {
+function PodcastDao(config, hasher, broker) {
 
-    BaseDao.call(this);
+    BaseDao.call(this, config, hasher, broker);
 
     /**
      * Return a single podcast.

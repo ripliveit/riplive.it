@@ -1,5 +1,12 @@
-﻿var SongDao = require('../daos/song.js');
-var song = new SongDao();
+﻿var config      = require('config');
+var memcached   = require(__dirname + '/../services/memcached-client.js');
+var HttpService = require(__dirname + '/../services/http-service.js');
+var hasher      = require(__dirname + '/../services/hasher.js');
+var Broker      = require(__dirname + '/../services/memcached-broker.js');
+var SongDao     = require('../daos/song.js');
+
+var broker      = new Broker(memcached, HttpService);
+var song        = new SongDao(config, hasher, broker);
 
 /**
  * Return a list of songs.

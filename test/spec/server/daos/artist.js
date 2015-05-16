@@ -1,9 +1,31 @@
-var expect = require('expect.js');
-var ArtistDao = require(process.cwd() + '/server/daos/artist.js');
+var expect      = require('expect.js');
+var sinon       = require('sinon');
+var config      = require('config');
+var memcached   = require(process.cwd() + '/server/services/memcached-client.js');
+var HttpService = require(process.cwd() + '/server/services/http-service.js');
+var hasher      = require(process.cwd() + '/server/services/hasher.js');
+var Broker      = require(process.cwd() + '/server/services/memcached-broker.js');
+var ArtistDao   = require(process.cwd() + '/server/daos/artist.js');
+var broker      = new Broker(memcached, HttpService);
+
 
 describe('ArtistDao', function() {
+    beforeEach(function() {
+        sinon.stub(memcached, 'get', function(key, cb) {
+            return cb(null, false);
+        });
+
+        sinon.stub(memcached, 'set', function(key, value, lifetime, cb) {
+            return cb(null, value);
+        });
+
+        sinon.stub(broker, 'set', function(key, body, cb) {
+            return cb(null, body);
+        });
+    });
+
     it('is an object used to retrieve artist\'s information from remote endpoint', function() {
-        var artistDao = new ArtistDao();
+        var artistDao = new ArtistDao(config, hasher, broker);
 
         expect(artistDao).to.be.an('object');
         expect(artistDao).to.have.property('getArtistBySlug');
@@ -13,6 +35,8 @@ describe('ArtistDao', function() {
         expect(artistDao).to.have.property('getArtistsGenres');
 
         describe('#getArtistBySlug', function() {
+            this.timeout(15000);
+
             it('should return a single artist object', function(done) {
                 var slug = 'adele-e-il-mare';
 
@@ -31,6 +55,8 @@ describe('ArtistDao', function() {
         });
 
         describe('#getAllArtists', function() {
+            this.timeout(15000);
+
             it('should return an array of artists', function(done) {
                 var criteria = {
                     count: 24,
@@ -52,6 +78,8 @@ describe('ArtistDao', function() {
         });
 
         describe('#getArtistsByGenre', function() {
+            this.timeout(15000);
+
             it('should return all artists within a particular genre', function(done) {
                 var slug = 'rock';
                 var criteria = {
@@ -74,6 +102,8 @@ describe('ArtistDao', function() {
         });
 
         describe('#getArtistsByTag', function() {
+            this.timeout(15000);
+
             it('should return all artists within a specific tag', function(done) {
                 var slug = 'pop';
                 var criteria = {
@@ -96,6 +126,8 @@ describe('ArtistDao', function() {
         });
 
         describe('#getArtistsGenres', function() {
+            this.timeout(15000);
+
             it('should return all artists genres', function(done) {
                 artistDao.getArtistsGenres(function(err, data) {
                     if (err) throw err;

@@ -1,5 +1,12 @@
-var SearchDao = require('../daos/search.js');
-var searchDao = new SearchDao();
+var config      = require('config');
+var memcached   = require(__dirname + '/../services/memcached-client.js');
+var HttpService = require(__dirname + '/../services/http-service.js');
+var hasher      = require(__dirname + '/../services/hasher.js');
+var Broker      = require(__dirname + '/../services/memcached-broker.js');
+var SearchDao   = require('../daos/search.js');
+
+var broker      = new Broker(memcached, HttpService);
+var searchDao   = new SearchDao(config, hasher, broker);
 
 /**
  * Make a request against the search 
