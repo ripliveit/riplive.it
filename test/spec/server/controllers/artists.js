@@ -3,7 +3,7 @@ var request = require('supertest');
 var app = require(process.cwd() + '/app.js');
 
 describe('GET /api/artists', function() {
-    this.timeout(10000);
+    this.timeout(15000);
 
     it('should return a single JSON artist object', function(done) {
         request(app)
@@ -23,7 +23,7 @@ describe('GET /api/artists', function() {
 });
 
 describe('GET /api/artists/:slug', function() {
-    this.timeout(10000);
+    this.timeout(15000);
 
     it('should return a JSON array of artists', function(done) {
         var slug = 'deserto-rosso';
@@ -44,7 +44,7 @@ describe('GET /api/artists/:slug', function() {
 });
 
 describe('GET /api/artists/genre/:slug', function() {
-    this.timeout(10000);
+    this.timeout(15000);
 
     it('should return a JSON array of artist within a specific genre', function(done) {
         var slug = 'rock';
@@ -67,7 +67,7 @@ describe('GET /api/artists/genre/:slug', function() {
 });
 
 describe('GET /api/artists/tag/:slug', function() {
-    this.timeout(10000);
+    this.timeout(15000);
 
     it('should return a JSON array of artist within a specific tag', function(done) {
         var slug = 'pop';
@@ -90,7 +90,7 @@ describe('GET /api/artists/tag/:slug', function() {
 });
 
 describe('GET /api/genres/artists', function() {
-    this.timeout(10000);
+    this.timeout(15000);
     
     it('should return a JSON array of all artists genre', function(done) {
         request(app)

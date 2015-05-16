@@ -4,7 +4,7 @@ var libxmljs = require('libxmljs');
 var app = require(process.cwd() + '/app.js');
 
 describe('GET /sitemap.xml', function() {
-    this.timeout(10000);
+    this.timeout(15000);
 
     it('should return an xml sitemap', function(done) {
         request(app)

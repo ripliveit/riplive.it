@@ -3,7 +3,7 @@ var request = require('supertest');
 var app = require(process.cwd() + '/app.js');
 
 describe('GET /api/authors', function() {
-    this.timeout(10000);
+    this.timeout(15000);
 
     it('should return a JSON array of authors', function(done) {
         request(app)
@@ -23,7 +23,7 @@ describe('GET /api/authors', function() {
 });
 
 describe('GET /api/authors/:slug', function() {
-    this.timeout(10000);
+    this.timeout(15000);
 
     it('should return a single JSON author object', function(done) {
         var slug = 'ilfratus';
