@@ -37,8 +37,6 @@ function MemcachedBroker(memcached, HttpService) {
     var doRequest = function(uri, key, cb) {
         self.HttpService.get(uri, function(err, response, body) {
             if (err) return cb(err, null);
-
-            console.log('inside do request');
             
             // Persists 
             // on memcached.
@@ -107,8 +105,6 @@ function MemcachedBroker(memcached, HttpService) {
             if (!data) {
                 doRequest(uri, key, cb);
             } else {
-                //console.log('returning from cache');
-
                 cb(null, data);
             }
         });

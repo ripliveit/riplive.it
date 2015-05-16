@@ -7,9 +7,9 @@ var hasher      = require(process.cwd() + '/server/services/hasher.js');
 var Broker      = require(process.cwd() + '/server/services/memcached-broker.js');
 var NewsDao     = require(process.cwd() + '/server/daos/news.js');
 var broker      = new Broker(memcached, HttpService);
+var newsDao = new NewsDao(config, hasher, broker);
 
 describe('NewsDao', function() {
-    
     beforeEach(function() {
         sinon.stub(memcached, 'get', function(key, cb) {
             return cb(null, false);
@@ -24,36 +24,41 @@ describe('NewsDao', function() {
         });
     });
 
-    it('is an object used to retrieve artist\'s information from remote endpoint', function() {
-        var newsDao = new NewsDao();
+    afterEach(function() {
+        memcached.get.restore();
+        memcached.set.restore();
+        broker.set.restore();
+    });
 
+    it('is an object used to retrieve artist\'s information from remote endpoint', function() {
         expect(newsDao).to.be.an('object');
         expect(newsDao).to.have.property('getNewsBySlug');
         expect(newsDao).to.have.property('getAllNews');
-        expect(newsDao).to.have.property('getNewsByAuthorSlug');
         expect(newsDao).to.have.property('getNewsByCategory');
         expect(newsDao).to.have.property('getNewsByTag');
+    });
 
-        describe('#getNewsBySlug', function() {
-            it('should return a single news object', function(done) {
-                var slug = 'izombie';
+    describe('#getNewsBySlug', function() {
+        this.timeout(15000);
 
-                newsDao.getNewsBySlug(slug, function(err, data) {
-                    if (err) throw err;
+        it('should return a single news object', function(done) {
+            var slug = 'izombie';
 
-                    var data = JSON.parse(data);
+            newsDao.getNewsBySlug(slug, function(err, data) {
+                if (err) throw err;
 
-                    expect(data).to.be.an('object');
-                    expect(data.status).to.be('ok');
-                    expect(data.post).to.be.an('object');
-                    expect(data.post.slug).to.be.equal(slug);
-                    done();
-                });
+                var data = JSON.parse(data);
+
+                expect(data).to.be.an('object');
+                expect(data.status).to.be('ok');
+                expect(data.post).to.be.an('object');
+                expect(data.post.slug).to.be.equal(slug);
+                done();
             });
         });
 
         describe('#getAllNews', function() {
-            this.timeout(10000);
+            this.timeout(15000);
 
             it('should return an array of news', function(done) {
                 var criteria = {
@@ -76,7 +81,7 @@ describe('NewsDao', function() {
         });
 
         describe('#getNewsByCategory', function() {
-            this.timeout(10000);
+            this.timeout(15000);
 
             it('should return all news within a particular category', function(done) {
                 var slug = 'cinema';
@@ -100,7 +105,7 @@ describe('NewsDao', function() {
         });
 
         describe('#getNewsByTag', function() {
-            this.timeout(10000);
+            this.timeout(15000);
 
             it('should return all news within a specific tag', function(done) {
                 var slug = 'halloween';

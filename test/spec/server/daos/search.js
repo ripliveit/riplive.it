@@ -7,9 +7,9 @@ var hasher      = require(process.cwd() + '/server/services/hasher.js');
 var Broker      = require(process.cwd() + '/server/services/memcached-broker.js');
 var SearchDao   = require(process.cwd() + '/server/daos/search.js');
 var broker      = new Broker(memcached, HttpService);
+var searchDao = new SearchDao(config, hasher, broker);
 
 describe('SearchDao', function() {
-
     beforeEach(function() {
         sinon.stub(memcached, 'get', function(key, cb) {
             return cb(null, false);
@@ -23,34 +23,40 @@ describe('SearchDao', function() {
             return cb(null, body);
         });
     });
-    
-    it('is an object used to search against a remote endpoint', function() {
-        var searchDao = new SearchDao();
 
+    afterEach(function() {
+        memcached.get.restore();
+        memcached.set.restore();
+        broker.set.restore();
+    });
+
+    it('is an object used to search against a remote endpoint', function() {
         expect(searchDao).to.be.an('object');
         expect(searchDao).to.have.property('getSearchResults');
+    });
 
-        describe('#getSearchResults', function() {
-            it('should return an array of data', function(done) {
-                var criteria = {
-                    search : 'free mama',
-                    type : 'artists',
-                    count: 1
-                };
+    describe('#getSearchResults', function() {
+        this.timeout(15000);
 
-                searchDao.getSearchResults(criteria, function(err, data) {
-                    if (err) throw err;
+        it('should return an array of data', function(done) {
+            var criteria = {
+                search : 'free mama',
+                type : 'artists',
+                count: 1
+            };
 
-                    var data = JSON.parse(data);
+            searchDao.getSearchResults(criteria, function(err, data) {
+                if (err) throw err;
 
-                    expect(data).to.be.an('object');
-                    expect(data.status).to.be('ok');
-                    expect(data.posts).to.be.an('array');
-                    expect(data.posts[0].type).to.be.equal(criteria.type);
-                    expect(data.posts.length).to.be.equal(criteria.count);
-                    
-                    done();
-                });
+                var data = JSON.parse(data);
+
+                expect(data).to.be.an('object');
+                expect(data.status).to.be('ok');
+                expect(data.posts).to.be.an('array');
+                expect(data.posts[0].type).to.be.equal(criteria.type);
+                expect(data.posts.length).to.be.equal(criteria.count);
+                
+                done();
             });
         });
     });
