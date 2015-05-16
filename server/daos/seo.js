@@ -18,7 +18,7 @@ function SeoDao(config, hasher, broker) {
         title : 'Riplive.it - The next step',
         path: '',
         description: 'Seguici con le news, i podcast, i programmi e le classifiche di Radio Illusioni Parallele. riplive.it - the next step',
-        image : 'http://www.riplive.it/images/logo_medium.jpg',
+        image : 'http://www.riplive.it/img/logo_medium.jpg',
         url : 'http://www.riplive.it'
     };
 
@@ -72,6 +72,10 @@ function SeoDao(config, hasher, broker) {
                 data = self.defaultMeta;
             } else {
                 data = parsed.meta;
+            }
+
+            if (data.image === '') {
+                data.image = self.defaultMeta.image;
             }
 
             cb(null, data);
