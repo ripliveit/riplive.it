@@ -27,6 +27,12 @@ exports.getSearchResults = function(req, res, next) {
     searchDao.getSearchResults(criteria, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(200, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };

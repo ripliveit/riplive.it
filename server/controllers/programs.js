@@ -27,7 +27,13 @@ exports.getAllPrograms = function(req, res, next) {
     program.getAllPrograms(criteria, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -46,7 +52,13 @@ exports.getProgramBySlug = function(req, res, next) {
     program.getProgramBySlug(slug, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -62,6 +74,12 @@ exports.getProgramsSchedule = function(req, res, next) {
     program.getProgramsSchedule(function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };

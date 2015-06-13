@@ -56,75 +56,75 @@ describe('NewsDao', function() {
                 done();
             });
         });
+    });
 
-        describe('#getAllNews', function() {
-            this.timeout(15000);
+    describe('#getAllNews', function() {
+        this.timeout(15000);
 
-            it('should return an array of news', function(done) {
-                var criteria = {
-                    count: 24,
-                    page: 1
-                };
+        it('should return an array of news', function(done) {
+            var criteria = {
+                count: 24,
+                page: 1
+            };
 
-                newsDao.getAllNews(criteria, function(err, data) {
-                    if (err) throw err;
+            newsDao.getAllNews(criteria, function(err, data) {
+                if (err) throw err;
 
-                    var data = JSON.parse(data);
+                var data = JSON.parse(data);
 
-                    expect(data).to.be.an('object');
-                    expect(data.status).to.be('ok');
-                    expect(data.posts).to.be.an('array');
-                    expect(data.count).to.be.equal(data.posts.length);
-                    done();
-                });
+                expect(data).to.be.an('object');
+                expect(data.status).to.be('ok');
+                expect(data.posts).to.be.an('array');
+                expect(data.count).to.be.equal(data.posts.length);
+                done();
             });
         });
+    });
 
-        describe('#getNewsByCategory', function() {
-            this.timeout(15000);
+    describe('#getNewsByCategory', function() {
+        this.timeout(15000);
 
-            it('should return all news within a particular category', function(done) {
-                var slug = 'cinema';
-                var criteria = {
-                    count: 24,
-                    page: 1
-                };
+        it('should return all news within a particular category', function(done) {
+            var slug = 'cinema';
+            var criteria = {
+                count: 24,
+                page: 1
+            };
 
-                newsDao.getNewsByCategory(slug, criteria, function(err, data) {
-                    if (err) throw err;
+            newsDao.getNewsByCategory(slug, criteria, function(err, data) {
+                if (err) throw err;
 
-                    var data = JSON.parse(data);
+                var data = JSON.parse(data);
 
-                    expect(data).to.be.an('object');
-                    expect(data.status).to.be('ok');
-                    expect(data.posts).to.be.an('array');
-                    expect(data.count).to.be.equal(data.posts.length);
-                    done();
-                });
+                expect(data).to.be.an('object');
+                expect(data.status).to.be('ok');
+                expect(data.posts).to.be.an('array');
+                expect(data.count).to.be.equal(data.posts.length);
+                done();
             });
         });
+    });
 
-        describe('#getNewsByTag', function() {
-            this.timeout(15000);
+    describe('#getNewsByTag', function() {
+        this.timeout(15000);
 
-            it('should return all news within a specific tag', function(done) {
-                var slug = 'halloween';
-                var criteria = {
-                    count: 24,
-                    page: 1
-                };
+        it('should return all news within a specific tag', function(done) {
+            var slug = 'halloween';
+            var criteria = {
+                count: 24,
+                page: 1
+            };
 
-                newsDao.getNewsByTag(slug, criteria, function(err, data) {
-                    if (err) throw err;
+            newsDao.getNewsByTag(slug, criteria, function(err, data) {
+                if (err) throw err;
 
-                    var data = JSON.parse(data);
+                var data = JSON.parse(data);
 
-                    expect(data).to.be.an('object');
-                    expect(data.status).to.be('ok');
-                    expect(data.posts).to.be.an('array');
-                    expect(data.count).to.be.equal(data.posts.length);
-                    done();
-                });
+                expect(data).to.be.an('object');
+                expect(data.status).to.be('ok');
+                expect(data.posts).to.be.an('array');
+                expect(data.count).to.be.equal(data.posts.length);
+                done();
             });
         });
     });

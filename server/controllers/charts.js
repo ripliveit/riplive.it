@@ -22,7 +22,13 @@ exports.getAllCompleteCharts = function(req, res, next) {
     chart.getAllCompleteCharts(page, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -41,7 +47,13 @@ exports.getAllCompleteChartsByChartType = function(req, res, next) {
     chart.getAllCompleteChartsByChartType(slug, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -58,7 +70,13 @@ exports.getLatestCompleteCharts = function(req, res, next) {
     chart.getLatestCompleteCharts(function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -77,7 +95,13 @@ exports.getCompleteChartBySlug = function(req, res, next) {
     chart.getCompleteChartBySlug(slug, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -95,6 +119,12 @@ exports.insertCompleteChartVote = function(req, res, next) {
     chart.insertCompleteChartVote(data, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };

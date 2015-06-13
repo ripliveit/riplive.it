@@ -26,7 +26,13 @@ exports.getAllSongs = function(req, res, next) {
     song.getAllSongs(criteria, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -49,7 +55,13 @@ exports.getSongsByGenre = function(req, res, next) {
     song.getSongsByGenre(slug, criteria, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -72,7 +84,13 @@ exports.getSongsByTag = function(req, res, next) {
     song.getSongsByTag(slug, criteria, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -90,7 +108,13 @@ exports.getSongBySlug = function(req, res, next) {
     song.getSongBySlug(slug, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -106,6 +130,12 @@ exports.getSongsGenres = function(req, res, next) {
     song.getSongsGenres(function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };

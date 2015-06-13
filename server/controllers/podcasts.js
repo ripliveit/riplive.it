@@ -25,7 +25,13 @@ exports.getAllPodcasts = function(req, res, next) {
     podcast.getAllPodcasts(criteria, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -47,7 +53,13 @@ exports.getAllPodcastsByProgramSlug = function(req, res, next) {
     podcast.getAllPodcastsByProgramSlug(slug, criteria, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -65,6 +77,12 @@ exports.getPodcastById = function(req, res, next) {
     podcast.getPodcastById(id, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };

@@ -25,6 +25,12 @@ exports.getHighlights = function(req, res, next) {
     highlight.getHighlights(criteria, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(parsed.code, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };

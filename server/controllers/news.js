@@ -26,7 +26,13 @@ exports.getAllNews = function(req, res, next) {
     news.getAllNews(criteria, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(200, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -48,7 +54,13 @@ exports.getNewsBySlug = function(req, res, next) {
     news.getNewsBySlug(slug, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(200, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -70,7 +82,13 @@ exports.getNewsByCategory = function(req, res, next) {
     news.getNewsByCategory(slug, criteria, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(200, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
 
@@ -92,6 +110,12 @@ exports.getNewsByTag = function(req, res, next) {
     news.getNewsByTag(slug, criteria, function(err, data) {
         if (err) return next(err);
 
-        res.send(JSON.parse(data));
+        try {
+            var parsed = JSON.parse(data);
+
+            res.send(200, parsed);
+        } catch(e) {
+            return next(e);
+        }
     });
 };
