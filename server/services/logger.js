@@ -1,19 +1,20 @@
-﻿var bunyan = require('bunyan');
+﻿var winston = require('winston');
+var papertrail = require('winston-papertrail').Papertrail;
 
-/**
-* Define a logger.
-*/
-var logger = bunyan.createLogger({
-    name: 'riplive',
-    streams: [{
-        type: 'rotating-file',
-        path: __dirname + '/../../logs/logfile.log',
-        period: '1d',
-        count: 7
-    }, {
-        stream: process.stderr,
-        level: 'error'
-    }]
+var logger = new winston.Logger({
+    transports: [
+        new (winston.transports.DailyRotateFile)({
+            name: 'logfile',
+            datePattern: '.yyyy-MM-dd',
+            filename: __dirname + '/../../logs/logfile.log',
+            maxFiles: 7,
+            zippedArchive: true
+        }),
+        new winston.transports.Papertrail({
+            host: 'logs3.papertrailapp.com',
+            port: 53348
+        })
+    ]
 });
 
 module.exports = logger;

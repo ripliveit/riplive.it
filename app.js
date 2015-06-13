@@ -6,8 +6,6 @@ var config = require('config');
 var app = module.exports = express();
 var logger = require(__dirname + '/server/services/logger.js');
 
-console.log(config);
-
 // All environments
 app.enable('trust proxy');
 app.disable('x-powered-by');
@@ -23,8 +21,8 @@ app.set('staticFolder', path.join(__dirname, config.static_folder));
 // Development
 // configuration.
 app.configure('development', function() {
-    //app.use(express.errorHandler());
-    //app.use(express.logger('dev'));
+    app.use(express.errorHandler());
+    app.use(express.logger('dev'));
 });
 
 app.use(require('prerender-node').set('prerenderToken', 'NfHYwNEeopnd3fYX7R8n'));
@@ -38,7 +36,6 @@ app.use(app.router);
 
 // Error Handler
 app.use(function(err, req, res, next) {
-    console.log(err);
     logger.error(err);
     res.send(500, {
         error: err
