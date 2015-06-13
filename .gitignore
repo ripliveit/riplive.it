@@ -11,6 +11,7 @@ heroku
 nbproject
 .idea
 
+logs/
 public/vendor/
 public/js/bundle.min.js
 public/css/style.css
