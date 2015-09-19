@@ -8,5 +8,5 @@ node_js:
   - "0.10"
   - "iojs"
 before_script: npm install
-script: mocha -R spec test/spec/server --recursive
+script: NODE_ENV=production mocha -R spec test/spec/server --recursive
 after_script: grunt deploy
