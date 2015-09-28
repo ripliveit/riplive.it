@@ -19,6 +19,6 @@ sudo: false
 before_script: 
   - npm install
 script:
-  - NODE_ENV=production mocha -R spec test/spec/server --recursive
-after_script: 
-  - grunt deploy
+  - MEMCACHE_URI=127.0.0.1:11211 NODE_ENV=production mocha -R spec test/spec/server --recursive
+#after_script: 
+#  - grunt deploy

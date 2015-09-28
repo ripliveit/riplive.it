@@ -1,7 +1,7 @@
 var config = {
-    wp_uri : 'http://www.static.riplive.it/api',
-    admin_uri : 'http://www.static.riplive.it/wp-admin/admin-ajax.php',
-    memcache_uri : '188.226.129.103:11211',
+    wp_uri: process.env.WP_URI,
+    admin_uri: process.env.ADMIN_URI,
+    memcache_uri: process.env.MEMCACHE_URI,
     static_folder: 'public'
 };
 
