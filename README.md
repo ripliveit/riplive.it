@@ -12,11 +12,11 @@ Proxied by an Nginx instance.
 ## Installation and run
 Clone the repository, than install all application's dependencies:
 
-    $ npm install --production
+    $ npm install
 
 Launch all unit tests with:
 
-	$ mocha -R spec test/spec/server
+	$ mocha -R spec test/spec/server --recursive
 
 Run the application:
 
@@ -25,4 +25,3 @@ Run the application:
 ##  Continuous integration and Deployment
 
 All builds, tests and deployment are running against a Travis.ci
-
