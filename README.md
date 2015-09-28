@@ -1,4 +1,8 @@
 ## Riplive.it Front end application
+> The next step.
+
+[![Build Status](https://travis-ci.org/ripliveit/riplive.it.svg?branch=master)](https://travis-ci.org/ripliveit/riplive.it)
+
 The Riplive.it front end application.  
 It consists in a NodeJS front end API + static server + an AngularJS application used to 
 show all riplive.it contents to the user. 
@@ -20,6 +24,5 @@ Run the application:
 
 ##  Continuous integration and Deployment
 
-All builds, tests and deployment are running against a Jenkins server available at
+All builds, tests and deployment are running against a Travis.ci
 
-build.riplive.it:8080
