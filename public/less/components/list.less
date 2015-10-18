@@ -26,10 +26,10 @@
 }
 
 .list-group-item {
+	display: table;
     border: none;
     border-bottom: 1px solid @light-gray;
     border-top: 1px solid @light-gray;
-    overflow: hidden;
     padding: 10px 15px;
     width: 100%;
 
@@ -39,43 +39,62 @@
 	}
 
     .list-object {
-    	display: block;
-	    float: none;
-		height: 125px;
+    	display: table-cell;
+		height: 100px;
 		margin: 0 auto 10px;
-		width: 125px;
+		width: 100px;
 
-	    @media(min-width: @screen-sm) {
-			float: left;
+	    @media(max-width: 320px) {
+	       height: 65px;
+			width: 65px;
 		}
+
+        @media(min-width: @screen-sm) {
+            height: 125px;
+    		width: 125px;
+    	}
 	}
 
 	.list-image {
-	    height: 125px;
-		width: 125px;
+	    height: 100px;
+		width: 100px;
+
+	    @media(max-width: 320px) {
+	       height: 65px;
+			width: 65px;
+		}
+
+	    @media(min-width: @screen-sm) {
+	        height: 125px;
+			width: 125px;
+		}
 	}
 
 	.list-body {
-	    float: none;
-	    padding: 0 0 0 10px;
+	    display: table-cell;
+	    padding: 0 10px 0 10px;
 	    position: relative;
-	    text-align: center;
+	    vertical-align: top;
 	    width: 100%;
 
-	    @media(min-width: @screen-sm) {
-	        float: left;
-	        text-align: left;
-	        width: 80%;
-		}
-
 		> h3 {
+			font-size: 16px;
 		    text-transform: uppercase;
+
+	        @media(min-width: @screen-sm) {
+	            font-size: 19px;
+	    	}
 		}
 
 		> h4 {
-		    color: @middle-gray;
-		    margin-top: 0;
-		    text-transform: uppercase;
+			color: @middle-gray;
+			font-size: 14px;
+			margin-top: 0;
+
+		    @media(min-width: @screen-sm) {
+	            font-size: 17px;
+	            text-transform: uppercase;
+	    	}
 		}
 	}
 
@@ -90,15 +109,13 @@
 	}
 
 	.list-controls {
+		display: table-cell;
 	    margin: 10px auto;
 	    text-align: center;
+	    vertical-align: middle;
 
-	    @media(min-width: @screen-sm) {
-	        margin-top: -30px;
-	        position: absolute;
-	        right: 25px;
-	        text-align: left;
-	        top: 50%;
-		}
+        @media(max-width: 320px) {
+           vertical-align: top;
+    	}
 	}
 }

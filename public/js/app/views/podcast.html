@@ -33,11 +33,11 @@
         <div class="single-article-author">
             <h3 class="bold">
                 <a ng-href="/programs/{{podcast.program_slug}}" title="{{podcast.program_title}}" itemprop="partOfSeries">
-                        {{podcast.program_title}}
-                    </a>
+                    {{podcast.program_title}}
+                </a>
             </h3>
 
-            <h4>
+            <h4 ng-if="podcast.authors.length">
                 With :
             </h4>
 

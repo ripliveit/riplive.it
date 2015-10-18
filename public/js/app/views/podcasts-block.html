@@ -26,7 +26,7 @@
                         </a>
                     </h3>
 
-                    <h5>
+                    <h5 ng-if="p.authors.length">
                         With:
                         <a ng-repeat="a in p.authors" ng-href="/authors/{{a.slug}}" title="{{a.nickname}}">
                            {{a.nickname}}{{$last ? '' : ', '}}

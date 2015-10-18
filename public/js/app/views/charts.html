@@ -6,9 +6,11 @@
     <div class="list-wrapper">
         <div class="list-group">
             <div class="list-group-item" ng-repeat="c in charts">
-                <a class="list-object" ng-href="/charts/{{c.chart_archive_slug}}">
-                    <img class="list-image" ng-src="{{c.songs[0]['song_images']['thumbnail']}}" alt="{{c.chart_title}}" />
-                </a>
+                <div class="list-object">
+                    <a ng-href="/charts/{{c.chart_archive_slug}}">
+                        <img class="list-image" ng-src="{{c.songs[0]['song_images']['thumbnail']}}" alt="{{c.chart_title}}" />
+                    </a>
+                </div>
 
                 <div class="list-body">
                     <h4>
