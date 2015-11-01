@@ -18,7 +18,7 @@
                     </a>
                 </h2>
 
-                <h4>
+                <h4 ng-if="scheduled.program_information['programs-authors'].length">
                     With:
                     
                     <a ng-repeat="a in scheduled.program_information['programs-authors']" ng-href="/authors/{{a.nickname}}" class="color-white">
@@ -51,13 +51,13 @@
                         </h3>
 
                         <h4>
-                            <span ng-repeat="d in p.program_information['programs-days']">
+                            <small ng-repeat="d in p.program_information['programs-days']">
                                 On {{d}},
-                                at {{p.program_information['programs-schedule']}}
-                            </span>
+                                at {{p.program_information['programs-schedule']}} <br/>
+                            </small>
                         </h4>
 
-                        <h5>
+                        <h5 ng-if="p.program_information['programs-authors']">
                             With:
                             
                             <a ng-repeat="a in p.program_information['programs-authors']" ng-href="/authors/{{a.nickname}}">

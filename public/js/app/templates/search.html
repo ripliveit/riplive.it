@@ -1,5 +1,11 @@
 <div id="search-controls">
-    <input id="search" type="search" ng-model="term" placeholder="Search" class="form-control" required/>
+    <input id="search" type="search"  
+    ng-model="term"
+    ng-keyup="$event.keyCode == 13 ? search() : null"
+    placeholder="Search" 
+    class="form-control" 
+    required/>
+
     <button id="search-btn" class="btn btn-primary fa fa-search" ng-click="search()"></button>
 
     <div class="popover bottom fade in">
