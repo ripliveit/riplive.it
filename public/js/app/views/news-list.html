@@ -46,43 +46,67 @@
         </div>
 
         <div class="container">
-            <div class="media-block col-sm-6 col-md-6 col-lg-4" ng-repeat="p in post.posts">
-                <div class="thumbnail thumbnail-fixed">
-                    <a class="media-block-link" ng-href="/news/{{p.slug}}">
-                        <figure class="media-block-img" ng-style="{'background-image': 'url(' + p.thumbnail_images.medium.url + ')'}"></figure>
-                    </a>
+            <div ng-repeat="p in post.posts">
+                <div class="media-block col-sm-6 col-md-6 col-lg-4" ng-if="($index + 1) % 6 == 0">
+                    <div class="thumbnail thumbnail-fixed">
+                        <span class="media-block-category btn btn-xs btn-news color-white">
+                            Consigliato
+                        </span>
 
-                    <a ng-href="/categories/{{p.categories[0].slug}}" class="media-block-category btn btn-xs btn-news">
-                        {{p.categories[0].title}}
-                    </a>
-
-                    <div class="caption">
-                        <h3 class="media-block-title bold">
-                            <a ng-href="/news/{{p.slug}}">
-                                {{p.title}}
-                            </a>
-                        </h3>
-
-                        <p ng-bind-html="(p.excerpt | limitTo : 50) + '...'" class="visible-md visible-lg"></p>
-
-                        <h5>
-                            By
-                            
-                            <a class="color-news" ng-href="/authors/{{p.author.nickname}}">
-                                {{p.author.nickname}}
-                            </a>
-                            
-                            -
-
-                            <span>
-                                {{p.date | dateFormat}}
-                            </span>
-                        </h5>
+                        <div class="adv-square adv-square-thumbnail">
+                            <script type="text/javascript">
+                                var td_id = "2788276";
+                                var td_format = "4,6";
+                                var td_epi = "";
+                                var td_size = "300x250";
+                                var td_lang = "";
+                                var td_method = "automatic";
+                                var td_keywords = "";
+                                var td_exclude = "";
+                            </script>
+                            <script type="text/javascript" id="td_ads" src="http://hst.tradedoubler.com/file/20649/contextual/cx2.js"></script>
+                        </div>
                     </div>
+                </div>
 
-                    <a ng-href="/news/{{p.slug}}" class="media-block-more btn btn-neutral" role="button">
-                        Read <span class="fa fa-angle-right"></span>
-                    </a> 
+                <div class="media-block col-sm-6 col-md-6 col-lg-4">
+                    <div class="thumbnail thumbnail-fixed">
+                        <a class="media-block-link" ng-href="/news/{{p.slug}}">
+                            <figure class="media-block-img" ng-style="{'background-image': 'url(' + p.thumbnail_images.medium.url + ')'}"></figure>
+                        </a>
+
+                        <a ng-href="/categories/{{p.categories[0].slug}}" class="media-block-category btn btn-xs btn-news">
+                            {{p.categories[0].title}}
+                        </a>
+
+                        <div class="caption">
+                            <h3 class="media-block-title bold">
+                                <a ng-href="/news/{{p.slug}}">
+                                    {{p.title}}
+                                </a>
+                            </h3>
+
+                            <p ng-bind-html="(p.excerpt | limitTo : 50) + '...'" class="visible-md visible-lg"></p>
+
+                            <h5>
+                                By
+                                
+                                <a class="color-news" ng-href="/authors/{{p.author.nickname}}">
+                                    {{p.author.nickname}}
+                                </a>
+                                
+                                -
+
+                                <span>
+                                    {{p.date | dateFormat}}
+                                </span>
+                            </h5>
+                        </div>
+
+                        <a ng-href="/news/{{p.slug}}" class="media-block-more btn btn-neutral" role="button">
+                            Read <span class="fa fa-angle-right"></span>
+                        </a> 
+                    </div>
                 </div>
             </div>
         </div>
