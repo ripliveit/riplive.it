@@ -14,7 +14,7 @@ angular.module('riplive')
 .controller('MainCtrl', function MainCtrl($scope, newsService, podcastsService, generalService) {
     var current = 1;
     var pages = 0;
-    var count = 25;
+    var count = 27;
 
     $scope.loading = true;
     $scope.data = [];

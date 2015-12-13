@@ -1,4 +1,4 @@
-<div id="podcasts-block" class="content" when-scrolled="loadData()">
+<div id="podcasts-block" class="content">
     <h1 class="single-title text-center">
         Podcasts
     </h1>
@@ -8,58 +8,63 @@
             <span class="fa fa-cloud"></span> Latests podcasts
         </h4>
 
-        <div class="media-block col-sm-4 col-md-4 col-lg-3" ng-repeat="p in podcasts">
-            <div class="thumbnail thumbnail-fixed" ng-if="($index + 1) % 3 == 0">
-                <span class="media-block-category btn btn-xs btn-news color-white">
-                    Consigliato
-                </span>
+        <div ng-repeat="p in podcasts">
+            <div class="media-block col-sm-4 col-md-4 col-lg-3" ng-if="($index + 1) % 3 == 0">
+                <div class="thumbnail thumbnail-fixed">
+                    <span class="media-block-category btn btn-xs btn-news color-white">
+                        Consigliato
+                    </span>
 
-                <div class="adv-square adv-square-thumbnail">
-                    <script type="text/javascript">
-                        var td_id = "2788276";
-                        var td_format = "4,6";
-                        var td_epi = "";
-                        var td_size = "300x250";
-                        var td_lang = "";
-                        var td_method = "automatic";
-                        var td_keywords = "";
-                        var td_exclude = "";
-                    </script>
-                    <script type="text/javascript" id="td_ads" src="http://hst.tradedoubler.com/file/20649/contextual/cx2.js"></script>
+                    <div class="adv-square adv-square-thumbnail">
+                        <script type="text/javascript">
+                            var td_id = "2788276";
+                            var td_format = "4,6";
+                            var td_epi = "";
+                            var td_size = "300x250";
+                            var td_lang = "";
+                            var td_method = "automatic";
+                            var td_keywords = "";
+                            var td_exclude = "";
+                        </script>
+
+                        <trade-dbl></trade-dbl>
+                    </div>
                 </div>
             </div>
-            
-            <div class="thumbnail thumbnail-fixed" ng-if="($index + 1) % 3 != 0">
-                <a class="media-block-link" ng-href="/podcasts/{{p.program_slug}}/{{p.id}}">
-                    <figure class="media-block-img" ng-style="{'background-image': 'url(' + p.podcast_images.image_medium + ')'}"></figure>
-                </a>
 
-                <a ng-href="/podcasts/{{p.program_slug}}/{{p.id}}" class="media-block-category btn btn-xs btn-podcasts">
-                    {{p.program_title}}
-                </a>
+            <div class="media-block col-sm-4 col-md-4 col-lg-3" ng-if="($index + 1) % 3 != 0">
+                <div class="thumbnail thumbnail-fixed">
+                    <a class="media-block-link" ng-href="/podcasts/{{p.program_slug}}/{{p.id}}">
+                        <figure class="media-block-img" ng-style="{'background-image': 'url(' + p.podcast_images.image_medium + ')'}"></figure>
+                    </a>
 
-                <div class="caption">
-                    <h3 class="media-block-title bold">
-                        <a ng-href="/podcasts/{{p.program_slug}}/{{p.id}}">
-                            {{p.title}}
-                        </a>
-                    </h3>
+                    <a ng-href="/podcasts/{{p.program_slug}}/{{p.id}}" class="media-block-category btn btn-xs btn-podcasts">
+                        {{p.program_title}}
+                    </a>
 
-                    <h5 ng-if="p.authors.length">
-                        With:
-                        <a ng-repeat="a in p.authors" ng-href="/authors/{{a.slug}}" title="{{a.nickname}}">
-                           {{a.nickname}}{{$last ? '' : ', '}}
-                        </a>
-                    </h5>
+                    <div class="caption">
+                        <h3 class="media-block-title bold">
+                            <a ng-href="/podcasts/{{p.program_slug}}/{{p.id}}">
+                                {{p.title}}
+                            </a>
+                        </h3>
 
-                    <h5>
-                        {{p.date | dateFormat}}
-                    </h5>
+                        <h5 ng-if="p.authors.length">
+                            With:
+                            <a ng-repeat="a in p.authors" ng-href="/authors/{{a.slug}}" title="{{a.nickname}}">
+                               {{a.nickname}}{{$last ? '' : ', '}}
+                            </a>
+                        </h5>
+
+                        <h5>
+                            {{p.date | dateFormat}}
+                        </h5>
+                    </div>
+
+                    <a ng-href="/podcasts/{{p.program_slug}}/{{p.id}}" class="media-block-more btn btn-neutral" role="button">
+                        Listen <span class="fa fa-angle-right"></span>
+                    </a> 
                 </div>
-
-                <a ng-href="/podcasts/{{p.program_slug}}/{{p.id}}" class="media-block-more btn btn-neutral" role="button">
-                    Listen <span class="fa fa-angle-right"></span>
-                </a> 
             </div>
         </div>
     </div>
