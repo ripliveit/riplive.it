@@ -1,24 +1,51 @@
-.leaderboard {
+.adv {
     background-color: @light-gray;
-    display: block;
-    height: 90px;
     position: relative;
-    margin: 10px auto;
-    width: 728px;
 
-    &.leaderboard-home {
+    &-banner {
+        height: 60px;
+        width: 468px;
+    }
+
+    &-banner-double {
+        height: 60px;
+        width: 940px;
+        margin: 20px auto;
+        position: relative;
         top: 50px;
+
+        > .adv {
+            float: left;
+            margin: 0 1px;
+        }
+    }
+
+    &-banner-footer {
+        margin: 45px 0;
+
+        > .adv {
+            margin: 0 auto;
+        }
+    }
+
+    &-leaderboard {
+        height: 90px;
+        margin: 10px auto;
+        width: 728px;
+
+        &.leaderboard-home {
+            top: 50px;
+        }
+    }
+
+    &-square {
+        height: 250px;
+        width: 300px;
+
+        &.adv-square-thumbnail {
+            margin: 10px auto;
+            top: 20px
+        }
     }
 }
 
-.adv-square {
-    background-color: @light-gray;
-    height: 250px;
-    margin: 10px auto;
-    position: relative;
-    width: 300px;
-
-    &.adv-square-thumbnail {
-        top: 20px
-    }
-}

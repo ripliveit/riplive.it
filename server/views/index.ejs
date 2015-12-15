@@ -75,18 +75,13 @@
                     </nav>
                 </header>
 
-                <div class="leaderboard leaderboard-home hidden-xs">
-                    <script type="text/javascript">
-                        var td_id = "2788276";
-                        var td_format = "4,6";
-                        var td_epi = "";
-                        var td_size = "728x90";
-                        var td_lang = "";
-                        var td_method = "automatic";
-                        var td_keywords = "";
-                        var td_exclude = "";
-                    </script>
-                    <script type="text/javascript" id="td_ads" src="http://hst.tradedoubler.com/file/20649/contextual/cx2.js"></script>
+                <div class="adv adv-banner-double hidden-xs">
+                    <div class="adv adv-banner">
+                        <ad-code width="468" height="60" loc="171613"></ad-code>
+                    </div>
+                    <div class="adv adv-banner">
+                        <ad-code width="468" height="60" loc="171613"></ad-code>
+                    </div>
                 </div>
 
                 <section id="on-air" class="on-air-closed" ng-controller="OnAirCtrl">
@@ -104,6 +99,12 @@
                 </section>
 
                 <div id="main" class="container-fluid" ng-view autoscroll="true"></div>
+
+                <div class="adv-banner-footer hidden-xs">
+                    <div class="adv adv-banner">
+                        <ad-code width="468" height="60" loc="171614"></ad-code>
+                    </div>
+                </div>
 
                 <footer id="footer">
                     <div id="credits" class="col-lg-6 col-lg-offset-3">
@@ -242,7 +243,7 @@
             <script src="js/app/controllers/songs-tag.js"></script>
             <script src="js/app/controllers/tags.js"></script>
 
-            <script src="js/app/directives/trade-dbl.js"></script>
+            <script src="js/app/directives/ad-code.js"></script>
             <script src="js/app/directives/analytics.js"></script>
             <script src="js/app/directives/back-on-top.js"></script>
             <script src="js/app/directives/photos-control.js"></script>
