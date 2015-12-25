@@ -9,7 +9,9 @@ nbproject
 *.idea
 
 logs/
+public/js/bundle.js
 public/js/bundle.min.js
+public/js/bundle.min.js.map
 public/css/style.css
 public/css/style.min.css
 public/css/style.css.map
