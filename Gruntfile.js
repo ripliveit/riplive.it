@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         path: {
             public: 'public',
-            temp  :  '.tmp',
+            temp: '.tmp',
             server: 'server'
         },
         jshint: {
@@ -84,10 +84,12 @@ module.exports = function(grunt) {
             }
         },
         uglify: {
+            options: {
+                sourceMap: true
+            },
             dist: {
-                sourceMap: true,
                 files: [{
-                    src:  '<%= path.public %>/js/bundle.js',
+                    src: '<%= path.public %>/js/bundle.js',
                     dest: '<%= path.public %>/js/bundle.min.js'
                 }]
             }
