@@ -34,8 +34,6 @@ angular.module('riplive')
             count: 4
         }, function(related) {
             $scope.related = related;
-
-            console.log($scope.related);
         });
     });
 });

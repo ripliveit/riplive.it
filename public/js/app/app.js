@@ -18,7 +18,7 @@ angular.module('riplive', [
 
 /**
  * Define all route configuration.
- * Use html5 history state for all page.
+ * Use html5 history state for all pages.
  *
  * @param  {Object} $routeProvider
  * @param  {Object} $locationProvider

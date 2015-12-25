@@ -1,18 +1,14 @@
-.DS_Store
 node_modules
-.tmp
+nbproject
+*.DS_Store
+*.tmp
 *.log
 *.sass-cache
 *.sln
 *.njsproj
-heroku
-/views
-/dist
-nbproject
-.idea
+*.idea
 
 logs/
-public/vendor/
 public/js/bundle.min.js
 public/css/style.css
 public/css/style.min.css

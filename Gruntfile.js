@@ -30,6 +30,7 @@ module.exports = function(grunt) {
                     dot: true,
                     src: [
                         '<%= path.temp %>',
+                        '<%= path.public %>/css/*.css',
                         '<%= path.public %>/js/*.min.js'
                     ]
                 }]
@@ -42,19 +43,19 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     '<%= path.temp %>/vendor.js': [
-                        '<%= path.public %>/vendor/jquery/dist/jquery.js',
-                        '<%= path.public %>/vendor/angular/angular.js',
-                        '<%= path.public %>/vendor/bootstrap/dist/js/bootstrap.js',
-                        '<%= path.public %>/vendor/angular-resource/angular-resource.js',
-                        '<%= path.public %>/vendor/angular-route/angular-route.js',
-                        '<%= path.public %>/vendor/jplayer/dist/jplayer/jquery.jplayer.js',
-                        '<%= path.public %>/vendor/angular-touch/angular-touch.js',
-                        '<%= path.public %>/vendor/angular-sanitize/angular-sanitize.js',
-                        '<%= path.public %>/vendor/angular-carousel/dist/angular-carousel.js',
-                        '<%= path.public %>/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
-                        '<%= path.public %>/vendor/angular-local-storage/dist/angular-local-storage.js',
-                        '<%= path.public %>/vendor/angular-disqus/angular-disqus.js',
-                        '<%= path.public %>/vendor/moment/moment.js',
+                        './node_modules/jquery/dist/jquery.js',
+                        './node_modules/jplayer/dist/jplayer/jquery.jplayer.js',
+                        './node_modules/bootstrap/dist/js/bootstrap.js',
+                        './node_modules/angular/angular.js',
+                        './node_modules/angular-bootstrap/ui-bootstrap-tpls.js',
+                        './node_modules/angular-carousel/dist/angular-carousel.js',
+                        './node_modules/angular-disqus/angular-disqus.js',
+                        './node_modules/angular-resource/angular-resource.js',
+                        './node_modules/angular-route/angular-route.js',
+                        './node_modules/angular-sanitize/angular-sanitize.js',
+                        './node_modules/angular-touch/angular-touch.js',
+                        './node_modules/angular-local-storage/dist/angular-local-storage.js',
+                        './node_modules/moment/moment.js',
                     ],
                     '<%= path.temp %>/app.js': [
                         '<%= path.public %>/js/app/**/*.js'
@@ -63,7 +64,7 @@ module.exports = function(grunt) {
             },
             bundle: {
                 files: {
-                    '<%= path.temp %>/bundle.js': [
+                    '<%= path.public %>/js/bundle.js': [
                         '<%= path.temp %>/vendor.js',
                         '<%= path.temp %>/app.js',
                     ]
@@ -84,9 +85,9 @@ module.exports = function(grunt) {
         },
         uglify: {
             dist: {
-                files: [
-                {
-                    src: '<%= path.temp %>/bundle.js',
+                sourceMap: true,
+                files: [{
+                    src:  '<%= path.public %>/js/bundle.js',
                     dest: '<%= path.public %>/js/bundle.min.js'
                 }]
             }
@@ -129,7 +130,6 @@ module.exports = function(grunt) {
                     'cd /var/www/riplive.it',
                     'git pull origin master',
                     'npm install',
-                    'bower install',
                     'grunt build',
                     'NODE_ENV=production forever restartall',
                     'forever list'
