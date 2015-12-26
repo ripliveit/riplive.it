@@ -14,4 +14,4 @@ addons:
       - g++-4.8
 sudo: false
 after_script: 
-  - grunt deploy
+  - npm run deploy

@@ -132,7 +132,7 @@ module.exports = function(grunt) {
                     'cd /var/www/riplive.it',
                     'git pull origin master',
                     'npm install',
-                    'grunt build',
+                    'npm run build',
                     'NODE_ENV=production forever restartall',
                     'forever list'
                 ].join(' && '),
