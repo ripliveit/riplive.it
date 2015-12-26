@@ -3,7 +3,8 @@
   "version": "1.0.5",
   "author": "Gabriele D'Arrigo - ripliveit - @acirdesign",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "NODE_ENV=production mocha -R spec test/spec/server --recursive"
   },
   "repository": {
     "type": "git",

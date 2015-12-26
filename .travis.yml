@@ -13,9 +13,5 @@ addons:
     packages:
       - g++-4.8
 sudo: false
-before_script: 
-  - npm install
-script:
-  - NODE_ENV=production mocha -R spec test/spec/server --recursive
 after_script: 
   - grunt deploy
