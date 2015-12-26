@@ -16,16 +16,16 @@ var chart       = new ChartDao(config, hasher, broker);
  * @param  {Function} next
  * @return {undefined}
  */
-exports.getAllCompleteCharts = function(req, res, next) {
+exports.getAllCompleteCharts = (req, res, next) => {
     var page = req.query.page || 1;
 
-    chart.getAllCompleteCharts(page, function(err, data) {
+    chart.getAllCompleteCharts(page, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -41,16 +41,16 @@ exports.getAllCompleteCharts = function(req, res, next) {
  * @param  {Function} next
  * @return {undefined}
  */
-exports.getAllCompleteChartsByChartType = function(req, res, next) {
-    var slug = req.param('slug');
+exports.getAllCompleteChartsByChartType = (req, res, next) => {
+    var slug = req.params.slug;
 
-    chart.getAllCompleteChartsByChartType(slug, function(err, data) {
+    chart.getAllCompleteChartsByChartType(slug, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -66,14 +66,14 @@ exports.getAllCompleteChartsByChartType = function(req, res, next) {
  * @param  {Function} next
  * @return {undefined}
  */
-exports.getLatestCompleteCharts = function(req, res, next) {
-    chart.getLatestCompleteCharts(function(err, data) {
+exports.getLatestCompleteCharts = (req, res, next) => {
+    chart.getLatestCompleteCharts((err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -89,16 +89,16 @@ exports.getLatestCompleteCharts = function(req, res, next) {
  * @param  {Function} next
  * @return {undefined}
  */
-exports.getCompleteChartBySlug = function(req, res, next) {
-    var slug = req.param('slug');
+exports.getCompleteChartBySlug = (req, res, next) => {
+    var slug = req.params.slug;
 
-    chart.getCompleteChartBySlug(slug, function(err, data) {
+    chart.getCompleteChartBySlug(slug, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -113,16 +113,16 @@ exports.getCompleteChartBySlug = function(req, res, next) {
  * @param  {Function} next
  * @return {undefined}
  */
-exports.insertCompleteChartVote = function(req, res, next) {
+exports.insertCompleteChartVote = (req, res, next) => {
     var data = req.body;
 
-    chart.insertCompleteChartVote(data, function(err, data) {
+    chart.insertCompleteChartVote(data, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }

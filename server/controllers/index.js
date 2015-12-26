@@ -18,7 +18,7 @@ var seoDao      = new SeoDao(config, hasher, broker);
  * @param  {object} file
  * @return {undefined}
  */
-files.forEach(function(file) {
+files.forEach((file) => {
     if (file !== 'index.js') {
         controllers[file.slice(0, -3)] = require(__dirname + '/' + file);
     }
@@ -26,11 +26,12 @@ files.forEach(function(file) {
 
 /**
  * Define the index controller.
+ * 
  * @type {Object}
  */
 controllers.index = {
-    render : function(req, res, next) {
-        seoDao.getMetaByPath(req.url, function(err, data) {
+    render(req, res, next) {
+        seoDao.getMetaByPath(req.url, (err, data) => {
             if (err) return next();
 
             res.render('index', {

@@ -16,18 +16,18 @@ var author      = new AuthorDao(config, hasher, broker);
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getAllAuthors = function(req, res, next) {
+exports.getAllAuthors = (req, res, next) => {
     var criteria = {
         page: req.query.page || 1
     };
     
-    author.getAllAuthors(criteria, function(err, data) {
+    author.getAllAuthors(criteria, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -43,16 +43,16 @@ exports.getAllAuthors = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getAuthorBySlug = function(req, res, next) {
-    var slug = req.param('slug');
+exports.getAuthorBySlug = (req, res, next) => {
+    var slug = req.params.slug;
 
-    author.getAuthorBySlug(slug, function(err, data) {
+    author.getAuthorBySlug(slug, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code || 200, parsed);
+            res.status(parsed.code || 200).send(parsed);
         } catch(e) {
             return next(e);
         }

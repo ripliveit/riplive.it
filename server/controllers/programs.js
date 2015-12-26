@@ -17,20 +17,20 @@ var program     = new ProgramDao(config, hasher, broker);
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getAllPrograms = function(req, res, next) {
+exports.getAllPrograms = (req, res, next) => {
     var criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1,
         status: req.query.status || 'publish'
     };
 
-    program.getAllPrograms(criteria, function(err, data) {
+    program.getAllPrograms(criteria, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -46,16 +46,16 @@ exports.getAllPrograms = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getProgramBySlug = function(req, res, next) {
-    var slug = req.param('slug');
+exports.getProgramBySlug = (req, res, next) => {
+    var slug = req.params.slug;
 
-    program.getProgramBySlug(slug, function(err, data) {
+    program.getProgramBySlug(slug, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -70,14 +70,14 @@ exports.getProgramBySlug = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getProgramsSchedule = function(req, res, next) {
-    program.getProgramsSchedule(function(err, data) {
+exports.getProgramsSchedule = (req, res, next) => {
+    program.getProgramsSchedule((err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }

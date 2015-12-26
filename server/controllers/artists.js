@@ -16,20 +16,20 @@ var artist      = new ArtistDao(config, hasher, broker);
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getAllArtists = function(req, res, next) {
+exports.getAllArtists = (req, res, next) => {
     var criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1,
         divide: req.query.divide
     };
 
-    artist.getAllArtists(criteria, function(err, data) {
+    artist.getAllArtists(criteria, (err, data) => {
         if (err) return next(err);
         
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -44,16 +44,16 @@ exports.getAllArtists = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getArtistBySlug = function(req, res, next) {
-    var slug = req.param('slug');
+exports.getArtistBySlug = (req, res, next) => {
+    var slug = req.params.slug;
 
-    artist.getArtistBySlug(slug, function(err, data) {
+    artist.getArtistBySlug(slug, (err, data) => {
         if (err) return next(err);
         
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -69,21 +69,22 @@ exports.getArtistBySlug = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getArtistsByGenre = function(req, res, next) {
-    var slug = req.param('slug');
+exports.getArtistsByGenre = (req, res, next) => {
+    var slug = req.params.slug;
+
     var criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1,
         divide: req.query.divide
     };
 
-    artist.getArtistsByGenre(slug, criteria, function(err, data) {
+    artist.getArtistsByGenre(slug, criteria, (err, data) => {
         if (err) return next(err);
         
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -99,21 +100,22 @@ exports.getArtistsByGenre = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getArtistsByTag = function(req, res, next) {
-    var slug = req.param('slug');
+exports.getArtistsByTag = (req, res, next) => {
+    var slug = req.params.slug;
+    
     var criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1,
         divide: req.query.divide
     };
 
-    artist.getArtistsByTag(slug, criteria, function(err, data) {
+    artist.getArtistsByTag(slug, criteria, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -128,14 +130,14 @@ exports.getArtistsByTag = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getArtistsGenres = function(req, res, next) {
-    artist.getArtistsGenres(function(err, data) {
+exports.getArtistsGenres = (req, res, next) => {
+    artist.getArtistsGenres((err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }

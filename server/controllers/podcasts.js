@@ -16,19 +16,19 @@ var podcast     = new PodcastDao(config, hasher, broker);
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getAllPodcasts = function(req, res, next) {
+exports.getAllPodcasts = (req, res, next) => {
     var criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1
     };
 
-    podcast.getAllPodcasts(criteria, function(err, data) {
+    podcast.getAllPodcasts(criteria, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -43,20 +43,20 @@ exports.getAllPodcasts = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getAllPodcastsByProgramSlug = function(req, res, next) {
-    var slug = req.param('program_slug');
+exports.getAllPodcastsByProgramSlug = (req, res, next) => {
+    var slug = req.params.program_slug;
     var criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1
     };
 
-    podcast.getAllPodcastsByProgramSlug(slug, criteria, function(err, data) {
+    podcast.getAllPodcastsByProgramSlug(slug, criteria, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -71,16 +71,16 @@ exports.getAllPodcastsByProgramSlug = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getPodcastById = function(req, res, next) {
-    var id = req.param('id');
+exports.getPodcastById = (req, res, next) => {
+    var id = req.params.id;
 
-    podcast.getPodcastById(id, function(err, data) {
+    podcast.getPodcastById(id, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }

@@ -16,20 +16,20 @@ var news        = new NewsDao(config, hasher, broker);
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getAllNews = function(req, res, next) {
+exports.getAllNews = (req, res, next) => {
     var criteria = {
         count: req.query.count  || 24,
         page : req.query.page   || 1,
         author: req.query.author || null
     };
 
-    news.getAllNews(criteria, function(err, data) {
+    news.getAllNews(criteria, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(200, parsed);
+            res.status(200).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -44,20 +44,20 @@ exports.getAllNews = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getNewsBySlug = function(req, res, next) {
-    var slug = req.param('slug');
+exports.getNewsBySlug = (req, res, next) => {
+    var slug = req.params.slug;
     var criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1
     };
 
-    news.getNewsBySlug(slug, function(err, data) {
+    news.getNewsBySlug(slug, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(200, parsed);
+            res.status(200).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -72,20 +72,20 @@ exports.getNewsBySlug = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getNewsByCategory = function(req, res, next) {
-    var slug = req.param('slug');
+exports.getNewsByCategory = (req, res, next) => {
+    var slug = req.params.slug;
     var criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1
     };
 
-    news.getNewsByCategory(slug, criteria, function(err, data) {
+    news.getNewsByCategory(slug, criteria, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(200, parsed);
+            res.status(200).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -100,20 +100,20 @@ exports.getNewsByCategory = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getNewsByTag = function(req, res, next) {
-    var slug = req.param('slug');
+exports.getNewsByTag = (req, res, next) => {
+    var slug = req.params.slug;
     var criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1
     };
 
-    news.getNewsByTag(slug, criteria, function(err, data) {
+    news.getNewsByTag(slug, criteria, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(200, parsed);
+            res.status(200).send(parsed);
         } catch(e) {
             return next(e);
         }

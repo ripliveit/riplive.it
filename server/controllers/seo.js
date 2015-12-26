@@ -16,10 +16,14 @@ var seoDao      = new SeoDao(config, hasher, broker);
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getSiteMap = function(req, res, next) {
-    seoDao.getSiteMap(function(err, data) {
+exports.getSiteMap = (req, res, next) => {
+    seoDao.getSiteMap((err, data) => {
         if (err) return next(err);
 
-        res.header('Content-Type','text/xml').send(data);
+        try {
+            res.header('Content-Type','text/xml').status(200).send(data);
+        } catch(e) {
+            return next(e);
+        };
     });
 };

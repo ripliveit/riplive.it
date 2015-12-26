@@ -17,20 +17,20 @@ var searchDao   = new SearchDao(config, hasher, broker);
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getSearchResults = function(req, res, next) {
+exports.getSearchResults = (req, res, next) => {
     var criteria = {
         search : req.query.search,
         type   : req.query.type,
         count  : req.query.count || 24,
     };
     
-    searchDao.getSearchResults(criteria, function(err, data) {
+    searchDao.getSearchResults(criteria, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(200, parsed);
+            res.status(200).send(parsed);
         } catch(e) {
             return next(e);
         }

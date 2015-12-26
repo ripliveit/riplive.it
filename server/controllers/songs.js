@@ -16,20 +16,20 @@ var song        = new SongDao(config, hasher, broker);
  * @param  {Object} next
  * @return {string}
  */
-exports.getAllSongs = function(req, res, next) {
+exports.getAllSongs = (req, res, next) => {
     var criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1,
         divide : req.query.divide
     };
 
-    song.getAllSongs(criteria, function(err, data) {
+    song.getAllSongs(criteria, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -44,21 +44,22 @@ exports.getAllSongs = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getSongsByGenre = function(req, res, next) {
-    var slug = req.param('slug');
+exports.getSongsByGenre = (req, res, next) => {
+    var slug = req.params.slug;
+
     var criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1,
         divide : req.query.divide
     };
 
-    song.getSongsByGenre(slug, criteria, function(err, data) {
+    song.getSongsByGenre(slug, criteria, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -73,21 +74,21 @@ exports.getSongsByGenre = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getSongsByTag = function(req, res, next) {
-    var slug = req.param('slug');
+exports.getSongsByTag = (req, res, next) => {
+    var slug = req.params.slug;
     var criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1,
         divide : req.query.divide
     };
 
-    song.getSongsByTag(slug, criteria, function(err, data) {
+    song.getSongsByTag(slug, criteria, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -102,16 +103,16 @@ exports.getSongsByTag = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getSongBySlug = function(req, res, next) {
-    var slug = req.param('slug');
+exports.getSongBySlug = (req, res, next) => {
+    var slug = req.params.slug;
 
-    song.getSongBySlug(slug, function(err, data) {
+    song.getSongBySlug(slug, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }
@@ -126,14 +127,14 @@ exports.getSongBySlug = function(req, res, next) {
  * @param  {Object} next
  * @return {undefined}
  */
-exports.getSongsGenres = function(req, res, next) {
-    song.getSongsGenres(function(err, data) {
+exports.getSongsGenres = (req, res, next) => {
+    song.getSongsGenres((err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }

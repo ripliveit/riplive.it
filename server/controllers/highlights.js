@@ -16,19 +16,19 @@ var highlight    = new HighlightDao(config, hasher, broker);
  * @param  {Function} next
  * @return {undefined}
  */
-exports.getHighlights = function(req, res, next) {
+exports.getHighlights = (req, res, next) => {
     var criteria = {
         count: req.query.count || 6,
         page: req.query.page || 1
     };
 
-    highlight.getHighlights(criteria, function(err, data) {
+    highlight.getHighlights(criteria, (err, data) => {
         if (err) return next(err);
 
         try {
             var parsed = JSON.parse(data);
 
-            res.send(parsed.code, parsed);
+            res.status(parsed.code).send(parsed);
         } catch(e) {
             return next(e);
         }

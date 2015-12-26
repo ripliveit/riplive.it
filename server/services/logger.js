@@ -1,9 +1,10 @@
 ﻿var winston = require('winston');
 var papertrail = require('winston-papertrail').Papertrail;
+var DailyRotateFile = require('winston-daily-rotate-file');
 
 var logger = new winston.Logger({
     transports: [
-        new (winston.transports.DailyRotateFile)({
+        new DailyRotateFile({
             name: 'logfile',
             datePattern: '.yyyy-MM-dd',
             filename: __dirname + '/../../logs/logfile.log',

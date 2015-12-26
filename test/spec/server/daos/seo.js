@@ -5,7 +5,6 @@ var memcached   = require(process.cwd() + '/server/services/memcached-client.js'
 var HttpService = require(process.cwd() + '/server/services/http-service.js');
 var hasher      = require(process.cwd() + '/server/services/hasher.js');
 var Broker      = require(process.cwd() + '/server/services/memcached-broker.js');
-var libxmljs    = require('libxmljs');
 var SeoDao      = require(process.cwd() + '/server/daos/seo.js');
 var broker      = new Broker(memcached, HttpService);
 var seoDao = new SeoDao(config, hasher, broker);
@@ -43,8 +42,6 @@ describe('SeoDao', function() {
         it('should return an xml string', function(done) {
             seoDao.getSiteMap(function(err, data) {
                 if (err) throw err;
-
-                var xmlDoc = libxmljs.parseXml(data);
                 done();
             });
         });

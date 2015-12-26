@@ -1,6 +1,5 @@
 var expect = require('expect.js');
 var request = require('supertest');
-var libxmljs = require('libxmljs');
 var app = require(process.cwd() + '/app.js');
 
 describe('GET /sitemap.xml', function() {
@@ -14,10 +13,7 @@ describe('GET /sitemap.xml', function() {
             .end(function(err, res) {
                 if (err) throw err;
 
-                expect(res.header['content-type']).to.be.equal('text/xml');
-
-                var xmlDoc = libxmljs.parseXml(res.text);
-
+                expect(res.header['content-type']).to.be.equal('text/xml; charset=utf-8');
                 done();
             });
     });
