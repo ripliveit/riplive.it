@@ -11,8 +11,8 @@ angular.module('riplive')
  */
 .controller('PhotosCtrl', function PhotosCtrl($scope, socketIo) {
     //Connect to remote websocket server.
-    var socket = socketIo.connect('http://onair.riplive.it:80');
-    //var socket = socketIo.connect('http://localhost:3001');
+    var socket = socketIo.connect('http://onair.riplive.it:8082');
+    //var socket = socketIo.connect('http://localhost:8082');
     var pagination;
 
     $scope.loading = true;

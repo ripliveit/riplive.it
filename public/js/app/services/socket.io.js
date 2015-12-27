@@ -15,7 +15,7 @@ angular.module('riplive')
      * @return {Object}
      */
     var connect = function(url) {
-        var socket = io(url);
+        var socket = io.connect(url);
 
         return socket;
     };
