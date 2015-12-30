@@ -1,7 +1,7 @@
 var ads = {
     '300x250': {
         width: 300,
-        height: 350,
+        height: 350, 
         uris: [
             'http://rcm-eu.amazon-adsystem.com/e/cm?t=riplive-21&o=29&p=12&l=ur1&category=amazon_it&banner=1V2RBHACBX1Q1VCEAJR2&f=ifr',
             'http://rcm-eu.amazon-adsystem.com/e/cm?t=riplive-21&o=29&p=12&l=ur1&category=it_dvd&banner=08M2AM5ZC1WWKCSVXW82&f=ifr',
