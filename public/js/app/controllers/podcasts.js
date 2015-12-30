@@ -52,7 +52,7 @@ angular.module('riplive')
                 $scope.loading = false;
                 pages = data.pages;
 
-                generalService.pushToArray(data.podcasts, $scope.podcasts);
+                generalService.pushToArray(generalService.fillWithAdv(data.podcasts, 8), $scope.podcasts);
             });
         };
 

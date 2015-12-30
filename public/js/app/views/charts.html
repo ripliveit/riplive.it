@@ -4,8 +4,18 @@
     </h1>
 
     <div class="list-wrapper">
-        <div class="list-group">
-            <div class="list-group-item" ng-repeat="c in charts">
+        <div class="list-group" ng-repeat="c in charts">
+            <div class="list-group-item" ng-if="$index == 2">
+                <div class="adv adv-leaderboard hidden-xs">
+                    <adv-unit format="728x90"></adv-unit>
+                </div>
+
+                <div class="adv adv-square visible-xs">
+                    <adv-unit format="300x250"></adv-unit>
+                </div>
+            </div>
+
+            <div class="list-group-item">
                 <div class="list-object">
                     <a ng-href="/charts/{{c.chart_archive_slug}}">
                         <img class="list-image" ng-src="{{c.songs[0]['song_images']['thumbnail']}}" alt="{{c.chart_title}}" />

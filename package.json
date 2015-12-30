@@ -1,7 +1,12 @@
 {
   "name": "riplive",
+  "description": "Riplive.it Front end application",
   "version": "1.0.6",
-  "author": "Gabriele D'Arrigo - ripliveit - @acirdesign",
+  "author": {
+    "name": "Gabriele D'Arrigo",
+    "email": "darrigo.g@gmail.com",
+    "url": "https://github.com/gabrieledarrigo"
+  },
   "scripts": {
     "start": "node app.js",
     "test": "NODE_ENV=production mocha -R spec test/spec/server --recursive",
@@ -12,10 +17,7 @@
     "type": "git",
     "url": "https://github.com/ripliveit/riplive.it.git"
   },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/ripliveit/riplive.it/blob/master/LICENSE.md"
-  },
+  "license": "MIT",
   "keywords": [
     "webradio",
     "angularjs",

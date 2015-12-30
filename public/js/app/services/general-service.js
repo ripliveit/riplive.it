@@ -48,6 +48,22 @@ angular.module('riplive')
             }
         }
     };
+
+    var fillWithAdv = function(arr, every) {
+        if (!(arr instanceof Array)) {
+            throw new Error('Pleas specify an array to be filled');
+        }
+
+        arr.map(function(item, i) {
+            if (i % every === 0 && i !== 0) {
+                arr.splice(i, 0, { adv: true});
+            }
+
+            return item;
+        });
+
+        return arr;
+    };
     
     /**
      * Return an object that
@@ -55,6 +71,7 @@ angular.module('riplive')
      */
     return {
         pushToArray: pushToArray,
-        pushToLetters: pushToLetters
+        pushToLetters: pushToLetters,
+        fillWithAdv: fillWithAdv
     };
 });

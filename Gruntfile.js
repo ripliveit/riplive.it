@@ -145,10 +145,18 @@ module.exports = function(grunt) {
             less: {
                 files: '<%= path.public %>/less/**/*.less',
                 tasks: 'less:dist'
+            },
+            js: {
+                files: '<%= path.public %>/js/app/**/*.js',
+                tasks: [
+                    'concat:dist',
+                    'ngAnnotate:dist',
+                    'concat:bundle',
+                ]
             }
         }
     });
-
+    
     grunt.registerTask('build', [
         'clean:dist',
         'concat:dist',
@@ -157,10 +165,6 @@ module.exports = function(grunt) {
         'uglify:dist',
         'less:dist',
         'cssmin:dist'
-    ]);
-
-    grunt.registerTask('watchfiles', [
-        'watch:less'
     ]);
 
     grunt.registerTask('deploy', [

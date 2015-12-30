@@ -21,8 +21,18 @@
     </div>
 
     <div class="list-wrapper">
-        <div class="list-group">
-            <div class="list-group-item" ng-repeat="p in podcasts">
+        <div class="list-group" ng-repeat="p in podcasts">
+            <div class="list-group-item" ng-if="p.adv === true">
+                <div class="adv adv-leaderboard hidden-xs">
+                    <adv-unit format="728x90"></adv-unit>
+                </div>
+
+                <div class="adv adv-square visible-xs">
+                    <adv-unit format="300x250"></adv-unit>
+                </div>
+            </div>
+            
+            <div class="list-group-item" ng-if="p.adv !== true">
                 <a class="list-object pull-left" ng-href="/podcasts/{{p.program_slug}}/{{p.id}}">
                     <img class="list-image" ng-src="{{p.podcast_images.thumbnail}}" alt="{{p.title}}" />
                 </a>

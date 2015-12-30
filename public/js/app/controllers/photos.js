@@ -29,7 +29,12 @@ angular.module('riplive')
         $scope.$apply(function() {
             pagination = photos.pagination;
             $scope.loading = false;
-            photos.data.forEach(function(photo) {
+
+            photos.data.forEach(function(photo, i) {
+                if (i === 4) {
+                    $scope.photos.push({ adv: true});
+                }
+
                 $scope.photos.push(photo);
             });
         });

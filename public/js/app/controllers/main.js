@@ -14,15 +14,15 @@ angular.module('riplive')
 .controller('MainCtrl', function MainCtrl($scope, newsService, podcastsService, generalService) {
     var current = 1;
     var pages = 0;
-    var count = 27;
+    var count = 24;
 
     $scope.loading = true;
     $scope.data = [];
 
     podcastsService.getPodcasts({
-        count : 4
+        count : 3
     }, function(data) {
-        $scope.podcasts = data.podcasts;
+        $scope.podcasts = generalService.fillWithAdv(data.podcasts, 2);
     });
 
     newsService.getNews({
@@ -33,7 +33,7 @@ angular.module('riplive')
 
         $scope.data.push({
             first : data.posts.shift(),
-            posts : data.posts
+            posts : generalService.fillWithAdv(data.posts, 5)
         });
     });
 
@@ -51,7 +51,7 @@ angular.module('riplive')
         }, function(data) {
             $scope.data.push({
                 first : data.posts.shift(),
-                posts : data.posts
+                posts : generalService.fillWithAdv(data.posts, 5)
             });
         });
     };

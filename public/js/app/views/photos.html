@@ -11,7 +11,19 @@
         </h4>
 
         <div class="media-block media-block-instagram col-sm-6 col-md-4 col-lg-4" ng-repeat="p in photos">
-            <div class="thumbnail">
+            <div class="thumbnail" ng-if="p.adv === true">
+                <span class="media-block-category btn btn-xs btn-news color-white">
+                    Consigliato
+                </span>
+
+                <div class="instagram-adv">                
+                    <div class="adv adv-square">
+                        <adv-unit format="300x250"></adv-unit>
+                    </div>
+                </div>
+            </div>
+
+            <div class="thumbnail" ng-if="p.adv !== true">
                 <img ng-src="{{p.images.standard_resolution.url}}" />
 
                 <div class="caption transition">

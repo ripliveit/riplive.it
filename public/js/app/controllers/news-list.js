@@ -9,10 +9,10 @@ angular.module('riplive')
  * @param {Object} $scope         
  * @param {Object} newsService
  */
-.controller('NewsListCtrl', function NewsListCtrl($scope, newsService) {
+.controller('NewsListCtrl', function NewsListCtrl($scope, newsService, generalService) {
     var current = 1;
     var pages   = 0;
-    var count   = 25;
+    var count   = 24;
 
     $scope.loading = true;
     $scope.data = [];
@@ -32,7 +32,7 @@ angular.module('riplive')
 
         $scope.data.push({
             first : data.posts.shift(),
-            posts : data.posts
+            posts : generalService.fillWithAdv(data.posts, 5)
         });
     });
 
@@ -56,7 +56,7 @@ angular.module('riplive')
         }, function(data) {
             $scope.data.push({
                 first : data.posts.shift(),
-                posts : data.posts
+                posts : generalService.fillWithAdv(data.posts, 5)
             });
         });
     };
