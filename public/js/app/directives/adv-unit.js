@@ -72,7 +72,7 @@ angular.module('riplive')
 
             var getRandomFormat = function(format) {
                 if (!ads.hasOwnProperty(format)) {
-                    return '<div></div>';
+                    return '<!-- No adv format found -->';
                 }
 
                 var choosen = ads[format];
