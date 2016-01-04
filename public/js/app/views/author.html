@@ -16,14 +16,6 @@
                             {{author.email}}
                         </a>
                     </h2>
-
-                    <!--
-                    <h3>
-                        <span itemprop="alternateName">
-                            {{author.first_name}} {{author.last_name}}
-                        </span>
-                    </h3>
-                    -->
                 </header>
             </div>
         </div>
@@ -34,7 +26,7 @@
     </article>
 </div>
 
-<div class="media-wrapper" when-scrolled="loadData()">
+<div class="media-wrapper" when-scrolled="loadData()" ng-if="p.length">
     <header class="text-center">
         <h2 class="single-subtitle">
             Stories by this author 

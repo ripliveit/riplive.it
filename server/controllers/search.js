@@ -22,6 +22,7 @@ exports.getSearchResults = (req, res, next) => {
         search : req.query.search,
         type   : req.query.type,
         count  : req.query.count || 24,
+        page   : req.query.page || 1
     };
     
     searchDao.getSearchResults(criteria, (err, data) => {

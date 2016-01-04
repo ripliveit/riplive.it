@@ -17,7 +17,8 @@ function SearchDao(config, hasher, broker) {
      * {
      *     search  : search, // Term to search for.
      *     type    : type,   // Type of post to search for.
-     *     count   : count   //  Number of items to retrieve.
+     *     count   : count   // Number of items to retrieve.
+     *     page    : page    // Page number.
      * }
      * 
      * @param  {Object} criteria 
@@ -31,6 +32,7 @@ function SearchDao(config, hasher, broker) {
             uri += typeof criteria.search !== 'undefined' ? '?search=' + criteria.search : '';
             uri += typeof criteria.type   !== 'undefined' ? '&post_type=' + criteria.type : '';
             uri += typeof criteria.count  !== 'undefined' ? '&count=' + criteria.count : '';
+            uri += typeof criteria.count  !== 'undefined' ? '&page=' + criteria.page : '';
 
         var hash = this.hasher.getHash(uri);
 

@@ -1,12 +1,13 @@
 var controllers = require('../controllers');
 
+
 /**
  * Exports all routes (defined in alphabetical order).
  *
  * @param  {Object} app
  * @return {Object}
  */
-module.exports = function(app) {
+module.exports = (app) => {   
     app.get('/api/artists', controllers.artists.getAllArtists);
     app.get('/api/artists/:slug', controllers.artists.getArtistBySlug);
     app.get('/api/artists/genre/:slug', controllers.artists.getArtistsByGenre);

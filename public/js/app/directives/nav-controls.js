@@ -77,27 +77,7 @@ angular.module('riplive')
              * @return {undefined}
              */
             onAirChannel.onOnAirStatus(scope, function(e, status) {
-                if (status.data === true) {
-                    controls.addClass('slided');
-
-                    onAirControl.removeClass('fa-level-up')
-                        .addClass('fa-level-down');
-                } else {
-                    controls.removeClass('slided');
-
-                    onAirControl.removeClass('fa-level-down')
-                        .addClass('fa-level-up');
-                }
-            });
-
-            rebel.on('click', function() {
-                if (open === false) {
-                    open = true;
-                    popover.show();
-                } else {
-                    open = false;
-                    popover.hide();
-                }
+                onAirControl.toggleClass('active');
             });
         }
     };
