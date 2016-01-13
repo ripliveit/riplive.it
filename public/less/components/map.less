@@ -1,0 +1,37 @@
+#map {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+
+    .pop-up-title {
+        font-size: 18px;
+        text-align: center;
+    }
+}
+
+#acme {
+    background-color: white;
+    border: 1px solid @light-gray;
+    border-radius: 5px;
+    height: 115px;
+    padding: 10px;
+    right: 25px;
+    position: absolute;
+    top: -45px;
+    z-index: 100001;
+    width: 150px;
+    .material-shadow(2);
+    .transition(all, 0.5s, ease-in-out);
+
+    &:hover {
+    	.scale3d(1.1, 1.1, 1);
+    }
+
+    img {
+    	height: auto;
+    	width: 100%;
+    }
+}

@@ -11,6 +11,12 @@
     <link rel="stylesheet" href="/css/style.min.css?v=1">
 
     <style>
+    body {
+        background-color: transparent;
+        margin: 0;
+        padding: 0;
+    }
+    
     #external-player {
         padding: 10px;
         width: 260px;
@@ -131,111 +137,112 @@
 
     <div id="analytics" analytics></div>
 
-    <script src="/vendor/jquery/dist/jquery.js"></script>
-    <script src="/vendor/jplayer/dist/jplayer/jquery.jplayer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer/jquery.jplayer.min.js"></script>
+
     <script>
-    function cretePlayer() {
-        var volume = 1;
-        var playing = false;
-        var player = $('.player-hidden');
-        var control = $('.player-control');
-        var search = window.location.search;
-        var value  = search.split('=');
-        var stream = value[1];
+        function cretePlayer() {
+            var volume = 1;
+            var playing = false;
+            var player = $('.player-hidden');
+            var control = $('.player-control');
+            var search = window.location.search;
+            var value  = search.split('=');
+            var stream = value[1];
 
-        if (!stream || typeof stream === 'undefined') {
-            return false;
-        }
+            if (!stream || typeof stream === 'undefined') {
+                return false;
+            }
 
-        player.jPlayer({
-            ready: function() {
-                $(this).jPlayer('setMedia', {
-                    mp3: stream
-                });
-            },
-            pause: function() {
-                $(this).jPlayer('pause');
-            },
-            stop: function() {
-                $(this).jPlayer('pause', 0);
-            },
-            error: function(event) {
-                if (event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
+            player.jPlayer({
+                ready: function() {
                     $(this).jPlayer('setMedia', {
                         mp3: stream
-                    }).jPlayer('play');
+                    });
+                },
+                pause: function() {
+                    $(this).jPlayer('pause');
+                },
+                stop: function() {
+                    $(this).jPlayer('pause', 0);
+                },
+                error: function(event) {
+                    if (event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
+                        $(this).jPlayer('setMedia', {
+                            mp3: stream
+                        }).jPlayer('play');
+                    }
+                },
+                swfPath: 'js',
+                supplied: 'mp3',
+                preload: 'none',
+                wmode: 'window',
+                cssSelectorAncestor: '.player-container',
+                cssSelector: {
+                    seekBar: '.jp-seek-bar',
+                    currentTime: '.jp-current-time',
+                    duration: '.jp-duration'
+                },
+                toggleDuration: true
+            }).bind($.jPlayer.event.play, function() {
+                $(this).jPlayer('pauseOthers', 0);
+            });
+
+            player.on($.jPlayer.event.play, function() {
+                playing = true;
+                control.removeClass('fa-play')
+                    .addClass('fa-pause');
+            });
+
+            player.on($.jPlayer.event.pause, function() {
+                playing = false;
+                control.removeClass('fa-pause')
+                    .addClass('fa-play');
+            });
+
+            player.on($.jPlayer.event.stop, function() {
+                playing = false;
+                control.removeClass('fa-pause')
+                    .addClass('fa-play');
+            });
+
+            player.on($.jPlayer.event.error, function(err) {
+                control.removeClass('fa-pause')
+                    .addClass('fa-play');
+            });
+
+            $('#play').on('click', function() {
+                if (playing === false) {
+                    player.jPlayer('play');
+                } else {
+                    player.jPlayer('pause');
                 }
-            },
-            swfPath: 'js',
-            supplied: 'mp3',
-            preload: 'none',
-            wmode: 'window',
-            cssSelectorAncestor: '.player-container',
-            cssSelector: {
-                seekBar: '.jp-seek-bar',
-                currentTime: '.jp-current-time',
-                duration: '.jp-duration'
-            },
-            toggleDuration: true
-        }).bind($.jPlayer.event.play, function() {
-            $(this).jPlayer('pauseOthers', 0);
-        });
+            });
 
-        player.on($.jPlayer.event.play, function() {
-            playing = true;
-            control.removeClass('fa-play')
-                .addClass('fa-pause');
-        });
+            $('#stop').on('click', function() {
+                player.jPlayer('stop');
+            });
 
-        player.on($.jPlayer.event.pause, function() {
-            playing = false;
-            control.removeClass('fa-pause')
-                .addClass('fa-play');
-        });
+            $('#volume-up').on('click', function() {
+                if (volume >= 1) {
+                    return false;
+                }
 
-        player.on($.jPlayer.event.stop, function() {
-            playing = false;
-            control.removeClass('fa-pause')
-                .addClass('fa-play');
-        });
+                volume += .1;
+                player.jPlayer('volume', volume);
+            });
 
-        player.on($.jPlayer.event.error, function(err) {
-            control.removeClass('fa-pause')
-                .addClass('fa-play');
-        });
+            $('#volume-off').on('click', function() {
+                if (volume <= 0) {
+                    return false;
+                }
 
-        $('#play').on('click', function() {
-            if (playing === false) {
-                player.jPlayer('play');
-            } else {
-                player.jPlayer('pause');
-            }
-        });
+                volume -= .1;
+                player.jPlayer('volume', volume);
+            });
+        }
 
-        $('#stop').on('click', function() {
-            player.jPlayer('stop');
-        });
-
-        $('#volume-up').on('click', function() {
-            if (volume >= 1) {
-                return false;
-            }
-
-            volume += .1;
-            player.jPlayer('volume', volume);
-        });
-
-        $('#volume-off').on('click', function() {
-            if (volume <= 0) {
-                return false;
-            }
-
-            volume -= .1;
-            player.jPlayer('volume', volume);
-        });
-    }
-
-    $(document).ready(cretePlayer);
+        $(document).ready(cretePlayer);
     </script>
 </body>
 

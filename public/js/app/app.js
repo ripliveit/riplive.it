@@ -137,6 +137,10 @@ angular.module('riplive', [
             templateUrl: 'js/app/views/search.html',
             controller: 'SearchCtrl'
         })
+        .when('/special/acme', {
+            templateUrl: 'js/app/views/acme.html',
+            controller: 'SpecialCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });

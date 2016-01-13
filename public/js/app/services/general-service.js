@@ -8,7 +8,7 @@ angular.module('riplive')
  *
  * @return {Object}
  */
-.service('generalService', function generalService() {
+.service('generalService', function generalService($injector) {
 
     /**
      * Fill an array with all items from
@@ -65,6 +65,15 @@ angular.module('riplive')
         return arr;
     };
     
+    var getAcmeGeoData = function(cb) {
+        var geo = $injector.get('geo');
+        var resource = geo.get();
+
+        resource.$promise.then(function(data) {
+            cb(data.geo);
+        });
+    };
+
     /**
      * Return an object that
      * implements the methods.
@@ -72,6 +81,7 @@ angular.module('riplive')
     return {
         pushToArray: pushToArray,
         pushToLetters: pushToLetters,
-        fillWithAdv: fillWithAdv
+        fillWithAdv: fillWithAdv,
+        getAcmeGeoData: getAcmeGeoData
     };
 });

@@ -4,7 +4,7 @@ angular.module('riplive')
 
 /**
  * A service that implements methods
- * to query and manipulate News resource.
+ * to query and manipulate Podcasts resource.
  * Has $injector as dependency, using it to retrieve the desired
  * resource.
  *
