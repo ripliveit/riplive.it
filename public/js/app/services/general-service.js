@@ -49,6 +49,14 @@ angular.module('riplive')
         }
     };
 
+
+    /**
+     * Insert and adv object into @every position of the array.
+     *  
+     * @param  {Array} arr
+     * @param  {Int} every
+     * @return {Array}
+     */
     var fillWithAdv = function(arr, every) {
         if (!(arr instanceof Array)) {
             throw new Error('Pleas specify an array to be filled');
@@ -65,6 +73,12 @@ angular.module('riplive')
         return arr;
     };
     
+    /**
+     * Retrieve ACME geodata.
+     * 
+     * @param  {Function} cb
+     * @return {undefined}
+     */
     var getAcmeGeoData = function(cb) {
         var geo = $injector.get('geo');
         var resource = geo.get();

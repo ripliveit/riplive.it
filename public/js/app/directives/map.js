@@ -2,7 +2,13 @@
 
 angular.module('riplive')
 
-
+/**
+ * An experimental directive that show a map
+ * with placeholders, one for each ACME program's episode.
+ * 
+ * @param  {Object} podcastsService) 
+ * @return {Object}
+ */
 .directive('map', function(podcastsService) {
     return {
         template: '<div id="map"></div>',
