@@ -3,14 +3,14 @@
 angular.module('riplive')
 
 /**
- * Define and return the Artist resource.
+ * Define and return the Acme geodata resource.
  * Implements methods to retrieve data from the remote server.
  * 
  * @param  {Object} $resource
  * @return {Object}
  */
 .factory('geo', function geo($resource) {
-    return $resource('/data/geo.json', {}, {
+    return $resource('/data/acme.json', {}, {
         get: {
             isArray: false,
             method: 'GET',
