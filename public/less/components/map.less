@@ -15,14 +15,13 @@
 #acme {
     background-color: white;
     border: 1px solid @light-gray;
-    border-radius: 5px;
-    height: 115px;
-    padding: 10px;
-    right: 25px;
-    position: absolute;
-    top: -45px;
+    bottom: 5px;
+    height: 53px;
+    padding: 2.5px;
+    right: 5px;
+    position: fixed;
     z-index: 100001;
-    width: 150px;
+    width: 70px;
     .material-shadow(2);
     .transition(all, 0.5s, ease-in-out);
 
@@ -33,5 +32,13 @@
     img {
     	height: auto;
     	width: 100%;
+    }
+
+    @media(min-width: @screen-sm) {
+        height: 95px;
+        left: 5px;
+        padding: 5.5px;
+        right: auto;
+        width: 125px;
     }
 }
