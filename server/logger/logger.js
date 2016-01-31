@@ -1,8 +1,8 @@
-﻿var winston = require('winston');
-var papertrail = require('winston-papertrail').Papertrail;
-var DailyRotateFile = require('winston-daily-rotate-file');
+﻿const winston = require('winston');
+const papertrail = require('winston-papertrail').Papertrail;
+const DailyRotateFile = require('winston-daily-rotate-file');
 
-var logger = new winston.Logger({
+const logger = new winston.Logger({
     transports: [
         new DailyRotateFile({
             name: 'logfile',

@@ -1,9 +1,9 @@
-﻿var config    = require('config');
-var Memcached = require('memcached');
-var logger    = require(__dirname + '/logger.js');
+﻿const config    = require('config');
+const Memcached = require('memcached');
+const logger    = require(__dirname + '/../logger/logger.js');
 
 // Memcache configuration.
-var memcached = new Memcached(config.memcache_uri, {
+const memcached = new Memcached(config.memcache_uri, {
     poolSize: 20,
     retries: 5,
     failures: 5,
@@ -11,29 +11,29 @@ var memcached = new Memcached(config.memcache_uri, {
 });
 
 // Define all event listener for memcache connection.
-memcached.on('failure', function(details) {
+memcached.on('failure', (details) => {
     var message = 'Server ' + details.server + 'went down due to: ' + details.messages.join('');
     console.error(message);
     logger.error(message);
 });
 
-memcached.on('reconnecting', function(details) {
+memcached.on('reconnecting', (details) => {
     var message = 'Total downtime caused by server ' + details.server + ' :' + details.totalDownTime + 'ms';
     console.error(message);
     logger.info(message);
 });
 
-memcached.on('issue', function(err) {
+memcached.on('issue', (err) =>  {
     console.error(err);
     logger.error(err);
 });
 
-memcached.on('reconnected', function(err) {
+memcached.on('reconnected', (err) => {
     console.error(err);
     logger.error(err);
 });
 
-memcached.on('remove', function(err) {
+memcached.on('remove', (err) => {
     console.error(err);
     logger.error(err);
 });

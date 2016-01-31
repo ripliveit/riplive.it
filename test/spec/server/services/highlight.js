@@ -1,10 +1,10 @@
 var expect       = require('expect.js');
 var sinon        = require('sinon');
 var config       = require('config');
-var memcached    = require(process.cwd() + '/server/services/memcached-client.js');
-var HttpService  = require(process.cwd() + '/server/services/http-service.js');
-var hasher       = require(process.cwd() + '/server/services/hasher.js');
-var Broker       = require(process.cwd() + '/server/services/memcached-broker.js');
+var memcached   = require(process.cwd() + '/server/utils/memcached-client.js');
+var HttpService = require(process.cwd() + '/server/utils/http.js');
+var hasher      = require(process.cwd() + '/server/utils/hasher.js');
+var Broker      = require(process.cwd() + '/server/utils/memcached-broker.js');
 var HighlightDao = require(process.cwd() + '/server/daos/highlight.js');
 var broker       = new Broker(memcached, HttpService);
 var highlightDao = new HighlightDao(config, hasher, broker);

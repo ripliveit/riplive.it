@@ -1,12 +1,7 @@
-﻿var config      = require('config');
-var memcached   = require(__dirname + '/../services/memcached-client.js');
-var HttpService = require(__dirname + '/../services/http-service.js');
-var hasher      = require(__dirname + '/../services/hasher.js');
-var Broker      = require(__dirname + '/../services/memcached-broker.js');
-var ArtistDao   = require('../daos/artist.js');
+﻿'use strict';
 
-var broker      = new Broker(memcached, HttpService);
-var artist      = new ArtistDao(config, hasher, broker);
+const artist = require('../services/artist.js');
+
 
 /**
  * Return a list of artists.
@@ -17,7 +12,7 @@ var artist      = new ArtistDao(config, hasher, broker);
  * @return {undefined}
  */
 exports.getAllArtists = (req, res, next) => {
-    var criteria = {
+    const criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1,
         divide: req.query.divide
@@ -27,7 +22,7 @@ exports.getAllArtists = (req, res, next) => {
         if (err) return next(err);
         
         try {
-            var parsed = JSON.parse(data);
+            const parsed = JSON.parse(data);
 
             res.status(parsed.code).send(parsed);
         } catch(e) {
@@ -45,13 +40,13 @@ exports.getAllArtists = (req, res, next) => {
  * @return {undefined}
  */
 exports.getArtistBySlug = (req, res, next) => {
-    var slug = req.params.slug;
+    const slug = req.params.slug;
 
     artist.getArtistBySlug(slug, (err, data) => {
         if (err) return next(err);
         
         try {
-            var parsed = JSON.parse(data);
+            const parsed = JSON.parse(data);
 
             res.status(parsed.code).send(parsed);
         } catch(e) {
@@ -70,7 +65,7 @@ exports.getArtistBySlug = (req, res, next) => {
  * @return {undefined}
  */
 exports.getArtistsByGenre = (req, res, next) => {
-    var slug = req.params.slug;
+    const slug = req.params.slug;
 
     var criteria = {
         count: req.query.count || 24,
@@ -82,7 +77,7 @@ exports.getArtistsByGenre = (req, res, next) => {
         if (err) return next(err);
         
         try {
-            var parsed = JSON.parse(data);
+            const parsed = JSON.parse(data);
 
             res.status(parsed.code).send(parsed);
         } catch(e) {
@@ -101,9 +96,9 @@ exports.getArtistsByGenre = (req, res, next) => {
  * @return {undefined}
  */
 exports.getArtistsByTag = (req, res, next) => {
-    var slug = req.params.slug;
-    
-    var criteria = {
+    const slug = req.params.slug;
+
+    const criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1,
         divide: req.query.divide
@@ -135,7 +130,7 @@ exports.getArtistsGenres = (req, res, next) => {
         if (err) return next(err);
 
         try {
-            var parsed = JSON.parse(data);
+            const parsed = JSON.parse(data);
 
             res.status(parsed.code).send(parsed);
         } catch(e) {

@@ -1,8 +1,8 @@
 var config       = require('config');
-var memcached    = require(__dirname + '/../services/memcached-client.js');
-var HttpService  = require(__dirname + '/../services/http-service.js');
-var hasher       = require(__dirname + '/../services/hasher.js');
-var Broker       = require(__dirname + '/../services/memcached-broker.js');
+var memcached   = require(__dirname + '/../utils/memcached-client.js');
+var HttpService = require(__dirname + '/../utils/http.js');
+var hasher      = require(__dirname + '/../utils/hasher.js');
+var Broker      = require(__dirname + '/../utils/memcached-broker.js');
 var HighlightDao = require('../daos/highlight.js');
 
 var broker       = new Broker(memcached, HttpService);

@@ -1,6 +1,6 @@
 var util = require('util')
 var BaseDao = require(__dirname + '/base-dao.js');
-var HttpService = require('../services/http-service.js');
+var HttpService = require('../utils/http.js');
 
 /**
  * Chart Data Access Object.

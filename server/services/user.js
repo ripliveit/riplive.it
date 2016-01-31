@@ -1,102 +1,40 @@
-var app = require('../../app');
-var uuid = require('node-uuid');
-var httpService = require('./http-service.js');
+var util = require('util')
+var BaseDao = require(__dirname + '/base-dao.js');
 
 /**
- * All accepted social providers.
- * 
- * @type {Array}
+ * User Data Access Object.
+ * Implements method to retrieve and manipulate User Object.
+ * Use the Broker to retrieve and save data to / from memcached.
  */
-var providers = ['facebook'];
+var UserDao = function(config, hasher, broker) {
 
-/**
- * Remote uri used to retrieve a user by it's unique email;
- * 
- * @type {string}
- */
-var userByEmailUri = app.get('admin_uri') + '?action=rip_social_users_get_social_user_by_email&email=';
+    BaseDao.call(this, config, hasher, broker);
+    
+    /**
+     * Retrieve a user by it's unique identifier.
+     * 
+     * @param  {String} uuid The user unique identifier.
+     * @param  {Function} cb Fired with data from remote server,
+     *                       with error otherwise.
+     * @return {undefined}
+     */
+    this.getUserByUuid = function(uuid, cb) {
+        var uri = this.getAdminUri();
+            uri += '?action=rip_social_users_get_social_user_by_uuid';
+            uri += '&uuid=' + uuid;
+            
+        var hash = this.hasher.getHash(uri);
 
-/**
- * Remote uri used to insert a user to remote server storage.
- * 
- * @type {string}
- */
-var postUserUri    = app.get('admin_uri') + '?action=rip_social_users_insert_social_user';
+        this.broker.setTime(60).get(hash, uri, function(err, data) {
+            if (err) return cb(err, null);
 
-/**
- * Find a user by it's unique email.
- * Fire a callback when retrieving operation are done.
- * 
- * @param  {string}   email 
- * @param  {Function} cb    
- * @return {undefined}         
- */
-exports.find = function(email, cb) {
-    if (typeof email === 'undefined') {
-        var err = new Error('Please specify a user email');
-        return cb(err, null);
-    }
-
-    // Try to
-    // retrieve the user by it's email.    
-    httpService.get(userByEmailUri + email, function(err, res, body) {
-        if (err) return cb(err, null);
-
-        if (res.statusCode !== 200) {
-            var err = new Error('Error in remote server');
-            return cb(err, null);
-        }
-
-        cb(null, body);
-    });
-};
-
-/**
- * Persists a user to the remote server storage.
- * Fire a callback when the remote server work is done.
- * 
- * @param  {string}   provider Identify the social network or provider from
- *                             which the user is coming.
- *                             
- * @param  {Object}   profile  User's profile
- * @param  {Function} cb       
- * @return {undefined}
- */
-exports.persists = function(provider, profile, cb) {
-    if (providers.indexOf(provider) === -1) {
-        var err = new Error('Cannot find provider. ' + provider + ' was supplied');
-        return cb(err, null);
-    }
-
-    if (typeof profile === 'undefined') {
-        var err = new Error('Please specify a user profile');
-        return cb(err, null);
-    }
-
-    // Prepare
-    // the payload to be posted to the remote server.
-    var payLoad = {
-        user: {
-            uuid : uuid.v1(),
-            provider: provider,
-            email: profile.emails[0]['value'],
-            username: profile.username,
-            display_name: profile.displayName,
-            user_info: profile,
-            registration_date: new Date()
-        }
+            cb(null, data);
+        });
     };
-   
-    // Try
-    // to http POST the user's data to the remote server.
-    httpService.post(postUserUri, payLoad, function(err, res, body) {
-        if (err) return cb(err, null);
-
-        if (res.statusCode !== 200) {
-            var err = new Error('Error in remote server');
-            return cb(err, null);
-        }
-
-        cb(null, body);
-    });
 };
+
+// Inherits
+// from BaseDao
+util.inherits(UserDao, BaseDao);
+
+module.exports = UserDao;

@@ -11,7 +11,7 @@ var favicon = require('serve-favicon');
 var morgan = require('morgan');
 
 var app = module.exports = express();
-var logger = require(__dirname + '/server/services/logger.js');
+var logger = require(__dirname + '/server/utils/logger.js');
 
 // All environments
 app.enable('trust proxy');
