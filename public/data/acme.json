@@ -18,13 +18,13 @@
       "id": 1496
     }
   }, {
-    "checked": false,
+    "checked": true,
     "coords": [45.5736375, 8.9197766],
     "address": "Via Pietro Micca",
     "zip": "20010",
     "city": "Canegrate MI",
     "podcast": {
-      "id": null
+      "id": 1510
     }
   }, {
     "checked": false,
