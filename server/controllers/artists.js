@@ -67,7 +67,7 @@ exports.getArtistBySlug = (req, res, next) => {
 exports.getArtistsByGenre = (req, res, next) => {
     const slug = req.params.slug;
 
-    var criteria = {
+    const criteria = {
         count: req.query.count || 24,
         page: req.query.page || 1,
         divide: req.query.divide
