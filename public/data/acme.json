@@ -1,7 +1,7 @@
 {
   "geo": [{
     "checked": true,
-    "coords": [45.5747346, 8.9198984],
+    "coords": [45.574753, 8.922375],
     "address": "Via Alberto da Giussano",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -10,7 +10,7 @@
     }
   }, {
     "checked": true,
-    "coords": [45.5738525, 8.9204629],
+    "coords": [45.573938, 8.922640],
     "address": "Via Donato Bramante",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -19,7 +19,7 @@
     }
   }, {
     "checked": true,
-    "coords": [45.5736375, 8.9197766],
+    "coords": [45.573645, 8.921981],
     "address": "Via Pietro Micca",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -28,7 +28,7 @@
     }
   }, {
     "checked": true,
-    "coords": [45.566770, 8.935054],
+    "coords": [45.566860, 8.935022],
     "address": "Via Gabriele D\"Annunzio",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -37,7 +37,7 @@
     }
   }, {
     "checked": true,
-    "coords": [45.5662218, 8.9170461],
+    "coords": [45.563219, 8.915310],
     "address": "Via Etna",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -46,7 +46,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5662218, 8.9170461],
+    "coords": [45.566211, 8.919235],
     "address": "Via Giuseppe Garibaldi",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -55,7 +55,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5628023, 8.9155547],
+    "coords": [45.562784, 8.917711],
     "address": "Via Magenta",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -64,7 +64,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5633232, 8.9138673],
+    "coords": [45.563289, 8.916067],
     "address": "Via Stromboli",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -73,7 +73,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5636263, 8.9191559],
+    "coords": [45.563608, 8.921366],
     "address": "Via Verona",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -82,7 +82,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5636956, 8.9209966],
+    "coords": [45.563639, 8.923110],
     "address": "Via Bologna",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -91,7 +91,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5642676, 8.9192335],
+    "coords": [45.564226, 8.921476],
     "address": "Via Vicenza",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -100,7 +100,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5658692, 8.9296163],
+    "coords": [45.565798, 8.931902],
     "address": "Via Fratelli Bandiera",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -109,7 +109,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.567329, 8.9338521],
+    "coords": [45.567304, 8.936042],
     "address": "Via Adige",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -118,7 +118,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5653605, 8.9308592],
+    "coords": [45.565447, 8.933177],
     "address": "Via Tevere",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -127,7 +127,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5649634, 8.9327487],
+    "coords": [45.564937, 8.934948],
     "address": "Via Tagliamento",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -136,7 +136,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5735853, 8.9342552],
+    "coords": [45.573672, 8.936530],
     "address": "Via Enrico Toti",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -145,7 +145,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5735853, 8.9342552],
+    "coords": [45.574443, 8.938339],
     "address": "Via Antonio Vivaldi",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -154,7 +154,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5740543, 8.9381484],
+    "coords": [45.574223, 8.940723],
     "address": "Via Amilcare Ponchielli",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -163,7 +163,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5720407, 8.9370789],
+    "coords": [45.571945, 8.939126],
     "address": "Via Vincenzo Bellini",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -172,7 +172,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.570521, 8.935535],
+    "coords": [45.570100, 8.935985],
     "address": "Via Torquato Tasso",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -181,7 +181,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5749259, 8.933367],
+    "coords": [45.574892, 8.935427],
     "address": "Via XXV Aprile",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -190,7 +190,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.572512, 8.9304119],
+    "coords": [45.572523, 8.932450],
     "address": "Via dei Partigiani",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -199,7 +199,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5631843, 8.9252958],
+    "coords": [45.563105, 8.927581],
     "address": "Via Firenze",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -208,7 +208,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5642352, 8.9265382],
+    "coords": [45.564156, 8.928630],
     "address": "Via Sondrio",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -217,7 +217,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5630299, 8.9268375],
+    "coords": [45.563174, 8.928845],
     "address": "Via Lecco",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -226,7 +226,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5671474, 8.9217718],
+    "coords": [45.567031, 8.924079],
     "address": "Via Armando Diaz",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -235,7 +235,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5680455, 8.9212533],
+    "coords": [45.567696, 8.923785],
     "address": "Via Grigna",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -244,7 +244,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5662218, 8.9170461],
+    "coords": [45.566105, 8.919020],
     "address": "Via Giuseppe Garibaldi",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -253,7 +253,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5739296, 8.9340186],
+    "coords": [45.573888, 8.936239],
     "address": "Via Luigi Settembrini",
     "zip": "20010",
     "city": "Canegrate MI",
@@ -262,7 +262,7 @@
     }
   }, {
     "checked": false,
-    "coords": [45.5704811, 8.9268031],
+    "coords": [45.570440, 8.928981],
     "address": "Piazza Matteotti",
     "zip": "20010",
     "city": "Canegrate MI",
