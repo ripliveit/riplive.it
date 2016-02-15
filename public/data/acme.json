@@ -27,22 +27,22 @@
       "id": 1510
     }
   }, {
-    "checked": false,
+    "checked": true,
     "coords": [45.566770, 8.935054],
     "address": "Via Gabriele D\"Annunzio",
     "zip": "20010",
     "city": "Canegrate MI",
     "podcast": {
-      "id": null
+      "id": 1521
     }
   }, {
-    "checked": false,
+    "checked": true,
     "coords": [45.5662218, 8.9170461],
     "address": "Via Etna",
     "zip": "20010",
     "city": "Canegrate MI",
     "podcast": {
-      "id": null
+      "id": 1532
     }
   }, {
     "checked": false,
