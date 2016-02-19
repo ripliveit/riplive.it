@@ -45,13 +45,13 @@
       "id": 1532
     }
   }, {
-    "checked": false,
+    "checked": true,
     "coords": [45.566211, 8.919235],
     "address": "Via Giuseppe Garibaldi",
     "zip": "20010",
     "city": "Canegrate MI",
     "podcast": {
-      "id": null
+      "id": 1542
     }
   }, {
     "checked": false,
