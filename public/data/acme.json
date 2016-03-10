@@ -262,6 +262,15 @@
     }
   }, {
     "checked": false,
+    "coords": [45.134686, 8.444307],
+    "address": "Via Rita Levi Montalcini",
+    "zip": "15033",
+    "city": "Casale Monferrato AL",
+    "podcast": {
+      "id": null
+    }
+  }, {
+    "checked": false,
     "coords": [45.570440, 8.928981],
     "address": "Piazza Matteotti",
     "zip": "20010",
