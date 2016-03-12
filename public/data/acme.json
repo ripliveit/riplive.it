@@ -63,13 +63,13 @@
       "id": 1560
     }
   }, {
-    "checked": false,
+    "checked": true,
     "coords": [45.563289, 8.916067],
     "address": "Via Stromboli",
     "zip": "20010",
     "city": "Canegrate MI",
     "podcast": {
-      "id": null
+      "id": 1593
     }
   }, {
     "checked": false,
@@ -261,13 +261,13 @@
       "id": null
     }
   }, {
-    "checked": false,
+    "checked": true,
     "coords": [45.134686, 8.444307],
     "address": "Via Rita Levi Montalcini",
     "zip": "15033",
     "city": "Casale Monferrato AL",
     "podcast": {
-      "id": null
+      "id": 1576
     }
   }, {
     "checked": false,
