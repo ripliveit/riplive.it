@@ -1,51 +1,43 @@
-var expect      = require('expect.js');
-var sinon       = require('sinon');
-var config      = require('config');
-var memcached   = require(process.cwd() + '/server/utils/memcached-client.js');
-var HttpService = require(process.cwd() + '/server/utils/http.js');
-var hasher      = require(process.cwd() + '/server/utils/hasher.js');
-var Broker      = require(process.cwd() + '/server/utils/memcached-broker.js');
-var ArtistDao   = require(process.cwd() + '/server/daos/artist.js');
-var broker      = new Broker(memcached, HttpService);
-var artistDao   = new ArtistDao(config, hasher, broker);
+let expect = require('expect.js');
+let sinon = require('sinon');
+let artist = require('../../server/services/artist');
 
-describe('ArtistDao', function() {
-    beforeEach(function() {
-        sinon.stub(memcached, 'get', function(key, cb) {
-            return cb(null, false);
-        });
+describe('ArtistServices', function () {
+    let sandbox, brokerFn;
 
-        sinon.stub(memcached, 'set', function(key, value, lifetime, cb) {
-            return cb(null, value);
-        });
+    beforeEach(function () {
+        sandbox = sinon.sandbox.create();
 
-        sinon.stub(broker, 'set', function(key, body, cb) {
+        sinon.stub(broker, 'set', function (key, body, cb) {
             return cb(null, body);
         });
+
+        http.__set__('request', {
+            get: getFn,
+            post: postFn
+        });
     });
 
-    afterEach(function() {
-        memcached.get.restore();
-        memcached.set.restore();
-        broker.set.restore();
+    afterEach(function () {
+        sandbox.restore();
     });
 
-    it('is an object used to retrieve artist\'s information from remote endpoint', function() {
-        expect(artistDao).to.be.an('object');
-        expect(artistDao).to.have.property('getArtistBySlug');
-        expect(artistDao).to.have.property('getAllArtists');
-        expect(artistDao).to.have.property('getArtistsByGenre');
-        expect(artistDao).to.have.property('getArtistsByTag');
-        expect(artistDao).to.have.property('getArtistsGenres');
+    it('is an object used to retrieve artist\'s information from remote endpoint', function () {
+        expect(artist).to.be.an('object');
+        expect(artist).to.have.property('getArtistBySlug');
+        expect(artist).to.have.property('getAllArtists');
+        expect(artist).to.have.property('getArtistsByGenre');
+        expect(artist).to.have.property('getArtistsByTag');
+        expect(artist).to.have.property('getArtistsGenres');
     });
 
-    describe('#getArtistBySlug', function() {
+    describe('#getArtistBySlug', function () {
         this.timeout(15000);
 
-        it('should return a single artist object', function(done) {
+        it('should return a single artist object', function (done) {
             var slug = 'adele-e-il-mare';
 
-            artistDao.getArtistBySlug(slug, function(err, data) {
+            artistDao.getArtistBySlug(slug, function (err, data) {
                 if (err) throw err;
 
                 var data = JSON.parse(data);
@@ -59,16 +51,16 @@ describe('ArtistDao', function() {
         });
     });
 
-    describe('#getAllArtists', function() {
+    describe('#getAllArtists', function () {
         this.timeout(15000);
 
-        it('should return an array of artists', function(done) {
+        it('should return an array of artists', function (done) {
             var criteria = {
                 count: 24,
                 page: 1
             };
 
-            artistDao.getAllArtists(criteria, function(err, data) {
+            artistDao.getAllArtists(criteria, function (err, data) {
                 if (err) throw err;
 
                 var data = JSON.parse(data);
@@ -82,17 +74,17 @@ describe('ArtistDao', function() {
         });
     });
 
-    describe('#getArtistsByGenre', function() {
+    describe('#getArtistsByGenre', function () {
         this.timeout(15000);
 
-        it('should return all artists within a particular genre', function(done) {
+        it('should return all artists within a particular genre', function (done) {
             var slug = 'rock';
             var criteria = {
                 count: 24,
                 page: 1
             };
 
-            artistDao.getArtistsByGenre(slug, criteria, function(err, data) {
+            artistDao.getArtistsByGenre(slug, criteria, function (err, data) {
                 if (err) throw err;
 
                 var data = JSON.parse(data);
@@ -106,17 +98,17 @@ describe('ArtistDao', function() {
         });
     });
 
-    describe('#getArtistsByTag', function() {
+    describe('#getArtistsByTag', function () {
         this.timeout(15000);
 
-        it('should return all artists within a specific tag', function(done) {
+        it('should return all artists within a specific tag', function (done) {
             var slug = 'pop';
             var criteria = {
                 count: 24,
                 page: 1
             };
 
-            artistDao.getArtistsByTag(slug, criteria, function(err, data) {
+            artistDao.getArtistsByTag(slug, criteria, function (err, data) {
                 if (err) throw err;
 
                 var data = JSON.parse(data);
@@ -130,11 +122,11 @@ describe('ArtistDao', function() {
         });
     });
 
-    describe('#getArtistsGenres', function() {
+    describe('#getArtistsGenres', function () {
         this.timeout(15000);
 
-        it('should return all artists genres', function(done) {
-            artistDao.getArtistsGenres(function(err, data) {
+        it('should return all artists genres', function (done) {
+            artistDao.getArtistsGenres(function (err, data) {
                 if (err) throw err;
 
                 var data = JSON.parse(data);

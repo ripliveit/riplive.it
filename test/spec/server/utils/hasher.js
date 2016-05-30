@@ -1,9 +1,7 @@
-'use strict';
-
-const expect = require('expect.js');
-const sinon  = require('sinon');
-const rewire = require('rewire');
-const hasher = rewire(process.cwd() + '/server/utils/hasher.js');
+let expect = require('expect.js');
+let sinon  = require('sinon');
+let rewire = require('rewire');
+let hasher = rewire(process.cwd() + '/server/utils/hasher.js');
 
 describe('Hasher', function() {
     let sandbox,

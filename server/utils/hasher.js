@@ -10,11 +10,11 @@ let crypto = require('crypto');
  * @return {string}
  */
 const getHash = string => {
-	const hash = crypto.createHash('md5');
-            hash.update(string);
-            hash.digest('hex');
+    const hash = crypto.createHash('md5');
+    hash.update(string);
+    hash.digest('hex');
 
-	return hash;
+    return hash;
 };
 
-module.exports = { getHash };
+module.exports = {getHash};

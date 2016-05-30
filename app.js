@@ -1,17 +1,14 @@
-var http = require('http');
-var path = require('path');
-var env  = process.NODE_ENV;
-var config = require('config');
-
-var express = require('express');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-var cookieParser = require('cookie-parser');
-var favicon = require('serve-favicon');
-var morgan = require('morgan');
-
-var app = module.exports = express();
-var logger = require(__dirname + '/server/utils/logger.js');
+let http = require('http');
+let path = require('path');
+let config = require('config');
+let express = require('express');
+let bodyParser = require('body-parser');
+let methodOverride = require('method-override');
+let cookieParser = require('cookie-parser');
+let favicon = require('serve-favicon');
+let morgan = require('morgan');
+let logger = require(__dirname + '/server/utils/logger.js');
+let app = module.exports = express();
 
 // All environments
 app.enable('trust proxy');
@@ -24,29 +21,28 @@ app.set('admin_uri', config.admin_uri);
 app.set('memcache_uri', config.memcache_uri);
 app.set('view engine', 'ejs'); 
 app.set('views', __dirname + '/server/views');
-app.set('staticFolder', path.join(__dirname, config.static_folder));
+app.set('static_folder', path.join(__dirname, config.static_folder));
 
-if (env === 'development') {
+if (process.NODE_ENV === 'development') {
     app.use(morgan('dev')); 
 }
 
 app.use(require('prerender-node').set('prerenderToken', 'NfHYwNEeopnd3fYX7R8n'));
-app.use(express.static(app.get('staticFolder')));
-app.use(favicon(app.get('staticFolder') + '/favicon.ico'));
+app.use(express.static(app.get('static_folder')));
+app.use(favicon(app.get('static_folder') + '/favicon.ico'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true }));
 app.use(methodOverride());
 app.use(cookieParser());
 
-// Error Handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
     logger.error(err);
     res.send(500, {
         error: err
     });
 });
 
-var routes = require(__dirname + '/server/routes')(app);
+let routes = require(__dirname + '/server/routes')(app);
 
 http.createServer(app).listen(app.get('port'), () => {
     console.log('Application server listening on port ' + app.get('port'));
