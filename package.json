@@ -9,7 +9,6 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "mocha -R spec test/spec/server --recursive",
     "build": "grunt build",
     "deploy": "grunt deploy"
   },
