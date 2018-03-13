@@ -10,7 +10,7 @@
     <h4 class="media-wrapper-title bolder">
         <span class="fa fa-bullhorn"></span> Latests articles
     </h4>
-    
+
     <div class="media-wrapper" ng-repeat="post in data">
         <div class="stripe">
             <a ng-href="/categories/{{post.first.categories[0].slug}}" class="stripe-category btn btn-xs btn-news">
@@ -18,7 +18,7 @@
             </a>
 
             <figure class="stripe-figure">
-                <a class="stripe-link" ng-href="/news/{{post.first.slug}}" title="{{post.first.title}}" 
+                <a class="stripe-link" ng-href="/news/{{post.first.slug}}" title="{{post.first.title}}"
                 ng-style="{'background-image': 'url(' + post.first.thumbnail_images['landscape-large'].url + ')'}"></a>
             </figure>
 
@@ -31,11 +31,11 @@
 
                 <h5 class="stripe-author color-white">
                     By
-                    
+
                     <a class="color-news" ng-href="/authors/{{post.first.author.nickname}}" href="/authors/Val">
                         {{post.first.author.nickname}}
                     </a>
-                    
+
                     -
 
                     <span>
@@ -53,7 +53,7 @@
                     </span>
 
                     <div class="adv adv-square adv-square-thumbnail">
-                        <adv-unit format="300x250"></adv-unit>
+                        <adv-unit format="rettangolo-alto_mb"></adv-unit>
                     </div>
                 </div>
 
@@ -77,11 +77,11 @@
 
                         <h5>
                             By
-                            
+
                             <a class="color-news" ng-href="/authors/{{p.author.nickname}}">
                                 {{p.author.nickname}}
                             </a>
-                            
+
                             -
 
                             <span>
@@ -92,7 +92,7 @@
 
                     <a ng-href="/news/{{p.slug}}" class="media-block-more btn btn-neutral" role="button">
                         Read <span class="fa fa-angle-right"></span>
-                    </a> 
+                    </a>
                 </div>
             </div>
         </div>
