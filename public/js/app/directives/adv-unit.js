@@ -4,7 +4,7 @@ angular.module('riplive')
 
 /**
  * Show an ADV unit.
- *
+ * 
  * @return {undefined}
  */
 .directive('advUnit', function adCode() {
@@ -18,7 +18,6 @@ angular.module('riplive')
         link: function postLink(scope, element, attrs) {
             var ads = {
                 '300x250': {
-                    supplier: 'amazon',
                     width: 300,
                     height: 250,
                     uris: [
@@ -36,7 +35,6 @@ angular.module('riplive')
                     ]
                 },
                 '468x60': {
-                    supplier: 'amazon',
                     width: 468,
                     height: 60,
                     uris: [
@@ -53,7 +51,6 @@ angular.module('riplive')
                     ]
                 },
                 '728x90': {
-                    supplier: 'amazon',
                     width: 728,
                     height: 90,
                     uris: [
