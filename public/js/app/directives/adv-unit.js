@@ -78,7 +78,7 @@ angular.module('riplive')
                     supplier: 'moneybox',
                     width: 300,
                     height: 250,
-                    type_adv: 2;
+                    type_adv: 1;
                 }
             };
 
@@ -91,25 +91,18 @@ angular.module('riplive')
                 var len = choosen.uris.length;
                 var random = Math.floor(Math.random() * len);
 
-                return '<div id="16387-'+choosen.type_adv+'">'
-                        + '<script src="//ads.themoneytizer.com/s/gen.js?type='+choosen.type_adv+'"></script>'
-                        + '<script src="//ads.themoneytizer.com/s/requestform.js?siteId=16387&formatId='+choosen.type_adv+'" ></script>'
-                        + '</div>';
-
-                /*
-                                if (choosen.supplier="moneybox") {
-                                  return '<div id="16387-'+choosen.type_adv+'">'
-                                          + '<script src="//ads.themoneytizer.com/s/gen.js?type='+choosen.type_adv+'"></script>'
-                                          + '<script src="//ads.themoneytizer.com/s/requestform.js?siteId=16387&formatId='+choosen.type_adv+'" ></script>'
-                                          + '</div>';
-                                } else {
-                                  return   '<iframe'
-                                          + ' src="' + choosen.uris[random] + '"'
-                                          + ' width="'  + choosen.width + '"'
-                                          + ' height="' + choosen.height + '"'
-                                          + ' scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>';
-                                }
-                */
+                if (choosen.supplier="moneybox") {
+                  return '<div id="16387-'+choosen.type_adv+'">'
+                          + '<script src="//ads.themoneytizer.com/s/gen.js?type='+choosen.type_adv+'"></script>'
+                          + '<script src="//ads.themoneytizer.com/s/requestform.js?siteId=16387&formatId='+choosen.type_adv+'" ></script>'
+                          + '</div>';
+                } else {
+                  return   '<iframe'
+                          + ' src="' + choosen.uris[random] + '"'
+                          + ' width="'  + choosen.width + '"'
+                          + ' height="' + choosen.height + '"'
+                          + ' scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>';
+                }
             };
             element.html(getRandomFormat(scope.format));
         }
