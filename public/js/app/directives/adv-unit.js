@@ -71,11 +71,17 @@ angular.module('riplive')
                         'http://rcm-eu.amazon-adsystem.com/e/cm?t=riplive-21&o=29&p=48&l=ur1&category=buoni_regalo&banner=0E8KY67SBDY5F63B91R2&f=ifr',
                     ]
                 },
-                'rettangolo-alto_mb': {
+                'superbanner-alto_mb': {
                     supplier: 'moneybox',
                     width: 728,
                     height: 90,
                     type_adv: 1;
+                },
+                'rettangolo-alto_mb': {
+                    supplier: 'moneybox',
+                    width: 300,
+                    height: 250,
+                    type_adv: 2;
                 }
             };
 
@@ -88,7 +94,7 @@ angular.module('riplive')
                 var len = choosen.uris.length;
                 var random = Math.floor(Math.random() * len);
 
-                if (choosen.supplier="moneybox") {
+                if (choosen.supplier == "moneybox") {
                   return '<div id="16387-'+choosen.type_adv+'">'
                           + '<script src="//ads.themoneytizer.com/s/gen.js?type='+choosen.type_adv+'"></script>'
                           + '<script src="//ads.themoneytizer.com/s/requestform.js?siteId=16387&formatId='+choosen.type_adv+'" ></script>'
