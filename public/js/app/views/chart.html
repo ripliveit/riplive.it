@@ -35,10 +35,10 @@
 
                     <h4>
                         Album :
-
+                        
                         <a ng-href="/songs/{{s.song_slug}}" title="{{s.song_title}}" itemprop="inAlbum">
                              {{s.song_album}}
-                        </a>
+                        </a>    
                     </h4>
 
                     <ul class="list-category-wrapper hidden-xs">
@@ -75,11 +75,11 @@
 
     <div class="related-charts-adv">
         <div class="adv adv-leaderboard hidden-xs">
-            <adv-unit format="superbanner-alto_mb"></adv-unit>
+            <adv-unit format="728x90"></adv-unit>
         </div>
 
         <div class="adv adv-square visible-xs">
-            <adv-unit format="rettangolo-alto_mb"></adv-unit>
+            <adv-unit format="300x250"></adv-unit>
         </div>
     </div>
 
@@ -113,13 +113,13 @@
 
                     <h4 class="hidden-xs">
                         Album :
-
+                        
                         <a ng-href="/charts/{{c.chart_archive_slug}}" title="Go to {{chart.chart_title}}" itemprop="inAlbum">
                              {{c.songs[0].song_album}}
-                        </a>
+                        </a>    
                     </h4>
                 </div>
-
+                         
                 <div class="list-controls">
                     <a ng-href="/charts/{{c.chart_archive_slug}}" class="song-number">
                         {{c.chart_songs_number}}
