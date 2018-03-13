@@ -67,6 +67,18 @@ angular.module('riplive')
                         'http://rcm-eu.amazon-adsystem.com/e/cm?t=riplive-21&o=29&p=48&l=ur1&category=it_videogames&banner=19Y39R78NQ9CWHF58MG2&f=ifr',
                         'http://rcm-eu.amazon-adsystem.com/e/cm?t=riplive-21&o=29&p=48&l=ur1&category=buoni_regalo&banner=0E8KY67SBDY5F63B91R2&f=ifr',
                     ]
+                },
+                'superbanner-alto_mb': {
+                    supplier: 'moneybox',
+                    width: 728,
+                    height: 90,
+                    type_adv: 1;
+                },
+                'rettangolo-alto_mb': {
+                    supplier: 'moneybox',
+                    width: 300,
+                    height: 250,
+                    type_adv: 2;
                 }
             };
 
@@ -78,12 +90,19 @@ angular.module('riplive')
                 var choosen = ads[format];
                 var len = choosen.uris.length;
                 var random = Math.floor(Math.random() * len);
-                
-                return   '<iframe' 
-                        + ' src="' + choosen.uris[random] + '"'
-                        + ' width="'  + choosen.width + '"'
-                        + ' height="' + choosen.height + '"'
-                        + ' scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>';
+
+                if (choosen.supplier == "moneybox") {
+                  return '<div id="16387-'+choosen.type_adv+'">'
+                          + '<script src="//ads.themoneytizer.com/s/gen.js?type='+choosen.type_adv+'"></script>'
+                          + '<script src="//ads.themoneytizer.com/s/requestform.js?siteId=16387&formatId='+choosen.type_adv+'" ></script>'
+                          + '</div>';
+                } else {
+                  return   '<iframe'
+                          + ' src="' + choosen.uris[random] + '"'
+                          + ' width="'  + choosen.width + '"'
+                          + ' height="' + choosen.height + '"'
+                          + ' scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>';
+                }
             };
 
             element.html(getRandomFormat(scope.format));
