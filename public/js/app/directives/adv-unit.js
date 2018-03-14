@@ -4,7 +4,7 @@ angular.module('riplive')
 
 /**
  * Show an ADV unit.
- * 
+ *
  * @return {undefined}
  */
 .directive('advUnit', function adCode() {
@@ -72,13 +72,13 @@ angular.module('riplive')
                     supplier: 'moneybox',
                     width: 728,
                     height: 90,
-                    type_adv: 1;
+                    type_adv: 1
                 },
                 'rettangolo-alto_mb': {
                     supplier: 'moneybox',
                     width: 300,
                     height: 250,
-                    type_adv: 2;
+                    type_adv: 2
                 }
             };
 
