@@ -109,6 +109,20 @@ function MemcachedBroker(memcached, HttpService) {
             }
         });
     };
+
+   /**
+     * Fetch without persisting in memcached
+     *
+     * @param  {string}   uri
+     * @param  {Function} cb
+     */
+    this.fetch = function(uri, cb) {
+        self.HttpService.get(uri, function(err, response, body) {
+            if (err) return cb(err, null);
+            
+            cb(null, body);
+        });
+    }
 };
 
 module.exports = MemcachedBroker;

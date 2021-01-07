@@ -32,10 +32,8 @@ function SeoDao(config, hasher, broker) {
     this.getSiteMap = function(cb) {
         var uri = this.getAdminUri();
             uri += '?action=rip_seo_get_sitemap';
-
-        var hash = this.hasher.getHash(uri);
         
-        this.broker.setTime(600).get(hash, uri, function(err, data) {
+        this.broker.fetch(uri, function(err, data) {
             if (err) return cb(err, null);
 
             cb(null, data);
