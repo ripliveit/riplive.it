@@ -10,6 +10,8 @@ angular.module('riplive')
  * @param  {Object} highlightsService
  */
 .controller('HighlightsCtrl', function HighlightsCtrl($scope, highlightsService) {
+    $scope.highlights = [];
+    
     highlightsService.getHighlights(function(data) {
         $scope.highlights = data.highlights;
     });
