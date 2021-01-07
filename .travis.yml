@@ -4,7 +4,7 @@ env:
 services:
   - memcached
 node_js:
-  - "5.0"
+  - "14.15.0"
 addons:
   apt:
     sources:
