@@ -50,7 +50,7 @@
     "morgan": "1.10.0",
     "node-uuid": "1.4.8",
     "passport-facebook": "3.0.0",
-    "prerender-node": "2.1.0",
+    "prerender-node": "3.2.5",
     "request": "2.88.2",
     "serve-favicon": "2.5.0",
     "winston": "3.3.3",

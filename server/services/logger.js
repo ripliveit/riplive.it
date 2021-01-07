@@ -1,15 +1,21 @@
 ﻿var winston = require('winston');
-var DailyRotateFile = require('winston-daily-rotate-file');
+require('winston-daily-rotate-file');
 
 var logger = new winston.createLogger({
+    level: 'info',
+    format:  winston.format.combine(
+        winston.format.errors({ stack: true }),
+        winston.format.json(),
+        winston.format.timestamp(),
+      ),
     transports: [
-        new DailyRotateFile({
-            name: 'logfile',
-            datePattern: '.yyyy-MM-dd',
+        new (winston.transports.DailyRotateFile)({
             filename: __dirname + '/../../logs/logfile.log',
-            maxFiles: 7,
-            zippedArchive: true
-        })
+            datePattern: 'YYYY-MM-DD-HH',
+            zippedArchive: true,
+            maxSize: '20m',
+            maxFiles: '14d'
+          })
     ]
 });
 
