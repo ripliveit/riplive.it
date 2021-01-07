@@ -1,8 +1,6 @@
 var http = require('http');
 var path = require('path');
-var env  = process.NODE_ENV;
 var config = require('config');
-
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
@@ -26,11 +24,11 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/server/views');
 app.set('staticFolder', path.join(__dirname, config.static_folder));
 
-if (env === 'development') {
+if (process.env.NODE_ENV=== 'development') {
     app.use(morgan('dev')); 
 }
 
-app.use(require('prerender-node').set('prerenderToken', 'NfHYwNEeopnd3fYX7R8n'));
+// app.use(require('prerender-node').set('prerenderToken', 'NfHYwNEeopnd3fYX7R8n'));
 app.use(express.static(app.get('staticFolder')));
 app.use(favicon(app.get('staticFolder') + '/favicon.ico'));
 app.use(bodyParser.json());
