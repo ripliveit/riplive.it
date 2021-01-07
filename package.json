@@ -33,7 +33,7 @@
     "angular-sanitize": "1.8.2",
     "angular-touch": "1.8.2",
     "body-parser": "1.19.0",
-    "bootstrap": "3.3.7",
+    "bootstrap": "3.4.1",
     "config": "3.3.3",
     "connect-memcached": "1.0.0",
     "cookie-parser": "1.4.5",
