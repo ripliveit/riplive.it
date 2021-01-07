@@ -38,7 +38,10 @@ app.use(cookieParser());
 
 // Error Handler
 app.use((err, req, res, next) => {
-    logger.error(err);
+    logger.error({
+        level: 'error',
+        message: err,
+    });
     res.send(500, {
         error: err
     });
