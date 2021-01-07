@@ -48,7 +48,6 @@ module.exports = function(grunt) {
                         './node_modules/bootstrap/dist/js/bootstrap.js',
                         './node_modules/angular/angular.js',
                         './node_modules/angular-bootstrap/ui-bootstrap-tpls.js',
-                        './node_modules/angular-carousel/dist/angular-carousel.js',
                         './node_modules/angular-disqus/angular-disqus.js',
                         './node_modules/angular-resource/angular-resource.js',
                         './node_modules/angular-route/angular-route.js',

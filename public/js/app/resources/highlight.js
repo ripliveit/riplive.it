@@ -17,7 +17,7 @@ angular.module('riplive')
             isArray: false,
             method: 'GET',
             params: {
-                count: 6,
+                count: 3,
                 page: '@page'
             },
             transformResponse: function(data, headers) {

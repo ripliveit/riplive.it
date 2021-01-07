@@ -10,7 +10,6 @@ angular.module('riplive', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'angular-carousel',
     'ui.bootstrap',
     'LocalStorageModule',
     'ngDisqus'

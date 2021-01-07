@@ -4,7 +4,7 @@ angular.module('riplive')
 
 /**
  * Define a directive that handles the drawings
- * of the highlights section (the grid or the carousel).
+ * of the highlights section.
  * Use PubSub channels to subscribe and react to others interface's components events,
  * like the open / close of the side menu or of the on air modal window.
  *

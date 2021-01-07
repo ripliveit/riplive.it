@@ -1,5 +1,5 @@
 <div id="hg">
-    <div class="hg-grid container-fluid hidden-xs hidden-sm hidden-md">
+    <div class="hg-grid container-fluid hidden-xs hidden-sm hidden-md" data-ref="desktop">
         <div class="row" ng-repeat="i in [0, 3]">
             <figure class="hg-figure orange-gradient transition col-xs-6" ng-repeat="h in highlights.slice(i, i + 3)" ng-style="{'background-image': 'url(' + h.highlight_images.landscape_medium + ')'}">
 
@@ -23,8 +23,8 @@
         </div>
     </div>
 
-    <div class="hg-grid container-fluid visible-sm visible-md">
-        <div class="row" ng-repeat="i in [0, 2]">
+    <div class="hg-grid container-fluid visible-sm visible-md" data-ref="tablet">
+        <div class="row">
             <figure class="hg-figure orange-gradient transition col-xs-6" ng-repeat="h in highlights.slice(i, i + 2)" ng-style="{'background-image': 'url(' + h.highlight_images.landscape_medium + ')'}">
 
                 <a ng-href="{{h.highlight_link}}" class="hg-link">
@@ -48,8 +48,11 @@
     </div>
 
     <div class="hg-grid visible-xs">
-        <ul rn-carousel class="hg-carousel">
-            <li class="hg-figure orange-gradient" ng-repeat="h in highlights" ng-style="{'background-image': 'url(' + h.highlight_images.landscape_medium  + ')'}">
+        <div class="row">
+            <figure class="hg-figure orange-gradient transition col-xs-6" ng-repeat="h in highlights.slice(0, 1)" ng-style="{'background-image': 'url(' + h.highlight_images.landscape_medium + ')'}">
+
+                <a ng-href="{{h.highlight_link}}" class="hg-link">
+                </a>
 
                 <div class="hg-info">
                     <h3>
@@ -61,10 +64,10 @@
                     <h4>
                         <a ng-href="{{h.highlight_link}}">
                             {{h.highlight_genre[0]['name']}}
-                        </a>
+                         </a>
                     </h4>
                 </div>
-            </li>
-        </ul>
+            </figure>
+        </div>
     </div>
 </div>
