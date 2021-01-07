@@ -28,7 +28,7 @@ if (process.env.NODE_ENV=== 'development') {
     app.use(morgan('dev')); 
 }
 
-// app.use(require('prerender-node').set('prerenderToken', 'NfHYwNEeopnd3fYX7R8n'));
+app.use(require('prerender-node').set('prerenderToken', 'NfHYwNEeopnd3fYX7R8n'));
 app.use(express.static(app.get('staticFolder')));
 app.use(favicon(app.get('staticFolder') + '/favicon.ico'));
 app.use(bodyParser.json());
