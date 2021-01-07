@@ -1,8 +1,6 @@
 var http = require('http');
 var path = require('path');
-var env  = process.NODE_ENV;
 var config = require('config');
-
 var express = require('express');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
@@ -26,7 +24,7 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/server/views');
 app.set('staticFolder', path.join(__dirname, config.static_folder));
 
-if (env === 'development') {
+if (process.env.NODE_ENV=== 'development') {
     app.use(morgan('dev')); 
 }
 

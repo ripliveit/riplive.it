@@ -10,11 +10,11 @@ var fakeValue   = 'this.is.a.value';
 
 describe('MemcachedBroker', function() {
     beforeEach(function() {
-        sinon.stub(memcached, 'get', function(key, cb) {
+        sinon.stub(memcached, 'get').callsFake(function(key, cb) {
             return cb(null, false);
         });
 
-        sinon.stub(memcached, 'set', function(key, value, lifetime, cb) {
+        sinon.stub(memcached, 'set').callsFake(function(key, value, lifetime, cb) {
             return cb(null, value);
         });
     });
