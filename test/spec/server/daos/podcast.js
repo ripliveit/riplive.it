@@ -11,15 +11,15 @@ var podcastDao = new PodcastDao(config, hasher, broker);
 
 describe('PodcastDao', function() {
     beforeEach(function() {
-        sinon.stub(memcached, 'get', function(key, cb) {
+        sinon.stub(memcached, 'get').callsFake(function(key, cb) {
             return cb(null, false);
         });
 
-        sinon.stub(memcached, 'set', function(key, value, lifetime, cb) {
+        sinon.stub(memcached, 'set').callsFake(function(key, value, lifetime, cb) {
             return cb(null, value);
         });
 
-        sinon.stub(broker, 'set', function(key, body, cb) {
+        sinon.stub(broker, 'set').callsFake(function(key, body, cb) {
             return cb(null, body);
         });
     });

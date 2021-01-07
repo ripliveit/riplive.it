@@ -8,8 +8,8 @@
     "url": "https://github.com/gabrieledarrigo"
   },
   "scripts": {
-    "start": "node app.js",
     "build": "grunt build",
+    "start": "node app.js",
     "deploy": "grunt deploy"
   },
   "repository": {
@@ -71,9 +71,9 @@
     "jshint-stylish": "2.2.1",
     "libxmljs": "0.19.7",
     "load-grunt-tasks": "5.1.0",
-    "mocha": "2.3.2",
-    "sinon": "1.14.1",
-    "supertest": "1.1.0",
+    "mocha": "8.2.1",
+    "sinon": "9.2.3",
+    "supertest": "6.0.1",
     "time-grunt": "2.0.0"
   }
 }
