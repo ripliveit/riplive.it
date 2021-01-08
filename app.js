@@ -24,7 +24,7 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/server/views');
 app.set('staticFolder', path.join(__dirname, config.static_folder));
 
-if (process.env.NODE_ENV=== 'development') {
+if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev')); 
 }
 
@@ -47,7 +47,7 @@ app.use((err, req, res, next) => {
     });
 });
 
-var routes = require(__dirname + '/server/routes')(app);
+require(__dirname + '/server/routes')(app);
 
 http.createServer(app).listen(app.get('port'), () => {
     console.log('Application server listening on port ' + app.get('port'));

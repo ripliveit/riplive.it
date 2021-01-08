@@ -1,0 +1,7 @@
+version: "3.9"
+
+services:
+ riplive-memcached:
+    image: memcached
+    ports:
+      - "11211:11211"

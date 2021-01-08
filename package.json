@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "grunt build",
+    "watch": "grunt watch",
     "start": "node app.js",
     "deploy": "grunt deploy"
   },
@@ -42,7 +43,7 @@
     "font-awesome": "4.7.0",
     "grunt-contrib-watch": "1.1.0",
     "jplayer": "2.9.2",
-    "jquery": "2.2.4",
+    "jquery": "3.5.1",
     "memcached": "2.2.2",
     "method-override": "3.0.0",
     "moment": "2.29.1",
